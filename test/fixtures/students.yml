@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  netid: MyString
+  class_year: MyString
+  id_number: 1
+  upi: 1
+
+two:
+  first_name: MyString
+  last_name: MyString
+  netid: MyString
+  class_year: MyString
+  id_number: 1
+  upi: 1
