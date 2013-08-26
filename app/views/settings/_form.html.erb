@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :freshman_year %><br>
-    <%= f.number_field :freshman_year %>
+    <%= f.label :allowed_years, "Allowed Years (comma separated, eg: 2015,2016,2017)" %><br>
+    <%= f.text_field :allowed_years %>
   </div>
   <div class="actions">
     <%= f.submit %>

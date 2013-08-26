@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users.invitation_search(params[:q], current_user) }
+      format.csv { send_data @users.to_csv }
+    end
   end
 
   # GET /users/1

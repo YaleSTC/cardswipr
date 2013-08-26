@@ -1,2 +1,4 @@
-alert("<%= @message.html_safe %>");
+$("#distribution_status").empty();
+$("#distribution_status").append('<%= j(render partial: 'layouts/messages') %>');
+$("#distribution_count").html('<%= j(@count.to_s) %>');
 $("#query").val('');

@@ -5,26 +5,27 @@ class DistributionController < ApplicationController
   end
 
   def lookup
+    @count = Student.count
     person = Person.search(params[:query])
 
     if person.nil?
-      @message = "I'm sorry, Dave, I didn't find anyone" and return
+      flash.now[:error] = "I'm sorry, Dave, I didn't find anyone" and return
     end
 
-    unless person.freshman?
-      @message = "#{person.name} doesn't appear to be a freshman." and return
+    unless person.allowed_year?
+      flash.now[:error] = "#{person.name} is not in the allowed class years." and return
     end
 
     if person.given_key?
-      @message = "#{person.name} has already been given a USB Key" and return
+      flash.now[:error] = "#{person.name} has already been given a USB Key" and return
     end
 
     if person.give_key
-      @message = "#{person.name} has been verifed. You may give them a flash drive."
+      flash.now[:notice] = "#{person.name} has been verifed. You may give them a flash drive."
+      @count = Student.count
     else
-      @message = "Unexpected error (trying to save that we gave person a key). You may getm them a key anyway and make a note of this."
+      flash.now[:error] = "Unexpected error (trying to save that we gave person a key). You may getm them a key anyway and make a note of this."
     end
-
   end
 
 end

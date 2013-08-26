@@ -15,13 +15,28 @@ class Person < ActiveRecord::Base
     first_name + " " + last_name
   end
 
-  def undergrad?
-    Role.upi(self.yale_upi).undergrad.any?
+  def roles
+    Role.upi(self.yale_upi)
   end
 
-  def freshman?
-    freshman_year = Setting.freshman_year
-    Role.upi(self.yale_upi).undergrad.class_year(freshman_year).any?
+  def undergrad?
+    roles.undergrad.any?
+  end
+
+  def grad_student?
+    roles.grad.any?
+  end
+
+  def student_roles
+    [roles.undergrad, roles.grad].flatten
+  end
+
+  def allowed_year?
+    allowed_years = Setting.allowed_years
+    student_roles.each do |role|
+      return true if allowed_years.include?(role.class_year)
+    end
+    return false
   end
 
   def given_key?
@@ -33,7 +48,6 @@ class Person < ActiveRecord::Base
     Student.create(self.student_attrs)
   end
 
-  private
   def student_attrs
     attrs = ["first_name", "last_name", "netid", "yale_upi", "id_card_number"]
     self.attributes.select{|k,v| attrs.include? k}

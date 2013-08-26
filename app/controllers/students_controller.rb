@@ -5,6 +5,12 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @students.invitation_search(params[:q], current_user) }
+      format.csv { send_data @students.to_csv }
+    end
   end
 
   # GET /students/1

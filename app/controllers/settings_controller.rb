@@ -29,13 +29,13 @@ class SettingsController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_setting
+      # If settings have been saved, use them, otherwise, create defaults
       @setting = Setting.first || Setting.create_default
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit(:freshman_year)
+      params.require(:setting).permit(:allowed_years)
     end
 end

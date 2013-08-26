@@ -1,1 +1,1 @@
-json.extract! @setting, :freshman_year, :created_at, :updated_at
+json.extract! @setting, :allowed_years, :created_at, :updated_at

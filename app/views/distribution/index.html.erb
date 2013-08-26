@@ -1,8 +1,12 @@
 <h1>Distribute USB Keys</h1>
 
-<%= form_tag(distribution_lookup_path, remote: true) do %>
-  Swipe ID Card or enter NetID: <%= text_field_tag(:query, nil, options = {:size => 12, :maxlength => 12}) %>
-  <p>
-  <%= @count%> USB keys have been handed out.
-  </p>
-<% end %>
+<div id="distribution_status">
+</div>
+<div class="distribution_form">
+  <%= form_tag(distribution_lookup_path, remote: true) do %>
+    Swipe Card or type NetID: <%= text_field_tag(:query, nil, options = {:size => 12, :maxlength => 12}) %>
+    <p>
+    <span id="distribution_count"><%= @count%></span> USB keys have been handed out.
+    </p>
+  <% end %>
+</div>
