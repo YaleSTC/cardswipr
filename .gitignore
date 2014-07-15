@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 
+# Ignore the sensitive database.yml file
 /config/database.yml
