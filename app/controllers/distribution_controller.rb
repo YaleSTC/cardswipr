@@ -24,7 +24,7 @@ class DistributionController < ApplicationController
       flash.now[:notice] = "#{person.name} has been verifed. You may give them a flash drive."
       @count = Student.count
     else
-      flash.now[:error] = "Unexpected error (trying to save that we gave person a key). You may getm them a key anyway and make a note of this."
+      flash.now[:error] = "Unexpected error (trying to save that we gave person a key). You may give them a key anyway and make a note of this."
     end
   end
 
