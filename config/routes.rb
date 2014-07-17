@@ -10,7 +10,7 @@ UsbDistribution::Application.routes.draw do
   root to: 'distribution#index'
 
   get '/unauthorized', :to => redirect('/unauthorized.html')
-
+  get '/status', :to => redirect('/status.html')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
