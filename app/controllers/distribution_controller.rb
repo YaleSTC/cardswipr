@@ -28,4 +28,12 @@ class DistributionController < ApplicationController
     redirect_to action: :index
   end
 
+  def phonebook
+  end
+
+  def phonebooklookup
+    netid = params[:query]
+    redirect_to "http://directory.yale.edu/phonebook/index.htm?searchString=netid%3D" + netid
+  end
+
 end
