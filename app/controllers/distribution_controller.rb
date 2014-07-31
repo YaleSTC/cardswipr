@@ -5,7 +5,6 @@ class DistributionController < ApplicationController
   end
 
   def lookup
-    @count = Student.count
     person = Person.search(params[:query])
 
     if person.nil?
@@ -26,6 +25,7 @@ class DistributionController < ApplicationController
     else
       flash.now[:error] = "Unexpected error (trying to save that we gave person a key). You may give them a key anyway and make a note of this."
     end
+    redirect_to action: :index
   end
 
 end
