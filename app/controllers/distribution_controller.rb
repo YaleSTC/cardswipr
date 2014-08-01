@@ -7,25 +7,30 @@ class DistributionController < ApplicationController
   def lookup
     person = Person.search(params[:query])
 
-    if person.nil?
-      flash.now[:error] = "I'm sorry, Dave, I didn't find anyone" and return
-    end
+    # if person.nil?
+    #   flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
+    #   redirect_to :distribution_index
+    # end
 
     unless person.allowed_year?
-      flash.now[:error] = "#{person.name} is not in the allowed class years." and return
+      flash[:error] = "#{person.name} is not in the allowed class years."
+      redirect_to :distribution_index and return
     end
 
     if person.given_key?
-      flash.now[:error] = "#{person.name} has already been given a USB Key" and return
+      flash[:error] = "#{person.name} has already been given a USB Key"
+      redirect_to :distribution_index and return
     end
 
     if person.give_key
-      flash.now[:notice] = "#{person.name} has been verifed. You may give them a flash drive."
+      flash[:notice] = "#{person.name} has been verifed. You may give them a flash drive."
       @count = Student.count
     else
-      flash.now[:error] = "Unexpected error (trying to save that we gave person a key). You may give them a key anyway and make a note of this."
+      flash[:error] = "Unexpected error (trying to save that we gave person a key). You may give them a key anyway and make a note of this."
     end
-    redirect_to action: :index
+
+    redirect_to :distribution_index
+
   end
 
   def phonebook
