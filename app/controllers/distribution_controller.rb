@@ -38,7 +38,7 @@ class DistributionController < ApplicationController
 
   def phonebooklookup
     person = Person.search(params[:query])
-    redirect_to "http://directory.yale.edu/phonebook/index.htm?searchString=netid%3D" + person
+    redirect_to "http://directory.yale.edu/phonebook/index.htm?searchString=netid%3D" + person.netid
   end
 
 end
