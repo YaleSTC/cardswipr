@@ -8,6 +8,7 @@ gem 'rubycas-client-rails'
 gem 'rubycas-client', '2.2.1'
 
 # Use sqlite3 as the database for Active Record
+gem 'mysql2'
 gem 'sqlite3'
 gem 'ruby-oci8'
 gem 'activerecord-oracle_enhanced-adapter', git: 'https://github.com/rsim/oracle-enhanced.git', branch: 'rails4'
