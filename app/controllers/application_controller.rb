@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def onlyadmins
-    admin_users = %w{csw3 jl2463 sbt3 dz65 cb585}
+    admin_users = %w{csw3 jl2463 sbt3 dz65 cb585 deg38 mrd25 }
     unless admin_users.include? session[:cas_user] 
         redirect_to '/unauthorized'
     end
