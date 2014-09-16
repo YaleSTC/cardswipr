@@ -27,7 +27,6 @@ class Person < ActiveRecord::Base
     first_name + " " + last_name
   end
 
-
   def given_key?
     return Student.find_by(netid: self.netid).present?
   end
