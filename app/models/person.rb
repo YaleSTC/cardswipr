@@ -1,4 +1,5 @@
 require 'net-ldap'
+require 'yaleldap'
 
 class Person < ActiveRecord::Base
   establish_connection "oracle"
@@ -17,7 +18,8 @@ class Person < ActiveRecord::Base
 
   # test with Person.new(upi: "12714662")
   def initialize(attributes)
-    attributes = LDAP.lookup_by_upi(attributes[:upi])
+    attributes = YaleLDAP.lookup_by_upi(attributes[:upi])
+      .slice(:first_name, :last_name, :netid, :yale_upi)
     super
   end
 

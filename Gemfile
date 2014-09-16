@@ -44,6 +44,7 @@ gem 'cancancan', '~> 1.9'
 
 # include LDAP
 gem 'net-ldap'
+gem 'yaleldap'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
