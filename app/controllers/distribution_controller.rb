@@ -1,4 +1,5 @@
 class DistributionController < ApplicationController
+  # load_and_authorize_resource
 
   def index
     @count = Student.count

@@ -1,4 +1,7 @@
 class SettingsController < ApplicationController
+  load_and_authorize_resource param_method: :setting_params
+
+
   before_action :set_setting
 
   def index
