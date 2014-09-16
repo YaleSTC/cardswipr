@@ -2,7 +2,6 @@ UsbDistribution::Application.routes.draw do
 
   resources :students
   resources :users
-  resources :settings, except: [:create, :destroy]
 
   get  '/distribution/index', as: :distribution_index
   post '/distribution/lookup', as: :distribution_lookup

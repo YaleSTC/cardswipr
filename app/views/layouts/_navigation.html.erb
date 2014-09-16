@@ -10,11 +10,6 @@
       <%= link_to "Phonebook Lookup", distribution_phonebook_path %>
     </li>
   <% end %>
-  <% if can? :read, :settings %>
-    <li class="">
-      <%= link_to "Settings", settings_path %>
-    </li>
-  <% end %>
   <% if can? :index, :students %>
     <li>
       <%= link_to "Distribution List", students_path %>
