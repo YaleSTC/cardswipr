@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
 
   before_action RubyCAS::Filter
   before_action :current_user
-  before_action :onlyadmins
+  # before_action :onlyadmins
 
   helper_method :current_user
 
-  # check_authorization
+  check_authorization
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

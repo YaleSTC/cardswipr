@@ -10,7 +10,8 @@ class Ability
     if admin_users.include? user.netid
       can :manage, :all
     else
-      can :read, :all
+      can :open, :phonebook
+      can :lookup, :phonebook
     end
     #
     # The first argument to `can` is the action you are giving the user

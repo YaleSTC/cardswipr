@@ -1,11 +1,15 @@
 class DistributionController < ApplicationController
-  # load_and_authorize_resource
+  # load_and_authorize_resource #this doesn't work because there's no distribution model?
+  # authorize_resource #not load_and_authorize_resource because there's no model
+  # skip_authorization_check #this isn't what we want because we do need authorization
 
   def index
+    authorize! :open, :cardswipe
     @count = Student.count
   end
 
   def lookup
+    authorize! :lookup, :cardswipe
     person = Person.search(params[:query])
 
     # if person.nil?
@@ -35,9 +39,11 @@ class DistributionController < ApplicationController
   end
 
   def phonebook
+    authorize! :open, :phonebook
   end
 
   def phonebooklookup
+    authorize! :lookup, :phonebook
     person = Person.search(params[:query])
     redirect_to "http://directory.yale.edu/phonebook/index.htm?searchString=netid%3D" + person.netid
   end
