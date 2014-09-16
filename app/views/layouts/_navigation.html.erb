@@ -1,13 +1,13 @@
 <%= link_to "CardSwipr", root_path, :class => 'brand' %>
 <ul class="nav">
-  <% if can? :read, :cardswipe %>
-    <li>
-      <%= link_to "Distribute Keys", distribution_index_path %>
-    </li>
-  <% end %>
   <% if can? :read, :phonebook %>
     <li>
       <%= link_to "Phonebook Lookup", distribution_phonebook_path %>
+    </li>
+  <% end %>
+  <% if can? :read, :cardswipe %>
+    <li>
+      <%= link_to "Distribute Keys", distribution_index_path %>
     </li>
   <% end %>
   <% if can? :index, :students %>
