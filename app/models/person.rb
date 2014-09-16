@@ -25,12 +25,12 @@ class Person < ActiveRecord::Base
     first_name + " " + last_name
   end
 
-  def given_key?
+  def recorded?
     return Student.find_by(netid: self.netid).present?
   end
 
-  def give_key
-    return false if given_key?
+  def record
+    return false if recorded?
     Student.create(self.student_attrs)
   end
 

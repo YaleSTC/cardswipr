@@ -19,16 +19,16 @@ class DistributionController < ApplicationController
       redirect_to :distribution_index
     end
 
-    if person.given_key?
-      flash[:error] = "#{person.name} has already been given a USB Key"
+    if person.recorded?
+      flash[:error] = "#{person.name} has already been recorded for this event."
       redirect_to :distribution_index and return
     end
 
-    if person.give_key
-      flash[:notice] = "#{person.name} has been verifed. You may give them a flash drive."
+    if person.record
+      flash[:notice] = "#{person.name} has been successfully recorded for this event."
       @count = Student.count
     else
-      flash[:error] = "Unexpected error (trying to save that we gave person a key). You may give them a key anyway and make a note of this."
+      flash[:error] = "Unexpected error while trying to record this person."
     end
 
     redirect_to :distribution_index

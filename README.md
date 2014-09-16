@@ -1,4 +1,8 @@
-This application keeps track of USB keys that are distributed to a set of students. It connects to the Yale Oracle database to convert the magnetic stripe information on the Yale ID to identifiable information.
+This application does two things using Yale ID Cards:
+1. Event Attendance - Keeps track of people who have swiped their ID cards at an event.
+2. Phonebook Lookup - When someone swipes their card at a walk-in center, the Yale Phonebook entry is instantly opened up.
+
+It connects to the Yale Oracle database to convert the magnetic stripe information on the Yale ID to identifiable information.
 
 ##Set Up
 ###ruby-oci8 gem
