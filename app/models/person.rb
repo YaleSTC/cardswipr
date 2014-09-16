@@ -5,10 +5,11 @@ class Person < ActiveRecord::Base
 
   def self.search(query)
     if id_number = query.match(/\d{10}/)
-      return Person.find_by(id_card_number: id_number[0])
+      return Person.find_by(id_card_number: id_number[0]).yale_upi.to_i.to_s
     else
-      return Person.find_by(netid: query)
+      return Person.find_by(netid: query).yale_upi.to_i.to_s
     end
+
   end
 
   def name
