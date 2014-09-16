@@ -71,6 +71,7 @@ class StudentsController < ApplicationController
 
   def clear_all
     Student.destroy_all
+    redirect_to students_url
   end
 
   private
