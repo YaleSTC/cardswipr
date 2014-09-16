@@ -6,9 +6,10 @@ class Person < ActiveRecord::Base
   LDAP_BASE = 'ou=People,o=yale.edu'
   LDAP_ATTRS = %w(uid givenname sn mail collegename college class UPI)
 
-
   establish_connection "oracle"
   self.table_name = "people.ppl_identity_v"
+
+  attr_accessor :upi
 
   def self.lookup(query)
     if id_number = query.match(/\d{10}/)
@@ -26,7 +27,7 @@ class Person < ActiveRecord::Base
     ldap_response = ldap.search(base: LDAP_BASE,
                      filter: upifilter,
                      attributes: LDAP_ATTRS)
-    
+
     assign_ldap_attributes(ldap_response)
   end
 
@@ -41,17 +42,18 @@ class Person < ActiveRecord::Base
     @collegename = ldap_response[0][:collegename][0] || ""
     @college = ldap_response[0][:college][0] || ""
     @class_year = ldap_response[0][:class][0] || ""
+  # end
+    return {
+      first_name: @first_name,
+      last_name: @last_name,
+      yale_upi: @upi,
+      netid: @netid
+      # email: @email,
+      # collegename: @collegename,
+      # college: @college,
+      # class_year: @class_year
+    }
   end
-    # return {
-    #   first_name: first_name,
-    #   last_name: last_name,
-    #   upi: upi,
-    #   netid: netid,
-    #   email: email,
-    #   collegename: collegename,
-    #   college: college,
-    #   class_year: class_year
-    # }
   # end
 
   # def self.get_ldap_attributes(upi)
@@ -59,11 +61,11 @@ class Person < ActiveRecord::Base
     
   # end
 
-  # test with Person.new("12714662")
-  def initialize(upi)
-    ldap_lookup_by_upi(upi)
+  # test with Person.new(upi: "12714662")
+  def initialize(attributes)
+    attributes = ldap_lookup_by_upi(attributes[:upi])
     super
-    # binding.pry
+
   end
 
   def name
