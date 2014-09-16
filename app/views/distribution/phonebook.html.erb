@@ -1,11 +1,12 @@
-<h1>Distribute USB Keys</h1>
+<h1>Phonebook Lookup</h1>
 
 <div id="distribution_status">
 </div>
 <div class="distribution_form">
   <%= form_tag distribution_phonebooklookup_path do %>
-    Look Up in Phonebook: <%= text_field_tag(:query, nil, options = {:size => 12, :maxlength => 12}) %>
+    Swipe card or type NetID <%= text_field_tag(:query, nil, options = {:size => 12, :maxlength => 12}) %>
     <p>
+    The page will take you to this person's Yale Directory page.
     </p>
   <% end %>
 </div>
