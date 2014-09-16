@@ -4,11 +4,11 @@ class DistributionController < ApplicationController
   # skip_authorization_check #this isn't what we want because we do need authorization
 
   def home
-    authorize! :open, :homepage
+    authorize! :read, :homepage
   end
 
   def index
-    authorize! :open, :cardswipe
+    authorize! :read, :cardswipe
     @count = Student.count
   end
 
@@ -43,7 +43,7 @@ class DistributionController < ApplicationController
   end
 
   def phonebook
-    authorize! :open, :phonebook
+    authorize! :read, :phonebook
   end
 
   def phonebooklookup
