@@ -42,9 +42,16 @@ gem 'service_now'
 # Use cancancan for permissions
 gem 'cancancan', '~> 1.9'
 
+# include LDAP
+gem 'net-ldap'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development do
+  gem 'pry'
 end
 
 # Use ActiveModel has_secure_password
