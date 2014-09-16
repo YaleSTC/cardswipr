@@ -48,8 +48,8 @@ class DistributionController < ApplicationController
 
   def phonebooklookup
     authorize! :lookup, :phonebook
-    person = Person.search(params[:query])
-    redirect_to "http://directory.yale.edu/phonebook/index.htm?searchString=netid%3D" + person.netid
+    upi = Person.search(params[:query])
+    redirect_to "http://directory.yale.edu/phonebook/index.htm?searchString=upi%3D" + upi
   end
 
 end

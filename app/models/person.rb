@@ -17,6 +17,7 @@ class Person < ActiveRecord::Base
     else
       return Person.find_by(netid: query).yale_upi.to_i.to_s
     end
+
   end
 
   # test with Person.ldap_lookup_by_upi("12714662")
