@@ -14,8 +14,8 @@ class DistributionController < ApplicationController
 
   def lookup
     authorize! :lookup, :cardswipe
-    upi = Person.searchforupi(params[:query])
-    Person.new(upi)
+    upi = Person.lookup(params[:query])
+    person = Person.new(upi: upi)
     # if person.nil?
     #   flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
     #   redirect_to :distribution_index

@@ -1,6 +1,6 @@
-class Person < ActiveRecord::Base
+require 'net-ldap'
 
-  require 'net-ldap'
+class Person < ActiveRecord::Base
   LDAP_HOST = 'directory.yale.edu'
   LDAP_PORT = 389
   LDAP_BASE = 'ou=People,o=yale.edu'
@@ -13,9 +13,9 @@ class Person < ActiveRecord::Base
 
   def self.lookup(query)
     if id_number = query.match(/\d{10}/)
-      return Person.find_by(id_card_number: id_number[0])
+      return Person.find_by(id_card_number: id_number[0]).yale_upi.to_i.to_s
     else
-      return Person.find_by(netid: query)
+      return Person.find_by(netid: query).yale_upi.to_i.to_s
     end
   end
 
@@ -27,7 +27,6 @@ class Person < ActiveRecord::Base
     ldap_response = ldap.search(base: LDAP_BASE,
                      filter: upifilter,
                      attributes: LDAP_ATTRS)
-
     assign_ldap_attributes(ldap_response)
   end
 
@@ -106,9 +105,10 @@ class Person < ActiveRecord::Base
     Student.create(self.student_attrs)
   end
 
-  # def student_attrs
-  #   attrs = ["first_name", "last_name", "netid", "yale_upi", "id_card_number"]
-  #   self.attributes.select{|k,v| attrs.include? k}
-  # end
+  def student_attrs
+    attrs = ["first_name", "last_name", "netid", "yale_upi"]
+    # attrs = ["first_name", "last_name", "netid", "yale_upi", "id_card_number"]
+    self.attributes.select{|k,v| attrs.include? k}
+  end
 
 end
