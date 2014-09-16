@@ -4,7 +4,6 @@
 <%= link_to 'Manually Add a New Entry', new_student_path, :class => "btn btn-default" %>
 <%= link_to 'Download as CSV', students_path(:format => :csv), :class => "btn pull-right" %>
 
-
 <table class="table">
   <thead>
     <tr>
@@ -37,6 +36,7 @@
   </tbody>
 </table>
 
-<br>
+<span id="distribution_count" class="badge"><%= @count%></span> recorded
+<br><br>
 
 <%= link_to "Clear Event", clear_all_students_path, method: :delete, data: { confirm: 'Are you sure? This wipes all entries from the database.'}, :class => "btn btn-danger" %>
