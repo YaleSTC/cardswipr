@@ -3,6 +3,10 @@ class DistributionController < ApplicationController
   # authorize_resource #not load_and_authorize_resource because there's no model
   # skip_authorization_check #this isn't what we want because we do need authorization
 
+  def home
+    authorize! :open, :homepage
+  end
+
   def index
     authorize! :open, :cardswipe
     @count = Student.count

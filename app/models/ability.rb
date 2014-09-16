@@ -10,6 +10,7 @@ class Ability
     if admin_users.include? user.netid
       can :manage, :all
     else
+      can :open, :homepage
       can :open, :phonebook
       can :lookup, :phonebook
     end

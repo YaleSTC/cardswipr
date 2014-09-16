@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    # redirect_to root_url, :alert => exception.message
-    render plain: "Not Authorized"
+    redirect_to root_url, :alert => exception.message
+    # render plain: "Not Authorized"
   end
 
 end

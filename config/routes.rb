@@ -9,7 +9,7 @@ UsbDistribution::Application.routes.draw do
   get '/distribution/phonebook', as: :distribution_phonebook
   post '/distribution/phonebooklookup', as: :distribution_phonebooklookup
 
-  root to: 'distribution#index'
+  root to: 'distribution#home'
 
   get '/unauthorized', :to => redirect('/unauthorized.html')
   get '/status', :to => redirect('/status.html')
