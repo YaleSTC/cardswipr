@@ -1,17 +1,25 @@
-<%= link_to "Home", root_path, :class => 'brand' %>
+<%= link_to "CardSwipr", root_path, :class => 'brand' %>
 <ul class="nav">
-  <li>
-    <%= link_to "Distribute Keys", distribution_index_path %>
-  </li>
-  <li>
-    <%= link_to "Phonebook Lookup", distribution_phonebook_path %>
-  </li>
-  <li class="">
-    <%= link_to "Settings", settings_path %>
-  </li>
-  <li>
-    <%= link_to "Distribution List", students_path %>
-  </li>
+  <% if can? :read, :cardswipe %>
+    <li>
+      <%= link_to "Distribute Keys", distribution_index_path %>
+    </li>
+  <% end %>
+  <% if can? :read, :phonebook %>
+    <li>
+      <%= link_to "Phonebook Lookup", distribution_phonebook_path %>
+    </li>
+  <% end %>
+  <% if can? :read, :settings %>
+    <li class="">
+      <%= link_to "Settings", settings_path %>
+    </li>
+  <% end %>
+  <% if can? :index, :students %>
+    <li>
+      <%= link_to "Distribution List", students_path %>
+    </li>
+  <% end %>
 
 </ul>
 <ul class="nav pull-right">

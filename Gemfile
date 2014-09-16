@@ -39,6 +39,9 @@ gem 'jbuilder', '~> 1.2'
 #Use Service Now. 'cause why not...'
 gem 'service_now'
 
+# Use cancancan for permissions
+gem 'cancancan', '~> 1.9'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

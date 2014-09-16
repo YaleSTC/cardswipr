@@ -1,7 +1,11 @@
 class SettingsController < ApplicationController
   before_action :set_setting
+  load_and_authorize_resource param_method: :setting_params
+
+
 
   def index
+    authorize! :show, :settings
     redirect_to @setting
   end
   # GET /settings/1
