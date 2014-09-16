@@ -1,7 +1,4 @@
 class DistributionController < ApplicationController
-  # load_and_authorize_resource #this doesn't work because there's no distribution model?
-  # authorize_resource #not load_and_authorize_resource because there's no model
-  # skip_authorization_check #this isn't what we want because we do need authorization
 
   def home
     authorize! :read, :homepage
@@ -16,15 +13,11 @@ class DistributionController < ApplicationController
     authorize! :lookup, :cardswipe
     upi = Person.lookup(params[:query])
     person = Person.new(upi: upi)
-    # if person.nil?
-    #   flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
-    #   redirect_to :distribution_index
-    # end
 
-    # unless person.allowed_year?
-    #   flash[:error] = "#{person.name} is not in the allowed class years."
-    #   redirect_to :distribution_index and return
-    # end
+    if person.nil?
+      flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
+      redirect_to :distribution_index
+    end
 
     if person.given_key?
       flash[:error] = "#{person.name} has already been given a USB Key"

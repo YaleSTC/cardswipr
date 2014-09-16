@@ -22,7 +22,6 @@ class Person < ActiveRecord::Base
 
   # test with Person.ldap_lookup_by_upi("12714662")
   def ldap_lookup_by_upi(upi)
-    # lookup in ldap, return raw LDAP information
     ldap = Net::LDAP.new host: LDAP_HOST, port: LDAP_PORT
     upifilter = Net::LDAP::Filter.eq('UPI', upi)
     ldap_response = ldap.search(base: LDAP_BASE,
@@ -42,7 +41,7 @@ class Person < ActiveRecord::Base
     @collegename = ldap_response[0][:collegename][0] || ""
     @college = ldap_response[0][:college][0] || ""
     @class_year = ldap_response[0][:class][0] || ""
-  # end
+
     return {
       first_name: @first_name,
       last_name: @last_name,
@@ -54,48 +53,17 @@ class Person < ActiveRecord::Base
       # class_year: @class_year
     }
   end
-  # end
-
-  # def self.get_ldap_attributes(upi)
-  #   result = self.ldaplookupbyupi(upi)
-    
-  # end
 
   # test with Person.new(upi: "12714662")
   def initialize(attributes)
     attributes = ldap_lookup_by_upi(attributes[:upi])
     super
-
   end
 
   def name
-    #lookup in LDAP
     first_name + " " + last_name
   end
 
-  # def roles
-  #   Role.upi(self.yale_upi)
-  # end
-
-  # def undergrad?
-  #   roles.undergrad.any?
-  # end
-
-  # def grad_student?
-  #   roles.grad.any?
-  # end
-
-  # def student_roles
-  #   [roles.undergrad, roles.grad].flatten
-  # end
-
-  # def allowed_year?
-  #   allowed_years = Setting.allowed_years
-  #   student_roles.each do |role|
-  #     return true if allowed_years.include?(role.class_year)
-  #   end
-  #   return false
-  # end
 
   def given_key?
     return Student.find_by(netid: self.netid).present?
