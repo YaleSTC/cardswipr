@@ -14,17 +14,17 @@ class DistributionController < ApplicationController
 
   def lookup
     authorize! :lookup, :cardswipe
-    person = Person.search(params[:query])
-
+    upi = Person.searchforupi(params[:query])
+    Person.new(upi)
     # if person.nil?
     #   flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
     #   redirect_to :distribution_index
     # end
 
-    unless person.allowed_year?
-      flash[:error] = "#{person.name} is not in the allowed class years."
-      redirect_to :distribution_index and return
-    end
+    # unless person.allowed_year?
+    #   flash[:error] = "#{person.name} is not in the allowed class years."
+    #   redirect_to :distribution_index and return
+    # end
 
     if person.given_key?
       flash[:error] = "#{person.name} has already been given a USB Key"

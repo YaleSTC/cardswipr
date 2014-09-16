@@ -38,6 +38,7 @@ GEM
       sass (~> 3.2)
     builder (3.1.4)
     cancancan (1.9.2)
+    coderay (1.1.0)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -60,12 +61,18 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.24)
     minitest (4.7.5)
     multi_json (1.7.9)
     mysql2 (0.3.16)
+    net-ldap (0.6.1)
     netrc (0.7.7)
     polyglot (0.3.3)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -105,6 +112,7 @@ GEM
     service_now (0.0.3)
       json
       rest-client
+    slop (3.6.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -140,6 +148,8 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
+  net-ldap
+  pry
   rails (= 4.0.0)
   ruby-oci8
   rubycas-client (= 2.2.1)
