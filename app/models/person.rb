@@ -33,6 +33,12 @@ class Person < ActiveRecord::Base
 
   def allowed_year?
     allowed_years = Setting.allowed_years
+
+    # if no year is set, all years are good
+    if allowed_years.blank?
+      return true
+    end
+
     student_roles.each do |role|
       return true if allowed_years.include?(role.class_year)
     end
