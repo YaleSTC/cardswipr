@@ -1,6 +1,10 @@
 UsbDistribution::Application.routes.draw do
 
-  resources :students
+  resources :students do
+    collection do
+      delete 'clear_all'
+    end
+  end
   resources :users
 
   get  '/distribution/index', as: :distribution_index
@@ -12,6 +16,7 @@ UsbDistribution::Application.routes.draw do
 
   get '/unauthorized', :to => redirect('/unauthorized.html')
   get '/status', :to => redirect('/status.html')
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
