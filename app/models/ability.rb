@@ -11,8 +11,7 @@ class Ability
       can :manage, :all
     else
       can :read, :homepage
-      can :read, :phonebook
-      can :lookup, :phonebook
+      can :read, :personlookup
     end
     #
     # The first argument to `can` is the action you are giving the user

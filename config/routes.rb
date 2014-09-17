@@ -9,8 +9,7 @@ UsbDistribution::Application.routes.draw do
 
   get  '/distribution/index', as: :distribution_index
   post '/distribution/lookup', as: :distribution_lookup
-  get '/distribution/phonebook', as: :distribution_phonebook
-  post '/distribution/phonebooklookup', as: :distribution_phonebooklookup
+  get '/distribution/personlookup', as: :distribution_personlookup
 
   root to: 'distribution#home'
 
