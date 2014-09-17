@@ -54,6 +54,8 @@ group :development do
   gem 'pry'
 end
 
+gem 'exception_notification'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

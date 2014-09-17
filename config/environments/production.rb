@@ -77,4 +77,11 @@ UsbDistribution::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  Whatever::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[Whatever] ",
+    :sender_address => %{"notifier" <notifier@cardswipr.yale.edu>},
+    :exception_recipients => %w{casey.watts@yale.edu}
+  }
 end
