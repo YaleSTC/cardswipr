@@ -56,8 +56,8 @@ class DistributionController < ApplicationController
       sys_id = ServiceNow::User.find(person.netid).sys_id
       
       @name = person.name
-      @email = person.email
-      @affiliation = "Undergraduate"
+      # @email = person.email
+      # @affiliation = "Undergraduate"
       @sn_destination_url = "https://yale.service-now.com/incident.do?sys_id=-1&sysparm_query=caller_id=" + sys_id + "^u_contact=" + sys_id
       @phonebook_destination_url = "http://directory.yale.edu/phonebook/index.htm?searchString=upi%3D" + upi
     end

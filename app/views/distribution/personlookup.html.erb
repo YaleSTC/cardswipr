@@ -18,8 +18,6 @@
 <% if @name %>
   <div class="">
     <h4>Found <%= @name %>!</h4>
-    <h5><%= @affiliation %></h5>
-    <h5><%= @email %></h5>
       <%= link_to "Yale Phonebook Entry", @phonebook_destination_url, :class => "btn", :target => "_blank" %>
       <%= link_to "New SN Incident", @sn_destination_url, :class => "btn", :target => "_blank" %>
   </div>
