@@ -52,7 +52,6 @@ class DistributionController < ApplicationController
       upi = Person.lookup(params[:query])
       person = Person.new(upi: upi)
 
-      ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'], :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
       sys_id = ServiceNow::User.find(person.netid).sys_id
       
       @name = person.name
