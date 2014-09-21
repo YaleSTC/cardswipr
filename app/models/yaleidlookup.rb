@@ -21,12 +21,13 @@ class YaleIDLookup
   end
 
   def self.determine_upi(query)
-    if id_mag_number = query.match(/\d{10}/)[0]
+    if id_mag_number = query.match(/\d{10}/)
+      id_mag_number = id_mag_number[0] #first (only) match
       upi = YaleCardSwipe.lookup(id_mag_number)
-    # elsif email = query.match(/SOME YALE EMAIL REGEX/)
-    #   upi = YaleLDAP.lookup(email: query).upi
+    elsif query.match(/.*@yale.edu/)
+      upi = YaleLDAP.lookup(email: query)[:upi]
     else
-      upi = YaleLDAP.lookup(netid: query).upi
+      upi = YaleLDAP.lookup(netid: query)[:upi]
     end
     return upi
   end
