@@ -8,12 +8,7 @@ class Person < ActiveRecord::Base
   attr_accessor :upi
 
   def self.lookup(query)
-    if id_number = query.match(/\d{10}/)
-      return Person.find_by(id_card_number: id_number[0]).yale_upi.to_i.to_s
-    else
-      return Person.find_by(netid: query).yale_upi.to_i.to_s
-    end
-
+    determine_upi(query)
   end
 
   # test with Person.new(upi: "12714662")
@@ -41,6 +36,17 @@ class Person < ActiveRecord::Base
     attrs = ["first_name", "last_name", "netid", "yale_upi"]
     # attrs = ["first_name", "last_name", "netid", "yale_upi", "id_card_number"]
     self.attributes.select{|k,v| attrs.include? k}
+  end
+
+private
+  def self.determine_upi(query)
+    if id_number = query.match(/\d{10}/)
+      return Person.find_by(id_card_number: id_number[0]).yale_upi.to_i.to_s
+    # elsif email = query.match(/SOME YALE EMAIL REGEX/)
+    #   return YaleLDAP.lookup(email: query).upi
+    else
+      return YaleLDAP.lookup(netid: query).upi
+    end
   end
 
 end
