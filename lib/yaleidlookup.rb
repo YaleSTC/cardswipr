@@ -1,7 +1,7 @@
 require 'yaleldap'
-# require 'yalecardswipe' #not a gem yet
+# require 'yalecardswipe' #not a gem yet, as a model it is autoloaded
 
-class YaleIDLookup
+module YaleIDLookup
 
   # #lookup will accept many formats and attempt to determine the UPI for someone
   # @param [String] accepts magnetic card-swipe, barcode scan, netid, yale email

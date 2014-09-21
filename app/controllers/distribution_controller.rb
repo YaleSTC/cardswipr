@@ -1,3 +1,5 @@
+require "yaleidlookup"
+
 class DistributionController < ApplicationController
 
   def home
