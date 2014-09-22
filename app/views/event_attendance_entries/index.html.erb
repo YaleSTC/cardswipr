@@ -1,0 +1,49 @@
+<h1>Listing event_attendance_entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Nickname</th>
+      <th>Last name</th>
+      <th>Upi</th>
+      <th>Netid</th>
+      <th>Email</th>
+      <th>College name</th>
+      <th>College abbreviation</th>
+      <th>Class year</th>
+      <th>School</th>
+      <th>Telephone</th>
+      <th>Address</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_attendance_entries.each do |event_attendance_entry| %>
+      <tr>
+        <td><%= event_attendance_entry.first_name %></td>
+        <td><%= event_attendance_entry.nickname %></td>
+        <td><%= event_attendance_entry.last_name %></td>
+        <td><%= event_attendance_entry.upi %></td>
+        <td><%= event_attendance_entry.netid %></td>
+        <td><%= event_attendance_entry.email %></td>
+        <td><%= event_attendance_entry.college_name %></td>
+        <td><%= event_attendance_entry.college_abbreviation %></td>
+        <td><%= event_attendance_entry.class_year %></td>
+        <td><%= event_attendance_entry.school %></td>
+        <td><%= event_attendance_entry.telephone %></td>
+        <td><%= event_attendance_entry.address %></td>
+        <td><%= link_to 'Show', event_attendance_entry %></td>
+        <td><%= link_to 'Edit', edit_event_attendance_entry_path(event_attendance_entry) %></td>
+        <td><%= link_to 'Destroy', event_attendance_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event attendance entry', new_event_attendance_entry_path %>

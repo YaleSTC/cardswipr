@@ -46,6 +46,9 @@ gem 'cancancan', '~> 1.9'
 gem 'net-ldap'
 gem 'yaleldap'
 
+# Simple Form
+gem 'simple_form'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
