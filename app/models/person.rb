@@ -45,7 +45,7 @@ private
     # elsif email = query.match(/SOME YALE EMAIL REGEX/)
     #   return YaleLDAP.lookup(email: query).upi
     else
-      return YaleLDAP.lookup(netid: query).upi
+      return YaleLDAP.lookup(netid: query)[:upi]
     end
   end
 
