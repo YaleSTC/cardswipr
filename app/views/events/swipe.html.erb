@@ -3,7 +3,7 @@
 
 <div>
   <%= form_tag event_lookup_path(@event) do %>
-    Swipe Card or Type NetID: <%= text_field_tag(:query, nil, options = {:size => 12, :maxlength => 12}) %>
+    Swipe Card or Type NetID: <%= text_field_tag(:query) %>
     <p>
       <span class="badge"><%= @count%></span> recorded.
     </p>
