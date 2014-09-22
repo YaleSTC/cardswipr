@@ -2,9 +2,9 @@ class AttendanceEntry < ActiveRecord::Base
 
 #has_many people
 belongs_to :event
-validates :event, presence: true, :uniqueness => { :scope => :event, :message => "This person has already been checked into this event" }
+validates :event, presence: true
+validates :upi, :uniqueness => { :scope => :event, :message => "This person has already been checked into this event." }
 
-#within an event, upi must be unique
 after_create :get_ldap_attributes
 
   # EventAttendanceEntry should be initialized with a upi
