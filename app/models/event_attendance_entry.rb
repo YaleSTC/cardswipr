@@ -10,14 +10,12 @@ after_create :get_ldap_attributes
   # @param [string] upi = universal personal identification
   # @example
   #   EventAttendanceEntry.new(upi: "12714662", event: 1)
-
   def get_ldap_attributes
-    binding.pry
     attributes = YaleLDAP.lookup(upi: upi.to_s)
       .slice(:first_name, :nickname, :last_name, :upi, :netid,
         :email, :college_name, :college_abbreviation,
         :class_year, :school, :telephone, :address)
-    self.set_attributes(attributes)
+    self.update_attributes(attributes)
   end
 
   def name
