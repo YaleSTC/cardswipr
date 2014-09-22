@@ -7,7 +7,7 @@ class CreateEvents < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :event_attendance_entries do |t|
+    create_table :attendance_entries do |t|
       t.string :first_name
       t.string :nickname
       t.string :last_name

@@ -1,8 +1,13 @@
 UsbDistribution::Application.routes.draw do
 
-  resources :events
+  resources :events do
+    # collection do
+      # lookup page gets nested here
+    # end
+    resources :attendance_entries, :path => :attendance, shallow: true
+  end
 
-  resources :event_attendance_entries
+  # resources :event_attendance_entries
 
   resources :students do
     collection do
