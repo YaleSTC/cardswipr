@@ -15,6 +15,7 @@
       <th>Class year</th>
       <th>Telephone</th>
       <th>Address</th>
+      <th>Event</th>
       <th></th>
       <th></th>
       <th></th>
@@ -36,6 +37,7 @@
         <td><%= event_attendance_entry.class_year %></td>
         <td><%= event_attendance_entry.telephone %></td>
         <td><%= event_attendance_entry.address %></td>
+        <td><%= event_attendance_entry.event %></td>
         <td><%= link_to 'Show', event_attendance_entry %></td>
         <td><%= link_to 'Edit', edit_event_attendance_entry_path(event_attendance_entry) %></td>
         <td><%= link_to 'Destroy', event_attendance_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>

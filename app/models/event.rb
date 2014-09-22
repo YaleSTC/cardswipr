@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
-#has_many eventattendanceentries 
-#has_many admins (which are Users)
+# has_and_belongs_to_many :users, as: admins
+has_many :event_attendance_entries
 
 #within an event, upi must be unique
 

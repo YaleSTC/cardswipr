@@ -1,5 +1,12 @@
-class CreateEventAttendanceEntries < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration
   def change
+    create_table :events do |t|
+      t.string :title
+      t.string :description
+
+      t.timestamps
+    end
+
     create_table :event_attendance_entries do |t|
       t.string :first_name
       t.string :nickname
@@ -13,6 +20,7 @@ class CreateEventAttendanceEntries < ActiveRecord::Migration
       t.string :school
       t.string :telephone
       t.string :address
+      t.belongs_to :event
 
       t.timestamps
     end

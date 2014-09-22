@@ -1,5 +1,7 @@
 UsbDistribution::Application.routes.draw do
 
+  resources :events
+
   resources :event_attendance_entries
 
   resources :students do

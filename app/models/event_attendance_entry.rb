@@ -1,7 +1,7 @@
 class EventAttendanceEntry < ActiveRecord::Base
 
 #has_many people
-#belongs_to event
+belongs_to :event
 
 #within an event, upi must be unique
 after_create :get_ldap_attributes
