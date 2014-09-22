@@ -76,15 +76,15 @@ class EventsController < ApplicationController
   def lookup
     # authorize! :lookup, :cardswipe
     @event = Event.find(params[:event_id])
-    attributes = YaleIDLookup.lookup(params[:query])
+    upi = YaleIDLookup.determine_upi(params[:query])
 
-    if attributes.empty? #or, if it raises an "I cannot find someone" error would be better?
+    if upi.blank? #or, if it raises an "I cannot find someone" error would be better?
       flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
       redirect_to event_swipe_path(@event)
     end
 
-    attributes[:event] = @event
-    attendanceentry = AttendanceEntry.new(attributes)
+    # automatically attempts LDAP as long as there is a UPI present
+    attendanceentry = AttendanceEntry.new(upi: upi, event: @event)
 
     if attendanceentry.save
       flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
