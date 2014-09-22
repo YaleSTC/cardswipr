@@ -1,0 +1,11 @@
+<h1>Swipe In to <%= @event.title %></h1>
+<h4><%= @event.description %></h4>
+
+<div>
+  <%= form_tag event_lookup_path(@event) do %>
+    Swipe Card or Type NetID: <%= text_field_tag(:query) %>
+    <p>
+      <span class="badge"><%= @count%></span> recorded.
+    </p>
+  <% end %>
+</div>

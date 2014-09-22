@@ -5,14 +5,9 @@
       <%= link_to "Person Lookup", distribution_personlookup_path %>
     </li>
   <% end %>
-  <% if can? :read, :cardswipe %>
+  <% if can? :read, :events %>
     <li>
-      <%= link_to "Event Swipe In", distribution_index_path %>
-    </li>
-  <% end %>
-  <% if can? :index, :students %>
-    <li>
-      <%= link_to "Event Attendance List", students_path %>
+      <%= link_to "Events", events_path %>
     </li>
   <% end %>
 

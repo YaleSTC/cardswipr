@@ -1,0 +1,35 @@
+<h1>Listing Events</h1>
+
+<%= link_to 'New Event', new_event_path, :class => "btn btn-success" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Count</th>
+      <th>Last Swipe-In</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to 'Event Swipe-In', event_swipe_path(event), :class => "btn btn-primary" %></td>
+        <td><%= link_to 'Attendance', event_attendance_entries_path(event), :class => "btn btn-default" %></td>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.attendance_entries.count %></td>
+        <td><%= event.last_edited %></td>
+        <td><%= link_to 'Edit', edit_event_path(event), :class => "btn btn-default" %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

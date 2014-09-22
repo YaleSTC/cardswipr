@@ -22,5 +22,7 @@ module UsbDistribution
     # config.i18n.default_locale = :de
     config.rubycas.cas_base_url = 'https://secure.its.yale.edu/cas/'
 
+    # Autoload lib/ folder including all subdirectories
+    config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
   end
 end

@@ -4,7 +4,7 @@
 </div>
 <div class="distribution_form">
   <%= form_tag distribution_personlookup_path, :method => :get do %>
-    Swipe card or type NetID <%= text_field_tag(:query, nil, options = {:size => 12, :maxlength => 12}) %>
+    Swipe card or type NetID <%= text_field_tag(:query) %>
     <p>
     When the client swipes their card, we'll figure out who they are. Then we'll create some handy links for you:
     <ol>
@@ -18,6 +18,8 @@
 <% if @name %>
   <div class="well">
     <h4>Found <%= @name %>!</h4>
+    <h4><%= @email %></h4>
+    <h4><%= @affiliation %></h4>
       <%= link_to "Yale Phonebook Entry", @phonebook_destination_url, :class => "btn", :target => "_blank" %>
       <%= link_to "New SN Incident", @sn_destination_url, :class => "btn", :target => "_blank" %>
   </div>

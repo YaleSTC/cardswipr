@@ -1,0 +1,55 @@
+<h1>Attendance List for <%= @event.title %></h1>
+
+<%= link_to 'Event Swipe-In', event_swipe_path, :class => "btn btn-primary" %>
+<%= link_to 'Manually Add a New Entry', new_event_attendance_entry_path(@event), :class => "btn btn-default" %>
+<%= link_to 'Download as CSV', event_attendance_entries_path(@event, :format => :csv), :class => "btn pull-right" %>
+
+<span id="distribution_count" class="badge"><%= @count %></span> recorded
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Nickname</th>
+      <th>Last name</th>
+      <th>Upi</th>
+      <th>Netid</th>
+      <th>Email</th>
+      <th>School</th>
+      <th>College name</th>
+      <th>College abbreviation</th>
+      <th>Class year</th>
+      <th>Telephone</th>
+      <th>Address</th>
+      <th>Event</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attendance_entries.each do |attendance_entry| %>
+      <tr>
+        <td><%= attendance_entry.first_name %></td>
+        <td><%= attendance_entry.nickname %></td>
+        <td><%= attendance_entry.last_name %></td>
+        <td><%= attendance_entry.upi %></td>
+        <td><%= attendance_entry.netid %></td>
+        <td><%= attendance_entry.email %></td>
+        <td><%= attendance_entry.school %></td>
+        <td><%= attendance_entry.college_name %></td>
+        <td><%= attendance_entry.college_abbreviation %></td>
+        <td><%= attendance_entry.class_year %></td>
+        <td><%= attendance_entry.telephone %></td>
+        <td><%= attendance_entry.address %></td>
+        <td><%= attendance_entry.event.title %></td>
+        <td><%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %></td>
+        <td><%= link_to 'Destroy', attendance_entry_path(attendance_entry), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br><br>
+
+<%= link_to "Wipe Attendance", event_wipe_attendance_path, method: :delete, data: { confirm: 'Are you sure? This permanently removes all attendance entries for this event.'}, :class => "btn btn-danger pull-right" %>
