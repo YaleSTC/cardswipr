@@ -66,7 +66,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.7.9)
     mysql2 (0.3.16)
-    net-ldap (0.6.1)
+    net-ldap (0.8.0)
     netrc (0.7.7)
     polyglot (0.3.3)
     pry (0.10.1)
@@ -139,7 +139,7 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    yaleldap (1.0.0)
+    yaleldap (1.0.1)
       net-ldap
 
 PLATFORMS
