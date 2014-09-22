@@ -1,5 +1,5 @@
-<%= link_to "CardSwipr", root_path, :class => 'brand' %>
-<ul class="nav">
+<%= link_to "CardSwipr", root_path, :class => 'navbar-brand' %>
+<ul class="nav navbar-nav">
   <% if can? :read, :personlookup %>
     <li>
       <%= link_to "Person Lookup", distribution_personlookup_path %>
@@ -10,10 +10,9 @@
       <%= link_to "Events", events_path %>
     </li>
   <% end %>
-
 </ul>
-<ul class="nav pull-right">
-  <li class="">
+<ul class="nav navbar-nav pull-right">
+  <li>
     <%= link_to "Signed in as #{current_user.netid}", root_path if current_user %>
   </li>
 </ul>
