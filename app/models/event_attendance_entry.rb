@@ -19,7 +19,11 @@ after_create :get_ldap_attributes
   end
 
   def name
-    first_name + " " + last_name
+    if nickname.blank?
+      return first_name + " " + last_name
+    else
+      return nickname + " " + last_name
+    end
   end
 
   def recorded?
