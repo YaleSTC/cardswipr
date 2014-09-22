@@ -1,5 +1,5 @@
 require 'yaleldap'
-# require 'yalecardswipe' #not a gem yet, as a model it is autoloaded
+require 'yalecardswipe' #not a gem yet, as a model it is autoloaded
 
 module YaleIDLookup
 
