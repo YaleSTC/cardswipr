@@ -1,10 +1,9 @@
 UsbDistribution::Application.routes.draw do
 
   resources :events do
-    # collection do
-      # lookup page gets nested here
-    # end
     resources :attendance_entries, :path => :attendance, shallow: true
+    get 'swipe'
+    post 'lookup'
   end
 
   # resources :event_attendance_entries

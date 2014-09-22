@@ -1,3 +1,5 @@
+require "yaleidlookup"
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
@@ -60,6 +62,52 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+
+  # GET /events/1/swipe
+  def swipe
+    # authorize! :read, :cardswipe
+    @event = Event.find(params[:event_id])
+    @count = @event.attendance_entries.count
+  end
+
+
+  # POST /events/1/lookup
+  def lookup
+    # authorize! :lookup, :cardswipe
+    binding.pry
+    @event = Event.find(params[:event_id])
+    attributes = YaleIDLookup.lookup(params[:query])
+
+    if attributes.empty? #or, if it raises an "I cannot find someone" error would be better?
+      flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
+      redirect_to event_swipe_path(@event)
+    end
+
+    attributes[:event] = @event
+    attendanceentry = AttendanceEntry.new(attributes)
+
+    if attendanceentry.save
+      flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
+      @count = Student.count
+    else
+      flash[:error] = "Unexpected error while trying to record this person."
+    end
+
+    # if person.recorded?
+    #   flash[:error] = "#{person.name} has already been recorded for this event."
+    #   redirect_to :distribution_index and return
+    # end
+
+    # if person.record
+    #   flash[:notice] = "#{person.name} has been successfully recorded for this event."
+    #   @count = Student.count
+    # else
+    #   flash[:error] = "Unexpected error while trying to record this person."
+    # end
+
+    redirect_to event_swipe_path(@event)
+
   end
 
   private

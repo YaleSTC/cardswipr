@@ -1,6 +1,6 @@
 <h1>Attendance List for <%= @event.title %></h1>
 
-<%#= link_to 'Event Swipe-In', distribution_index_path, :class => "btn btn-primary" %>
+<%= link_to 'Event Swipe-In', event_swipe_path, :class => "btn btn-primary" %>
 <%= link_to 'Manually Add a New Entry', new_event_attendance_entry_path(@event), :class => "btn btn-default" %>
 <%= link_to 'Download as CSV', event_attendance_entries_path(@event, :format => :csv), :class => "btn pull-right" %>
 
