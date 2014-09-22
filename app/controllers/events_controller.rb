@@ -75,7 +75,6 @@ class EventsController < ApplicationController
   # POST /events/1/lookup
   def lookup
     # authorize! :lookup, :cardswipe
-    binding.pry
     @event = Event.find(params[:event_id])
     attributes = YaleIDLookup.lookup(params[:query])
 
