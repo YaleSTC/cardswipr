@@ -7,6 +7,12 @@ class AttendanceEntriesController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @attendance_entries = @event.attendance_entries
+    @count = @attendance_entries.count
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.csv { send_data @attendance_entries.to_csv }
+    end
   end
 
   # GET /attendance_entries/1

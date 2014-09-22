@@ -1,6 +1,12 @@
-<h1>Listing event_attendance_entries</h1>
+<h1>Attendance List for <%= @event.title %></h1>
 
-<table>
+<%#= link_to 'Event Swipe-In', distribution_index_path, :class => "btn btn-primary" %>
+<%= link_to 'Manually Add a New Entry', new_event_attendance_entry_path(@event), :class => "btn btn-default" %>
+<%= link_to 'Download as CSV', event_attendance_entries_path(@event, :format => :csv), :class => "btn pull-right" %>
+
+<span id="distribution_count" class="badge"><%= @count %></span> recorded
+
+<table class="table">
   <thead>
     <tr>
       <th>First name</th>
@@ -46,6 +52,6 @@
   </tbody>
 </table>
 
-<br>
+<br><br>
 
-<%#= link_to 'New Event attendance entry', new_attendance_entry_path(@event) %>
+<%#= link_to "Clear Event", clear_all_students_path, method: :delete, data: { confirm: 'Are you sure? This wipes all entries from the database.'}, :class => "btn btn-danger" %>
