@@ -88,7 +88,7 @@ class EventsController < ApplicationController
 
     if attendanceentry.save
       flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
-      @count = Student.count
+      @count = @event.attendance_entries.count
     else
       flash[:error] = "Unexpected error while trying to record this person."
     end
@@ -108,11 +108,12 @@ class EventsController < ApplicationController
     redirect_to event_swipe_path(@event)
   end
 
-  # we might want a way to clear out an event's attendance, keeping this from students_controller.rb
-  # def clear_all
-  #   Student.destroy_all
-  #   redirect_to students_url
-  # end
+  def wipe_attendance
+    @event = Event.find(params[:event_id])
+    @event.attendance_entries.destroy_all
+    flash[:notice] = "All attendance entries for this event have been wiped."
+    redirect_to event_attendance_entries_path(@event)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

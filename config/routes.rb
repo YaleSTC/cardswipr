@@ -4,19 +4,11 @@ UsbDistribution::Application.routes.draw do
     resources :attendance_entries, :path => :attendance, shallow: true
     get 'swipe'
     post 'lookup'
+    delete 'wipe_attendance'
   end
 
-  # resources :event_attendance_entries
-
-  resources :students do
-    collection do
-      delete 'clear_all'
-    end
-  end
   resources :users
 
-  get  '/distribution/index', as: :distribution_index
-  post '/distribution/lookup', as: :distribution_lookup
   get '/distribution/personlookup', as: :distribution_personlookup
 
   root to: 'distribution#home'
