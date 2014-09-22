@@ -106,8 +106,13 @@ class EventsController < ApplicationController
     # end
 
     redirect_to event_swipe_path(@event)
-
   end
+
+  # we might want a way to clear out an event's attendance, keeping this from students_controller.rb
+  # def clear_all
+  #   Student.destroy_all
+  #   redirect_to students_url
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
