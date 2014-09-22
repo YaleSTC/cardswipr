@@ -44,7 +44,7 @@
         <td><%= attendance_entry.address %></td>
         <td><%= attendance_entry.event.title %></td>
         <td><%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %></td>
-        <td><%= link_to 'Destroy', attendance_entry, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
+        <td><%= link_to 'Destroy', attendance_entry_path(attendance_entry), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
       </tr>
     <% end %>
   </tbody>

@@ -65,9 +65,10 @@ class AttendanceEntriesController < ApplicationController
   # DELETE /attendance_entries/1
   # DELETE /attendance_entries/1.json
   def destroy
+    @event = @attendance_entry.event
     @attendance_entry.destroy
     respond_to do |format|
-      format.html { redirect_to attendance_entries_url }
+      format.html { redirect_to event_attendance_entries_path(@event) }
       format.json { head :no_content }
     end
   end

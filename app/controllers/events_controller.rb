@@ -90,7 +90,10 @@ class EventsController < ApplicationController
       flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
       @count = @event.attendance_entries.count
     else
-      flash[:error] = "Unexpected error while trying to record this person."
+      flash[:error] = ""
+      attendanceentry.errors.each do |attribute, message|
+          flash[:error] << message << "\n"
+      end
     end
 
     # if person.recorded?
