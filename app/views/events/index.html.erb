@@ -2,7 +2,9 @@
 
 <ul class="nav nav-pills">
   <li>
-    <%= link_to 'New Event', new_event_path, :class => "btn btn-success" %>
+    <%= link_to new_event_path, :class => "btn btn-success" do %>
+      <span class="glyphicon glyphicon-plus"></span> New Event
+    <% end %>
   </li>
 </ul>
 
@@ -23,8 +25,16 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to 'Event Swipe-In', event_swipe_path(event), :class => "btn btn-primary" %></td>
-        <td><%= link_to 'Attendance', event_attendance_entries_path(event), :class => "btn btn-default" %></td>
+        <td>
+          <%= link_to event_swipe_path(event), :class => "btn btn-primary" do %>
+            <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
+          <% end %>
+        </td>
+        <td>
+          <%= link_to event_attendance_entries_path(event), :class => "btn btn-default" do %>
+            <span class="glyphicon glyphicon-th-list"></span> Attendance
+          <% end %>
+        </td>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.attendance_entries.count %></td>
