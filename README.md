@@ -1,3 +1,9 @@
+[![Code Climate](https://img.shields.io/codeclimate/github/YaleSTC/cardswipr.svg)](https://codeclimate.com/github/YaleSTC/cardswipr)
+[![Test Coverage](https://codeclimate.com/github/YaleSTC/cardswipr/coverage.png)](https://codeclimate.com/github/YaleSTC/cardswipr)
+[![Dependency Status](https://gemnasium.com/YaleSTC/cardswipr.svg)](https://gemnasium.com/YaleSTC/cardswipr)
+[![Inline docs](http://inch-ci.org/github/yalestc/cardswipr.svg)](http://inch-ci.org/github/yalestc/cardswipr)
+
+
 # CardSwipr
 ## Features
 ### Event Attendance
