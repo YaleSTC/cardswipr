@@ -1,22 +1,33 @@
-<%= link_to "CardSwipr", root_path, :class => 'navbar-brand' %>
-<ul class="nav navbar-nav">
-  <% if can? :read, :personlookup %>
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <%= link_to "CardSwipr", root_path, :class => 'navbar-brand' %>
+</div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
+    <% if can? :read, :personlookup %>
+      <li>
+        <%= link_to distribution_personlookup_path do %>
+          <span class="glyphicon glyphicon-search"></span> Person Lookup
+        <% end %>
+      </li>
+    <% end %>
+    <% if can? :read, :events %>
+      <li>
+        <%= link_to events_path do %>
+          <span class="glyphicon glyphicon-list"></span> Events
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
     <li>
-      <%= link_to distribution_personlookup_path do %>
-        <span class="glyphicon glyphicon-search"></span> Person Lookup
-      <% end %>
+      <%= link_to "Signed in as #{current_user.netid}", root_path if current_user %>
     </li>
-  <% end %>
-  <% if can? :read, :events %>
-    <li>
-      <%= link_to events_path do %>
-        <span class="glyphicon glyphicon-list"></span> Events
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-<ul class="nav navbar-nav pull-right">
-  <li>
-    <%= link_to "Signed in as #{current_user.netid}", root_path if current_user %>
-  </li>
-</ul>
+  </ul>
+</div>
