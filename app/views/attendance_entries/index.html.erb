@@ -42,6 +42,7 @@
           <th>Swipe-In Time</th>
           <th></th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -54,6 +55,7 @@
             <td><%= attendance_entry.netid %></td>
             <td><%= attendance_entry.email %></td>
             <td><%= attendance_entry.swipe_time %></td>
+            <td><%= link_to 'More Details', attendance_entry_path(attendance_entry), :class => "btn btn-default"  %></td>
             <td><%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %></td>
             <td><%= link_to 'Destroy', attendance_entry_path(attendance_entry), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
           </tr>

@@ -14,7 +14,7 @@
     <%= f.input :class_year %>
     <%= f.input :telephone %>
     <%= f.input :address %>
-    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :event_id, value: @attendance_entry.event.id %>
   </div>
 
   <div class="form-actions">
