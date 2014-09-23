@@ -40,7 +40,7 @@
         <td><%= event.attendance_entries.count %></td>
         <td><%= event.last_edited %></td>
         <td><%= link_to 'Edit', edit_event_path(event), :class => "btn btn-default" %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
