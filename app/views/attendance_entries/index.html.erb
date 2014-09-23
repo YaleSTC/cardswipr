@@ -1,12 +1,29 @@
 <h1>Attendance List for <%= @event.title %></h1>
 
-<%= link_to 'Event Swipe-In', event_swipe_path, :class => "btn btn-primary" %>
-<%= link_to 'Manually Add a New Entry', new_event_attendance_entry_path(@event), :class => "btn btn-default" %>
-<%= link_to 'Download as CSV', event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default pull-right" %>
+<ul class="nav nav-pills">
+  <li>
+    <%= link_to event_swipe_path(@event), :class => "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
+    <% end %>
+  </li>
+  <li>
+    <%= link_to new_event_attendance_entry_path(@event), :class => "btn btn-default" do %>
+      <span class="glyphicon glyphicon-plus"></span> Manually Add a New Entry
+    <% end %>
+  </li>
+  <li>
+    <div class="navbar-text">
+      <span id="distribution_count" class="badge"><%= @count %></span> recorded
+    </div>
+  </li>
+  <li class="pull-right">
+    <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
+      <span class="glyphicon glyphicon-download-alt"></span> Download as CSV
+    <% end %>
+  </li>
+</ul>
 
-<span id="distribution_count" class="badge"><%= @count %></span> recorded
-
-<table class="table">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>First name</th>
