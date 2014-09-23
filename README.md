@@ -34,8 +34,10 @@ You'll get the most useful information about your attendees from the Yale Phoneb
   - On-Campus Mailing Address (often inaccurate)
 
 # How It Works
+## Yale LDAP
 For most input we just lookup the information in LDAP (the protocol powering the Yale Phonebook). This includes `netid`, `yale email`, and `upi`. We use the open source [YaleLDAP](http://github.com/YaleSTC/yaleldap) gem to make this easy. You could use this gem in your applications too!
 
+## Yale ID Card Databases
 For `magstrip` and `barcode` lookups we connect to a Yale database on the backend. This is more difficult for others to get access to, but we're working on an API that may become available to certain individuals who register with us.
 
 
