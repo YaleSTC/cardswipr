@@ -9,7 +9,7 @@
       <div class="spacedout">
         <strong class="spacedout">Card Swipe</strong> or <strong class="spacedout">NetID</strong> or <strong class="spacedout">Yale Email</strong><br>
       </div>
-      <%= text_field_tag(:query) %>
+      <%= text_field_tag(:query, nil, :autocomplete => 'off') %>
     <% end %>
     <br>
   </div>
