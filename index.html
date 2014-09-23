@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="CardSwipr : take attendance using Yale IDs">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>CardSwipr</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/YaleSTC/cardswipr">View on GitHub</a>
+
+          <h1 id="project_title">CardSwipr</h1>
+          <h2 id="project_tagline">take attendance using Yale IDs</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/YaleSTC/cardswipr/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/YaleSTC/cardswipr/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="cardswipr" class="anchor" href="#cardswipr"><span class="octicon octicon-link"></span></a>CardSwipr</h2>
+
+<p>This application helps you take attendance at meetings and events. Attendees swipe in with this easy interface, the application looks them up in the Yale Phonebook, and collects their information in a list. When the event's over you can even download a <code>.csv</code> output of the attendees' information.</p>
+
+<h3>
+<a name="more-input-than-you-need" class="anchor" href="#more-input-than-you-need"><span class="octicon octicon-link"></span></a>More input than you need</h3>
+
+<p>In the same box, users can input any of the following "unique identifying information".</p>
+
+<ul>
+<li>USB Magstrip Reader (registers as keyboard input)</li>
+<li>USB Barcode Scanner (registers as keyboard input)</li>
+<li>Keyboard 
+
+<ul>
+<li>NetID</li>
+<li>Yale Email</li>
+<li>UPI</li>
+</ul>
+</li>
+</ul><h3>
+<a name="more-output-than-youll-use" class="anchor" href="#more-output-than-youll-use"><span class="octicon octicon-link"></span></a>More output than you'll use</h3>
+
+<p>You'll get the most useful information about your attendees from the Yale Phonebook, including:</p>
+
+<ul>
+<li>First Name, Nickname, Last Name</li>
+<li>Yale Email Address</li>
+<li>NetID</li>
+<li>UPI</li>
+<li>School</li>
+<li>College Name, College Abbreviation</li>
+<li>Class Year</li>
+<li>On-Campus Telephone (often inaccurate)</li>
+<li>On-Campus Mailing Address (often inaccurate)</li>
+</ul><h2>
+<a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How It Works</h2>
+
+<p>For most input we just lookup the information in LDAP (the protocol powering the Yale Phonebook). This includes <code>netid</code>, <code>yale email</code>, and <code>upi</code>. We use the open source <a href="http://github.com/YaleSTC/yaleldap">YaleLDAP</a> gem to make this easy. You could use this gem in your applications too!</p>
+
+<p>For <code>magstrip</code> and <code>barcode</code> lookups we connect to a Yale database on the backend. This is more difficult for others to get access to, but we're working on an API that may become available to certain individuals who register with us.</p>
+
+<h2>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h2>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>Lovingly created for the Yale Community by Casey Watts (<a href="https://github.com/caseywatts" class="user-mention">@caseywatts</a>), based on work by Adam Bray (<a href="https://github.com/adambray" class="user-mention">@adambray</a>).</p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>If you have trouble or questions about this application, email the managers of the <a href="http://yalestc.github.io">Student Developer &amp; Mentorship Program</a> at <code>dev-mgt@yale.edu</code>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">CardSwipr maintained by <a href="https://github.com/YaleSTC">YaleSTC</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
