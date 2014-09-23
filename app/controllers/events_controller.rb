@@ -69,6 +69,7 @@ class EventsController < ApplicationController
     # authorize! :read, :cardswipe
     @event = Event.find(params[:event_id])
     @count = @event.attendance_entries.count
+    render layout: "fullscreen"
   end
 
 

@@ -15,7 +15,7 @@ gem 'activerecord-oracle_enhanced-adapter', git: 'https://github.com/rsim/oracle
 
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem "sass-rails", "~> 4.0.3"
 gem 'bootstrap-sass'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -56,7 +56,7 @@ end
 
 group :development do
   gem 'pry'
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'binding_of_caller'
 end
 
