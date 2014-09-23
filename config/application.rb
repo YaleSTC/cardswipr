@@ -23,7 +23,7 @@ module UsbDistribution
     # config.i18n.default_locale = :de
     # config.rubycas.cas_base_url = 'https://secure.its.yale.edu/cas/'
     config.rack_cas.server_url = 'https://secure.its.yale.edu/cas/'
-    # config.rack_cas.exclude_paths = ['/status', 'distribution#home']
+    config.rack_cas.exclude_paths = ['/status', '/']
     config.rack_cas.session_store = RackCAS::ActiveRecordStore
 
     # Autoload lib/ folder including all subdirectories

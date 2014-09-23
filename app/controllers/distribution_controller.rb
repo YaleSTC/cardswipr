@@ -1,6 +1,7 @@
 require "yaleidlookup"
 
 class DistributionController < ApplicationController
+  skip_before_action :ensure_logged_in, only: [:home]
 
   def home
     authorize! :read, :homepage
