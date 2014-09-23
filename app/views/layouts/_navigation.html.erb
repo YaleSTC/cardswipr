@@ -2,12 +2,16 @@
 <ul class="nav navbar-nav">
   <% if can? :read, :personlookup %>
     <li>
-      <%= link_to "Person Lookup", distribution_personlookup_path %>
+      <%= link_to distribution_personlookup_path do %>
+        <span class="glyphicon glyphicon-search"></span> Person Lookup
+      <% end %>
     </li>
   <% end %>
   <% if can? :read, :events %>
     <li>
-      <%= link_to "Events", events_path %>
+      <%= link_to events_path do %>
+        <span class="glyphicon glyphicon-list"></span> Events
+      <% end %>
     </li>
   <% end %>
 </ul>
