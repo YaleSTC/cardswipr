@@ -1,58 +1,57 @@
 <h1>Attendance List for <%= @event.title %></h1>
 
-<ul class="nav nav-pills">
-  <li>
-    <%= link_to event_swipe_path(@event), :class => "btn btn-primary" do %>
-      <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
-    <% end %>
-  </li>
-  <li>
-    <%= link_to new_event_attendance_entry_path(@event), :class => "btn btn-default" do %>
-      <span class="glyphicon glyphicon-plus"></span> Manually Add a New Entry
-    <% end %>
-  </li>
-  <li>
-    <div class="navbar-text">
+<div class="row">
+  <div class="col-md-12">
+    <div class="btn-group">
+      <%= link_to event_swipe_path(@event), :class => "btn btn-primary" do %>
+        <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
+      <% end %>
+      <%= link_to new_event_attendance_entry_path(@event), :class => "btn btn-default" do %>
+        <span class="glyphicon glyphicon-plus"></span> Manually Add a New Entry
+      <% end %>
+      <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
+        <span class="glyphicon glyphicon-download-alt"></span> Download as CSV
+      <% end %>
+    </div>
+    <div class="pull-right">
       <span id="distribution_count" class="badge"><%= @count %></span> recorded
     </div>
-  </li>
-  <li class="pull-right">
-    <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
-      <span class="glyphicon glyphicon-download-alt"></span> Download as CSV
-    <% end %>
-  </li>
-</ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Upi</th>
+          <th>Netid</th>
+          <th>Email</th>
+          <th>Swipe-In Time</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Upi</th>
-      <th>Netid</th>
-      <th>Email</th>
-      <th>Swipe-In Time</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @attendance_entries.each do |attendance_entry| %>
+          <tr>
+            <td><%= attendance_entry.first_name %></td>
+            <td><%= attendance_entry.last_name %></td>
+            <td><%= attendance_entry.upi %></td>
+            <td><%= attendance_entry.netid %></td>
+            <td><%= attendance_entry.email %></td>
+            <td><%= attendance_entry.swipe_time %></td>
+            <td><%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %></td>
+            <td><%= link_to 'Destroy', attendance_entry_path(attendance_entry), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @attendance_entries.each do |attendance_entry| %>
-      <tr>
-        <td><%= attendance_entry.first_name %></td>
-        <td><%= attendance_entry.last_name %></td>
-        <td><%= attendance_entry.upi %></td>
-        <td><%= attendance_entry.netid %></td>
-        <td><%= attendance_entry.email %></td>
-        <td><%= attendance_entry.swipe_time %></td>
-        <td><%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %></td>
-        <td><%= link_to 'Destroy', attendance_entry_path(attendance_entry), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <br><br>
 
-<br><br>
-
-<%= link_to "Wipe Attendance", event_wipe_attendance_path, method: :delete, data: { confirm: 'Are you sure? This permanently removes all attendance entries for this event.'}, :class => "btn btn-danger pull-right" %>
+    <%= link_to "Wipe Attendance", event_wipe_attendance_path, method: :delete, data: { confirm: 'Are you sure? This permanently removes all attendance entries for this event.'}, :class => "btn btn-danger pull-right" %>
+  </div>
+</div>

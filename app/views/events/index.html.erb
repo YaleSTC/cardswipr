@@ -1,49 +1,48 @@
+<div class="row">
 <h1>Listing Events</h1>
-
-<ul class="nav nav-pills">
-  <li>
+  <div class="btn-group">
     <%= link_to new_event_path, :class => "btn btn-success" do %>
       <span class="glyphicon glyphicon-plus"></span> New Event
     <% end %>
-  </li>
-</ul>
+  </div>
+</div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Count</th>
-      <th>Last Swipe-In</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
+<div class="row">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td>
-          <%= link_to event_swipe_path(event), :class => "btn btn-primary" do %>
-            <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
-          <% end %>
-        </td>
-        <td>
-          <%= link_to event_attendance_entries_path(event), :class => "btn btn-default" do %>
-            <span class="glyphicon glyphicon-th-list"></span> Attendance
-          <% end %>
-        </td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.attendance_entries.count %></td>
-        <td><%= event.last_edited %></td>
-        <td><%= link_to 'Edit', edit_event_path(event), :class => "btn btn-default" %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm" %></td>
+        <th></th>
+        <th></th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Count</th>
+        <th>Last Swipe-In</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td>
+            <%= link_to event_swipe_path(event), :class => "btn btn-primary" do %>
+              <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
+            <% end %>
+          </td>
+          <td>
+            <%= link_to event_attendance_entries_path(event), :class => "btn btn-default" do %>
+              <span class="glyphicon glyphicon-th-list"></span> Attendance
+            <% end %>
+          </td>
+          <td><%= event.title %></td>
+          <td><%= event.description %></td>
+          <td><%= event.attendance_entries.count %></td>
+          <td><%= event.last_edited %></td>
+          <td><%= link_to 'Edit', edit_event_path(event), :class => "btn btn-default" %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
