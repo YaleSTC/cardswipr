@@ -37,13 +37,17 @@ after_create :get_ldap_attributes
   end
 
   def self.to_csv
-    columns_to_export = column_names - ["created_at", "updated_at"]
+    columns_to_export = column_names - ["id", "updated_at", "event_id"]
     CSV.generate do |csv|
       csv << columns_to_export
       all.each do |user|
         csv << (user.attributes.values_at(*columns_to_export))
       end
     end
+  end
+
+  def swipe_time
+    created_at.strftime("%a %b %d, %I:%M %p")
   end
 
 end

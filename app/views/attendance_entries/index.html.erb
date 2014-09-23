@@ -2,7 +2,7 @@
 
 <%= link_to 'Event Swipe-In', event_swipe_path, :class => "btn btn-primary" %>
 <%= link_to 'Manually Add a New Entry', new_event_attendance_entry_path(@event), :class => "btn btn-default" %>
-<%= link_to 'Download as CSV', event_attendance_entries_path(@event, :format => :csv), :class => "btn pull-right" %>
+<%= link_to 'Download as CSV', event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default pull-right" %>
 
 <span id="distribution_count" class="badge"><%= @count %></span> recorded
 
@@ -14,6 +14,7 @@
       <th>Upi</th>
       <th>Netid</th>
       <th>Email</th>
+      <th>Swipe-In Time</th>
       <th></th>
       <th></th>
     </tr>
@@ -27,6 +28,7 @@
         <td><%= attendance_entry.upi %></td>
         <td><%= attendance_entry.netid %></td>
         <td><%= attendance_entry.email %></td>
+        <td><%= attendance_entry.swipe_time %></td>
         <td><%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %></td>
         <td><%= link_to 'Destroy', attendance_entry_path(attendance_entry), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"  %></td>
       </tr>
