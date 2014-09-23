@@ -3,10 +3,15 @@
 <div class="row">
   <div class="col-md-12">
     <div class="btn-group">
-      <%= link_to events_path(@event), :class => "btn btn-default" do %>
+      <%= link_to events_path, :class => "btn btn-default" do %>
         <span class="glyphicon glyphicon-list"></span> All Events List
       <% end %>
     </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
     <div class="btn-group">
       <%= link_to event_swipe_path(@event), :class => "btn btn-primary" do %>
         <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
@@ -23,6 +28,7 @@
     </div>
   </div>
 </div>
+<br>
 <div class="row">
   <div class="col-md-12">
     <table class="table table-bordered table-striped">
