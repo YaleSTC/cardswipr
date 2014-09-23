@@ -16,6 +16,10 @@ UsbDistribution::Application.routes.draw do
   get '/unauthorized', :to => redirect('/unauthorized.html')
   get '/status', :to => redirect('/status.html')
 
+  #get '/logout', :to => rack-cas magically sends you to the single sign on logout
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

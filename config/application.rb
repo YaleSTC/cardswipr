@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'csv'
+require 'rack-cas/session_store/active_record'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,7 +21,10 @@ module UsbDistribution
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.rubycas.cas_base_url = 'https://secure.its.yale.edu/cas/'
+    # config.rubycas.cas_base_url = 'https://secure.its.yale.edu/cas/'
+    config.rack_cas.server_url = 'https://secure.its.yale.edu/cas/'
+    # config.rack_cas.exclude_paths = ['/status', 'distribution#home']
+    config.rack_cas.session_store = RackCAS::ActiveRecordStore
 
     # Autoload lib/ folder including all subdirectories
     config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
