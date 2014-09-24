@@ -3,7 +3,7 @@
   <li><%= link_to @event.title, event_attendance_entries_path(@event) %></li>
   <li>New Entry</li>
 </ol>
-<h1>An Attendance Entry for <%= @event.title %></h1>
+<h1><%= @event.title %> <small>New Attendance Entry</small></h1>
 
 <%= render 'form' %>
 

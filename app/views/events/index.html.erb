@@ -16,11 +16,11 @@
       <tr>
         <th></th>
         <th></th>
+        <th></th>
         <th>Title</th>
         <th>Description</th>
         <th>Count</th>
         <th>Last Swipe-In</th>
-        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -38,11 +38,11 @@
               <span class="glyphicon glyphicon-list-alt"></span> Attendance
             <% end %>
           </td>
+          <td><%= link_to 'Edit Event', edit_event_path(event), :class => "btn btn-default" %></td>
           <td><%= event.title %></td>
           <td><%= event.description %></td>
           <td><%= event.attendance_entries.count %></td>
           <td><%= event.last_edited %></td>
-          <td><%= link_to 'Edit', edit_event_path(event), :class => "btn btn-default" %></td>
           <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
         </tr>
       <% end %>

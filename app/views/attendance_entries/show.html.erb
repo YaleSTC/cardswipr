@@ -3,6 +3,9 @@
   <li><%= link_to @attendance_entry.event.title, event_attendance_entries_path(@attendance_entry.event) %></li>
   <li><%= @attendance_entry.name %></li>
 </ol>
+
+<h1><%= @attendance_entry.name %> <small>Details</small></h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
