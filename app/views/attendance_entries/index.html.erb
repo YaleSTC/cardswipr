@@ -1,5 +1,13 @@
 <h1>Attendance List for <%= @event.title %></h1>
 
+<p>
+  This table shows only the most useful Yale Phonebook (LDAP) attributes - you can see more details in two ways:
+  <ol>
+    <li>For an individual you can view <strong>More Details</strong> to see a lot more about them</li>
+    <li>You can <strong>download the CSV file</strong> to see all of the information. CSV is a "comma separated values" file, and you can open it right in Microsoft Excel.</li>
+  </ol>
+</p>
+
 <div class="row">
   <div class="col-md-12">
     <div class="btn-group">
@@ -20,7 +28,7 @@
         <span class="glyphicon glyphicon-plus"></span> Manually Add a New Entry
       <% end %>
       <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
-        <span class="glyphicon glyphicon-download-alt"></span> Download as CSV
+        <span class="glyphicon glyphicon-download-alt"></span> Download CSV
       <% end %>
     </div>
     <div class="pull-right">
