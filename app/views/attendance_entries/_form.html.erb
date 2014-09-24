@@ -2,12 +2,15 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div class="col-md-6">
     <%= f.input :first_name %>
     <%= f.input :nickname %>
     <%= f.input :last_name %>
     <%= f.input :upi %>
     <%= f.input :netid %>
     <%= f.input :email %>
+    </div>
+    <div class="col-md-6">
     <%= f.input :school %>
     <%= f.input :college_name %>
     <%= f.input :college_abbreviation %>
@@ -15,9 +18,10 @@
     <%= f.input :telephone %>
     <%= f.input :address %>
     <%= f.hidden_field :event_id, value: @attendance_entry.event.id %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-default" %>
   </div>
 <% end %>

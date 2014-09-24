@@ -1,7 +1,7 @@
-<%= simple_form_for(@event) do |f| %>
+<%= simple_form_for(@event, wrapper: :bootstrap, html: {class: 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-input">
     <%= f.input :title %>
     <%= f.input :description, as: :text %>
     <%#= f.association :attendance_entries %>
