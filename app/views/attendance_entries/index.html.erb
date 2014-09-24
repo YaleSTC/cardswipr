@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Events", events_path %></li>
+  <li><%= @event.title %></li>
+</ol>
+
 <h1>Attendance List for <%= @event.title %></h1>
 
 <p>
@@ -8,16 +13,6 @@
   </ol>
 </p>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="btn-group">
-      <%= link_to events_path, :class => "btn btn-default" do %>
-        <span class="glyphicon glyphicon-list"></span> All Events List
-      <% end %>
-    </div>
-  </div>
-</div>
-<br>
 <div class="row">
   <div class="col-md-12">
     <div class="btn-group">
