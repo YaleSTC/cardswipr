@@ -10,6 +10,8 @@ class Ability
     if superusers.include? user.netid
       can :manage, :all
     else
+      can :manage, Event, users: { id: user.id }
+      can :manage, AttendanceEntry, users: { id: user.id }
       can :read, :homepage
       can :read, :personlookup
     end
