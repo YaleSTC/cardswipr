@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates :netid, presence: true, uniqueness: true
-  has_and_belongs_to_many :event
+  has_and_belongs_to_many :events
 
   after_create :get_ldap_attributes
 
@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
     attributes = YaleLDAP.lookup(netid: netid)
       .slice(:first_name, :last_name, :netid)
     self.update_attributes(attributes)
+  rescue
+    false # don't actually save it if LDAP fails
   end
 
   def full_name
