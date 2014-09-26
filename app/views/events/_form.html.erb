@@ -4,7 +4,7 @@
   <div class="form-input">
     <%= f.input :title %>
     <%= f.input :description, as: :text %>
-    <%= f.association :users, label_method: :netid %>
+    <%= f.association :users, label_method: :full_name_with_netid %>
     <%#= f.association :attendance_entries %>
   </div>
 

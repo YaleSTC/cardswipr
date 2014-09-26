@@ -10,4 +10,11 @@ class User < ActiveRecord::Base
     self.update_attributes(attributes)
   end
 
+  def full_name
+    full_name = first_name + " " + last_name
+  end
+
+  def full_name_with_netid
+    full_name + " " + netid
+  end
 end
