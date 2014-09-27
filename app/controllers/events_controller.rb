@@ -19,6 +19,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     # @event = Event.new
+    @event.description ||= "Please swipe your card or enter your netid"
+    @event.users << current_user
   end
 
   # GET /events/1/edit
