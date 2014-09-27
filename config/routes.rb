@@ -15,7 +15,7 @@ UsbDistribution::Application.routes.draw do
 
   get '/unauthorized', :to => redirect('/unauthorized.html')
   get '/status', :to => redirect('/status.html')
-
+  get '/logout', :to => "application#logout"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   check_authorization
+  skip_authorization_check only: [:logout]
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
