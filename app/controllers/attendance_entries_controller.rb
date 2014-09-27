@@ -62,7 +62,7 @@ class AttendanceEntriesController < ApplicationController
   def destroy
     @attendance_entry.destroy
     respond_to do |format|
-      format.html { redirect_to event_attendance_entries_path(@event) }
+      format.html { redirect_to event_attendance_entries_path(@attendance_entry.event) }
       format.json { head :no_content }
     end
   end
