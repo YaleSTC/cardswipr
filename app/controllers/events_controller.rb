@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    # @event = Event.new
   end
 
   # GET /events/1/edit
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    # @event = Event.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -68,8 +68,8 @@ class EventsController < ApplicationController
 
   # GET /events/1/swipe
   def swipe
-    # authorize! :read, :cardswipe
     @event = Event.find(params[:event_id])
+    authorize! :update, @event
     @count = @event.attendance_entries.count
     render layout: "fullscreen"
   end
@@ -79,6 +79,7 @@ class EventsController < ApplicationController
   def lookup
     # authorize! :lookup, :cardswipe
     @event = Event.find(params[:event_id])
+    authorize! :update, @event
     upi = YaleIDLookup.determine_upi(params[:query])
 
     if upi.blank? #or, if it raises an "I cannot find someone" error would be better?
@@ -115,7 +116,7 @@ class EventsController < ApplicationController
   end
 
   def wipe_attendance
-    @event = Event.find(params[:event_id])
+    # @event = Event.find(params[:event_id])
     @event.attendance_entries.destroy_all
     flash[:notice] = "All attendance entries for this event have been wiped."
     redirect_to event_attendance_entries_path(@event)
