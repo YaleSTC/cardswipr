@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  before_action RubyCAS::Filter
+  before_action CASClient::Frameworks::Rails::Filter
   before_action :current_user
   helper_method :current_user
 
@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+
+  def logout
+    CASClient::Frameworks::Rails::Filter.logout(self)
   end
 
 end

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/rubycas/rubycas-client.git
+  revision: 195a4b70333029be474b0ac70efdc85bd4288861
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
+
+GIT
   remote: https://github.com/rsim/oracle-enhanced.git
   revision: f15de843c572f1d73a52907cb47f8a4b884c5ec5
   branch: rails4
@@ -97,11 +104,6 @@ GEM
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     ruby-oci8 (2.1.7)
-    rubycas-client (2.2.1)
-      activesupport
-    rubycas-client-rails (0.1.0)
-      rails (>= 3.0.0)
-      rubycas-client (>= 2.2.0)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -159,8 +161,7 @@ DEPENDENCIES
   pry
   rails (= 4.0.0)
   ruby-oci8
-  rubycas-client (= 2.2.1)
-  rubycas-client-rails
+  rubycas-client!
   sass-rails (~> 4.0.3)
   sdoc
   service_now
