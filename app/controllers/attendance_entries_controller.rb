@@ -41,8 +41,8 @@ class AttendanceEntriesController < ApplicationController
 
     respond_to do |format|
       if @attendance_entry.save
-                  format.html { redirect_to event_attendance_entries_path(@attendance_entry.event), notice: 'Event attendance entry was successfully created.' }
-       format.json { render action: 'show', status: :created, location: @attendance_entry }
+        format.html { redirect_to event_attendance_entries_path(@attendance_entry.event), notice: 'Event attendance entry was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @attendance_entry }
       else
         format.html { render action: 'new' }
         format.json { render json: @attendance_entry.errors, status: :unprocessable_entity }
