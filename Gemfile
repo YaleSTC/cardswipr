@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 #authentication
 gem 'rubycas-client-rails'
 gem 'rubycas-client', '2.2.1'
+gem 'devise'
+gem 'devise_cas_authenticatable'
 
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
