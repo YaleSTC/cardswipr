@@ -20,3 +20,6 @@
 
 # rails_best_practices
 /rails_best_practices_output.html
+
+# ignore secret token
+/config/initializers/secret_token.rb
