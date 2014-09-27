@@ -1,11 +1,10 @@
 UsbDistribution::Application.routes.draw do
 
-  resources :events, :except => :show do
+  resources :events do
     resources :attendance_entries, :path => :attendance, shallow: true
     get 'swipe'
     post 'lookup'
     delete 'wipe_attendance'
-
   end
 
   resources :users

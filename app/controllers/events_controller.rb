@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    redirect_to event_attendance_entries_path(@event)
   end
 
   # GET /events/new
