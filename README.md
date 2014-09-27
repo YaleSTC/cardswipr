@@ -61,7 +61,15 @@ Make sure to change all the commands for the OS you're using and your version nu
 Also you may need to do ruby -e "require 'oci8'"
 
 ### Database Connection Information
-A sample database.yml is available in Yale's private git repository (but it is private).
+A sample database.yml is available in Yale's private git repository (but it is private). This application is not configured to run without a username/password to the right database, which is not private. We're working on replacing this with a web API for the same information through Layer 7.
+
+### Standard Rails Application Setup
+```
+bundle install
+rake db:create
+rake db:schema:load
+rails server
+```
 
 ## Application Structure
 An explanation of the application structure, what models are used for what, and how the flow of the application works, see [our wiki](https://github.com/YaleSTC/key_distribution_v2/wiki)
