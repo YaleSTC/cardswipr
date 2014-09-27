@@ -6,14 +6,18 @@ class User < ActiveRecord::Base
 
   def get_ldap_attributes
     attributes = YaleLDAP.lookup(netid: netid)
-      .slice(:first_name, :last_name, :netid)
+      .slice(:first_name, :nickname, :last_name, :netid, :email)
     self.update_attributes(attributes)
   rescue
     false # don't actually save it if LDAP fails
   end
 
   def full_name
-    full_name = first_name + " " + last_name
+    if nickname
+      full_name = nickname + " " + last_name
+    else
+      full_name = first_name + " " + last_name
+    end
   end
 
   def full_name_with_netid
