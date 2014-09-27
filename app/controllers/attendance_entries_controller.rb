@@ -1,7 +1,7 @@
 class AttendanceEntriesController < ApplicationController
   # before_action :set_attendance_entry, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :event
-  load_and_authorize_resource :attendance_entry, through: :event, param_method: :attendance_entry_params
+  load_and_authorize_resource :attendance_entry, through: :event, param_method: :attendance_entry_params, :shallow => true
 
 
   # GET /attendance_entries
