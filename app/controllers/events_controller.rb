@@ -1,13 +1,13 @@
 require "yaleidlookup"
 
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  # before_action :set_event, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource param_method: :event_params
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.reverse
+    @events = @events.reverse
   end
 
   # GET /events/1

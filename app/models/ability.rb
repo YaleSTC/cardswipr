@@ -11,18 +11,9 @@ class Ability
       can :manage, :all
     else
       can :create, Event
-      can :manage, Event do |event|
-        event.users.include?(user) 
-      end
-        # , users: { id: user.id }
-      # can :manage, Event
-      # can :manage, AttendanceEntry
+      can :manage, Event, {:users => { :id => user.id }}
       can :create, AttendanceEntry
-      can :manage, AttendanceEntry do |entry|
-        entry.event.user == user.id
-      end
-      # can :update, Event
-        # , users: { id: user.id }
+      can :manage, AttendanceEntry, {:users => { :id => user.id }}
       can :read, :homepage
       can :read, :personlookup
     end

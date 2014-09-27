@@ -1,6 +1,6 @@
 class AttendanceEntriesController < ApplicationController
-  before_action :set_attendance_entry, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  # before_action :set_attendance_entry, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource param_method: :attendance_entry_params
 
   # GET /attendance_entries
   # GET /attendance_entries.json
