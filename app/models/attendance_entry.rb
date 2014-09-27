@@ -46,7 +46,7 @@ after_create :get_ldap_attributes
   end
 
   def swipe_time
-    created_at.strftime("%a %b %d, %I:%M %p")
+    created_at.localtime.strftime("%a %b %d, %I:%M %p")
   end
 
 end
