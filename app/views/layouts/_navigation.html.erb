@@ -17,7 +17,7 @@
         <% end %>
       </li>
     <% end %>
-    <% if can? :read, :events %>
+    <% if can? :read, Event %>
       <li>
         <%= link_to events_path do %>
           <span class="glyphicon glyphicon-list"></span> Events
