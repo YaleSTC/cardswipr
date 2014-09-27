@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    if nickname
-      full_name = nickname + " " + last_name
-    else
+    if nickname.blank?
       full_name = first_name + " " + last_name
+    else
+      full_name = nickname + " " + last_name
     end
   end
 
