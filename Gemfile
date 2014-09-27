@@ -67,5 +67,11 @@ group :development do
 end
 
 # Pronto
-gem 'pronto'
-gem 'pronto-rubocop'
+group :development, :test do
+  gem 'pronto'
+  gem 'pronto-rubocop'
+  gem 'pronto-flay'
+  gem 'pronto-brakeman'
+  gem 'pronto-rails_best_practices'
+  # gem 'pronto-reek'
+end
