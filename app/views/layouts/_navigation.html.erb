@@ -17,7 +17,7 @@
         <% end %>
       </li>
     <% end %>
-    <% if can? :read, :events %>
+    <% if can? :read, Event %>
       <li>
         <%= link_to events_path do %>
           <span class="glyphicon glyphicon-list"></span> Events
@@ -27,7 +27,7 @@
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li>
-      <%= link_to "Signed in as #{current_user.netid}", root_path if current_user %>
+      <%= link_to "#{current_user.full_name}", edit_user_path(current_user) if current_user %>
     </li>
   </ul>
 </div>

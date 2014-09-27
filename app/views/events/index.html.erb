@@ -38,7 +38,11 @@
               <span class="glyphicon glyphicon-list-alt"></span> Attendance
             <% end %>
           </td>
-          <td><%= link_to 'Edit Event', edit_event_path(event), :class => "btn btn-default" %></td>
+          <td>
+            <%= link_to edit_event_path(event), :class => "btn btn-default" do %>
+              <span class="glyphicon glyphicon-pencil"></span> Edit Event
+            <% end %>
+          </td>
           <td><%= event.title %></td>
           <td><%= event.description %></td>
           <td><%= event.attendance_entries.count %></td>

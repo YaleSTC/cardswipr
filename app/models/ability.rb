@@ -5,11 +5,16 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     # user ||= User.find_by(netid: session[:cas_user])
-    admin_users = %w{csw3 jl2463 sbt3 dz65 cb585 deg38 mrd25 cb785}
+    superusers = %w{ jl2463 sbt3 dz65 cb585 deg38 mrd25 cb785}
 
-    if admin_users.include? user.netid
+    if superusers.include? user.netid
       can :manage, :all
     else
+      can :create, Event
+      can :manage, Event, {:users => { :id => user.id }}
+      can :create, AttendanceEntry
+      can :manage, AttendanceEntry, {:users => { :id => user.id }}
+      can [:read, :update], User, {:id => user.id}
       can :read, :homepage
       can :read, :personlookup
     end

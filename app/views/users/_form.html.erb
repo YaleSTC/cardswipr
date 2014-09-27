@@ -12,16 +12,24 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :netid %><br>
+    <%= @user.netid %>
+  </div>
+  <div class="field">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :nickname %><br>
+    <%= f.text_field :nickname %>
   </div>
   <div class="field">
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :netid %><br>
-    <%= f.text_field :netid %>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
   </div>
   <div class="actions">
     <%= f.submit %>
