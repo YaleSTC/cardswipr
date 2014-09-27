@@ -12,7 +12,7 @@ class DistributionController < ApplicationController
       attributes = YaleIDLookup.lookup(params[:query])
       upi = attributes[:upi]
       sys_id = ServiceNow::User.find(attributes[:netid]).sys_id
-      
+
       @name = attributes[:first_name] + " " + attributes[:last_name]
       @email = attributes[:email]
       @affiliation = attributes[:school] + " " + attributes[:college_abbreviation] + " " + attributes[:class_year]
