@@ -1,3 +1,5 @@
+# attendance entries are created by an event. This is the permanent record of who has attended an event
+# a set of attendance entries for an event can be viewed in the browser or printed to csv
 class AttendanceEntry < ActiveRecord::Base
 
 belongs_to :event

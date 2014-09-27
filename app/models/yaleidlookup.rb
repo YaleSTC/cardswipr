@@ -1,3 +1,9 @@
+# YaleIDLookup is the meat of the application, the most useful part
+# This class is used to lookup someone by their magstripe number, netid,
+# or Yale email and return an LDAP result to be used elsewhere.
+# If this didn't depend on the Oracle connection in `yalecardswipe.rb`
+# it could be its own package.
+# This also depends on the yaleldap gem
 require 'yaleldap'
 require 'yalecardswipe' #not a gem yet, as a model it is autoloaded
 

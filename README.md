@@ -72,7 +72,7 @@ rails server
 ```
 
 ## Application Structure
-An explanation of the application structure, what models are used for what, and how the flow of the application works, see [our wiki](https://github.com/YaleSTC/key_distribution_v2/wiki)
+Each of the models have a comment above them explaining what the purpose of the model is.
 
 # About
 ## Authors and Contributors

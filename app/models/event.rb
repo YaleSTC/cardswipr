@@ -1,3 +1,5 @@
+# An event is owned by many users who can swipe people into the event,
+# see the attendance entries list, edit the list
 class Event < ActiveRecord::Base
 
 has_and_belongs_to_many :users

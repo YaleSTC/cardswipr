@@ -1,3 +1,5 @@
+# This class is only used to connect to the Yale oracle database
+# that contains magstripe information, and return the UPI
 class YaleCardSwipe < ActiveRecord::Base
   establish_connection "oracle"
   self.table_name = "people.ppl_identity_v"

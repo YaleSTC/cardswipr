@@ -1,3 +1,4 @@
+# This class is used by the `cancancan` gem to control who can see what parts of the application
 class Ability
   include CanCan::Ability
 
