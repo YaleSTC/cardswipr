@@ -1,8 +1,6 @@
 class AttendanceEntry < ActiveRecord::Base
 
-#has_many people
 belongs_to :event
-has_many :users, through: :event
 validates :event, presence: true
 validates :upi, :uniqueness => { :scope => :event, :message => "This person has already been checked into this event." }
 
