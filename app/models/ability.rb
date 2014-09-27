@@ -14,6 +14,7 @@ class Ability
       can :manage, Event, {:users => { :id => user.id }}
       can :create, AttendanceEntry
       can :manage, AttendanceEntry, {:users => { :id => user.id }}
+      can [:read, :update], User, {:id => user.id}
       can :read, :homepage
       can :read, :personlookup
     end
