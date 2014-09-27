@@ -65,3 +65,13 @@ group :development do
   # gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+# Pronto
+group :development, :test do
+  gem 'pronto'
+  gem 'pronto-rubocop'
+  gem 'pronto-flay'
+  gem 'pronto-brakeman'
+  gem 'pronto-rails_best_practices'
+  # gem 'pronto-reek'
+end

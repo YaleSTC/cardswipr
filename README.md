@@ -49,6 +49,9 @@ For `magstrip` and `barcode` lookups we connect to a Yale database on the backen
 
 # Contributing
 ## Set Up
+### secret_token
+Make your own `secret_token` by following the file `/config/initializers/secret_token.example`. Use `rake secret` to generate your own secret key, and keep this private.
+
 ### ruby-oci8 gem
 To set this up, you must install the ruby-oci8 gem by following the instructions here:
 https://github.com/kubo/ruby-oci8/blob/master/docs/install-instant-client.md

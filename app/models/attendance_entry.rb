@@ -26,14 +26,14 @@ after_create :get_ldap_attributes
     end
   end
 
-  def recorded?
-    return EventAttendanceEntry.find_by(upi: self.upi).present?
-  end
+  # def recorded?
+  #   return EventAttendanceEntry.find_by(upi: self.upi).present?
+  # end
 
-  def record
-    return false if recorded?
-    EventAttendanceEntry.create(self.upi)
-  end
+  # def record
+  #   return false if recorded?
+  #   EventAttendanceEntry.create(self.upi)
+  # end
 
   def self.to_csv
     columns_to_export = column_names - ["id", "updated_at", "event_id"]
