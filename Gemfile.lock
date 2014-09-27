@@ -1,16 +1,16 @@
 GIT
-  remote: git://github.com/rubycas/rubycas-client.git
-  revision: 195a4b70333029be474b0ac70efdc85bd4288861
-  specs:
-    rubycas-client (2.3.10.rc1)
-      activesupport
-
-GIT
   remote: https://github.com/rsim/oracle-enhanced.git
   revision: f15de843c572f1d73a52907cb47f8a4b884c5ec5
   branch: rails4
   specs:
     activerecord-oracle_enhanced-adapter (1.4.3)
+
+GIT
+  remote: git://github.com/rubycas/rubycas-client.git
+  revision: 195a4b70333029be474b0ac70efdc85bd4288861
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
 
 GEM
   remote: https://rubygems.org/
