@@ -3,8 +3,9 @@ require 'spec_helper'
 describe "SwipeIntoEvents", :type => :feature do
   before :each do
     app_setup
-    @user = create(:user)
-    sign_in(@user.login)
+    # @user = create(:user)
+    @event = create(:event)
+    sign_in(@event.users.first.netid)
   end
 
   it "can navigate to the swipe page" do

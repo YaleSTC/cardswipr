@@ -22,8 +22,9 @@ RSpec.configure do |config|
     end
   end
   Capybara.asset_host = "http://localhost:3000"
+  config.include Rails.application.routes.url_helpers
 end
 
 def sign_in(netid)
-  RubyCAS::Filter.fake(netid)
+  CASClient::Frameworks::Rails::Filter.fake(netid)
 end
