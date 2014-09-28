@@ -27,9 +27,6 @@
       <%= link_to event_swipe_path(@event), :class => "btn btn-primary" do %>
         <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
       <% end %>
-      <%= link_to new_event_attendance_entry_path(@event), :class => "btn btn-default" do %>
-        <span class="glyphicon glyphicon-plus"></span> Manually Add a New Entry
-      <% end %>
       <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
         <span class="glyphicon glyphicon-download-alt"></span> Download CSV
       <% end %>
