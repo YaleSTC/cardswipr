@@ -1,4 +1,4 @@
-require "yaleidlookup"
+require "yale_id_lookup"
 
 class EventsController < ApplicationController
   # before_action :set_event, only: [:show, :edit, :update, :destroy]

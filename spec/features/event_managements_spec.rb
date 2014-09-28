@@ -1,5 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
 
-feature "EventManagements", :type => :feature do
+describe "EventManagements", :type => :feature do
   pending "add some scenarios (or delete) #{__FILE__}"
 end

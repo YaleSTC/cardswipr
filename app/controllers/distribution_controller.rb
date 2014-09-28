@@ -1,4 +1,4 @@
-require "yaleidlookup"
+require "yale_id_lookup"
 
 class DistributionController < ApplicationController
 

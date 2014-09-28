@@ -1,5 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
 
-feature "GeneralLookups", :type => :feature do
+describe "GeneralLookups", :type => :feature do
   pending "add some scenarios (or delete) #{__FILE__}"
 end
