@@ -12,7 +12,7 @@ CardSwipr helps you take attendance at meetings and events. Attendees swipe in w
 
 
 ### General Lookup
-CardSwipr can quickly take you to a person's Yale Phonebook entry and open a Service Now Incident for them. This feature is used in some Walk-In Computing Support centers around campus.
+CardSwipr can quickly tell you about a person after they swipe their card. It can both take you to a person's Yale Phonebook entry and open a Service Now Incident with their name already filled out. This feature is used in some Walk-In Computing Support centers around campus.
 
 ![General Lookup](READMEImages/GeneralLookupScreenshot.png)
 
