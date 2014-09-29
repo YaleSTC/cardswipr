@@ -1,4 +1,4 @@
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec'
@@ -21,7 +21,7 @@ RSpec.configure do |config|
       example.run
     end
   end
-  Capybara.asset_host = "http://localhost:3000"
+  Capybara.asset_host = 'http://localhost:3000'
   config.include Rails.application.routes.url_helpers
 end
 

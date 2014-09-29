@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :event do
-    title "Event 1"
-    description "please swipe your card"
+    title 'Event 1'
+    description 'please swipe your card'
     before :create do |obj|
       obj.users << create(:user)
     end
