@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe AttendanceEntry, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  xit "#get_ldap_attributes" do
+
+  end
+  xit "#name" do
+
+  end
 end

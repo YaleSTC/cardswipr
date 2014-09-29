@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe Event, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  xit "#last_edited" do
+  end
 end
