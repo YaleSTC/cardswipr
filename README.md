@@ -73,6 +73,14 @@ rails server
 ## Application Structure
 Each of the models have a comment above them explaining what the purpose of the model is.
 
+## Pre-Pull-Request Code Quality Checks
+Before submitting a pull request, please check on the following:
+
+1. Does the testing suite pass? Run `guard`, and press enter once to run the whole testing suite. Guard automatically runs tests on files you've changed, see `Guardfile` for its rules.
+2. Have you added tests for any new features?
+3. Have you corrected as many of pronto's suggestions as make sense? Run pronto with `bundle exec pronto run`. Pronto runs many code analyzers such as rubocop, brakeman, flay, and rails_best_practices - only on the code you've modified.
+4. Does your pull request contain only relevant code changes?
+
 # About
 ## Authors and Contributors
 Lovingly created for the Yale Community by Casey Watts (@caseywatts), based on work by Adam Bray (@adambray).
