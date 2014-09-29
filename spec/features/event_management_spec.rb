@@ -19,10 +19,6 @@ describe "EventManagement", :type => :feature do
     click_on('Update Event')
     expect(page).to have_content 'success'
   end
-  # xit "can destroy an event" do
-  #   visit destroy_event_path(@event)
-  #   #make sure it is destroyed
-  # end
   it "can view the attendance list for an event" do
     visit event_path(@event)
     expect(page).to have_content 'Attendance List'
