@@ -3,27 +3,40 @@ require 'spec_helper'
 describe "EventManagement", :type => :feature do
   before :each do
     @event = create(:event)
-    sign_in(@event.users.first.netid)
+    @user = @event.users.first
+    sign_in(@user.netid)
   end
 
   it "can create a new event" do
     visit new_event_path
-    #fill out the form
-    #submit
-    #make sure we have a new event made
+    fill_out_event(@user)
+    click_on('Create Event')
+    expect(page).to have_content 'success'
   end
-  xit "can view the attendance list for an event" do
-    visit event_path(@event)
-    #make sure it is the event page
-  end
-  xit "can edit an existing event" do
+  it "can edit an existing event" do
     visit edit_event_path(@event)
-    #form
-    #submit
-    #make sure it is edited
+    fill_out_event_alternative_content(@user)
+    click_on('Update Event')
+    expect(page).to have_content 'success'
   end
-  xit "can destroy an event" do
-    visit destroy_event_path(@event)
-    #make sure it is destroyed
+  # xit "can destroy an event" do
+  #   visit destroy_event_path(@event)
+  #   #make sure it is destroyed
+  # end
+  it "can view the attendance list for an event" do
+    visit event_path(@event)
+    expect(page).to have_content 'Attendance List'
   end
+end
+
+def fill_out_event(user)
+  fill_in 'event_title', with: "Serious Session"
+  fill_in 'event_description', with: "Please swipe your card just once or else."
+  select "Casey Watts csw3", from: "event[user_ids][]"
+end
+
+def fill_out_event_alternative_content(user)
+  fill_in 'event_title', with: "Silly Session"
+  fill_in 'event_description', with: "Lalalala"
+  select "Casey Watts csw3", from: "event[user_ids][]"
 end
