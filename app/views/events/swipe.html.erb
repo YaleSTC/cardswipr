@@ -5,10 +5,10 @@
   <br>
   <div class="container text-center">
     <%= form_tag event_lookup_path(@event), class: "input-lg" do %>
-      <div class="spacedout">
-        <strong class="spacedout">Card Swipe</strong> or <strong class="spacedout">NetID</strong> or <strong class="spacedout">Yale Email</strong><br>
-      </div>
-      <div class="row row-centered">
+    <div class="spacedout">
+      <strong class="spacedout">Card Swipe</strong> or <strong class="spacedout">NetID</strong> or <strong class="spacedout">Yale Email</strong><br>
+    </div>
+    <div class="row row-centered">
       <div class="col-md-4 col-centered">
         <div class="input-group">
           <%= text_field_tag(:query, nil, :autocomplete => 'off', class: 'form-control') %>
@@ -17,11 +17,12 @@
           </span>
         </div>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <div class="row">
-    <p class="pull-right">
-      <span class="badge"><%= @count%></span> recorded.
-    </p>
+    <div class="row">
+      <p class="pull-right">
+        <span class="badge"><%= @count%></span> recorded.
+      </p>
+    </div>
   </div>
