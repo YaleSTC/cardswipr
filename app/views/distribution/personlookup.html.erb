@@ -12,14 +12,12 @@
             <strong class="spacedout">Card Swipe</strong> or <strong class="spacedout">NetID</strong> or <strong class="spacedout">Yale Email</strong><br>
           </div>
           <br>
-          <div class="row row-centered">
-            <div class="col-md-6 col-centered">
-              <div class="input-group">
-                <%= text_field_tag(:query, nil, :autocomplete => 'off', class: 'form-control') %>
-                <span class="input-group-btn">
-                  <%= submit_tag "Submit", :class => "btn btn-default" %>
-                </span>
-              </div>
+          <div class="col-md-6 col-centered">
+            <div class="input-group">
+              <%= text_field_tag(:query, nil, :autocomplete => 'off', class: 'form-control') %>
+              <span class="input-group-btn">
+                <%= submit_tag "Submit", :class => "btn btn-default" %>
+              </span>
             </div>
           </div>
         <% end %>
