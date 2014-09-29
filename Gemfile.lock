@@ -101,6 +101,9 @@ GEM
       ruby_parser (~> 3.0)
       sexp_processor (~> 4.0)
     formatador (0.2.5)
+    fuubar (2.0.0.rc1)
+      rspec (~> 3.0.rc1)
+      ruby-progressbar (~> 1.4)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -305,6 +308,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails
+  fuubar
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
