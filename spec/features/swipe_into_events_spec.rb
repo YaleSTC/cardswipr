@@ -19,4 +19,7 @@ describe "SwipeIntoEvents", :type => :feature do
     click_on('Submit')
     expect(page).to have_content 'success'
   end
+
+  xit "someone swiped into the event is in the attendance list" do
+  end
 end
