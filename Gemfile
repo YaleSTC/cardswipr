@@ -64,10 +64,19 @@ group :development do
   gem 'pry'
   # gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'guard-rspec', require: false
 end
 
-# Pronto
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'fuubar'
+end
+
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'pronto'
   gem 'pronto-rubocop'
   gem 'pronto-flay'
