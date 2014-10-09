@@ -47,7 +47,7 @@
               <span class="glyphicon glyphicon-pencil"></span> Edit Event
             <% end %>
           </td>
-          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+          <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' }, :class => "btn btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>
