@@ -10,17 +10,17 @@
 
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
-    <% if can? :read, :personlookup %>
-      <li>
-        <%= link_to distribution_personlookup_path do %>
-          <span class="glyphicon glyphicon-search"></span> Person Lookup
-        <% end %>
-      </li>
-    <% end %>
     <% if can? :read, Event %>
       <li>
         <%= link_to events_path do %>
           <span class="glyphicon glyphicon-list"></span> Events
+        <% end %>
+      </li>
+    <% end %>
+    <% if can? :read, :personlookup %>
+      <li>
+        <%= link_to distribution_personlookup_path do %>
+          <span class="glyphicon glyphicon-search"></span> Person Lookup
         <% end %>
       </li>
     <% end %>
