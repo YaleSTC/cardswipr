@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
   <li><%= link_to "Events", events_path %></li>
-  <li><%= @event.title %></li>
+  <li><%= link_to @event.title, event_attendance_entries_path(@event) %></li>
   <li>Import</li>
 </ol>
 <h1>Import Event Attendees</h1>
