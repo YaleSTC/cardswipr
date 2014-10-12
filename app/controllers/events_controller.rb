@@ -126,25 +126,6 @@ class EventsController < ApplicationController
         flash[:error] << "#{potential_import} could not be imported\n"
       end
     end
-  #   # if UPI can't be found, a RuntimeError is thrown and is caught below
-  #   upi = YaleIDLookup.determine_upi(params[:query])
-
-  #   # automatically attempts LDAP as long as there is a UPI present
-  #   attendanceentry = AttendanceEntry.new(upi: upi, event: @event, checked_in: false)
-  #   if attendanceentry.save
-  #     flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
-  #     @count = @event.attendance_entries.count
-  #   else
-  #     flash[:error] = ""
-  #     attendanceentry.errors.each do |attribute, message|
-  #         flash[:error] << message << "\n"
-  #     end
-  #   end
-
-  # rescue RuntimeError => e
-  #   flash[:error] ||= ""
-  #   flash[:error] << e.message << "\n"
-  # ensure
     redirect_to event_path(@event)
   end
 
@@ -157,11 +138,6 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_event
-    #   @event = Event.find(params[:id])
-    # end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :description, :user_ids => [])
