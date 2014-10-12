@@ -76,9 +76,9 @@ class EventsController < ApplicationController
   end
 
 
-  # POST /events/1/lookup
-  def lookup
-    # authorize! :lookup, :cardswipe
+  # POST /events/1/swipe_lookup
+  def swipe_lookup
+    # authorize! :swipe_lookup, :cardswipe
     @event = Event.find(params[:event_id])
     authorize! :update, @event
     upi = YaleIDLookup.determine_upi(params[:query])
