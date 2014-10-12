@@ -6,7 +6,7 @@
 
 <%= simple_form_for @event, url: url_for(:action => 'import_lookup', :controller => 'events'), method: :post do |f| %>
   <div class="col-md-6">
-    <%= f.input :import_list, as: :text, label: "Event Attendees To Import", hint: "You can include a list of unique identifiers (netid, yale email, upi, card-swipe number, or prox number). Each entry should be on a new line (press enter between each one). This will add attendees to your list, anyone already added will not be modified." %>
+    <%= f.input :import_list, as: :text, label: "Event Attendees To Import", hint: "You can include a list of unique identifiers (netid, yale email, upi, card-swipe number, or prox number). Each entry should be on a new line (press enter between each one). This will add attendees to your list, anyone already added will not be modified. Everyone uploaded will not be checked in yet, until they swipe their card." %>
     <%= f.button :submit %>
   </div>
 <% end %>
