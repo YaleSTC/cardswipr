@@ -6,6 +6,7 @@ has_and_belongs_to_many :users
 validates :users, presence: true
 has_many :attendance_entries
 
+attr_accessor :import_list
 
   def last_edited
     if attendance_entries.blank?

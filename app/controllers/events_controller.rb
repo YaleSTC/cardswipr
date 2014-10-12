@@ -111,9 +111,9 @@ class EventsController < ApplicationController
 
 
   # # POST /events/1/import
-  # def import_lookup
-  #   @event = Event.find(params[:event_id])
-  #   authorize! :update, @event
+  def import_lookup
+    @event = Event.find(params[:event_id])
+    authorize! :update, @event
 
   #   # if UPI can't be found, a RuntimeError is thrown and is caught below
   #   upi = YaleIDLookup.determine_upi(params[:query])
@@ -134,8 +134,8 @@ class EventsController < ApplicationController
   #   flash[:error] ||= ""
   #   flash[:error] << e.message << "\n"
   # ensure
-  #   redirect_to event_swipe_path(@event)
-  # end
+    redirect_to event_path(@event)
+  end
 
 
   def wipe_attendance
