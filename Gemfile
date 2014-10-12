@@ -60,6 +60,9 @@ gem 'service_now'
 gem 'net-ldap'
 gem 'yaleldap'
 
+# httparty for connecting to the Yale API
+gem 'httparty'
+
 group :development do
   gem 'pry'
   # gem 'better_errors'

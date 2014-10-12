@@ -116,6 +116,9 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     hitimes (1.2.2)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     jbuilder (2.2.2)
       activesupport (>= 3.0.0, < 5)
@@ -139,6 +142,7 @@ GEM
     mini_portile (0.6.0)
     minitest (4.7.5)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.16)
     net-ldap (0.8.0)
@@ -312,6 +316,7 @@ DEPENDENCIES
   factory_girl_rails
   fuubar
   guard-rspec
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   launchy
