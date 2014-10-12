@@ -26,9 +26,10 @@ module YaleIDLookup
   end
 
   def self.determine_upi(query)
-    if id_mag_number = query.match(/\d{10}/)
-      id_mag_number = id_mag_number[0] # first (only) match
-      upi = YaleCardSwipe.lookup(id_mag_number)
+    # id_number could be magstripe or prox, both are 10 digit
+    if id_number = query.match(/\d{10}/)
+      id_number = id_number[0] # first (only) match
+      upi = YaleCardSwipe.lookup(id_number)
     elsif query.match(/.*@yale.edu/)
       upi = YaleLDAP.lookup(email: query)[:upi]
     else
