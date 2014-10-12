@@ -89,7 +89,7 @@ class EventsController < ApplicationController
     end
 
     # automatically attempts LDAP as long as there is a UPI present
-    attendanceentry = AttendanceEntry.new(upi: upi, event: @event)
+    attendanceentry = AttendanceEntry.new(upi: upi, event: @event, checked_in: true)
 
     if attendanceentry.save
       flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
