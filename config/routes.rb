@@ -4,6 +4,8 @@ UsbDistribution::Application.routes.draw do
     resources :attendance_entries, :path => :attendance, shallow: true
     get 'swipe'
     post 'swipe_lookup'
+    get 'import'
+    post 'import_lookup'
     delete 'wipe_attendance'
   end
 

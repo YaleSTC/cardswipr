@@ -78,19 +78,18 @@ class EventsController < ApplicationController
 
   # POST /events/1/swipe_lookup
   def swipe_lookup
-    # authorize! :swipe_lookup, :cardswipe
     @event = Event.find(params[:event_id])
     authorize! :update, @event
-    upi = YaleIDLookup.determine_upi(params[:query])
 
+    # attempt to get UPI from input
+    upi = YaleIDLookup.determine_upi(params[:query])
     if upi.blank? #or, if it raises an "I cannot find someone" error would be better?
       flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
       redirect_to event_swipe_path(@event)
     end
 
-    # automatically attempts LDAP as long as there is a UPI present
+    # attempts LDAP as long as there is a UPI present
     attendanceentry = AttendanceEntry.new(upi: upi, event: @event, checked_in: true)
-
     if attendanceentry.save
       flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
       @count = @event.attendance_entries.count
@@ -100,6 +99,45 @@ class EventsController < ApplicationController
           flash[:error] << message << "\n"
       end
     end
+
+    redirect_to event_swipe_path(@event)
+  end
+
+  # GET /events/1/import
+  def import
+    @event = Event.find(params[:event_id])
+    authorize! :update, @event
+  end
+
+
+  # POST /events/1/import_lookup
+  def import_lookup
+    # authorize! :import_lookup, :cardswipe
+    @event = Event.find(params[:event_id])
+    authorize! :update, @event
+
+    # FOR EACH USER UPLOADED PUT THEM IN THE LIST
+    # FOR EACH PROBLEM RECORD THAT SOMEHOW?
+
+    # upi = YaleIDLookup.determine_upi(params[:query])
+
+    # if upi.blank? #or, if it raises an "I cannot find someone" error would be better?
+    #   flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
+    #   redirect_to event_swipe_path(@event)
+    # end
+
+    # # automatically attempts LDAP as long as there is a UPI present
+    # attendanceentry = AttendanceEntry.new(upi: upi, event: @event, checked_in: true)
+
+    # if attendanceentry.save
+    #   flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
+    #   @count = @event.attendance_entries.count
+    # else
+    #   flash[:error] = ""
+    #   attendanceentry.errors.each do |attribute, message|
+    #       flash[:error] << message << "\n"
+    #   end
+    # end
 
     # if person.recorded?
     #   flash[:error] = "#{person.name} has already been recorded for this event."
@@ -113,8 +151,9 @@ class EventsController < ApplicationController
     #   flash[:error] = "Unexpected error while trying to record this person."
     # end
 
-    redirect_to event_swipe_path(@event)
+    redirect_to event_path(@event)
   end
+
 
   def wipe_attendance
     # @event = Event.find(params[:event_id])
