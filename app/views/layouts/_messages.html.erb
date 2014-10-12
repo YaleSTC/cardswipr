@@ -1,8 +1,8 @@
 <% flash.each do |name, msg| %>
-  <% if msg.is_a?(String) %>
+  <% if msg.is_a?(String) && !msg.empty? %>
     <div class="alert text-center alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %> alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%= simple_format msg, :id => "flash_#{name}" %>
     </div>
   <% end %>
 <% end %>
