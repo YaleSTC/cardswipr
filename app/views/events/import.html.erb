@@ -1,0 +1,12 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Events", events_path %></li>
+  <li>Import</li>
+</ol>
+<h1>Import Event Attendees</h1>
+
+<%= simple_form_for @event, url: url_for(:action => 'import_lookup', :controller => 'events'), method: :post do |f| %>
+  <div class="col-md-6">
+    <%= f.input :import_list, as: :text, label: "Event Attendees To Import", hint: "You can include a list of unique identifiers (netid, yale email, upi, card-swipe number, or prox number). Each entry should be on a new line (press enter between each one). This will add attendees to your list, anyone already added will not be modified." %>
+    <%= f.button :submit %>
+  </div>
+<% end %>
