@@ -81,14 +81,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize! :update, @event
 
-    # attempt to get UPI from input
+    # if UPI can't be found, a RuntimeError is thrown and is caught below
     upi = YaleIDLookup.determine_upi(params[:query])
-    if upi.blank? #or, if it raises an "I cannot find someone" error would be better?
-      flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
-      redirect_to event_swipe_path(@event)
-    end
 
-    # attempts LDAP as long as there is a UPI present
+    # automatically attempts LDAP as long as there is a UPI present
     attendanceentry = AttendanceEntry.new(upi: upi, event: @event, checked_in: true)
     if attendanceentry.save
       flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
@@ -100,6 +96,10 @@ class EventsController < ApplicationController
       end
     end
 
+  rescue RuntimeError => e
+    flash[:error] ||= ""
+    flash[:error] << e.message << "\n"
+  ensure
     redirect_to event_swipe_path(@event)
   end
 
@@ -110,49 +110,32 @@ class EventsController < ApplicationController
   end
 
 
-  # POST /events/1/import_lookup
-  def import_lookup
-    # authorize! :import_lookup, :cardswipe
-    @event = Event.find(params[:event_id])
-    authorize! :update, @event
+  # # POST /events/1/import
+  # def import_lookup
+  #   @event = Event.find(params[:event_id])
+  #   authorize! :update, @event
 
-    # FOR EACH USER UPLOADED PUT THEM IN THE LIST
-    # FOR EACH PROBLEM RECORD THAT SOMEHOW?
+  #   # if UPI can't be found, a RuntimeError is thrown and is caught below
+  #   upi = YaleIDLookup.determine_upi(params[:query])
 
-    # upi = YaleIDLookup.determine_upi(params[:query])
+  #   # automatically attempts LDAP as long as there is a UPI present
+  #   attendanceentry = AttendanceEntry.new(upi: upi, event: @event, checked_in: false)
+  #   if attendanceentry.save
+  #     flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
+  #     @count = @event.attendance_entries.count
+  #   else
+  #     flash[:error] = ""
+  #     attendanceentry.errors.each do |attribute, message|
+  #         flash[:error] << message << "\n"
+  #     end
+  #   end
 
-    # if upi.blank? #or, if it raises an "I cannot find someone" error would be better?
-    #   flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
-    #   redirect_to event_swipe_path(@event)
-    # end
-
-    # # automatically attempts LDAP as long as there is a UPI present
-    # attendanceentry = AttendanceEntry.new(upi: upi, event: @event, checked_in: true)
-
-    # if attendanceentry.save
-    #   flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
-    #   @count = @event.attendance_entries.count
-    # else
-    #   flash[:error] = ""
-    #   attendanceentry.errors.each do |attribute, message|
-    #       flash[:error] << message << "\n"
-    #   end
-    # end
-
-    # if person.recorded?
-    #   flash[:error] = "#{person.name} has already been recorded for this event."
-    #   redirect_to :distribution_index and return
-    # end
-
-    # if person.record
-    #   flash[:notice] = "#{person.name} has been successfully recorded for this event."
-    #   @count = Student.count
-    # else
-    #   flash[:error] = "Unexpected error while trying to record this person."
-    # end
-
-    redirect_to event_path(@event)
-  end
+  # rescue RuntimeError => e
+  #   flash[:error] ||= ""
+  #   flash[:error] << e.message << "\n"
+  # ensure
+  #   redirect_to event_swipe_path(@event)
+  # end
 
 
   def wipe_attendance
