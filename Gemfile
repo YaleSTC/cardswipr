@@ -50,8 +50,6 @@ gem 'simple_form'
 # Database Gems
 gem 'mysql2'
 gem 'sqlite3'
-gem 'ruby-oci8'
-gem 'activerecord-oracle_enhanced-adapter', git: 'https://github.com/rsim/oracle-enhanced.git', branch: 'rails4'
 
 # Service Now Gem
 gem 'service_now'
