@@ -114,7 +114,18 @@ class EventsController < ApplicationController
   def import_lookup
     @event = Event.find(params[:event_id])
     authorize! :update, @event
-
+    import_list = params['event']['import_list'].chomp.split("\r\n")
+    flash[:error] ||= ""
+    flash[:notice] ||= ""
+    import_list.each do |potential_import|
+      begin
+        upi = YaleIDLookup.determine_upi(potential_import)
+        AttendanceEntry.create(upi: upi, event: @event, checked_in: false)
+        flash[:notice] << "#{potential_import} was successfully imported\n"
+      rescue Exception => e
+        flash[:error] << "#{potential_import} could not be imported\n"
+      end
+    end
   #   # if UPI can't be found, a RuntimeError is thrown and is caught below
   #   upi = YaleIDLookup.determine_upi(params[:query])
 
