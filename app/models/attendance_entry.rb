@@ -48,7 +48,11 @@ after_create :get_ldap_attributes
   end
 
   def swipe_time
-    created_at.localtime.strftime("%a %b %d, %I:%M %p")
+    if checked_in
+      updated_at.localtime.strftime("%a %b %d, %I:%M %p")
+    else
+      "not checked in"
+    end
   end
 
 end

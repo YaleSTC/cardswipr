@@ -68,4 +68,19 @@
   <%= @attendance_entry.address %>
 </p>
 
+<p>
+  <strong>Address:</strong>
+  <%= @attendance_entry.address %>
+</p>
+
+<p>
+  <strong>Checked In:</strong>
+  <%= @attendance_entry.checked_in %>
+</p>
+
+<p>
+  <strong>Check In Time:</strong>
+  <%= @attendance_entry.swipe_time %>
+</p>
+
 <%= link_to 'Edit', edit_attendance_entry_path(@attendance_entry), class: "btn btn-default" %>
