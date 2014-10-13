@@ -16,6 +16,7 @@
     <%= f.input :class_year %>
     <%= f.input :telephone %>
     <%= f.input :address, as: :text, html: {height: 3} %>
+    <%= f.input :checked_in, as: :select %>
     <%= f.hidden_field :event_id, value: @attendance_entry.event.id %>
   </div>
 
