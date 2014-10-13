@@ -120,11 +120,17 @@ class EventsController < ApplicationController
     import_list.each do |potential_import|
       begin
         upi = YaleIDLookup.determine_upi(potential_import)
-        AttendanceEntry.create(upi: upi, event: @event, checked_in: false)
+        AttendanceEntry.create!(upi: upi, event: @event, checked_in: false)
         flash[:notice] << "#{potential_import} was successfully imported\n"
       rescue Exception => e
-        flash[:error] << "#{potential_import} could not be imported\n"
+        flash[:error] << "#{potential_import} was not imported\n"
       end
+    end
+    unless flash[:error].empty?
+      flash[:error] << "Maybe they could not be found, or maybe they were already imported."
+    end
+    unless flash[:notice].empty?
+      flash[:notice] << "They aren't checked in yet, but they are recorded in the list."
     end
     redirect_to event_path(@event)
   end
