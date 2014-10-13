@@ -72,6 +72,6 @@ class AttendanceEntriesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def attendance_entry_params
-      params.require(:attendance_entry).permit(:first_name, :nickname, :last_name, :upi, :netid, :email, :college_name, :college_abbreviation, :class_year, :school, :telephone, :address, :event_id)
+      params.require(:attendance_entry).permit(:first_name, :nickname, :last_name, :upi, :netid, :email, :college_name, :college_abbreviation, :class_year, :school, :telephone, :address, :checked_in, :event_id)
     end
 end
