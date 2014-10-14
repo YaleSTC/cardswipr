@@ -11,27 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927025624) do
+ActiveRecord::Schema.define(version: 20141012204208) do
 
-# Could not dump table "attendance_entries" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007f9dca2e5c88>
+  create_table "attendance_entries", force: true do |t|
+    t.string   "first_name"
+    t.string   "nickname"
+    t.string   "last_name"
+    t.integer  "upi"
+    t.string   "netid"
+    t.string   "email"
+    t.string   "college_name"
+    t.string   "college_abbreviation"
+    t.integer  "class_year"
+    t.string   "school"
+    t.string   "telephone"
+    t.string   "address"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "checked_in",           default: false
+  end
 
-# Could not dump table "events" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007f9dca2e5c88>
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
-# Could not dump table "events_users" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007f9dca2e5c88>
+  create_table "events_users", force: true do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id",  null: false
+  end
 
-# Could not dump table "people" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007f9dca2e5c88>
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.string   "cas_ticket"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
-# Could not dump table "roles" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007f9dca2e5c88>
+  add_index "sessions", ["cas_ticket"], name: "index_sessions_on_cas_ticket"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
 
-# Could not dump table "settings" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007f9dca2e5c88>
-
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `column_spec_with_oracle_enhanced' for #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007f9dca2e5c88>
+  create_table "users", force: true do |t|
+    t.string   "first_name", default: ""
+    t.string   "last_name",  default: ""
+    t.string   "netid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "nickname"
+    t.string   "email"
+  end
 
 end
