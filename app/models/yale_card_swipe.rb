@@ -2,7 +2,9 @@
 # and return the UPI
 module YaleCardSwipe
   require 'httparty'
-  BASE_URI = 'https://gw-dev.its.yale.edu/soa-gateway/idcardlookup/getUpi?type=json&badgeId='
+  YALE_API_KEY = Rails.application.secrets.yale_api_portal
+  BASE_URI = 'https://gw-tst.its.yale.edu/soa-gateway/idcardlookup/getUpi?type=json&apikey=' + YALE_API_KEY + '&badgeId='
+
 
   # #lookup will convert a Yale ID's magnetic magstripe card-swipe number or prox card number
   # to UPI.

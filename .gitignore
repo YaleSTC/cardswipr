@@ -23,3 +23,4 @@
 
 # ignore secret token
 /config/initializers/secret_token.rb
+/config/secrets.yml
