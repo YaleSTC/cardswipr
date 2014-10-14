@@ -12,7 +12,7 @@ attr_accessor :import_list
     if attendance_entries.blank?
       return ""
     else
-      return attendance_entries.last.swipe_time
+      return attendance_entries.last.check_in_time
     end
   end
 
