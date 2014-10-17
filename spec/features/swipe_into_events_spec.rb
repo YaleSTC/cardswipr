@@ -9,8 +9,9 @@ describe 'SwipeIntoEvents', type: :feature do
 
   it 'can navigate to the swipe page' do
     visit event_swipe_path(@event)
-    # brittle but only unique identifier so far
-    expect(page).to have_content 'Card Swipe or NetID or Yale Email'
+    # brittle but only unique identifier so far.
+    # We should add a tag with an id to the page?
+    expect(page).to have_content 'Card Swipe or Card Tap or NetID or Yale Email'
   end
 
   it 'can swipe someone into the event' do
