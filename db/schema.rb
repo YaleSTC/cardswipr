@@ -44,21 +44,9 @@ ActiveRecord::Schema.define(version: 20141012204208) do
     t.integer "user_id",  null: false
   end
 
-  create_table "sessions", force: true do |t|
-    t.string   "session_id", null: false
-    t.string   "cas_ticket"
-    t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sessions", ["cas_ticket"], name: "index_sessions_on_cas_ticket"
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
-
   create_table "users", force: true do |t|
-    t.string   "first_name", default: ""
-    t.string   "last_name",  default: ""
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "netid"
     t.datetime "created_at"
     t.datetime "updated_at"
