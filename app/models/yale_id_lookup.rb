@@ -36,5 +36,7 @@ module YaleIDLookup
       upi = YaleLDAP.lookup(netid: query)[:upi]
     end
     upi
+  rescue
+    raise "UPI not found for " + query.to_s
   end
 end

@@ -81,16 +81,12 @@ class EventsController < ApplicationController
     # authorize! :lookup, :cardswipe
     @event = Event.find(params[:event_id])
     authorize! :update, @event
-    upi = YaleIDLookup.determine_upi(params[:query])
 
-    if upi.blank? #or, if it raises an "I cannot find someone" error would be better?
-      flash.now[:error] = "I'm sorry, Dave, I didn't find anyone"
-      redirect_to event_swipe_path(@event)
-    end
+    # if UPI can't be found, a RuntimeError is thrown and is caught below
+    upi = YaleIDLookup.determine_upi(params[:query])
 
     # automatically attempts LDAP as long as there is a UPI present
     attendanceentry = AttendanceEntry.new(upi: upi, event: @event)
-
     if attendanceentry.save
       flash[:notice] = "#{attendanceentry.name} has been successfully recorded for this event."
       @count = @event.attendance_entries.count
@@ -101,18 +97,10 @@ class EventsController < ApplicationController
       end
     end
 
-    # if person.recorded?
-    #   flash[:error] = "#{person.name} has already been recorded for this event."
-    #   redirect_to :distribution_index and return
-    # end
-
-    # if person.record
-    #   flash[:notice] = "#{person.name} has been successfully recorded for this event."
-    #   @count = Student.count
-    # else
-    #   flash[:error] = "Unexpected error while trying to record this person."
-    # end
-
+  rescue RuntimeError => e
+    flash[:error] ||= ""
+    flash[:error] << e.message << "\n"
+  ensure
     redirect_to event_swipe_path(@event)
   end
 
