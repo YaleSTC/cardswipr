@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   check_authorization
-  skip_authorization_check only: [:logout]
+  skip_authorization_check only: [:logout, :index]
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -21,6 +21,9 @@ class ApplicationController < ActionController::Base
 
   def logout
     CASClient::Frameworks::Rails::Filter.logout(self)
+  end
+
+  def index
   end
 
 end

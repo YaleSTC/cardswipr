@@ -61,6 +61,11 @@ gem 'yaleldap'
 # httparty for connecting to the Yale API
 gem 'httparty'
 
+# Angular
+gem 'bower-rails'
+gem 'angular-rails-templates'
+
+
 group :development do
   gem 'pry'
   # gem 'better_errors'
@@ -85,3 +90,4 @@ group :development, :test do
   gem 'pronto-rails_best_practices'
   # gem 'pronto-reek'
 end
+

@@ -1,21 +1,26 @@
 UsbDistribution::Application.routes.draw do
 
-  resources :events do
-    resources :attendance_entries, :path => :attendance, shallow: true
-    get 'swipe'
-    post 'lookup'
-    delete 'wipe_attendance'
-  end
+  root 'application#index'
+  get '*path' => 'application#index'
 
-  resources :users
+  # resources :events do
+  #   resources :attendance_entries, :path => :attendance, shallow: true
+  #   get 'swipe'
+  #   post 'lookup'
+  #   delete 'wipe_attendance'
+  # end
 
-  get '/distribution/personlookup', as: :distribution_personlookup
+  # resources :users
 
-  root to: 'distribution#home'
+  # get '/distribution/personlookup', as: :distribution_personlookup
 
-  get '/unauthorized', :to => redirect('/unauthorized.html')
-  get '/status', :to => redirect('/status.html')
-  get '/logout', :to => "application#logout"
+  # root to: 'distribution#home'
+
+  # get '/unauthorized', :to => redirect('/unauthorized.html')
+  # get '/status', :to => redirect('/status.html')
+  # get '/logout', :to => "application#logout"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
