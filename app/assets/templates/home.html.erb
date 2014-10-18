@@ -1,6 +1,11 @@
 <div class="container">
     <h1>The Home View!</h1>
+    <h3>Present</h3>
     <ul>
-        <li ng-repeat="thing in things">{{thing}}</li>
+        <li ng-repeat="person in people" ng-click='markAbsent(person)' ng-show='person.present == true'>{{person.name}}</li>
+    </ul>
+    <h3>Absent</h3>
+    <ul>
+        <li ng-repeat="person in people" ng-click='markPresent(person)' ng-show='person.present == false'>{{person.name}}</li>
     </ul>
 </div>
