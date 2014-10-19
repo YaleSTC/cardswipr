@@ -65,6 +65,9 @@ gem 'httparty'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 
+# for the api functionality
+gem 'kaminari' # adds pagination to ActiveModels
+
 
 group :development do
   gem 'pry'

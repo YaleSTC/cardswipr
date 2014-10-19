@@ -1,5 +1,9 @@
 UsbDistribution::Application.routes.draw do
 
+  namespace :api do
+    resources :events
+  end
+
   root 'application#index'
   get '*path' => 'application#index'
 
