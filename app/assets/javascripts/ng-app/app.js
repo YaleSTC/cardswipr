@@ -2,7 +2,8 @@ angular
     .module('myApp', [
         'ngAnimate',
         'ui.router',
-        'templates'
+        'templates',
+        'restangular'
     ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -21,4 +22,8 @@ angular
 
     // enable HTML5 Mode for SEO
     $locationProvider.html5Mode(false);
+    })
+    .config(function(RestangularProvider) {
+        RestangularProvider.setBaseUrl('/api');
+        RestangularProvider.setRequestSuffix('.json');
     });

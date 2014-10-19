@@ -4,26 +4,26 @@ UsbDistribution::Application.routes.draw do
     resources :events
   end
 
+  resources :events do
+    resources :attendance_entries, :path => :attendance, shallow: true
+    get 'swipe'
+    post 'lookup'
+    delete 'wipe_attendance'
+  end
+
+  resources :users
+
+  get '/distribution/personlookup', as: :distribution_personlookup
+
+  get '/home', to: 'distribution#home'
+
+  get '/unauthorized', :to => redirect('/unauthorized.html')
+  get '/status', :to => redirect('/status.html')
+  get '/logout', :to => "application#logout"
+
+
   root 'application#index'
   get '*path' => 'application#index'
-
-  # resources :events do
-  #   resources :attendance_entries, :path => :attendance, shallow: true
-  #   get 'swipe'
-  #   post 'lookup'
-  #   delete 'wipe_attendance'
-  # end
-
-  # resources :users
-
-  # get '/distribution/personlookup', as: :distribution_personlookup
-
-  # root to: 'distribution#home'
-
-  # get '/unauthorized', :to => redirect('/unauthorized.html')
-  # get '/status', :to => redirect('/status.html')
-  # get '/logout', :to => "application#logout"
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

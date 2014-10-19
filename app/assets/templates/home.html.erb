@@ -12,4 +12,10 @@
         <li ng-repeat="person in people" ng-click='markPresent(person)' ng-show='person.present == false'>{{person.name}}</li>
     </ul>
     </div>
+    <div class="col-md-3">
+    <h3>Events</h3>
+    <ul>
+        <li ng-repeat="event in allEvents" >{{event.title}}</li>
+    </ul>
+    </div>
 </div>

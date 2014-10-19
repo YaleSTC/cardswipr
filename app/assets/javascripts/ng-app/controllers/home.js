@@ -1,5 +1,10 @@
 angular.module('myApp')
-    .controller('HomeCtrl', function ($scope) {
+    .controller('HomeCtrl', function ($scope, Restangular) {
+      // var baseEvents = Restangular.all('events');
+      // baseEvents.getList().then(function(events) {
+      //   $scope.allEvents = events;
+      // });
+      $scope.allEvents = [{name:"eventnamelol"}]
       $scope.people = [
             {
                 id: 0,
