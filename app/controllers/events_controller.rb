@@ -105,7 +105,7 @@ class EventsController < ApplicationController
   end
 
   def wipe_attendance
-    # @event = Event.find(params[:event_id])
+    @event = Event.find(params[:event_id])
     @event.attendance_entries.destroy_all
     flash[:notice] = "All attendance entries for this event have been wiped."
     redirect_to event_attendance_entries_path(@event)
