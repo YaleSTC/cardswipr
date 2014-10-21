@@ -15,7 +15,7 @@ after_create :get_ldap_attributes
   def get_ldap_attributes
     attributes = YaleLDAP.lookup(upi: upi.to_s)
       .slice(:first_name, :nickname, :last_name, :upi, :netid,
-        :email, :college_name, :college_abbreviation,
+        :email, :organization, :curriculum, :college_name, :college_abbreviation,
         :class_year, :school, :telephone, :address)
     self.update_attributes(attributes)
   end
