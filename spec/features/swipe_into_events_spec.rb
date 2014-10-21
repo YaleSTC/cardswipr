@@ -35,6 +35,7 @@ describe 'SwipeIntoEvents', type: :feature do
   context 'using prox card number' do
     it 'can swipe someone into the event' do
       visit event_swipe_path(@event)
+      # a dummy prox card number that will return a UPI but isn't an active card
       fill_in 'query', with: '0099012345'
       click_on('Submit')
       expect(page).to have_content 'success'
@@ -44,6 +45,7 @@ describe 'SwipeIntoEvents', type: :feature do
   context 'using magstripe number' do
     it 'can swipe someone into the event' do
       visit event_swipe_path(@event)
+      # a dummy magstripe number that will return a UPI but isn't an active card
       fill_in 'query', with: '9900012345'
       click_on('Submit')
       expect(page).to have_content 'success'
