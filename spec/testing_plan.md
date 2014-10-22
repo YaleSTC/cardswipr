@@ -2,13 +2,6 @@
   - Person Lookup - swipe card, page is rendered with two functioning links
   - Event Swipe - swipe card, person shows up in full list page (both html and csv)
 
-## Model Tests
-- YaleIDLookup#lookup
-  - swipe card, someone is searched, person is returned - `don't want to hard-code in someone's card number, let's not test this formally?``
-  - type netid, someone is searched, person is returned - `done!`
-  - prox card, someone is searched, person is returned
-  post-search action (not yet, pending test) - `don't want to hard-code in someone's card number, let's not test this formally?``
-
 ## Controller test?
 - #swipe
   - person is returned, person is added to the event list (backend)
