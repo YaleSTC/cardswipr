@@ -14,12 +14,8 @@
           <br>
           <div class="row row-centered">
             <div class="col-md-6 col-centered">
-              <div class="input-group">
-                <%= text_field_tag(:query, nil, :autocomplete => 'off', class: 'form-control') %>
-                <span class="input-group-btn">
-                  <%= submit_tag "Submit", :class => "btn btn-default" %>
-                </span>
-              </div>
+              <%= text_field_tag(:query, nil, :autocomplete => 'off', class: 'form-control') %>
+              <%= submit_tag "Submit", :class => "btn btn-default pull-right" %>
             </div>
           </div>
         <% end %>
