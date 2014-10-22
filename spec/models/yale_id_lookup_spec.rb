@@ -31,4 +31,5 @@ RSpec.describe YaleIDLookup, type: :model do
       expect(lookup_result[:first_name]).to eq 'Casey'
     end
   end
+
 end
