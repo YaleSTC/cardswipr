@@ -3,75 +3,81 @@
 </ol>
 
 <div class="row">
-  <h1>Listing Events</h1>
-  <div class="btn-group">
-    <%= link_to new_event_path, :class => "btn btn-success" do %>
-      <span class="glyphicon glyphicon-plus"></span> New Event
-    <% end %>
+  <div class="col-md-12">
+    <h1>Listing Events</h1>
+    <div class="btn-group">
+      <%= link_to new_event_path, :class => "btn btn-success" do %>
+        <span class="glyphicon glyphicon-plus"></span> New Event
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="row">
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Count</th>
-          <th>Last Swipe-In</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @events.each do |event| %>
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td>
-              <%= link_to event_swipe_path(event), :class => "btn btn-primary" do %>
-                <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
-              <% end %>
-            </td>
-            <td><%= event.title %></td>
-            <td><%= event.description %></td>
-            <td><%= event.attendance_entries.count %></td>
-            <td><%= event.last_edited %></td>
-            <td>
-              <%= link_to event_attendance_entries_path(event), :class => "btn btn-default" do %>
-                <span class="glyphicon glyphicon-list-alt"></span> Attendance
-              <% end %>
-            </td>
-            <td>
-              <%= link_to edit_event_path(event), :class => "btn btn-default" do %>
-                <span class="glyphicon glyphicon-pencil"></span> Edit Event
-              <% end %>
-            </td>
-            <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' }, :class => "btn btn-danger" %></td>
+            <th></th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Count</th>
+            <th>Last Swipe-In</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td>
+                <%= link_to event_swipe_path(event), :class => "btn btn-primary" do %>
+                  <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
+                <% end %>
+              </td>
+              <td><%= event.title %></td>
+              <td><%= event.description %></td>
+              <td><%= event.attendance_entries.count %></td>
+              <td><%= event.last_edited %></td>
+              <td>
+                <%= link_to event_attendance_entries_path(event), :class => "btn btn-default" do %>
+                  <span class="glyphicon glyphicon-list-alt"></span> Attendance
+                <% end %>
+              </td>
+              <td>
+                <%= link_to edit_event_path(event), :class => "btn btn-default" do %>
+                  <span class="glyphicon glyphicon-pencil"></span> Edit Event
+                <% end %>
+              </td>
+              <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' }, :class => "btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-    Instructions
-    </div>
-    <div class="panel-body">
-      For detailed instructions on how to use CardSwipr Events, please see our guide. These instructions explain:
-      <ul>
-        <li>what input we accept</li>
-        <li>what devices to use with this software</li>
-        <li>what output the software gives</li>
-        <li>how to use the swipe-in screen fullscreen mode </li>
-      </ul>
-    </div>
-    <div class="panel-footer">
-      <a href="https://github.com/YaleSTC/cardswipr" class="btn btn-default">CardSwipr Guide</a>
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      Instructions
+      </div>
+      <div class="panel-body">
+        For detailed instructions on how to use CardSwipr Events, please see our guide. These instructions explain:
+        <ul>
+          <li>what input we accept</li>
+          <li>what devices to use with this software</li>
+          <li>what output the software gives</li>
+          <li>how to use the swipe-in screen fullscreen mode </li>
+        </ul>
+      </div>
+      <div class="panel-footer">
+        <a href="https://github.com/YaleSTC/cardswipr" class="btn btn-default">CardSwipr Guide</a>
+      </div>
     </div>
   </div>
 </div>

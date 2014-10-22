@@ -4,8 +4,11 @@
   <li><%= link_to @attendance_entry.name, attendance_entry_path(@attendance_entry) %></li>
   <li>Edit</li>
 </ol>
-<h1><%= @attendance_entry.name %> <small>Edit</small></h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @attendance_entry, class: "btn btn-default" %>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= @attendance_entry.name %> <small>Edit</small></h1>
+    <%= render 'form' %>
+    <%= link_to 'Show', @attendance_entry, class: "btn btn-default" %>
+  </div>
+</div>

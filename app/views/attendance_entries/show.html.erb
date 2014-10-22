@@ -4,78 +4,82 @@
   <li><%= @attendance_entry.name %></li>
 </ol>
 
-<h1><%= @attendance_entry.name %> <small>Details</small></h1>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= @attendance_entry.name %> <small>Details</small></h1>
 
-<p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @attendance_entry.first_name %>
-</p>
+    <p>
+      <strong>First name:</strong>
+      <%= @attendance_entry.first_name %>
+    </p>
 
-<p>
-  <strong>Nickname:</strong>
-  <%= @attendance_entry.nickname %>
-</p>
+    <p>
+      <strong>Nickname:</strong>
+      <%= @attendance_entry.nickname %>
+    </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @attendance_entry.last_name %>
-</p>
+    <p>
+      <strong>Last name:</strong>
+      <%= @attendance_entry.last_name %>
+    </p>
 
-<p>
-  <strong>Upi:</strong>
-  <%= @attendance_entry.upi %>
-</p>
+    <p>
+      <strong>Upi:</strong>
+      <%= @attendance_entry.upi %>
+    </p>
 
-<p>
-  <strong>Netid:</strong>
-  <%= @attendance_entry.netid %>
-</p>
+    <p>
+      <strong>Netid:</strong>
+      <%= @attendance_entry.netid %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @attendance_entry.email %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @attendance_entry.email %>
+    </p>
 
-<p>
-  <strong>Organization:</strong>
-  <%= @attendance_entry.organization %>
-</p>
+    <p>
+      <strong>Organization:</strong>
+      <%= @attendance_entry.organization %>
+    </p>
 
-<p>
-  <strong>Curriculum:</strong>
-  <%= @attendance_entry.curriculum %>
-</p>
+    <p>
+      <strong>Curriculum:</strong>
+      <%= @attendance_entry.curriculum %>
+    </p>
 
-<p>
-  <strong>School:</strong>
-  <%= @attendance_entry.school %>
-</p>
+    <p>
+      <strong>School:</strong>
+      <%= @attendance_entry.school %>
+    </p>
 
-<p>
-  <strong>College name:</strong>
-  <%= @attendance_entry.college_name %>
-</p>
+    <p>
+      <strong>College name:</strong>
+      <%= @attendance_entry.college_name %>
+    </p>
 
-<p>
-  <strong>College abbreviation:</strong>
-  <%= @attendance_entry.college_abbreviation %>
-</p>
+    <p>
+      <strong>College abbreviation:</strong>
+      <%= @attendance_entry.college_abbreviation %>
+    </p>
 
-<p>
-  <strong>Class year:</strong>
-  <%= @attendance_entry.class_year %>
-</p>
+    <p>
+      <strong>Class year:</strong>
+      <%= @attendance_entry.class_year %>
+    </p>
 
-<p>
-  <strong>Telephone:</strong>
-  <%= @attendance_entry.telephone %>
-</p>
+    <p>
+      <strong>Telephone:</strong>
+      <%= @attendance_entry.telephone %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @attendance_entry.address %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @attendance_entry.address %>
+    </p>
 
-<%= link_to 'Edit', edit_attendance_entry_path(@attendance_entry), class: "btn btn-default" %>
+    <%= link_to 'Edit', edit_attendance_entry_path(@attendance_entry), class: "btn btn-default" %>
+  </div>
+</div>

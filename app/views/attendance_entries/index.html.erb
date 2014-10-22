@@ -3,21 +3,25 @@
   <li><%= @event.title %></li>
 </ol>
 
-<h1><%= @event.title %> <small>Attendance List</small></h1>
-
-<p>
-  This table shows only the most useful Yale Phonebook (LDAP) attributes - you can see more details in two ways:
-  <ol>
-    <li>For an individual you can view <strong>More Details</strong> to see a lot more about them</li>
-    <li>You can <strong>download the CSV file</strong> to see all of the information. CSV is a "comma separated values" file, and you can open it right in Microsoft Excel.</li>
-  </ol>
-</p>
 
 <div class="row">
   <div class="col-md-12">
-      <%= link_to edit_event_path(@event), :class => "btn btn-default" do %>
-        <span class="glyphicon glyphicon-pencil"></span> Edit Event
-      <% end %>
+    <h1><%= @event.title %> <small>Attendance List</small></h1>
+    <p>
+      This table shows only the most useful Yale Phonebook (LDAP) attributes - you can see more details in two ways:
+      <ol>
+        <li>For an individual you can view <strong>More Details</strong> to see a lot more about them</li>
+        <li>You can <strong>download the CSV file</strong> to see all of the information. CSV is a "comma separated values" file, and you can open it right in Microsoft Excel.</li>
+      </ol>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to edit_event_path(@event), :class => "btn btn-default" do %>
+      <span class="glyphicon glyphicon-pencil"></span> Edit Event
+    <% end %>
   </div>
 </div>
 
@@ -36,7 +40,7 @@
     </div>
   </div>
 </div>
-<br>
+
 <div class="row">
   <div class="col-md-12">
     <div class="table-responsive">
@@ -76,7 +80,6 @@
         </tbody>
       </table>
     </div>
-    <br><br>
 
     <%= link_to "Wipe Attendance", event_wipe_attendance_path, method: :delete, data: { confirm: 'Are you sure? This permanently removes all attendance entries for this event.'}, :class => "btn btn-danger pull-right" %>
   </div>
