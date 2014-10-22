@@ -1,28 +1,24 @@
+<div class="row row-centered">
   <h1 class="text-center"><%= @event.title %></h1>
-  <br>
-  <br>
   <h4 class="text-center"><%= @event.description %></h4>
-  <br>
-  <div class="container text-center">
-    <%= form_tag event_lookup_path(@event), class: "input-lg" do %>
-    <div class="spacedout">
-      <strong class="spacedout">Card Swipe</strong> or <strong class="spacedout">Card Tap</strong> or <strong class="spacedout">NetID</strong> or <strong class="spacedout">Yale Email</strong><br>
-    </div>
-    <div class="row row-centered">
-      <div class="col-md-4 col-centered">
-        <div class="input-group">
-          <%= text_field_tag(:query, nil, :autocomplete => 'off', class: 'form-control') %>
-          <span class="input-group-btn">
-            <%= submit_tag "Submit", :class => "btn btn-default" %>
-          </span>
-        </div>
-      </div>
-      <% end %>
-    </div>
+</div>
 
-    <div class="row">
-      <p class="pull-right">
-        <span class="badge"><%= @count%></span> recorded.
-      </p>
+<%= form_tag event_lookup_path(@event), class: "input-lg" do %>
+  <div class="row row-centered">
+    <strong class="spacedout">Card Swipe</strong> or <strong class="spacedout">Card Tap</strong> or <strong class="spacedout">NetID</strong> or <strong class="spacedout">Yale Email</strong><br>
+  </div>
+
+  <div class="row row-centered spacedout">
+    <div class="col-xs-12 col-md-4 col-centered">
+      <%= text_field_tag(:query, nil, :autocomplete => 'off', class: 'form-control') %>
+      <%= submit_tag "Submit", :class => "btn btn-default pull-right" %>
     </div>
   </div>
+
+  <div class="row">
+    <p class="pull-right">
+      <span class="badge"><%= @count%></span> recorded.
+    </p>
+  </div>
+<% end %>
+<div class="clearfix"></div>

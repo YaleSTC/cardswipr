@@ -11,19 +11,13 @@
   </head>
   <body>
     <main role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <div class="jumbotron">
-                <%= yield %>
-              </div>
-              <%= render 'layouts/messages' %>
-            </div>
-          </div>
-          <footer>
-          </footer>
+      <div class="container text-center">
+        <div class="jumbotron">
+          <%= yield %>
         </div>
+        <%= render 'layouts/messages' %>
+        <footer>
+        </footer>
       </div>
     </main>
   </body>
