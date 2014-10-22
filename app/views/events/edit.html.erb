@@ -3,6 +3,10 @@
   <li><%= link_to @event.title, event_path(@event) %></li>
   <li>Edit</li>
 </ol>
-<h1><%= @event.title %> <small>Edit</small></h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= @event.title %> <small>Edit</small></h1>
+    <%= render 'form' %>
+  </div>
+</div>
