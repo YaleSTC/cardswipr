@@ -48,6 +48,11 @@
           <th>Netid</th>
           <th>Email</th>
           <th>Swipe-In Time</th>
+          <th>
+            <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
+              <span class="glyphicon glyphicon-download-alt"></span> Spreadsheet
+            <% end %>
+          </th>
           <th></th>
         </tr>
       </thead>
@@ -64,6 +69,10 @@
             <td>
               <div class="btn-group">
                 <%= link_to 'More Details', attendance_entry_path(attendance_entry), :class => "btn btn-default"  %>
+              </div>
+            </td>
+            <td>
+              <div class="btn-group">
                 <%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %>
               </div>
               <div class="btn-group">
