@@ -108,6 +108,7 @@ GEM
       rspec (>= 2.14, < 4.0)
     haml (4.0.5)
       tilt
+    high_voltage (2.2.1)
     highline (1.6.21)
     hike (1.2.3)
     hitimes (1.2.2)
@@ -307,6 +308,7 @@ DEPENDENCIES
   factory_girl_rails
   fuubar
   guard-rspec
+  high_voltage
   httparty
   jbuilder (~> 2.0)
   jquery-rails

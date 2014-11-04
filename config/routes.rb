@@ -1,5 +1,8 @@
 UsbDistribution::Application.routes.draw do
 
+  # if routing the root path, update for your controller
+  root to: 'pages#show', id: 'home'
+
   resources :events do
     resources :attendance_entries, :path => :attendance, shallow: true
     get 'swipe'
@@ -11,12 +14,17 @@ UsbDistribution::Application.routes.draw do
 
   get '/distribution/personlookup', as: :distribution_personlookup
 
-  root to: 'distribution#home'
+  # root to: 'distribution#home'
+  # get "/pages/*id" => 'pages#show', as: :page, format: false
+
 
   get '/hardware', :to => redirect('/hardware.html')
   get '/unauthorized', :to => redirect('/unauthorized.html')
   get '/status', :to => redirect('/status.html')
   get '/logout', :to => "application#logout"
+
+  # High Voltage routes
+  get "/*id" => 'pages#show', as: :page, format: false
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

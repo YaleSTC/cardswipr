@@ -61,6 +61,9 @@ gem 'yaleldap'
 # httparty for connecting to the Yale API
 gem 'httparty'
 
+# gem that makes static pages easier
+gem 'high_voltage'
+
 group :development do
   gem 'pry'
   # gem 'better_errors'

@@ -32,9 +32,7 @@
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li>
-      <%= link_to events_path do %>
-        About
-      <% end %>
+      <%= link_to 'About', page_path('about') %>
     </li>
     <li>
       <%= link_to "#{current_user.full_name}", edit_user_path(current_user) if current_user %>
