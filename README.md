@@ -6,7 +6,7 @@
 # CardSwipr
 ## Features
 ### Event Attendance
-CardSwipr helps you take attendance at meetings and events. Attendees swipe in with this easy interface, the application looks them up in the Yale Phonebook, and collects their information in a list. When the event's over you can even download a `.csv` output of the attendees' information.
+CardSwipr helps you take attendance at meetings and events. Attendees swipe in with this easy interface, the application looks them up in the Yale Phonebook, and collects their information in a list. When the event's over you can even download a spreadsheet (`.csv`) output of the attendees' information.
 
 ![Swipe Screen](READMEImages/SwipeScreenScreenshot.png)
 
