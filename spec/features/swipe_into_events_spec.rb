@@ -26,7 +26,6 @@ describe 'SwipeIntoEvents', type: :feature do
     end
     it 'someone swiped into the event appears in the attendance list' do
       visit event_path(@event)
-      save_and_open_page
       expect(find('#attendance_entries_table')).to have_content 'Casey'
     end
   end
