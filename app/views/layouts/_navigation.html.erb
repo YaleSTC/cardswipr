@@ -10,6 +10,11 @@
 
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
+      <li>
+        <%= link_to events_path do %>
+          <span class="glyphicon glyphicon-flash"></span> Hardware
+        <% end %>
+      </li>
     <% if can? :read, Event %>
       <li>
         <%= link_to events_path do %>
@@ -26,6 +31,11 @@
     <% end %>
   </ul>
   <ul class="nav navbar-nav navbar-right">
+    <li>
+      <%= link_to events_path do %>
+        About
+      <% end %>
+    </li>
     <li>
       <%= link_to "#{current_user.full_name}", edit_user_path(current_user) if current_user %>
     </li>

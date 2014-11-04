@@ -1,9 +1,25 @@
 <h1>CardSwipr</h1>
 <div class="row">
 
-  <div class="col-md-5">
-    <h3>Events
-      <%= link_to events_path, class: "btn btn-lg btn-default pull-right" do %>
+  <div class="col-md-3">
+    <h3>
+      <%= link_to events_path, class: "btn btn-lg btn-default" do %>
+        <span class="glyphicon glyphicon-flash"></span> Hardware
+      <% end %>
+    </h3>
+    <p>Input can be
+      <ol>
+        <li>prox card (tap)</li>
+        <li>magstripe (swipe)</li>
+        <li>netid/email (keyboard)</li>
+      </ol>
+    </p>
+    <%= image_tag "CardSwiprInputTypes.jpg", class: "img-responsive img-thumbnail" %>
+  </div>
+
+  <div class="col-md-6">
+    <h3>
+      <%= link_to events_path, class: "btn btn-lg btn-default" do %>
         <span class="glyphicon glyphicon-list"></span> Events
       <% end %>
     </h3>
@@ -11,9 +27,9 @@
     <%= image_tag "SwipeScreenScreenshot.png", class: "img-responsive img-thumbnail" %>
   </div>
 
-  <div class="col-md-5 col-md-offset-1">
-    <h3>Walk In Center
-      <%= link_to distribution_personlookup_path, class: "btn btn-lg btn-default pull-right" do %>
+  <div class="col-md-3">
+    <h3>
+      <%= link_to distribution_personlookup_path, class: "btn btn-lg btn-default" do %>
         <span class="glyphicon glyphicon-search"></span> Walk In Center
       <% end %>
     </h3>

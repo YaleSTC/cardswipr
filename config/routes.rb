@@ -13,6 +13,7 @@ UsbDistribution::Application.routes.draw do
 
   root to: 'distribution#home'
 
+  get '/hardware', :to => redirect('/hardware.html')
   get '/unauthorized', :to => redirect('/unauthorized.html')
   get '/status', :to => redirect('/status.html')
   get '/logout', :to => "application#logout"
