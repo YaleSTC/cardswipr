@@ -18,7 +18,6 @@ UsbDistribution::Application.routes.draw do
   # get "/pages/*id" => 'pages#show', as: :page, format: false
 
 
-  get '/hardware', :to => redirect('/hardware.html')
   get '/unauthorized', :to => redirect('/unauthorized.html')
   get '/status', :to => redirect('/status.html')
   get '/logout', :to => "application#logout"
