@@ -7,18 +7,27 @@ describe 'SwipeIntoEvents', type: :feature do
     sign_in(@event.users.first.netid)
   end
 
-  it 'can navigate to the swipe page' do
-    visit event_swipe_path(@event)
-    # brittle but only unique identifier so far.
-    # We should add a tag with an id to the page?
-    expect(page).to have_content 'Card Swipe or Card Tap or NetID or Yale Email'
-  end
+# This test is brittle and not providing much value.
+  # it 'can navigate to the swipe page' do
+  #   visit event_swipe_path(@event)
+  #   # brittle but only unique identifier so far.
+  #   # We should add a tag with an id to the page?
+  #   expect(page).to have_content 'Card Swipe or Card Tap or NetID or Yale Email'
+  # end
 
-  it 'can swipe someone into the event' do
-    visit event_swipe_path(@event)
-    fill_in 'query', with: 'csw3'
-    click_on('Submit')
-    expect(page).to have_content 'success'
+  context 'using netid' do
+    before :each do
+      visit event_swipe_path(@event)
+      fill_in 'query', with: 'csw3'
+      click_on('Submit')
+    end
+    it 'can swipe someone into the event' do
+      expect(page).to have_content 'success'
+    end
+    it 'someone swiped into the event appears in the attendance list' do
+      visit event_path(@event)
+      expect(find('#attendance_entries_table')).to have_content 'Casey'
+    end
   end
 
   xit 'someone swiped into the event is in the attendance list' do

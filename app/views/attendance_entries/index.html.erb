@@ -44,18 +44,18 @@
 <div class="row">
   <div class="col-md-12">
     <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Upi</th>
-            <th>Netid</th>
-            <th>Email</th>
-            <th>Swipe-In Time</th>
-            <th></th>
-          </tr>
-        </thead>
+    <table id="attendance_entries_table" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Upi</th>
+          <th>Netid</th>
+          <th>Email</th>
+          <th>Swipe-In Time</th>
+          <th></th>
+        </tr>
+      </thead>
 
         <tbody>
           <% @attendance_entries.each do |attendance_entry| %>
