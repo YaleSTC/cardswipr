@@ -1,0 +1,40 @@
+<h1>CardSwipr</h1>
+<div class="row">
+
+  <div class="col-md-3">
+    <h3>
+      <%= link_to page_path('hardware'), class: "btn btn-lg btn-default" do %>
+        <span class="glyphicon glyphicon-flash"></span> Hardware
+      <% end %>
+    </h3>
+    <p>Input can be
+      <ol>
+        <li>prox card (tap)</li>
+        <li>magstripe (swipe)</li>
+        <li>netid/email (keyboard)</li>
+      </ol>
+    </p>
+    <%= image_tag "CardSwiprInputTypes.jpg", class: "img-responsive img-thumbnail" %>
+  </div>
+
+  <div class="col-md-6">
+    <h3>
+      <%= link_to events_path, class: "btn btn-lg btn-default" do %>
+        <span class="glyphicon glyphicon-list"></span> Events
+      <% end %>
+    </h3>
+    <p>CardSwipr helps you take attendance at meetings and events. Attendees swipe in with this easy interface, the application looks them up in the Yale Phonebook, and collects their information in a list. When the event's over you can even download a spreadsheet (.csv) output of the attendees' information.</p>
+    <%= image_tag "SwipeScreenScreenshot.png", class: "img-responsive img-thumbnail" %>
+  </div>
+
+  <div class="col-md-3">
+    <h3>
+      <%= link_to distribution_personlookup_path, class: "btn btn-lg btn-default" do %>
+        <span class="glyphicon glyphicon-search"></span> Walk In Center
+      <% end %>
+    </h3>
+    <p>CardSwipr can quickly tell you about a person after they swipe their card. It can both take you to a person's Yale Phonebook entry and open a Service Now Incident with their name already filled out. This feature does not keep a list of everyone who was swiped, this is just for quick lookups. This is used in some Walk-In Centers around campus.</p>
+    <%= image_tag "GeneralLookupScreenshot.png", class: "img-responsive img-thumbnail" %>
+  </div>
+
+</div>

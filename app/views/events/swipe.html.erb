@@ -22,6 +22,11 @@
 
     <div class="row">
       <p class="pull-right">
+        <%= link_to event_attendance_entries_path(@event), :class => "btn" do %>
+          <span class="glyphicon glyphicon-list-alt"></span> List
+        <% end %>
+      </p>
+      <p class="pull-right">
         <span class="badge"><%= @count%></span> recorded.
       </p>
     </div>

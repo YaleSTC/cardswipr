@@ -9,7 +9,7 @@
   This table shows only the most useful Yale Phonebook (LDAP) attributes - you can see more details in two ways:
   <ol>
     <li>For an individual you can view <strong>More Details</strong> to see a lot more about them</li>
-    <li>You can <strong>download the CSV file</strong> to see all of the information. CSV is a "comma separated values" file, and you can open it right in Microsoft Excel.</li>
+    <li>You can <strong>download the spreadsheet (CSV)</strong> to see all of the information. CSV is a "comma separated values" file, and you can open it right in Microsoft Excel.</li>
   </ol>
 </p>
 
@@ -28,7 +28,7 @@
         <span class="glyphicon glyphicon-credit-card"></span> Event Swipe-In
       <% end %>
       <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
-        <span class="glyphicon glyphicon-download-alt"></span> Download CSV
+        <span class="glyphicon glyphicon-download-alt"></span> Spreadsheet
       <% end %>
     </div>
     <div class="pull-right">
@@ -48,6 +48,11 @@
           <th>Netid</th>
           <th>Email</th>
           <th>Swipe-In Time</th>
+          <th>
+            <%= link_to event_attendance_entries_path(@event, :format => :csv), :class => "btn btn-default" do %>
+              <span class="glyphicon glyphicon-download-alt"></span> Spreadsheet
+            <% end %>
+          </th>
           <th></th>
         </tr>
       </thead>
@@ -64,6 +69,10 @@
             <td>
               <div class="btn-group">
                 <%= link_to 'More Details', attendance_entry_path(attendance_entry), :class => "btn btn-default"  %>
+              </div>
+            </td>
+            <td>
+              <div class="btn-group">
                 <%= link_to 'Edit', edit_attendance_entry_path(attendance_entry), :class => "btn btn-default"  %>
               </div>
               <div class="btn-group">
