@@ -24,5 +24,8 @@ module UsbDistribution
 
     # Autoload lib/ folder including all subdirectories
     config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
+
+    # Use SSL for everything, including cookies
+    config.force_ssl = true
   end
 end
