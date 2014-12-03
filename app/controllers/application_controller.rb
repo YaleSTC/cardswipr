@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
 
   before_action CASClient::Frameworks::Rails::Filter
   before_action :current_user
