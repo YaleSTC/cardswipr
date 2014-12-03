@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
 has_and_belongs_to_many :users
 validates :users, presence: true
-has_many :attendance_entries
+has_many :attendance_entries, dependent: :destroy
 
 
   def last_edited
