@@ -20,23 +20,39 @@ module YaleIDLookup
   #   YaleIDLookup.lookup("1234567890") (magnetic card number, cleaned up)
   #   YaleIDLookup.lookup("casey.watts@yale.edu") (email, not yet)
   #   YaleIDLookup.lookup("csw3") (netid)
-  def self.lookup(query)
-    upi = determine_upi(query)
-    YaleLDAP.lookup(upi: upi)
+  def self.lookup(query_str)
+    api = Yale::ApiProxy.instance
+    query_type = determine_type(query_str)
+    Rails.logger.debug("YaleIDLookup.lookup query_type: #{query_type}")
+
+    if query_type == 'prox_or_magstripe'
+      return api.send(build_query('proxNumber', query_str)) ||
+        api.send(build_query('magstripenumber', query_str))
+    else
+      return api.send(build_query(query_type, query_str))
+    end
   end
 
-  def self.determine_upi(query)
+  def self.determine_upi(query_str)
+      lookup_result = lookup(query_str)
+      Rails.logger.debug("YaleIDLookup.determine_upi result: #{lookup_result}")
+      lookup_result['ServiceResponse']['Record']['Upi']
+  end
+
+  def self.determine_type(query_str)
     # id_number could be magstripe or prox, both are 10 digit
-    if id_number = query.match(/\d{10}/)
-      id_number = id_number[0] # first (only) match
-      upi = YaleCardSwipe.lookup(id_number)
-    elsif query.match(/.*@yale.edu/)
-      upi = YaleLDAP.lookup(email: query)[:upi]
+    if query_str.match(/\d{10}/)
+      return 'prox_or_magstripe'
+    elsif query_str.match(/.*@yale.edu/)
+      return 'email'
     else
-      upi = YaleLDAP.lookup(netid: query)[:upi]
+      return 'netid'
     end
-    upi
-  rescue
-    raise "UPI not found for " + query.to_s
+  end
+
+  def self.build_query(query_key, query_str)
+    query = "?type=json&#{query_key}=#{query_str}"
+    puts "query: #{query}"
+    query
   end
 end

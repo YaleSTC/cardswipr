@@ -79,5 +79,8 @@ UsbDistribution::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Initialize the Service Now gem
-  ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'], :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
+  #ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'], :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
+
+  config.custom = ActiveSupport::OrderedOptions.new
+  config.custom.apiURL = 'https://gw-dev.its.yale.edu/soa-gateway/cardswipr/people/data'
 end
