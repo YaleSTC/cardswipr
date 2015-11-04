@@ -36,7 +36,7 @@ module Yale
     # Send query to Layer7 and return the response.
     def send(query)
       url = "#{Rails.configuration.custom.apiURL}#{query}"
-      Rails.logger.debug("ApiProxy#send url: #{url}")
+      Rails.logger.debug("ApiProxy#send URL: #{url}")
 
       rsrc = RestClient::Resource.new(
         url,
@@ -45,9 +45,11 @@ module Yale
         ssl_client_key: @key,
         verify_ssl: OpenSSL::SSL::VERIFY_PEER)
 
-      JSON.parse(rsrc.get())
-    rescue
-      Rails.logger.error("ERROR w/ request: #{url}")
+      response = rsrc.get
+      Rails.logger.debug("ApiProxy#send raw response: #{response}")
+      JSON.parse(response)
+    rescue => e
+      Rails.logger.error("ERROR ApiProxy#send url: #{url} - #{e.class} - #{e}")
       nil
     end
   end

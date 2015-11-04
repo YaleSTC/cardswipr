@@ -21,38 +21,37 @@ module YaleIDLookup
   #   YaleIDLookup.lookup("casey.watts@yale.edu") (email, not yet)
   #   YaleIDLookup.lookup("csw3") (netid)
   def self.lookup(query_str)
-    api = Yale::ApiProxy.instance
-    query_type = determine_type(query_str)
-    Rails.logger.debug("YaleIDLookup.lookup query_type: #{query_type}")
-
-    if query_type == 'prox_or_magstripe'
-      return api.send(build_query('proxNumber', query_str)) ||
-        api.send(build_query('magstripenumber', query_str))
-    else
-      return api.send(build_query(query_type, query_str))
-    end
+    upi = determine_upi(query_str)
+    upi ? YaleLDAP.lookup(upi: upi) : nil
   end
 
   def self.determine_upi(query_str)
-      lookup_result = lookup(query_str)
-      Rails.logger.debug("YaleIDLookup.determine_upi result: #{lookup_result}")
-      lookup_result['ServiceResponse']['Record']['Upi']
+    api = Yale::ApiProxy.instance
+    m = query_str.match(/\d{10}/)
+
+    if m  # ID number could be magstripe or prox, both are 10 digit
+      v = m[0]  # first (only) match
+      response = api.send(build_query('proxNumber', v)) ||
+                 api.send(build_query('magstripenumber', v))
+    elsif query_str.match(/.*@yale.edu/)
+      response = api.send(build_query('email', query_str))
+    else
+      response = api.send(build_query('netid', query_str))
+    end
+
+    Rails.logger.debug("YaleIDLookup.determine_upi result: #{response}")
+    response['ServiceResponse']['Record']['Upi']
+  rescue RuntimeError, NameError => e
+    Rails.logger.error("ERROR YaleIDLookup.determine_upi #{e}")
+    nil
   end
 
   def self.determine_type(query_str)
-    # id_number could be magstripe or prox, both are 10 digit
-    if query_str.match(/\d{10}/)
-      return 'prox_or_magstripe'
-    elsif query_str.match(/.*@yale.edu/)
-      return 'email'
-    else
-      return 'netid'
-    end
   end
 
-  def self.build_query(query_key, query_str)
-    query = "?type=json&#{query_key}=#{query_str}"
-    puts "query: #{query}"
+  def self.build_query(query_key, query_value)
+    query = "?type=json&#{query_key}=#{query_value}"
+    Rails.logger.debug("YaleIDLookkup.build_query query: #{query}")
     query
   end
 end
