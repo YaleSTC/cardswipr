@@ -52,7 +52,7 @@ gem 'mysql2'
 gem 'sqlite3'
 
 # Service Now Gem
-gem 'service_now'
+gem 'service_now', :git => "git@github.com:YaleSTC/service_now.git", :tag => 'v0.1.0'
 
 # include LDAP
 gem 'net-ldap'
