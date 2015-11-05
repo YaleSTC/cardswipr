@@ -1,5 +1,4 @@
 require 'yaleldap'
-require 'yale_card_swipe' # not a gem yet, as a model it is autoloaded
 
 # YaleIDLookup is the meat of the application, the most useful part
 # This class is used to lookup someone by their magstripe number, netid,
