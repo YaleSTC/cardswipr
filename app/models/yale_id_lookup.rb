@@ -26,7 +26,7 @@ module YaleIDLookup
   end
 
   def self.determine_upi(query_str)
-    api = Yale::ApiProxy.instance
+    api = Yale::CardSwiprApiProxy.instance
     m = query_str.match(/\d{10}/)
 
     if m  # ID number could be magstripe or prox, both are 10 digit
