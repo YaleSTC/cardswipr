@@ -6,7 +6,7 @@ GIT
       activesupport
 
 GIT
-  remote: git@github.com:YaleSTC/service_now.git
+  remote: https://github.com/YaleSTC/service_now.git
   revision: f68184a7c0cf9607acb589f970d730fd2ff942c4
   tag: v0.1.0
   specs:

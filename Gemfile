@@ -52,7 +52,7 @@ gem 'mysql2'
 gem 'sqlite3'
 
 # Service Now Gem
-gem 'service_now', :git => "git@github.com:YaleSTC/service_now.git", :tag => 'v0.1.0'
+gem 'service_now', :git => "https://github.com/YaleSTC/service_now.git", :tag => 'v0.1.0'
 
 # gem that makes static pages easier
 gem 'high_voltage'
