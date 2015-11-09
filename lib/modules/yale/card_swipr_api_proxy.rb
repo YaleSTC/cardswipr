@@ -8,14 +8,15 @@ module Yale
     include Singleton
 
     def initialize
-      Rails.logger.info("Yale::CardSwiprApiProxy#initialize API URL: #{Rails.configuration.custom.cardSwiprApiURL})")
+      Rails.logger.info('Yale::CardSwiprApiProxy#initialize API URL: ' \
+        "#{Rails.configuration.custom.cardSwiprApiURL})")
 
-      @cert = get_cert
-      @key = get_key
-
+      @cert = cert
+      @key = key
     end
 
-    def get_cert
+    # Client-side SSL certificate
+    def cert
       certfile = Rails.application.secrets.ssl_client_certificate
       Rails.logger.info("CardSwiprApiProxy#get_cert path: #{certfile}")
       OpenSSL::X509::Certificate.new(File.read(certfile))
@@ -24,7 +25,8 @@ module Yale
       return nil
     end
 
-    def get_key
+    # Client-side SSL private key
+    def key
       keyfile = Rails.application.secrets.ssl_client_key
       Rails.logger.info("CardSwiprApiProxy#get_key path: #{keyfile}")
       OpenSSL::PKey::RSA.new(File.read(keyfile))
@@ -35,7 +37,7 @@ module Yale
 
     # Send query to Layer7 and return the response.
     def send(query)
-      url = "#{Rails.configuration.custom.cardSwiprApiURL}#{query}"
+      url = "#{Rails.configuration.custom.cardSwiprApiURL}?type=json&#{query}"
       Rails.logger.debug("CardSwiprApiProxy#send URL: #{url}")
 
       rsrc = RestClient::Resource.new(
@@ -47,10 +49,32 @@ module Yale
 
       response = rsrc.get
       Rails.logger.debug("CardSwiprApiProxy#send raw response: #{response}")
-      JSON.parse(response)
+      response_obj = JSON.parse(response)
+      response_obj['ServiceResponse']['Record']
     rescue => e
-      Rails.logger.error("ERROR CardSwiprApiProxy#send url: #{url} - #{e.class} - #{e}")
+      Rails.logger.error("ERROR CardSwiprApiProxy#send url: #{url} - " \
+        "#{e.class} - #{e}")
       nil
+    end
+
+    def find_by_upi(upi)
+      send("upi=#{upi}")
+    end
+
+    def find_by_netid(netid)
+      send("netid=#{netid}")
+    end
+
+    def find_by_email(email)
+      send("email=#{email}")
+    end
+
+    def find_by_prox_num(num)
+      send("proxNumber=#{num}")
+    end
+
+    def find_by_mag_stripe_num(num)
+      send("magstripenumber=#{num}")
     end
   end
 end

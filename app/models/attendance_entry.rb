@@ -1,23 +1,24 @@
 # attendance entries are created by an event. This is the permanent record of who has attended an event
 # a set of attendance entries for an event can be viewed in the browser or printed to csv
 class AttendanceEntry < ActiveRecord::Base
+  belongs_to :event
+  validates :event, presence: true
+  validates :upi, :uniqueness => { :scope => :event, :message => "This person has already been checked into this event." }
 
-belongs_to :event
-validates :event, presence: true
-validates :upi, :uniqueness => { :scope => :event, :message => "This person has already been checked into this event." }
-
-after_create :get_ldap_attributes
+  after_create :get_directory_attributes
 
   # EventAttendanceEntry should be initialized with a upi
   # @param [string] upi = universal personal identification
   # @example
   #   EventAttendanceEntry.new(upi: "12714662", event: 1)
-  def get_ldap_attributes
-    attributes = YaleLDAP.lookup(upi: upi.to_s)
-      .slice(:first_name, :nickname, :last_name, :upi, :netid,
-        :email, :organization, :curriculum, :college_name, :college_abbreviation,
-        :class_year, :school, :telephone, :address)
-    self.update_attributes(attributes)
+
+  # Get attributes from CardSwipr API and update the model
+  def get_directory_attributes
+    result = Yale::CardSwiprApiProxy.instance.find_by_upi(upi)
+    person = Person.new.update_from_cardswipr_api(result)
+    logger.debug('AttendanceEntry#get_directory_attributes ' \
+      "person.attributes: #{person.attributes}")
+    update_attributes(person.attributes)
   end
 
   def name
@@ -48,7 +49,7 @@ after_create :get_ldap_attributes
   end
 
   def swipe_time
-    created_at.localtime.strftime("%I:%M %p %d-%b-%Y")
+    created_at.localtime.strftime("%Y-%m-%d %I:%M %p")
   end
 
 end

@@ -39,43 +39,14 @@
 </p>
 
 <p>
-  <strong>Organization:</strong>
-  <%= @attendance_entry.organization %>
-</p>
-
-<p>
-  <strong>Curriculum:</strong>
-  <%= @attendance_entry.curriculum %>
-</p>
-
-<p>
-  <strong>School:</strong>
-  <%= @attendance_entry.school %>
-</p>
-
-<p>
-  <strong>College name:</strong>
-  <%= @attendance_entry.college_name %>
-</p>
-
-<p>
-  <strong>College abbreviation:</strong>
-  <%= @attendance_entry.college_abbreviation %>
-</p>
-
-<p>
-  <strong>Class year:</strong>
-  <%= @attendance_entry.class_year %>
-</p>
-
-<p>
   <strong>Telephone:</strong>
   <%= @attendance_entry.telephone %>
 </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @attendance_entry.address %>
-</p>
-
+<div class="btn-group">
+  <%= link_to yale_directory_link(@attendance_entry.upi), :class => "btn btn-default", :target => "_blank" do %>
+    <span class="glyphicon glyphicon-search"></span> Yale Phonebook Entry
+  <% end %>
+</div>
+<br/>
 <%= link_to 'Edit', edit_attendance_entry_path(@attendance_entry), class: "btn btn-default" %>

@@ -1,5 +1,3 @@
-require 'yaleldap'
-
 # YaleIDLookup is the meat of the application, the most useful part
 # This class is used to lookup someone by their magstripe number, netid,
 # or Yale email and return an LDAP result to be used elsewhere.
@@ -20,37 +18,23 @@ module YaleIDLookup
   #   YaleIDLookup.lookup("casey.watts@yale.edu") (email, not yet)
   #   YaleIDLookup.lookup("csw3") (netid)
   def self.lookup(query_str)
-    upi = determine_upi(query_str)
-    upi ? YaleLDAP.lookup(upi: upi) : nil
-  end
-
-  def self.determine_upi(query_str)
     api = Yale::CardSwiprApiProxy.instance
     m = query_str.match(/\d{10}/)
 
-    if m  # ID number could be magstripe or prox, both are 10 digit
-      v = m[0]  # first (only) match
-      response = api.send(build_query('proxNumber', v)) ||
-                 api.send(build_query('magstripenumber', v))
+    if m # ID number could be magstripe or prox, both are 10 digit
+      v = m[0] # first (only) match
+      result = api.find_by_prox_num(v) || api.find_by_mag_stripe_num(v)
     elsif query_str.match(/.*@yale.edu/)
-      response = api.send(build_query('email', query_str))
+      result = api.find_by_email(query_str)
     else
-      response = api.send(build_query('netid', query_str))
+      result = api.find_by_netid(query_str)
     end
 
-    Rails.logger.debug("YaleIDLookup.determine_upi result: #{response}")
-    response['ServiceResponse']['Record']['Upi']
+    Rails.logger.debug("YaleIDLookup.lookup result: #{result}")
+    result ? Person.new.update_from_cardswipr_api(result) : nil
   rescue RuntimeError, NameError => e
     Rails.logger.error("ERROR YaleIDLookup.determine_upi #{e}")
     nil
   end
 
-  def self.determine_type(query_str)
-  end
-
-  def self.build_query(query_key, query_value)
-    query = "?type=json&#{query_key}=#{query_value}"
-    Rails.logger.debug("YaleIDLookkup.build_query query: #{query}")
-    query
-  end
 end

@@ -42,13 +42,14 @@
       <div class="panel-heading ">Lookup Result</div>
       <div class="panel-body">
         <h4><%= @name %></h4>
-        <h5>Affiliation: <%= @affiliation %></h5>
-        <h5>Curriculum: <%= @curriculum %></h5>
-        <h5>Organization: <%= @organization %></h5>
+        <h5>Email: <%= @email %></h5>
+        <h5>Phone: <%= @phone %></h5>
+        <h5>NetID: <%= @netid %></h5>
+        <h5>UPI: <%= @upi %></h5>
         <br>
         <div class="btn-group">
           <div class="btn-group">
-            <%= link_to @phonebook_destination_url, :class => "btn btn-default", :target => "_blank" do %>
+            <%= link_to yale_directory_link(@upi), :class => "btn btn-default", :target => "_blank" do %>
               <span class="glyphicon glyphicon-search"></span> Yale Phonebook Entry
             <% end %>
           </div>

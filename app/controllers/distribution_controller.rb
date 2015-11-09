@@ -9,26 +9,21 @@ class DistributionController < ApplicationController
   def personlookup
     authorize! :read, :personlookup
     if params[:query]
-      attributes = YaleIDLookup.lookup(params[:query])
-      return unless attributes
+      person = YaleIDLookup.lookup(params[:query])
+      return unless person
 
-      upi = attributes[:upi]
-      sys_id = ServiceNow::User.find(attributes[:netid]).sys_id
-      puts 'SYS_ID: ' + sys_id.to_s
+      @upi = person.upi
+      @netid = person.netid
+      sys_id = ServiceNow::User.find(@netid).sys_id
 
-      @name = attributes[:first_name] + " " + attributes[:last_name]
-      @email = attributes[:email]
-      @affiliation = attributes[:school] + " " + attributes[:college_abbreviation] + " " + attributes[:class_year]
-      # @affiliation = "Unknown Affiliation" if @affiliation.blank?
-      @curriculum = attributes[:major]
-      # @curriculum = "No Curriculum/Major" if @curriculum.blank?
-      @organization = attributes[:organization]
-      # @organization = "No Organization" if @organization.blank?
+      first_name = person.known_as || person.first_name || ''
+      @name = "#{first_name} #{person.last_name || ''}"
+      @email = person.email || ''
+      @phone = person.phone || ''
 
-      @sn_destination_url = "https://yale.service-now.com/incident.do?sys_id=-1&sysparm_query=caller_id=" + sys_id + "^u_contact=" + sys_id + "^u_client=" + sys_id
-
-      @phonebook_destination_url = "http://directory.yale.edu/?queryType=field&upi=" + upi
+      @sn_destination_url = 'https://yale.service-now.com/incident.do?' \
+        "sys_id=-1&sysparm_query=caller_id=#{sys_id}" \
+        "^u_contact=#{sys_id}^u_client=#{sys_id}"
     end
   end
-
 end
