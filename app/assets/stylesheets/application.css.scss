@@ -1,37 +1,42 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- */
+//
+// This is a manifest file that'll be compiled into application.css, which will include all the files
+// listed below.
+//
+// Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+// or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+//
+// You're free to add application-wide styles to this file and they'll appear at the top of the
+// compiled file, but it's generally better to create a new file per style scope.
+//
+//= require_self
+//
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "bootstrap/theme";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap/theme';
 
 body {
   padding: 60px;
 }
 
-/*
-   centered columns styles for twitter bootstrap 
-   from http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-centered-columns
-*/
+//
+// centered columns styles for twitter bootstrap
+// from http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-centered-columns
+//
 
 .row-centered {
-    text-align:center;
+  text-align: center;
 }
+
 .col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
+  display: inline-block;
+  float: none;
+  // inline-block space fix
+  margin-right: -4px;
+  // reset the text-align
+  text-align: left;
+}
+
+.swipr-column-header {
+  margin-bottom: 2rem;
 }
