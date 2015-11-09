@@ -25,3 +25,9 @@
 
 # ignore secret token
 /config/initializers/secret_token.rb
+
+# File defining required environment variables for the local development.
+/local_env.sh
+
+# Files created from asset pre-compilation
+/public/assets/**

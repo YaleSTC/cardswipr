@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Environment variables required to run the server locally (in "local" rails environment).
+#
+# Copy this script to `local_env.sh`, set correct values for variables and
+# run it "in-place" with `source` or `.` before running `rails server`
+#
+# For example,
+# . local_env.sh
+#
+# WARNING: Never commit local_env.sh with secret credential information to
+# the repository.
+
+export RAILS_ENV=local
+
+# SECRET_KEY_BASE: use as it is or generate a new one with `rake secret`
+export SECRET_KEY_BASE=23e54dafda4b9d6e5e9fbebc38df5cd606858fe4dd43331c5e6f64bfb949ff258a8465d1e2f218ac28e5db9075e4763273470839cc75e876212c043419698873
+
+export CARDSWIPR_CLIENT_CERT=/secure/path/to/your.cert.pem
+export CARDSWIPR_CLIENT_KEY=/secure/path/to/your.key.pem
+
+export SN_INSTANCE=https://yale.service-now.com
+export SN_USERNAME=_SERVICE_NOW_API_USERNAME_
+export SN_PASSWORD=_SERVICE_NOW_API_PASSWORD_
