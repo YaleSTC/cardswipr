@@ -3,7 +3,6 @@ class AttendanceEntriesController < ApplicationController
   load_and_authorize_resource :event
   load_and_authorize_resource :attendance_entry, through: :event, param_method: :attendance_entry_params, :shallow => true
 
-
   # GET /attendance_entries
   # GET /attendance_entries.json
   def index

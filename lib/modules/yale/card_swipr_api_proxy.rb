@@ -51,10 +51,8 @@ module Yale
       Rails.logger.debug("CardSwiprApiProxy#send raw response: #{response}")
       response_obj = JSON.parse(response)
       response_obj['ServiceResponse']['Record']
-    rescue => e
-      Rails.logger.error("ERROR CardSwiprApiProxy#send url: #{url} - " \
-        "#{e.class} - #{e}")
-      nil
+    rescue RestClient::Exception => e
+      raise CustomError.new(7000 + e.response.code, "Could not find the person")
     end
 
     def find_by_upi(upi)

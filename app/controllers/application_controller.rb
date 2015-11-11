@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
     CASClient::Frameworks::Rails::Filter.logout(self)
   end
 
+  def show_error(code, message)
+    flash[:error] = "#{message} (#{code})"
+  end
+
 end

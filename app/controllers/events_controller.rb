@@ -102,9 +102,8 @@ class EventsController < ApplicationController
       end
     end
 
-  rescue RuntimeError => e
-    flash[:error] ||= ''
-    flash[:error] << e.message << "\n"
+  rescue Yale::CustomError => e
+    show_error(e.code, e.message)
   ensure
     redirect_to event_swipe_path(@event)
   end

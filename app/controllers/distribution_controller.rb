@@ -25,5 +25,7 @@ class DistributionController < ApplicationController
         "sys_id=-1&sysparm_query=caller_id=#{sys_id}" \
         "^u_contact=#{sys_id}^u_client=#{sys_id}"
     end
+  rescue Yale::CustomError => e
+    show_error(e.code, e.message)
   end
 end
