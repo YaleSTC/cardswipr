@@ -1,8 +1,5 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Events", events_path %></li>
-  <li><%= link_to @event.title, event_path(@event) %></li>
-  <li>Edit</li>
-</ol>
+<%= raw breadcrumbs('home', 'events', 'event', 'Edit') %>
+
 <h1><%= @event.title %> <small>Edit</small></h1>
 
 <%= render 'form' %>

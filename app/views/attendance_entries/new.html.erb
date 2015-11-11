@@ -1,10 +1,7 @@
-<ol class="breadcrumb">
-  <li><%= link_to "Events", events_path %></li>
-  <li><%= link_to @event.title, event_attendance_entries_path(@event) %></li>
-  <li>New Entry</li>
-</ol>
-<h1><%= @event.title %> <small>New Attendance Entry</small></h1>
+<%= raw breadcrumbs('home', 'events', 'entry.event', 'New') %>
 
+<h1><%= @event.title %> <small>New Attendance Entry</small></h1>
+<% akdfja.dkjf(a + '') %>
 <%= render 'form' %>
 
 <%= link_to 'Back', event_attendance_entries_path %>
