@@ -7,7 +7,7 @@ module ApplicationHelper
     links = labels[0...labels.size-1]
     last = labels.last
 
-    html = '<ol class="breadcrumb">'
+    html = '<div class="row"><ol class="breadcrumb">'
     links.each do |link|
       html << case link
       when 'home'
@@ -34,6 +34,6 @@ module ApplicationHelper
       "<li>#{last}</li>"
     end
 
-    html + '</ol>'
+    html + '</ol></div>'
   end
 end

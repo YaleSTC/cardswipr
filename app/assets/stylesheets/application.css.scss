@@ -19,8 +19,24 @@ body {
   padding: 60px;
 }
 
+h1 {
+  margin-bottom: 20px;  
+}
+
 p {
   margin: 1rem;
+}
+
+.row.section {
+  margin-bottom: 30px;
+}
+
+.row.p {
+  margin-bottom: 10px;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
 }
 
 //

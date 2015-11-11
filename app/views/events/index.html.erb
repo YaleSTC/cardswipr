@@ -1,14 +1,14 @@
 <%= raw breadcrumbs('home', 'Events') %>
 
-<div class="row">
-  <h1>Listing Events</h1>
-  <div class="btn-group">
+<div class="row section">
+  <h1>Events</h1>
+  <div class="btn-group pull-right">
     <%= link_to new_event_path, :class => "btn btn-success" do %>
       <span class="glyphicon glyphicon-plus"></span> New Event
     <% end %>
   </div>
 </div>
-<div class="row">
+<div class="row section">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -67,7 +67,7 @@
       </ul>
     </div>
     <div class="panel-footer">
-      <a href="https://github.com/YaleSTC/cardswipr" class="btn btn-default">CardSwipr Guide</a>
+      <a target="_blank" href="https://github.com/YaleSTC/cardswipr" class="btn btn-default">CardSwipr Guide</a>
     </div>
   </div>
 </div>
