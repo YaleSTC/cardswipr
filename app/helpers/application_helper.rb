@@ -16,6 +16,8 @@ module ApplicationHelper
         "<li>#{link_to 'Events', events_path}</li>"
       when 'event'
         "<li>#{link_to @event.title, event_path(@event)}</li>"
+      when 'entry'
+        "<li>#{link_to @attendance_entry.name, attendance_entry_path(@attendance_entry)}</li>"
       when 'entry.event'
         "<li>#{link_to @attendance_entry.event.title, event_attendance_entries_path(@attendance_entry.event)}</li>"
       else
