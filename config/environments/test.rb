@@ -35,5 +35,10 @@ UsbDistribution::Application.configure do
   config.active_support.deprecation = :stderr
 
   # Initialize the Service Now gem
-  ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'], :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
+  #ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'],
+  #  :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
+
+  config.custom = ActiveSupport::OrderedOptions.new
+  config.custom.cardSwiprApiURL = 'https://gw-dev.its.yale.edu/soa-gateway/cardswipr/people/data'
+
 end
