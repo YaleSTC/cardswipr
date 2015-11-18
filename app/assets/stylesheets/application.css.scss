@@ -19,10 +19,6 @@ body {
   padding: 60px;
 }
 
-h1 {
-  margin-bottom: 20px;  
-}
-
 p {
   margin: 1rem;
 }
@@ -35,6 +31,7 @@ p {
   margin-bottom: 10px;
 }
 
+.table > thead > tr > th,
 .table > tbody > tr > td {
   vertical-align: middle;
 }
