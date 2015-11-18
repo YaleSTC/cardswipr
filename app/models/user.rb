@@ -13,15 +13,20 @@ class User < ActiveRecord::Base
     update_attributes(attributes)
   rescue
     Rails.logger.error("ERROR User#get_user_attributes failed for netid #{netid}")
-    false # don't actually save it if LDAP fails
+    false # don't actually save it if failed to retrieve user attributes
   end
 
   def full_name
-    if nickname.blank?
-      full_name = first_name + " " + last_name
+    fname = first_name || ''
+    lname = last_name || ''
+
+    if nickname.nil?
+      full_name = "#{fname} #{lname}"
     else
-      full_name = nickname + " " + last_name
+      full_name = "#{nickname} #{lname}"
     end
+
+    full_name.strip
   end
 
   def full_name_with_netid
