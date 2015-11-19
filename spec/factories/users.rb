@@ -2,6 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
-    netid 'csw3'
+    netid 'willy'
+    first_name 'Willy'
+    last_name 'Wonka'
   end
 end

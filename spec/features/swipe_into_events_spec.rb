@@ -18,7 +18,7 @@ describe 'SwipeIntoEvents', type: :feature do
   context 'using netid' do
     before :each do
       visit event_swipe_path(@event)
-      fill_in 'query', with: 'csw3'
+      fill_in 'query', with: 'frodo'
       click_on('Submit')
     end
     it 'can swipe someone into the event' do
@@ -26,7 +26,7 @@ describe 'SwipeIntoEvents', type: :feature do
     end
     it 'someone swiped into the event appears in the attendance list' do
       visit event_path(@event)
-      expect(find('#attendance_entries_table')).to have_content 'Casey'
+      expect(find('#attendance_entries_table')).to have_content 'Frodo'
     end
   end
 

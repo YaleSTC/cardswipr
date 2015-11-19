@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-
-
 ### Rails Default Gems ###
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -35,11 +33,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 
-
 ### Custom Gems ###
 
 # Authentication
 gem 'rubycas-client', :git => 'git://github.com/rubycas/rubycas-client.git'
+
+# REST client
+gem 'rest-client', '~>1.8'
 
 # Permissions
 gem 'cancancan', '~> 1.9'
@@ -57,7 +57,7 @@ gem 'service_now', :git => "https://github.com/YaleSTC/service_now.git", :tag =>
 # gem that makes static pages easier
 gem 'high_voltage'
 
-group :development do
+group :local, :development do
   gem 'pry'
   # gem 'better_errors'
   gem 'binding_of_caller'
@@ -70,10 +70,11 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'fuubar'
+  gem 'webmock'
 end
 
-group :development, :test do
-  gem 'factory_girl_rails'
+group :local, :development, :test do
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'pronto'
   gem 'pronto-rubocop'
   gem 'pronto-flay'

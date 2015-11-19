@@ -5,6 +5,7 @@ UsbDistribution::Application.configure do
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
+
   config.cache_classes = true
 
   # Do not eager load code on boot. This avoids loading your whole application
@@ -34,9 +35,11 @@ UsbDistribution::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  config.log_level = :debug
+
   # Initialize the Service Now gem
-  #ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'],
-  #  :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
+  ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'],
+    :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
 
   config.custom = ActiveSupport::OrderedOptions.new
   config.custom.cardSwiprApiURL = 'https://gw-dev.its.yale.edu/soa-gateway/cardswipr/people/data'

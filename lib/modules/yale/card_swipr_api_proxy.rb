@@ -52,7 +52,11 @@ module Yale
       response_obj = JSON.parse(response)
       response_obj['ServiceResponse']['Record']
     rescue RestClient::Exception => e
+      Rails.logger.error("CardSwiprApiProxy#send RestClient::Exception #{e}")
       raise CustomError.new(7000 + e.response.code, "Could not find the person")
+    rescue => e
+      Rails.logger.error("CardSwiprApiProxy#send error: #{e}")
+      raise e
     end
 
     def find_by_upi(upi)

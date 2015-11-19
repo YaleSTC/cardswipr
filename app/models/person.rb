@@ -31,4 +31,8 @@ class Person
       telephone: @phone
     }
   end
+
+  def to_s
+    "#{@first_name} (#{@known_as}) #{@last_name}, #{@email}, #{@phone}, #{@netid}, #{@upi}"
+  end
 end

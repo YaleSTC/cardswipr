@@ -4,12 +4,12 @@ RSpec.describe AttendanceEntry, type: :model do
 
   before :each do
     @event = create(:event)
-    @upi = "12714662" #Casey Watts' UPI
+    @upi = '2'
   end
 
   it "can be created" do
     attendance_entry = AttendanceEntry.create(upi: @upi, event: @event)
-    expect(attendance_entry.first_name).to eq 'Casey'
+    expect(attendance_entry.first_name).to eq 'Frodo'
   end
-
+ 
 end

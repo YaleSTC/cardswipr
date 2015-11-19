@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  host: localhost
+  socket: /tmp/mysql.sock
+  username: _MY_USERNAME_
+  password: _MY_PASSWORD_
+  encoding: utf8
+  reconnect: false
+  pool: 5
+
+local:
+  <<: *default
+  database: cardswipr_local
+
+test:
+  <<: *default
+  database: cardswipr_test

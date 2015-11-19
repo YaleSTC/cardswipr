@@ -30,11 +30,11 @@ end
 def fill_out_event
   fill_in 'event_title', with: 'Serious Session'
   fill_in 'event_description', with: 'Please swipe your card just once or else.'
-  select 'Casey Watts csw3', from: 'event[user_ids][]'
+  select 'Willy Wonka willy', from: 'event[user_ids][]'
 end
 
 def fill_out_event_alternative_content
   fill_in 'event_title', with: 'Silly Session'
   fill_in 'event_description', with: 'Lalalala'
-  select 'Casey Watts csw3', from: 'event[user_ids][]'
+  select 'Willy Wonka willy', from: 'event[user_ids][]'
 end

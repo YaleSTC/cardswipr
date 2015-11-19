@@ -20,11 +20,16 @@ module YaleIDLookup
   def self.lookup(query_str)
     api = Yale::CardSwiprApiProxy.instance
     m = query_str.match(/\d{10}/)
+    result = nil
 
     if m # ID number could be magstripe or prox, both are 10 digit
       v = m[0] # first (only) match
-      result = api.find_by_prox_num(v) || api.find_by_mag_stripe_num(v)
-    elsif query_str.match(/.*@yale.edu/)
+      begin
+        result = api.find_by_prox_num(v)
+      rescue
+        result = api.find_by_mag_stripe_num(v)
+      end
+    elsif query_str.match(/^[^@]+@[^@]+$/)
       result = api.find_by_email(query_str)
     else
       result = api.find_by_netid(query_str)

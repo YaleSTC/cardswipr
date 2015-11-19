@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'GeneralLookups', type: :feature do
   before :each do
-    @user = create(:user)
+    @user = create(:user, netid: 'willy', first_name: 'Willy', last_name: 'Wonka')
     sign_in(@user.netid)
   end
 
@@ -14,8 +14,9 @@ describe 'GeneralLookups', type: :feature do
 
   it 'can look someone up by netid' do
     visit distribution_personlookup_path
-    fill_in 'query', with: 'csw3'
+
+    fill_in 'query', with: 'frodo'
     click_on('Submit')
-    expect(page).to have_content 'Casey Watts'
+    expect(page).to have_content 'Baggins'
   end
 end
