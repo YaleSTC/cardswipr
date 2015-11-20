@@ -1,7 +1,11 @@
 <%= raw breadcrumbs('home', 'events', 'entry.event', 'entry', 'Edit') %>
 
-<h1><%= @attendance_entry.name %> <small>Edit</small></h1>
+<h1 class="swipr-header-clear-bottom"><%= @attendance_entry.name %> <small>Edit</small></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @attendance_entry, class: "btn btn-default" %>
+<div class="row section">
+  <div class="col-md-12">
+    <%= link_to 'Show', @attendance_entry, class: "btn btn-default" %>
+  </div>
+</div>

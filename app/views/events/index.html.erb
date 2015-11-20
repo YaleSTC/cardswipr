@@ -1,12 +1,13 @@
 <%= raw breadcrumbs('home', 'Events') %>
 
 <div class="row section">
-  <h1>Events</h1>
-  <div class="btn-group pull-right">
-    <%= link_to new_event_path, :class => "btn btn-success" do %>
-      <span class="glyphicon glyphicon-plus"></span> New Event
-    <% end %>
-  </div>
+  <h1>Events
+    <div class="btn-group pull-right">
+      <%= link_to new_event_path, :class => "btn btn-success" do %>
+        <span class="glyphicon glyphicon-plus"></span> New Event
+      <% end %>
+    </div>
+  </h1>
 </div>
 <div class="row section">
   <table class="table table-striped">

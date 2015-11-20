@@ -39,7 +39,10 @@ class AttendanceEntry < ActiveRecord::Base
   # end
 
   def self.to_csv
-    columns_to_export = column_names - ["id", "updated_at", "event_id"]
+    #columns_to_export = column_names - ["id", "updated_at", "event_id"]
+    columns_to_export = ['first_name', 'nickname', 'last_name', 'upi', 'netid',
+      'email', 'telephone']
+
     CSV.generate do |csv|
       csv << columns_to_export
       all.each do |user|

@@ -1,25 +1,24 @@
 <%= simple_form_for([@event, @attendance_entry]) do |f| %>
   <%= f.error_notification %>
 
-  <div class="col-md-6">
-    <%= f.input :first_name %>
-    <%= f.input :nickname %>
-    <%= f.input :last_name %>
-    <%= f.input :upi %>
-    <%= f.input :netid %>
-    <%= f.input :email %>
-  </div>
-  <div class="col-md-6">
-    <%= f.input :organization %>
-    <%= f.input :curriculum %>
-    <%= f.input :school %>
-    <%= f.input :college_name %>
-    <%= f.input :college_abbreviation %>
-    <%= f.input :class_year %>
-    <%= f.input :telephone %>
-    <%= f.input :address, as: :text, html: {height: 3} %>
-    <%= f.hidden_field :event_id, value: @attendance_entry.event.id %>
+  <div class="row section">
+    <div class="col-md-6">
+      <%= f.input :first_name %>
+      <%= f.input :nickname %>
+      <%= f.input :last_name %>
+      <%= f.input :netid %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :email %>
+      <%= f.input :telephone %>
+      <%= f.input :upi, label: 'UPI' %>
+      <%= f.hidden_field :event_id, value: @attendance_entry.event.id %>
+    </div>
   </div>
 
-  <%= f.button :submit, class: "btn btn-default" %>
+  <div class="row section">
+    <div class="col-md-12">
+      <%= f.button :submit, class: "btn btn-default" %>
+    </div>
+  </div>
 <% end %>
