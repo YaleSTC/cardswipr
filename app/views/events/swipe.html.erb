@@ -4,7 +4,7 @@
   <h4 class="text-center"><%= @event.description %></h4>
   <br>
   <div class="container text-center">
-    <%= form_tag event_lookup_path(@event), class: "input-lg" do %>
+    <%= form_tag event_lookup_path(@event), class: "input-lg", id: "swipr_swipe_form" do %>
     <div class="spacedout">
       <strong class="spacedout">Card Swipe</strong> or <strong class="spacedout">Card Tap</strong> or <strong class="spacedout">NetID</strong> or <strong class="spacedout">Yale Email</strong><br>
     </div>
