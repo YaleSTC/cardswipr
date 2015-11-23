@@ -82,5 +82,5 @@ UsbDistribution::Application.configure do
   ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'], :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])
 
   config.custom = ActiveSupport::OrderedOptions.new
-  config.custom.cardSwiprApiURL = 'https://gw-dev.its.yale.edu/soa-gateway/cardswipr/people/data'
+  config.custom.cardSwiprApiURL = 'https://gw.its.yale.edu/soa-gateway/cardswipr/people/data'
 end
