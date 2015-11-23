@@ -2,6 +2,9 @@
 
 This file should be updated before a new release is deployed.
 
+## 1.3.2 <small>11/20/2015</small>
+* Misc. bug fix with configuration for production environment.
+
 ## 1.3.1 <small>11/20/2015</small>
 
 ### Changed
