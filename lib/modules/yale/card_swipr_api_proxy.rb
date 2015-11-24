@@ -38,7 +38,7 @@ module Yale
     # Send query to Layer7 and return the response.
     def send(query)
       url = "#{Rails.configuration.custom.cardSwiprApiURL}?type=json&#{query}"
-      Rails.logger.debug("CardSwiprApiProxy#send URL: #{url}")
+      Rails.logger.info("CardSwiprApiProxy#send URL: #{url}")
 
       rsrc = RestClient::Resource.new(
         url,
