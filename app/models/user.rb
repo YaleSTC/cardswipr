@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   def get_user_attributes
     api_response = Yale::CardSwiprApiProxy.instance.find_by_netid(netid)
     person = Person.new.update_from_cardswipr_api(api_response)
-    attributes = person.attributes.slice('netid', 'first_name', 'last_name', 'nickname', 'email')
+    attributes = person.attributes.slice(:netid, :first_name, :last_name, :nickname, :email)
     update_attributes(attributes)
   rescue
     Rails.logger.error("ERROR User#get_user_attributes failed for netid #{netid}")
