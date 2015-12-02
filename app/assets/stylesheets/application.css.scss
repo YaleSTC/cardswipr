@@ -34,8 +34,13 @@ p {
   margin-bottom: 10px;
 }
 
+th, td {
+  padding: 2px 5px;
+}
+
 .table > thead > tr > th,
 .table > tbody > tr > td {
+
   vertical-align: middle;
 }
 
