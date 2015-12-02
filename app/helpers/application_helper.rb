@@ -36,4 +36,10 @@ module ApplicationHelper
 
     html + '</ol></div>'
   end
+
+  def helper_paginate(model_collection)
+    will_paginate(model_collection,
+      previous_label: icon('caret-left') + ' Previous',
+      next_label: 'Next ' + icon('caret-right'))
+  end
 end

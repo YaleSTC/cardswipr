@@ -51,6 +51,11 @@ gem 'simple_form'
 gem 'mysql2'
 gem 'sqlite3'
 
+# Paginate
+gem 'will_paginate', '~> 3.0.7'
+
+gem 'font-awesome-sass', '~> 4.4.0'
+
 # Service Now Gem
 gem 'service_now', :git => "https://github.com/YaleSTC/service_now.git", :tag => 'v0.1.0'
 

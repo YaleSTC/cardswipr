@@ -108,6 +108,8 @@ GEM
     flay (2.4.0)
       ruby_parser (~> 3.0)
       sexp_processor (~> 4.0)
+    font-awesome-sass (4.4.0)
+      sass (>= 3.2)
     formatador (0.2.5)
     fuubar (2.0.0)
       rspec (~> 3.0)
@@ -316,6 +318,7 @@ GEM
       crack (>= 0.3.2)
       hashdiff
     websocket (1.2.2)
+    will_paginate (3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -330,6 +333,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails (~> 4.0)
+  font-awesome-sass (~> 4.4.0)
   fuubar
   guard-rspec
   high_voltage
@@ -357,6 +361,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   webmock
+  will_paginate (~> 3.0.7)
 
 BUNDLED WITH
    1.10.6
