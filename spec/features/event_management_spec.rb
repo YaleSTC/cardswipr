@@ -23,8 +23,6 @@ describe 'EventManagement', type: :feature do
     visit event_path(@event)
     expect(page).to have_content 'Attendance List'
   end
-  xit 'someone is removed from the attendance list, they no longer show up' do
-  end
 end
 
 def fill_out_event

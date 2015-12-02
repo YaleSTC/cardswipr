@@ -1,9 +1,13 @@
 require 'spec_helper'
 
 describe 'User', type: :feature do
-  xit 'signs in, a user is created' do
-    # fake cas
-    # navigate to main page
-    # user is created?
+  before :each do
+    @user = create(:user) # creating willy
+    sign_in(@user.netid)
+  end
+
+  it 'shows user when signed in' do
+    visit '/'
+    expect(page).to have_content 'Willy Wonka'
   end
 end

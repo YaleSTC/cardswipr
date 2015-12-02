@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'GeneralLookups', type: :feature do
   before :each do
-    @user = create(:user, netid: 'willy', first_name: 'Willy', last_name: 'Wonka')
+    @user = create(:user) # creating willy
     sign_in(@user.netid)
   end
 
@@ -16,6 +16,7 @@ describe 'GeneralLookups', type: :feature do
     visit distribution_personlookup_path
 
     fill_in 'query', with: 'frodo'
+    sleep 1 # somehow the following click_on does not pick up the query input if I don't sleep here.
     click_on('Submit')
     expect(page).to have_content 'Baggins'
   end

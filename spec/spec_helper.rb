@@ -1,5 +1,6 @@
 ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
+require_relative('support/database_cleaner.rb')
 require_relative('support/fake_cardswipr_api')
 
 ActiveRecord::Migration.maintain_test_schema! if defined?(ActiveRecord::Migration)
@@ -17,21 +18,14 @@ RSpec.configure do |config|
   config.before(:suite) do
     # FactoryGirl.lint
     # %x[bundle exec rake assets:precompile]
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do |example|
     stub_external_requests
   end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
+  
   Capybara.asset_host = 'http://localhost:3000'
-  #Capybara.default_driver = :selenium
+  Capybara.default_driver = :selenium
   Capybara.default_wait_time = 5
   config.include Rails.application.routes.url_helpers
 end

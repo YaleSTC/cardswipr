@@ -71,6 +71,7 @@ group :test do
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'webmock'
+  gem 'selenium-webdriver'
 end
 
 group :local, :development, :test do
