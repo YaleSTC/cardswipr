@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     fname = first_name || ''
     lname = last_name || ''
 
-    if nickname.nil?
+    if nickname.nil? || nickname.empty?
       full_name = "#{fname} #{lname}"
     else
       full_name = "#{nickname} #{lname}"

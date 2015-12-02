@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'cgi'
 
 class FakeCardSwiprApi
@@ -10,19 +9,21 @@ class FakeCardSwiprApi
         "PrimaryAffiliation": "STAFF",
         "EmailAddress": "%{email}",
         "FirstName": "%{first_name}",
-        "ProxNumber": "{prox}",
-        "KnownAs": "",
+        "ProxNumber": "%{prox}",
+        "KnownAs": "%{known_as}",
         "NetId": "%{netid}",
         "LastName": "%{last_name}",
-        "MagStripeNumber": "${mag}"
+        "MagStripeNumber": "%{mag}"
       }
     }
   })
 
   @data = [
-    { upi: '1', netid: 'willy', first_name: 'Willy', last_name: 'Wonka',
+    { upi: '1', netid: 'willy',
+      first_name: 'Willy', last_name: 'Wonka', known_as: '',
       email: 'willy@example.com', prox: '0000000001', mag: '1000000001' },
-    { upi: '2', netid: 'frodo', first_name: 'Frodo', last_name: 'Baggins',
+    { upi: '2', netid: 'frodo',
+      first_name: 'Frodo', last_name: 'Baggins', known_as: 'Froyo',
       email: 'frodo@example.com', prox: '0000000002', mag: '1000000002' }
   ]
 
