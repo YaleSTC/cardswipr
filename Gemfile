@@ -77,16 +77,16 @@ group :test do
   gem 'launchy', '~> 2.4.3'
   gem 'database_cleaner', '~> 1.5.1'
   gem 'fuubar', '~> 2.0.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'webmock', '~> 1.22.3'
   gem 'selenium-webdriver', '~> 2.48.1'
 end
 
 group :local, :test do
-  gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'pronto', '~> 0.5.0'
-  gem 'pronto-rubocop', '~> 0.5.0'
-  gem 'pronto-flay', '~> 0.5.0'
-  gem 'pronto-brakeman', '~> 0.5.0'
-  gem 'pronto-rails_best_practices', '~> 0.5.0'
-  # gem 'pronto-reek', '~> 0.5.0'
+  gem 'pronto', '~> 0.4.3'
+  # gem 'pronto-rubocop', '~> 0.4.7'
+  # gem 'pronto-flay', '~> 0.4.2'
+  # gem 'pronto-brakeman', '~> 0.4.3'
+  # gem 'pronto-rails_best_practices', '~> 0.4.0'
+  # gem 'pronto-reek', '~> 0.4.3'
 end
