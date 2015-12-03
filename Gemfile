@@ -83,6 +83,10 @@ group :test do
 end
 
 group :local, :test do
+  # Forcing rugged to 0.22.2 because any version above fails to complie
+  # on the current Yale host.
+  # 0.23.1 intruduced dependency on cmake 2.8 while the server has 2.6.
+  # 0.23.0 still failed to compile with some other reason.
   gem 'rugged', '0.22.2'
   gem 'pronto', '0.4.2'
   gem 'pronto-rubocop', '~> 0.4.6'
