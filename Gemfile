@@ -83,8 +83,8 @@ group :test do
 end
 
 group :local, :test do
-  gem 'rugged', '0.23.0'
-  gem 'pronto', '0.4.3'
+  gem 'rugged', '0.22.2'
+  gem 'pronto', '0.4.2'
   gem 'pronto-rubocop', '~> 0.4.6'
   gem 'pronto-flay', '~> 0.4.2'
   gem 'pronto-brakeman', '~> 0.4.2'
