@@ -13,7 +13,7 @@ class Person
     @netid = rec['NetId']
     @first_name = rec['FirstName']
     @last_name = rec['LastName']
-    @known_as = rec['KnownAs']
+    @known_as = rec['PreferredGivenName']
     @email = rec['EmailAddress']
     @phone = rec['WorkPhone']
     self
@@ -33,6 +33,6 @@ class Person
   end
 
   def to_s
-    "#{@first_name} (#{@known_as}) #{@last_name}, #{@email}, #{@phone}, #{@netid}, #{@upi}"
+    "#{@first_name} #{@last_name}, #{@email}, #{@phone}, #{@netid}, #{@upi}"
   end
 end

@@ -13,59 +13,46 @@
 
 ActiveRecord::Schema.define(version: 20141021165539) do
 
-  create_table "attendance_entries", force: true do |t|
-    t.string   "first_name"
-    t.string   "nickname"
-    t.string   "last_name"
-    t.integer  "upi"
-    t.string   "netid"
-    t.string   "email"
-    t.string   "college_name"
-    t.string   "college_abbreviation"
-    t.integer  "class_year"
-    t.string   "school"
-    t.string   "telephone"
-    t.string   "address"
-    t.integer  "event_id"
+  create_table "attendance_entries", force: :cascade do |t|
+    t.string   "first_name",           limit: 255
+    t.string   "nickname",             limit: 255
+    t.string   "last_name",            limit: 255
+    t.integer  "upi",                  limit: 4
+    t.string   "netid",                limit: 255
+    t.string   "email",                limit: 255
+    t.string   "college_name",         limit: 255
+    t.string   "college_abbreviation", limit: 255
+    t.integer  "class_year",           limit: 4
+    t.string   "school",               limit: 255
+    t.string   "telephone",            limit: 255
+    t.string   "address",              limit: 255
+    t.integer  "event_id",             limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "checked_in",           default: false
-    t.string   "organization"
-    t.string   "curriculum"
+    t.string   "organization",         limit: 255
+    t.string   "curriculum",           limit: 255
   end
 
-  create_table "events", force: true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "events_users", force: true do |t|
-    t.integer "event_id", null: false
-    t.integer "user_id",  null: false
-  end
-
-  create_table "sessions", force: true do |t|
-    t.string   "session_id", null: false
-    t.string   "cas_ticket"
-    t.text     "data"
+  create_table "events", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["cas_ticket"], name: "index_sessions_on_cas_ticket"
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  create_table "events_users", force: :cascade do |t|
+    t.integer "event_id", limit: 4, null: false
+    t.integer "user_id",  limit: 4, null: false
+  end
 
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "netid"
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.string   "netid",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "nickname"
-    t.string   "email"
+    t.string   "nickname",   limit: 255
+    t.string   "email",      limit: 255
   end
 
 end

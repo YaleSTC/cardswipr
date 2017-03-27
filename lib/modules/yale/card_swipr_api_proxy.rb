@@ -37,6 +37,14 @@ module Yale
 
     # Send query to Layer7 and return the response.
     def send(query)
+      if Rails.env == 'local'
+        send_with_basic_auth(query)
+      else
+        send_with_client_cert(query)
+      end
+    end
+
+    def send_with_client_cert(query)
       url = "#{Rails.configuration.custom.cardSwiprApiURL}?type=json&#{query}"
       Rails.logger.info("CardSwiprApiProxy#send URL: #{url}")
 
@@ -56,6 +64,26 @@ module Yale
       raise CustomError.new(7000 + e.response.code, "Could not find the person")
     rescue => e
       Rails.logger.error("CardSwiprApiProxy#send error: #{e}")
+      raise e
+    end
+
+    def send_with_basic_auth(query)
+      url = "#{Rails.configuration.custom.cardSwiprApiURL}?outputformat=json&#{query}"
+      Rails.logger.info("CardSwiprApiProxy#send_with_basic_auth URL: #{url}")
+      response = RestClient::Request.new(
+        method: :get,
+        url: url,
+        user: ENV['IAM_USERNAME'],
+        password: ENV['IAM_PASSWORD'],
+        headers: { :accept => :json, content_type: :json }
+      ).execute
+      response_obj = JSON.parse(response.to_str)
+      response_obj['ServiceResponse']['Record']
+    rescue RestClient::Exception => e
+      Rails.logger.error("CardSwiprApiProxy#send_with_basic_auth RestClient::Exception #{e}")
+      raise CustomError.new(7000 + e.response.code, "Could not find the person")
+    rescue => e
+      Rails.logger.error("CardSwiprApiProxy#send_with_basic_auth error: #{e}")
       raise e
     end
 
