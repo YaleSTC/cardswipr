@@ -8,75 +8,30 @@ module Yale
     include Singleton
 
     def initialize
-      Rails.logger.info('Yale::CardSwiprApiProxy#initialize API URL: ' \
-        "#{Rails.configuration.custom.cardSwiprApiURL})")
-
-      @cert = cert
-      @key = key
+      @username, @password = get_credentials
     end
 
-    # Client-side SSL certificate
-    def cert
-      certfile = Rails.application.secrets.ssl_client_certificate
-      Rails.logger.info("CardSwiprApiProxy#get_cert path: #{certfile}")
-      OpenSSL::X509::Certificate.new(File.read(certfile))
-    rescue
-      Rails.logger.fatal("ERROR Failed to load cert file at #{certfile}")
-      return nil
-    end
-
-    # Client-side SSL private key
-    def key
-      keyfile = Rails.application.secrets.ssl_client_key
-      Rails.logger.info("CardSwiprApiProxy#get_key path: #{keyfile}")
-      OpenSSL::PKey::RSA.new(File.read(keyfile))
-    rescue
-      Rails.logger.fatal("ERROR Failed to load key file at #{keyfile}")
-      return nil
+    def get_credentials
+      file_path = Rails.application.secrets.api_credentials_path
+      Rails.logger.info("CardSwiprApiProxy#get_credentials path: #{file_path}")
+      parsed = JSON.parse(File.read(file_path))
+      return parsed['username'], parsed['password']
+    rescue Exception => e
+      Rails.logger.fatal("ERROR Failed to load user info file at #{file_path} - #{e.message}")
+      Rails.logger.fatal(e.backtrace.inspect)
+      return [nil, nil]
     end
 
     # Send query to Layer7 and return the response.
     def send(query)
-      if Rails.env == 'local'
-        send_with_basic_auth(query)
-      else
-        send_with_client_cert(query)
-      end
-    end
-
-    def send_with_client_cert(query)
-      url = "#{Rails.configuration.custom.cardSwiprApiURL}?type=json&#{query}"
-      Rails.logger.info("CardSwiprApiProxy#send URL: #{url}")
-
-      rsrc = RestClient::Resource.new(
-        url,
-        headers: { accept: :json },
-        ssl_client_cert: @cert,
-        ssl_client_key: @key,
-        verify_ssl: OpenSSL::SSL::VERIFY_PEER)
-
-      response = rsrc.get
-      Rails.logger.debug("CardSwiprApiProxy#send raw response: #{response}")
-      response_obj = JSON.parse(response)
-      response_obj['ServiceResponse']['Record']
-    rescue RestClient::Exception => e
-      Rails.logger.error("CardSwiprApiProxy#send RestClient::Exception #{e}")
-      raise CustomError.new(7000 + e.response.code, "Could not find the person")
-    rescue => e
-      Rails.logger.error("CardSwiprApiProxy#send error: #{e}")
-      raise e
-    end
-
-    def send_with_basic_auth(query)
       url = "#{Rails.configuration.custom.cardSwiprApiURL}?outputformat=json&#{query}"
       Rails.logger.info("CardSwiprApiProxy#send_with_basic_auth URL: #{url}")
-      response = RestClient::Request.new(
-        method: :get,
-        url: url,
-        user: ENV['IAM_USERNAME'],
-        password: ENV['IAM_PASSWORD'],
-        headers: { :accept => :json, content_type: :json }
-      ).execute
+      @rsrc = RestClient::Resource.new(url,
+        user: @username,
+        password: @password,
+        headers: { accept: :json }
+      )
+      response = @rsrc.get()
       response_obj = JSON.parse(response.to_str)
       response_obj['ServiceResponse']['Record']
     rescue RestClient::Exception => e
