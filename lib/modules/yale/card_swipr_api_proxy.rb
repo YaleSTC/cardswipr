@@ -8,18 +8,8 @@ module Yale
     include Singleton
 
     def initialize
-      @username, @password = get_credentials
-    end
-
-    def get_credentials
-      file_path = Rails.application.secrets.api_credentials_path
-      Rails.logger.info("CardSwiprApiProxy#get_credentials path: #{file_path}")
-      parsed = JSON.parse(File.read(file_path))
-      return parsed['username'], parsed['password']
-    rescue Exception => e
-      Rails.logger.fatal("ERROR Failed to load user info file at #{file_path} - #{e.message}")
-      Rails.logger.fatal(e.backtrace.inspect)
-      return [nil, nil]
+      @username = Rails.application.secrets.id_api_username;
+      @password = Rails.application.secrets.id_api_password;
     end
 
     # Send query to Layer7 and return the response.
