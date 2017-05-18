@@ -18,54 +18,5 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body {
-  padding: 60px;
-}
-
-p {
-  margin: 1rem;
-}
-
-.row.section {
-  margin-bottom: 30px;
-}
-
-.row.p {
-  margin-bottom: 10px;
-}
-
-th, td {
-  padding: 2px 5px;
-}
-
-.table > thead > tr > th,
-.table > tbody > tr > td {
-
-  vertical-align: middle;
-}
-
-//
-// centered columns styles for twitter bootstrap
-// from http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-centered-columns
-//
-
-.row-centered {
-  text-align: center;
-}
-
-.col-centered {
-  display: inline-block;
-  float: none;
-  // inline-block space fix
-  margin-right: -4px;
-  // reset the text-align
-  text-align: left;
-}
-
-.swipr-header-clear-bottom {
-  margin-bottom: 25px;
-}
-
-.control-group {
-  margin-bottom: 10px;
-}
+@import 'default';
+@import 'event_form';

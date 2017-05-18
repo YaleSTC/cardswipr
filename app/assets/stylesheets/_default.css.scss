@@ -1,0 +1,102 @@
+$white: #fff;
+$gray: #999;
+$light-gray: #ccc;
+$lighter-gray: #f5f5f5;
+$red: #bd2c00;
+$lighter-red: #ebcdcd;
+
+$border-radius: 4px;
+
+// Standard padding for rows, input, etc.
+$h-padding: 5px; // horizontal
+$v-padding: 2px; // vertical
+
+body {
+  padding: 60px;
+}
+
+p {
+  margin: 1rem;
+}
+
+.offscreen {
+  height: 1px;
+  left: -999px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  z-index: -999;
+}
+
+.row.section {
+  margin-bottom: 30px;
+}
+
+.row.p {
+  margin-bottom: 10px;
+}
+
+th, td {
+  padding: 2px 5px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > td {
+
+  vertical-align: middle;
+}
+
+//
+// centered columns styles for twitter bootstrap
+// from http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-centered-columns
+//
+
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  // inline-block space fix
+  margin-right: -4px;
+  // reset the text-align
+  text-align: left;
+}
+
+.swipr-header-clear-bottom {
+  margin-bottom: 25px;
+}
+
+.control-group {
+  margin-bottom: 10px;
+}
+
+
+// Remove icon (X)
+.swipr-remove {
+  color: $gray;
+  display: inline-block;
+  float: right;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.tt-menu {
+  background-color: $white;
+  border: solid 1px $gray;
+}
+
+input,
+.tt-menu {
+  padding: $v-padding $h-padding;
+  width: 350px;
+}
+
+.tt-selectable {
+  &:hover {
+    background-color: $light-gray;
+  }
+}

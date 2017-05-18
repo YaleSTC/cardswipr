@@ -1,0 +1,51 @@
+#swipr-event-admin-selector {
+  border: solid 1px $light-gray;
+  border-radius: $border-radius;
+  margin-bottom: 20px;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  label {
+    float: left;
+  }
+
+  .input-row {
+    padding: 10px $h-padding;
+  }
+
+  input {
+    width: 350px;
+  }
+
+  .add-button {
+    float: right;
+  }
+
+  .error-row {
+    background-color: $lighter-red;
+    padding: 10px;
+  }
+}
+
+.swipr-list-manager-header {
+  background-color: $lighter-gray;
+  border-bottom: solid 1px $light-gray;
+  border-radius: $border-radius $border-radius 0 0;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.swipr-list-manager-row {
+  border-bottom: solid 1px $light-gray;
+}
+
+.swipr-list-manager-header,
+.swipr-list-manager-row,
+.swipr-list-manager-input-row {
+  padding: 5px 10px;
+  width: 100%;
+}

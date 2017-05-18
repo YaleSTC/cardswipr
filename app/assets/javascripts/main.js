@@ -6,10 +6,18 @@ window.YaleSTC = {};
   var lastSubmit = new Date().valueOf();
 
   $(document).ready(function () {
-
-    $form = $('#swipr_swipe_form');
+    $form = $('#swipr-swipe-form');
     if ($form.length > 0) {
       setupSwipeForm($form);
+    }
+
+    $eventAdminSelector = $('#swipr-event-admin-selector');
+    if ($eventAdminSelector.length > 0) {
+      new root.ListManagerWidget({
+        $root: $eventAdminSelector,
+        header: 'Event Admins',
+        rows: ['a', 'b']
+      });
     }
   });
 

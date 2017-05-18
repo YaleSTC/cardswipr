@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require handlebars-v4.0.5
+//= require typeahead.bundle
 //
 //= require main
+//= require list-manager-widget

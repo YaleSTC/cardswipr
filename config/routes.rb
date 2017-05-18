@@ -12,6 +12,10 @@ UsbDistribution::Application.routes.draw do
 
   resources :users
 
+  controller :users do
+    get '/find_users/:query' => :find_users
+  end
+
   get '/distribution/personlookup', as: :distribution_personlookup
 
   # root to: 'distribution#home'
