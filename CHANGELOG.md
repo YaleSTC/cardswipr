@@ -2,6 +2,10 @@
 
 This file should be updated before a new release is deployed.
 
+## 1.3.5
+<small>7/2/2017</small>
+As remediation for trainsition to Workday, CardSwipr is now using a differnet API entry point for the ID data: (https://gw.its.yale.edu/soa-gateway/v2/identity) with a different method of authentication.
+
 ## 1.3.4
 <small>12/4/2015</small>
 
