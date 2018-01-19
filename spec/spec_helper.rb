@@ -14,9 +14,9 @@ require 'webmock/rspec'
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include Capybara::DSL
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.before(:suite) do
-    # FactoryGirl.lint
+    # FactoryBot.lint
     # %x[bundle exec rake assets:precompile]
   end
 

@@ -77,7 +77,7 @@ group :test do
   gem 'launchy', '~> 2.4.3'
   gem 'database_cleaner', '~> 1.6.2'
   gem 'fuubar', '~> 2.3.1'
-  gem 'factory_girl_rails', '~> 4.9.0'
+  gem 'factory_bot_rails', '~> 4.8.2'
   gem 'webmock', '~> 3.2.1'
   gem 'selenium-webdriver', '~> 3.8.0'
 end
