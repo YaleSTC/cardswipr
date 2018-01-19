@@ -1,23 +1,39 @@
+# Since we don't have a staging server, we'd like to emulate a production envrironment here too.
+# TODO: we could instead set Jenkins environment to production and use the "development"
+# for local development as intended.
+
 UsbDistribution::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # Code is not reloaded between requests.
+  # In the development environment your application's code is reloaded on
+  # every request. This slows down response time but is perfect for development
+  # since you don't have to restart the web server when you make code changes
+  # config.cache_classes = false
   config.cache_classes = true
 
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both thread web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
+  # Do not eager load code on boot.
+  # config.eager_load = false
   config.eager_load = true
 
-  # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  # Show full error reports.
+  config.consider_all_requests_local = true
 
-  # Enable Rack::Cache to put a simple HTTP cache in front of your application
-  # Add `rack-cache` to your Gemfile before enabling this.
-  # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
-  # config.action_dispatch.rack_cache = true
+  # Enable/disable caching. By default caching is disabled
+  # if Rails.root.join('tmp/caching-dev.txt').exist?
+  #   config.action_controller.perform_caching = true
+  #   config.cache_store = :memory_store
+  #   config.public_file_server.headers = {
+  #     'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+  #   }
+  # else
+  #   config.action_controller.perform_caching = false
+  #   config.cache_store = :null_stor
+  # end
+  config.action_controller.perform_caching = true
+  config.cache_store = :memory_store
+  config.public_file_server.headers = {
+    'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+  }
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = true
@@ -77,6 +93,8 @@ UsbDistribution::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.eager_load_paths += %W(#{config.root}/lib/modules)
 
   # Initialize the Service Now gem
   ServiceNow::Configuration.configure(:sn_url => ENV['SN_INSTANCE'], :sn_username => ENV['SN_USERNAME'], :sn_password => ENV['SN_PASSWORD'])

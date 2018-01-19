@@ -1,4 +1,5 @@
 UsbDistribution::Application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # if routing the root path, update for your controller
   root to: 'pages#show', id: 'home'

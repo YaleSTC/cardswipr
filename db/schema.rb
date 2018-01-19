@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,46 +12,46 @@
 
 ActiveRecord::Schema.define(version: 20141021165539) do
 
-  create_table "attendance_entries", force: :cascade do |t|
-    t.string   "first_name",           limit: 255
-    t.string   "nickname",             limit: 255
-    t.string   "last_name",            limit: 255
-    t.integer  "upi",                  limit: 4
-    t.string   "netid",                limit: 255
-    t.string   "email",                limit: 255
-    t.string   "college_name",         limit: 255
-    t.string   "college_abbreviation", limit: 255
-    t.integer  "class_year",           limit: 4
-    t.string   "school",               limit: 255
-    t.string   "telephone",            limit: 255
-    t.string   "address",              limit: 255
-    t.integer  "event_id",             limit: 4
+  create_table "attendance_entries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "first_name"
+    t.string "nickname"
+    t.string "last_name"
+    t.integer "upi"
+    t.string "netid"
+    t.string "email"
+    t.string "college_name"
+    t.string "college_abbreviation"
+    t.integer "class_year"
+    t.string "school"
+    t.string "telephone"
+    t.string "address"
+    t.integer "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "organization",         limit: 255
-    t.string   "curriculum",           limit: 255
+    t.string "organization"
+    t.string "curriculum"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "description", limit: 255
+  create_table "events", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.string "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "events_users", force: :cascade do |t|
-    t.integer "event_id", limit: 4, null: false
-    t.integer "user_id",  limit: 4, null: false
+  create_table "events_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
-    t.string   "netid",      limit: 255
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "netid"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "nickname",   limit: 255
-    t.string   "email",      limit: 255
+    t.string "nickname"
+    t.string "email"
   end
 
 end

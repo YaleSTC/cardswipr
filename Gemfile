@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 ### Rails Default Gems ###
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '5.1.4'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '5.0.4'
-gem 'bootstrap-sass', '3.3.6'
+gem 'sass-rails', '5.0.7'
+gem 'bootstrap-sass', '3.3.7'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '2.7.2'
+gem 'uglifier', '4.1.3'
 
 # Use CoffeeScript for .js.coffee assets and views
 #gem 'coffee-rails', '~> 4.0.0'
@@ -19,67 +19,67 @@ gem 'uglifier', '2.7.2'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '4.0.5'
+gem 'jquery-rails', '4.3.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '2.5.3'
+gem 'turbolinks', '5.1.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '2.3.2'
+gem 'jbuilder', '2.7.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '0.4.1', group: :doc
+gem 'sdoc', '0.4.2', group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring', '1.5.0', group: :development
+gem 'spring', '2.0.2', group: :development
 
 
 ### Custom Gems ###
 
 # Authentication
-gem 'rubycas-client', git: 'git://github.com/rubycas/rubycas-client.git',
+gem 'rubycas-client', git: 'https://github.com/rubycas/rubycas-client.git',
   ref: '195a4b70333029be474b0ac70efdc85bd4288861'
 
 # REST client
-gem 'rest-client', '1.8.0'
+gem 'rest-client', '2.0.2'
 
 # Permissions
-gem 'cancancan', '1.13.1'
+gem 'cancancan', '2.1.3'
 
 # Simple Form
-gem 'simple_form', '3.2.0'
+gem 'simple_form', '3.5.0'
 
 # Database Gems
-gem 'mysql2', '0.4.2'
+gem 'mysql2', '0.4.10'
 #gem 'sqlite3'
 
 # Paginate
-gem 'will_paginate', '~> 3.0.7'
+gem 'will_paginate', '~> 3.1.6'
 
-gem 'font-awesome-sass', '~> 4.4.0'
+gem 'font-awesome-sass', '~> 4.7.0'
 
 # Service Now Gem
 gem 'service_now', :git => 'https://github.com/YaleSTC/service_now.git', :tag => 'v0.1.0'
 
 # gem that makes static pages easier
-gem 'high_voltage', '2.4.0'
+gem 'high_voltage', '3.0.0'
 
 group :local do
-  gem 'pry', '~> 0.10.3'
+  gem 'pry', '~> 0.11.3'
   # gem 'better_errors', '~> 2.1.1'
-  gem 'binding_of_caller', '~> 0.7.2'
-  gem 'guard-rspec', '~> 4.6.4', require: false
+  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'guard-rspec', '~> 4.7.3', require: false
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.4.0'
+  gem 'rspec-rails', '~> 3.7.2'
   #gem 'rspec-mocks', '~> 3.4.0'
-  gem 'capybara', '~> 2.5.0'
+  gem 'capybara', '~> 2.17.0'
   gem 'launchy', '~> 2.4.3'
-  gem 'database_cleaner', '~> 1.5.1'
-  gem 'fuubar', '~> 2.0.0'
-  gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'webmock', '~> 1.22.3'
-  gem 'selenium-webdriver', '~> 2.48.1'
+  gem 'database_cleaner', '~> 1.6.2'
+  gem 'fuubar', '~> 2.3.1'
+  gem 'factory_girl_rails', '~> 4.9.0'
+  gem 'webmock', '~> 3.2.1'
+  gem 'selenium-webdriver', '~> 3.8.0'
 end
 
 group :local, :test do
@@ -87,11 +87,11 @@ group :local, :test do
   # on the current Yale host.
   # 0.23.1 intruduced dependency on cmake 2.8 while the server has 2.6.
   # 0.23.0 still failed to compile with some other reason.
-  gem 'rugged', '0.22.2'
-  gem 'pronto', '0.4.2'
-  gem 'pronto-rubocop', '~> 0.4.6'
-  gem 'pronto-flay', '~> 0.4.2'
-  gem 'pronto-brakeman', '~> 0.4.2'
-  gem 'pronto-rails_best_practices', '~> 0.4.0'
-  gem 'pronto-reek', '~> 0.4.3'
+  gem 'rugged', '0.26.0'
+  gem 'pronto', '0.9.5'
+  gem 'pronto-rubocop', '~> 0.9.0'
+  gem 'pronto-flay', '~> 0.9.0'
+  gem 'pronto-brakeman', '~> 0.9.1'
+  gem 'pronto-rails_best_practices', '~> 0.9.0'
+  gem 'pronto-reek', '~> 0.9.0'
 end

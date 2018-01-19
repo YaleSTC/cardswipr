@@ -1,4 +1,4 @@
-class CreateJoinEventUser < ActiveRecord::Migration
+class CreateJoinEventUser < ActiveRecord::Migration[4.2]
   def change
     create_table :events_users do |t|
       t.references :event, :null => false
