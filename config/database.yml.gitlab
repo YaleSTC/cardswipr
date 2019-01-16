@@ -1,0 +1,5 @@
+test:
+  host: postgres
+  user: runner
+  adapter: postgresql
+  database: gitlab_ci_test

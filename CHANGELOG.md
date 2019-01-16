@@ -2,6 +2,13 @@
 
 This file should be updated before a new release is deployed.
 
+## Unreleased
+### Changed
+
+### Added
+
+### Fixed
+
 ## 1.3.6
 <small>7/3/2017</small>
 Bugfix: updated API URL for production. Had forgotten to update it in 1.3.5.

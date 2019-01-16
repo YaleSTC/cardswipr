@@ -1,0 +1,40 @@
+stages:
+  - test
+  - build
+  - deploy
+
+.rails_template: &rails_template
+  image: ruby:2.6.0
+
+  services:
+    - postgres:latest
+
+  variables:
+    POSTGRES_DB: gitlab_ci_test
+    POSTGRES_USER: runner
+    POSTGRES_PASSWORD: ""
+
+  stage: test
+
+  cache:
+    paths:
+      - vendor/bundle
+
+  before_script:
+    - apt-get update -q
+    - apt-get install nodejs -yqq
+    - gem install bundler --no-document
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle
+    - cp -f config/database.yml{.gitlab,}
+
+rails_test:
+  <<: *rails_template
+
+  script:
+    - rake
+
+rails_style:
+  <<: *rails_template
+
+  script:
+    - rake check_style
