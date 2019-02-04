@@ -1,0 +1,5 @@
+<cas:serviceResponse xmlns:cas='http://cas.cas.cas/tp/cas'>
+    <cas:authenticationSuccess>
+        <cas:user>NETID</cas:user>
+    </cas:authenticationSuccess>
+</cas:serviceResponse>

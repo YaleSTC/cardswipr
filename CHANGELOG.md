@@ -2,10 +2,12 @@
 
 This file should be updated before a new release is deployed.
 
-## Unreleased
+## 2.0.0 (Unreleased)
 ### Changed
 
 ### Added
+* Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)
+* Added CAS authentication via Devise [#108](https://gitlab.com/yale-sdmp/cardswipr/issues/108)
 
 ### Fixed
 

@@ -1,3 +1,6 @@
 <div class="row justify-content-center">
   <h1>Welcome to Cardswipr</h1>
+  <% unless user_signed_in?%>
+    <%= link_to 'sign in', new_user_session_path%>
+  <% end %>
 </div>
