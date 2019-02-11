@@ -9,6 +9,7 @@ This file should be updated before a new release is deployed.
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)
 * Added CAS authentication via Devise [#108](https://gitlab.com/yale-sdmp/cardswipr/issues/108)
+* Added Event model [#110](https://gitlab.com/yale-sdmp/cardswipr/issues/110)
 
 ### Fixed
 
