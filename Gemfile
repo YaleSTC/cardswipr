@@ -32,10 +32,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'shoulda-matchers'
 gem 'devise'
 gem 'devise_cas_authenticatable'
 gem 'dotenv-rails'
@@ -51,6 +50,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'webmock'
+  gem 'factory_bot_rails', '~> 4.10.0'
 end
 
 group :development do
