@@ -9,7 +9,6 @@
 # @attr Phone [String] phone number of the attendee
 # @attr Check_in [String] the date/time that the check in happens.
 class Attendance < ApplicationRecord
-  # belongs_to:
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, format:
@@ -19,4 +18,8 @@ class Attendance < ApplicationRecord
   validates :upi, presence: true
   validates :phone, presence: true # desired format?
   validates :check_in, presence: true
+
+  # Associations
+  has_many :event_attendances, dependent: :destroy
+  has_many :events, through: :event_attendances
 end

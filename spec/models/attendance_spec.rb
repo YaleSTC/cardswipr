@@ -11,5 +11,10 @@ RSpec.describe Attendance, type: :model do
     it { is_expected.to validate_presence_of(:upi) }
     it { is_expected.to validate_presence_of(:phone) }
     it { is_expected.to validate_presence_of(:check_in) }
+
+    describe 'Associations' do
+      it { is_expected.to have_many(:event_attendances) }
+      it { is_expected.to have_many(:events).through(:event_attendances) }
+    end
   end
 end
