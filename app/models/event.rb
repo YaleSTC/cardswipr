@@ -9,8 +9,7 @@ class Event < ApplicationRecord
   before_validation :remove_whitespaces
 
   # Associations
-  has_many :event_attendances, dependent: :destroy
-  has_many :attendances, through: :event_attendances
+  has_many :attendances, dependent: :destroy
 
   private
 

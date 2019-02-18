@@ -9,5 +9,6 @@ FactoryBot.define do
     upi { '01234567' }
     phone { '555-555-5555' }
     check_in { Time.zone.now }
+    event
   end
 end

@@ -5,6 +5,7 @@ This file should be updated before a new release is deployed.
 ## 2.0.0 (Unreleased)
 ### Changed
 * Modified README to reflect v2.0 [#132](https://gitlab.com/yale-sdmp/cardswipr/issues/132)
+* Modified associations between Event and Attendance [#145](https://gitlab.com/yale-sdmp/cardswipr/issues/145)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

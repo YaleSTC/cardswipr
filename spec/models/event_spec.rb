@@ -52,7 +52,6 @@ RSpec.describe Event, type: :model do
   end
 
   describe 'Associations' do
-    it { is_expected.to have_many(:event_attendances) }
-    it { is_expected.to have_many(:attendances).through(:event_attendances) }
+    it { is_expected.to have_many(:attendances) }
   end
 end
