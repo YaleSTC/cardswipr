@@ -15,6 +15,7 @@ This file should be updated before a new release is deployed.
 * Added User-Event and Event-Attendance join models [#144](https://gitlab.com/yale-sdmp/cardswipr/issues/144)
 * Added Attendance Controller [#136](https://gitlab.com/yale-sdmp/cardswipr/issues/136)
 * Added Event Controller [#135](https://gitlab.com/yale-sdmp/cardswipr/issues/135)
+* Create dashboard where user's events are displayed [#113](https://gitlab.com/yale-sdmp/cardswipr/issues/113)
 
 ### Fixed
 

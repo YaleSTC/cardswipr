@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root to: 'pages#dashboard', id: 'dashboard'
+    root to: 'dashboards#index', id: 'dashboard'
   end
 
   # HighVoltage
-  get '/dashboard' => 'pages#dashboard', id: 'dashboard'
+  get '/dashboard' => 'dashboards#index', id: 'dashboard'
 
   resources :attendance, only: [:new, :index]
 end

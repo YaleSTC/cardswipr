@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Authentication', type: :system do
-  before { stub_cas }
+  before { stub_cas('NETID') }
 
   it 'redirects user to dashboard after sign in' do
     visit root_path

@@ -2,7 +2,7 @@
 
 # controller for Attendance
 class AttendanceController < ApplicationController
-  before_action :set_event
+  before_action :set_event, only: %i(new index)
 
   def new
     @attendance = Attendance.new

@@ -1,0 +1,36 @@
+<h1>Dashboard</h1>
+
+<%= button_to 'Create New Event', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+
+<table style="width:100%" id="events">
+  <thead>
+    <tr>
+      <th>Event Name</th>
+      <th>Attendee Count</th>
+      <th>Last Use</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_events.each do |user_event| %>
+      <tr>
+        <td class="dash-buttons">
+          <%= button_to 'Event Check-in', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+          <%= button_to 'Attendee List', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+        </td>
+        <td>
+          <%= user_event.event.title %>
+        </td>
+        <td>
+          XXX
+        </td>
+        <td>
+          <%= user_event.event.updated_at %>
+        </td>
+        <td>
+          <%= button_to 'Edit Event', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
