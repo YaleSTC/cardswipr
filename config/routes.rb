@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   # HighVoltage
   get '/dashboard' => 'pages#dashboard', id: 'dashboard'
+
+  resources :attendance, only: [:new, :index]
 end

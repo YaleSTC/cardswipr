@@ -13,6 +13,7 @@ This file should be updated before a new release is deployed.
 * Added Event model [#110](https://gitlab.com/yale-sdmp/cardswipr/issues/110)
 * Added Attendance model [#120](https://gitlab.com/yale-sdmp/cardswipr/issues/120)
 * Added User-Event and Event-Attendance join models [#144](https://gitlab.com/yale-sdmp/cardswipr/issues/144)
+* Added Attendance Controller [#136](https://gitlab.com/yale-sdmp/cardswipr/issues/136)
 
 ### Fixed
 
