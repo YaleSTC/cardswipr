@@ -18,6 +18,7 @@ This file should be updated before a new release is deployed.
 * Create dashboard where user's events are displayed [#113](https://gitlab.com/yale-sdmp/cardswipr/issues/113)
 * Added Fixtures for testing API [#137](https://gitlab.com/yale-sdmp/cardswipr/issues/137)
 * Created a button on dashboard to delete an event [#116](https://gitlab.com/yale-sdmp/cardswipr/issues/116)
+* Added Attendance List View [#126](https://gitlab.com/yale-sdmp/cardswipr/issues/126)
 
 ### Fixed
 

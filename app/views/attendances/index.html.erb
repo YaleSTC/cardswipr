@@ -1,0 +1,25 @@
+<div>
+  <h1>Attendance List</h1>
+  <table aria-label="Attendance List">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">NetID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Check-in Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @event.attendances.each do |attendance| %>
+        <tr>
+          <td data-role="attendance.first-name"><%= attendance.first_name.titleize %></td>
+          <td data-role="attendance.last-name"><%= attendance.last_name.titleize %></td>
+          <td data-role="attendance.net"><%= attendance.net_id %></td>
+          <td data-role="attendance.email"><%= attendance.email.downcase %></td>
+          <td data-role="attendance.check-in"><%= attendance.check_in %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

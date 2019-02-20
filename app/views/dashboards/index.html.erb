@@ -16,7 +16,7 @@
       <tr>
         <td class="dash-buttons">
           <%= button_to 'Event Check-in', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
-          <%= button_to 'Attendee List', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+          <%= button_to 'Attendee List', event_attendances_path(user_event.event_id), method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
         </td>
         <td>
           <%= user_event.event.title %>

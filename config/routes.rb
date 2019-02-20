@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # HighVoltage
   get '/dashboard' => 'dashboards#index', id: 'dashboard'
 
-  resources :attendance, only: %i(new index)
-  resources :events, only: %i(show edit destroy)
+  resources :events, only: %i(show edit destroy) do
+    resources :attendances, only: %i(new index)
+  end
 end

@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :attendance do
     sequence(:first_name) { |n| "user#{n}" }
     sequence(:last_name) { |n| "last#{n}" }
-    email { 'email@email.com' }
+    sequence(:email) { |n| "email#{n}@email.com" }
     net_id { 'abc123' }
     upi { '01234567' }
     phone { '555-555-5555' }
