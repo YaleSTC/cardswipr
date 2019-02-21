@@ -16,6 +16,7 @@ This file should be updated before a new release is deployed.
 * Added Attendance Controller [#136](https://gitlab.com/yale-sdmp/cardswipr/issues/136)
 * Added Event Controller [#135](https://gitlab.com/yale-sdmp/cardswipr/issues/135)
 * Create dashboard where user's events are displayed [#113](https://gitlab.com/yale-sdmp/cardswipr/issues/113)
+* Added Fixtures for testing API [#137](https://gitlab.com/yale-sdmp/cardswipr/issues/137)
 
 ### Fixed
 

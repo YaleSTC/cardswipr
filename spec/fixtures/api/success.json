@@ -1,0 +1,24 @@
+{"People": {
+    "Footer": {
+        "Version": "1.2",
+        "Count": "1"
+    },
+    "Person": {
+        "Names": {"ReportingNm": {
+            "Last": "Lastname",
+            "DisplayNm": "Lastname, Firstname",
+            "FullNm": "Firstname Lastname",
+            "First": "Firstname"
+        }},
+        "Status": {"View": "C"},
+        "Contacts": {"Email": "firstname.lastname@email.email"},
+        "Affiliations": {
+            "EDUAffiliation": "EMPLOYEE;MEMBER;STAFF",
+            "PEDUAffiliation": "STAFF"
+        },
+        "Identifiers": {
+            "NETID": "fl123",
+            "UPI": "11111111"
+        }
+    }
+}}
