@@ -1,0 +1,16 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <nav>
+        <%= link_to 'CardSwipr', '#', id: 'logo' %>
+        <%= link_to 'Getting Started', '#' %>
+        <%= link_to 'My Events', 'dashboards#events' %>
+        <%= link_to 'Person Lookup', '#' %>
+        <% if user_signed_in? %>
+          <%= link_to current_user.username, '#' %>
+          <%= link_to 'Log Out', destroy_user_session_path %>
+        <% end %>
+      </nav>
+    </div>
+  </div>
+</header>

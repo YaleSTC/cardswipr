@@ -20,6 +20,7 @@ RSpec.describe 'Attendance', type: :system do
     attendee1, attendee2 = create_pair(:attendance,
                                        event: user_with_events.events.first)
     visit dashboard_path
+    page.find(:id, 'page').click_link 'My Events'
     [attendee1, attendee2]
   end
 end

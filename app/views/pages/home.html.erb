@@ -1,6 +1,9 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center" id="page">
   <h1>Welcome to Cardswipr</h1>
+  <p>
+	CardSwipr helps you take attendance at meetings and events. Attendees swipe in with an easy-to-use interface, and the application looks up and collects their information. When the event is over, you can download a spreadsheet (.csv) containing this information.
+	</p>
   <% unless user_signed_in?%>
-    <%= link_to 'sign in', new_user_session_path%>
+    <%= link_to 'Sign In', new_user_session_path%>
   <% end %>
 </div>

@@ -7,22 +7,22 @@ RSpec.describe 'Authentication', type: :system do
 
   it 'redirects user to dashboard after sign in' do
     visit root_path
-    click_on 'sign in'
-    expect(page).to have_content('Dashboard')
+    click_on 'Sign In'
+    expect(page).to have_content('Welcome to CardSwipr')
   end
 
   context 'when user is authenticated' do
     it 'does not display the sign in link' do
       visit root_path
-      click_on 'sign in'
-      expect(page).not_to have_content('sign in')
+      click_on 'Sign In'
+      expect(page).not_to have_content('Sign In')
     end
   end
 
   context 'when user is unauthenticated' do
     it 'does displays the sign in link' do
       visit root_path
-      expect(page).to have_content('sign in')
+      expect(page).to have_content('Sign In')
     end
   end
 end
