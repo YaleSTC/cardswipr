@@ -21,6 +21,7 @@ This file should be updated before a new release is deployed.
 * Created a button on dashboard to delete an event [#116](https://gitlab.com/yale-sdmp/cardswipr/issues/116)
 * Added Attendance List View [#126](https://gitlab.com/yale-sdmp/cardswipr/issues/126)
 * Created page where Users can create an event [#111](https://gitlab.com/yale-sdmp/cardswipr/issues/111)
+* Added API interface for Yale's Identity Server [#138](https://gitlab.com/yale-sdmp/cardswipr/issues/138)
 
 ### Fixed
 
