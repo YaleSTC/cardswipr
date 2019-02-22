@@ -1,0 +1,28 @@
+<br>
+<div class='container col-md-4 col-md-offset-4 p-2'>
+    <div class='row'>
+    <%= button_to 'Back to Dashboard', root_path, method: :get, :class => 'btn btn-secondary with-border' %>
+    <%= button_to 'Attendee List', event_attendances_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
+    <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
+  </div>
+</div>
+
+<div class="container center w-75 h-50 p-3">
+  <div class="shadow rounded text-center">
+    <div class="text-white bg-primary p-3">
+      <h1><b>Check in for <%=@event.title%></b></h1>
+    </div>
+
+    <div class="p-3">
+      <p><%=@event.description%></p>
+    </div>
+    <div class='p-3'>
+      <p><b>Card Swipe</b> or <b>Card Tap</b> or <b>NetID</b></p>
+
+      <%= form_tag event_attendances_path(@event) do %>
+        <%= text_field_tag :search_param, '', autofocus: true, :class => 'p-2' %>
+        <%= submit_tag 'Check In', :class => 'btn btn-secondary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,22 @@
-<div>
-  <h1>Attendance List</h1>
-  <h3>
-    <%= link_to "Export CSV", export_event_attendances_path(@event)%>
-  </h3>
-  <table aria-label="Attendance List">
+<div class = "container">
+  </br>
+  <div class = "text-center">
+    <h1>Attendee List: <%= @event.title %></h1>
+  </div>
+
+  <div class='container p-2'>
+    <div class='row'>
+      <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
+      <%= button_to 'Export CSV', export_event_attendances_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
+      <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
+    </div>
+  </div>
+  <div class='row float-right'>
+    <%= @event.attendances.size %> Recorded
+  </div>
+
+  </br>
+  <table style="width:100%" aria-label="Attendee List">
     <thead>
       <tr>
         <th scope="col">First Name</th>

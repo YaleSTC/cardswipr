@@ -2,10 +2,21 @@
 
 # controller for Attendance
 class AttendancesController < ApplicationController
-  before_action :set_event, only: %i(new index export)
+  before_action :set_event, only: %i(create index export)
 
-  def new
-    @attendance = Attendance.new
+  def create
+    @creator = AttendanceCreator.new(
+      event: @event, search_param: params[:search_param]
+    )
+    if @creator.call
+      redirect_to event_path(@event),
+                  notice: "Successfully checked in
+                  #{@creator.attendance.first_name}
+                  #{@creator.attendance.last_name}!"
+    else
+      redirect_to event_path(@event),
+                  alert: 'Check-in failed'
+    end
   end
 
   def index
@@ -33,5 +44,9 @@ class AttendancesController < ApplicationController
     time_str = Time.zone.today.to_s(:number)
     event_name = @event.title.parameterize.underscore[0..15]
     "#{event_name}_export_#{time_str}.csv"
+  end
+
+  def attendance_params
+    params.require(:attendance).permit(:search_param)
   end
 end

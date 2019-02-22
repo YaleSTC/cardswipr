@@ -8,7 +8,6 @@
 <div class="container">
   <div class="row justify-content-between">
     <div class="col-4">
-
     </div>
     <div class="col-2">
       <%= button_to 'Create New Event', new_event_path, method: :get, :class => 'btn btn-lg btn-primary btn-blue-background btn-blue-outline' %>
@@ -34,7 +33,7 @@
         <% @user_events.each do |user_event| %>
           <tr id="event row">
             <td class="dash-buttons">
-              <%= button_to 'Event Check-in', root_path, method: :get, :class => 'btn btn-primary btn-block btn-blue-background btn-blue-outline' %>
+              <%= button_to 'Event Check-in', event_path(user_event.event_id), method: :get, :class => 'btn btn-primary btn-block btn-blue-background btn-blue-outline' %>
             </td>
             <td class="dash-buttons">
               <%= button_to 'Attendee List', event_attendances_path(user_event.event_id), method: :get, :class => 'btn btn-secondary btn-block' %>
@@ -43,7 +42,7 @@
               <%= user_event.event.title %>
             </td>
             <td>
-              XXX
+              <%= user_event.event.attendances.size %>
             </td>
             <td>
               <%= user_event.event.updated_at %>
