@@ -25,6 +25,7 @@ This file should be updated before a new release is deployed.
 * Updated Gemfile to refer to specific version numbers [#157](https://gitlab.com/yale-sdmp/cardswipr/issues/157)
 * Added basic Event edit page [#114](https://gitlab.com/yale-sdmp/cardswipr/issues/114)
 * Fixed style checker [#158](https://gitlab.com/yale-sdmp/cardswipr/issues/158)
+* Added API interface for Yale's Identity Server [#138](https://gitlab.com/yale-sdmp/cardswipr/issues/138)
 
 ### Fixed
 
