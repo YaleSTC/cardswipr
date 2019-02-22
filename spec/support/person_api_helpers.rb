@@ -13,3 +13,8 @@ def file_to_response(path, code_num)
                   response: instance_double('child_response', code: code_num),
                   parsed_response: data)
 end
+
+def mock_successful_api_call
+  response = file_to_response("#{RSPEC_ROOT}/fixtures/api/success.json", 200)
+  allow(HTTParty).to receive(:get) { response }
+end
