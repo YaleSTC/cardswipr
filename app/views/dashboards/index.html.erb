@@ -28,7 +28,8 @@
           <%= user_event.event.updated_at %>
         </td>
         <td>
-          <%= button_to 'Edit Event', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+          <%= button_to 'Edit Event', edit_event_path(user_event.event_id), method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+          <%= button_to 'Delete Event', event_path(user_event.event_id), method: :delete, :class => 'btn btn-primary btn-lg btn-block' %>
         </td>
       </tr>
     <% end %>

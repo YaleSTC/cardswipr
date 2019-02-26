@@ -2,7 +2,7 @@
 
 # Events Controller
 class EventsController < ApplicationController
-  before_action :set_event, only: %i(show edit index)
+  before_action :set_event, only: %i(show edit index destroy)
 
   def new
     @event = Event.new
@@ -18,9 +18,14 @@ class EventsController < ApplicationController
 
   def admin; end
 
+  def destroy
+    @event.destroy
+    redirect_to root_path
+  end
+
   private
 
   def set_event
-    @event = Events.find(params[:id])
+    @event = Event.find(params[:id])
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # controller for Attendance
-class AttendanceController < ApplicationController
+class AttendancesController < ApplicationController
   before_action :set_event, only: %i(new index)
 
   def new
