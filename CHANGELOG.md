@@ -16,10 +16,11 @@ This file should be updated before a new release is deployed.
 * Added User-Event and Event-Attendance join models [#144](https://gitlab.com/yale-sdmp/cardswipr/issues/144)
 * Added Attendance Controller [#136](https://gitlab.com/yale-sdmp/cardswipr/issues/136)
 * Added Event Controller [#135](https://gitlab.com/yale-sdmp/cardswipr/issues/135)
-* Create dashboard where user's events are displayed [#113](https://gitlab.com/yale-sdmp/cardswipr/issues/113)
+* Created dashboard where user's events are displayed [#113](https://gitlab.com/yale-sdmp/cardswipr/issues/113)
 * Added Fixtures for testing API [#137](https://gitlab.com/yale-sdmp/cardswipr/issues/137)
 * Created a button on dashboard to delete an event [#116](https://gitlab.com/yale-sdmp/cardswipr/issues/116)
 * Added Attendance List View [#126](https://gitlab.com/yale-sdmp/cardswipr/issues/126)
+* Created page where Users can create an event [#111](https://gitlab.com/yale-sdmp/cardswipr/issues/111)
 
 ### Fixed
 

@@ -8,6 +8,14 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def create
+    if EventCreator.new(params: event_params, owner: current_user).call
+      redirect_to dashboard_path, notice: 'Successfully created event!'
+    else
+      redirect_to new_event_path, alert: 'Unable to create event!'
+    end
+  end
+
   def show; end
 
   def edit; end
@@ -27,5 +35,9 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:title, :description)
   end
 end
