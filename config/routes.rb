@@ -17,5 +17,9 @@ Rails.application.routes.draw do
 
   resources :events, only: %i(new create show edit destroy) do
     resources :attendances, only: %i(new index)
+    member do
+      get :registration
+      post :check_in
+    end
   end
 end

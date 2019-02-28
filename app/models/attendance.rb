@@ -6,7 +6,6 @@
 # @attr Email [String] Email of the attendee
 # @attr Net_id [String] net id of the attendee
 # @attr Upi [String] upi of the attendee
-# @attr Phone [String] phone number of the attendee
 # @attr Check_in [DateTime] the date/time that the check in happens.
 class Attendance < ApplicationRecord
   validates :first_name, presence: true

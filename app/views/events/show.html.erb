@@ -1,0 +1,13 @@
+<h1>Event Page</h1>
+
+<div id="body">
+  <%= button_to 'Check In Users', registration_event_path(@event), method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+<div>
+
+<table id="attendances">
+  <% @attendances.each do |attendance| %>
+    <tr>
+        <%= attendance.first_name %>
+    </tr>
+  <% end %>
+</table>

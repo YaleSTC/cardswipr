@@ -1,0 +1,30 @@
+<% if flash[:success].present? %>
+  <p class="flash-success"><%= flash[:success] %></p>
+<% elsif flash[:error].present? %>
+  <p class="flash-error"><%= flash[:error] %></p>
+<% end %>
+
+<div class="row">
+  <%= button_to 'Back to Dashboard', root_path, method: :get, :class => 'button-block' %>
+  <br>
+  <div class="card-container">
+    <div class="card">
+      <div class="title">
+        <b><%=@event.title%> Check-in Page</b>
+      </div>
+
+      <div class="search-container">
+        <div class="text-container">
+          <p><%=@event.description%></p>
+
+          <p><b>Card Swipe</b> or <b>Card Tap</b> or <b>NetID</b> or <b>Yale Email</b></p>
+        </div>
+
+        <%= form_tag check_in_event_path do %>
+          <%= text_field_tag :prox_number, '', autofocus: true, :class => 'text-box' %>
+          <%= submit_tag 'Check In', :class => 'button-block' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

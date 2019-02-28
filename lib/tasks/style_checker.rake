@@ -6,7 +6,7 @@ RUBY_PASS = %w(true no\ offenses files\ found).freeze
 EXISTING_FILES = /^[^D].*/.freeze
 FILE = /^[A-Z].*\t(.*)$/.freeze
 
-DIFF_CMD = 'git diff master --name-status'
+DIFF_CMD = 'git diff origin/master --name-status'
 
 desc 'Style checks files that differ from master'
 task :check_style do

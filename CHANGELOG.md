@@ -22,6 +22,7 @@ This file should be updated before a new release is deployed.
 * Added Attendance List View [#126](https://gitlab.com/yale-sdmp/cardswipr/issues/126)
 * Created page where Users can create an event [#111](https://gitlab.com/yale-sdmp/cardswipr/issues/111)
 * Added API interface for Yale's Identity Server [#138](https://gitlab.com/yale-sdmp/cardswipr/issues/138)
+* Created event check in page [#119](https://gitlab.com/yale-sdmp/cardswipr/issues/119)
 
 ### Fixed
 
