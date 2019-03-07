@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Dashboards', type: :system do
   context 'when signed in as user' do
-    let(:user_with_events) { FactoryBot.create(:user_with_events) }
+    let(:user_with_events) { create(:user_with_events) }
 
     before do
       stub_cas(user_with_events.username)

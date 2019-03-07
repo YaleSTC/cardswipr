@@ -6,7 +6,7 @@ RSpec.describe 'Attendance', type: :system do
   before { stub_cas(user_with_events.username) }
 
   context 'when signed in as user' do
-    let(:user_with_events) { FactoryBot.create(:user_with_events) }
+    let(:user_with_events) { create(:user_with_events) }
 
     it 'gives a list of all attendees' do
       attendee1, attendee2 = config
