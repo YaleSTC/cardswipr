@@ -35,6 +35,7 @@ This file should be updated before a new release is deployed.
 * Extended PeopleHub workaround [#159](https://gitlab.com/yale-sdmp/cardswipr/issues/159)
 * Added missing fields in CSV Export [#164](https://gitlab.com/yale-sdmp/cardswipr/issues/164)
 * Added the complete public home page [#165](https://gitlab.com/yale-sdmp/cardswipr/issues/165)
+* Set Up Email functionality and testing [#141] (https://gitlab.com/yale-sdmp/cardswipr/issues/141)
 
 ### Fixed
 
