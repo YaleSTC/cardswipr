@@ -1,0 +1,59 @@
+<% if flash[:notice].present? %>
+  <p class="flash-notice"><%= flash[:notice] %></p>
+<% elsif flash[:error].present? %>
+  <p class="flash-error"><%= flash[:error] %></p>
+<% end %>
+
+<div class="row">
+  <%= button_to 'Back to Dashboard', root_path, method: :get, :class => 'button-block' %>
+  <br>
+  <div class="column">
+    <div class="card">
+      <div class="title">
+        <b>Person Lookup</b>
+      </div>
+
+      <div class="search-container">
+        <p>Card Swipe or Card Tap or NetID or Yale Email</p>
+        <%= form_tag person_lookups_path do %>
+          <%= text_field_tag :arguments, '', autofocus: true, :required => true, :class => 'text-box' %>
+          <%= submit_tag 'Submit', :class => 'button-block' %>
+        <% end %>
+      </div>
+
+      <div class="card-body">
+        <p>
+          When a client swipes their card, we'll figure out who they are.
+        </p>
+      </div>
+    </div>
+  </div>
+  <% if @person %>
+  <div id="result" class="column">
+    <div class="card">
+      <div class="title">
+        <b>Lookup Result</b>
+      </div>
+
+      <div class="search-container">
+        <table class="text-box">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>NetID</th>
+            <th>UPI</th>
+          </tr>
+          <tr>
+            <td><%= @person['first_name'] %></td>
+            <td><%= @person['last_name'] %></td>
+            <td><%= @person['email'] %></td>
+            <td><%= @person['net_id'] %></td>
+            <td><%= @person['upi'] %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

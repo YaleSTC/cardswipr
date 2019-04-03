@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :events, only: %i(new create show edit destroy) do
     resources :attendances, only: %i(new index)
   end
+  resources :person_lookups, only: %i(new create)
 end
