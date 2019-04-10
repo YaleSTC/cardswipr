@@ -1,24 +1,55 @@
-{"People": {
-    "Footer": {
-        "Version": "1.2",
-        "Count": "1"
-    },
-    "Person": {
-        "Names": {"ReportingNm": {
-            "Last": "Lastname",
-            "DisplayNm": "Lastname, Firstname",
-            "FullNm": "Firstname Lastname",
-            "First": "Firstname"
-        }},
-        "Status": {"View": "C"},
-        "Contacts": {"Email": "firstname.lastname@email.email"},
-        "Affiliations": {
-            "EDUAffiliation": "EMPLOYEE;MEMBER;STAFF",
-            "PEDUAffiliation": "STAFF"
+{
+    "People": {
+        "Footer": {
+            "Version": "1.2",
+            "Count": "1"
         },
-        "Identifiers": {
-            "NETID": "fl123",
-            "UPI": "11111111"
+        "Person": {
+            "Names": {
+                "ReportingNm": {
+                    "Last": "Skywalker",
+                    "DisplayNm": "Skywalker, Luke",
+                    "FullNm": "Luke Skywalker",
+                    "First": "Luke",
+                    "Middle": "D"
+                }
+            },
+            "Status": {
+                "WorkerStatus": "Active",
+                "StudentStatus": "A",
+                "WorkerActive": "Y",
+                "View": "C"
+            },
+            "Contacts": {
+                "WStreet": "111 Tatooine Street",
+                "WZip": "00001",
+                "MSState": "CT",
+                "Email": "luke.skywalker@mail.com",
+                "PostalState": "CT",
+                "MailStop": "101",
+                "WState": "CT",
+                "PostalCity": "Mos Eisley",
+                "MSCity": "Mos Eisley",
+                "WCity": "Mos Eisley",
+                "WCountry": "US",
+                "PostalPOBox": "111111",
+                "PostalBoxNm": "Moisture Farm in the Desert",
+                "Mailbox": "luke.skywalker@bulldogs.com",
+                "MSLine1": "11 Moisture Farm Lane",
+                "WPhone": "+1 (555) 555-5555",
+                "PostalZip": "55555-5555",
+                "MPhone": "(555) 555-5555",
+                "InternalLocation": "Moisture Farm Bldg 12 > 124",
+                "MSZip": "06511-1968"
+            },
+            "Identifiers": {
+                "NETID": "ls222",
+                "ProxNum": "0000000000",
+                "PIDM": "0000000",
+                "IDCardNum": "0000000001",
+                "EmployeeID": "654321",
+                "UPI": "12345678"
+            }
         }
     }
-}}
+}

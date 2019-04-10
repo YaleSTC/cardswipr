@@ -1,6 +1,4 @@
-{
-   "People": {
-      "Error": "4005",
-      "ErrorMessage": "Invalid Credentials, please check your username and password. Username Sent: "
-   }
-}
+<People>
+    <Error>4001</Error>
+    <ErrorMessage>Entered Invalid XML Request: At least one search parameter required</ErrorMessage>
+</People>
