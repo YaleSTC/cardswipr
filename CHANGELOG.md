@@ -28,6 +28,7 @@ This file should be updated before a new release is deployed.
 * Added API interface for Yale's Identity Server [#138](https://gitlab.com/yale-sdmp/cardswipr/issues/138)
 * Implemented Bootstrap [#154](https://gitlab.com/yale-sdmp/cardswipr/issues/154)
 * Added confirmation dialogue when deleting events [#160](https://gitlab.com/yale-sdmp/cardswipr/issues/160)
+* Added export button for exporting Event Attendances [#127](https://gitlab.com/yale-sdmp/cardswipr/issues/127)
 
 ### Fixed
 

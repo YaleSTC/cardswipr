@@ -1,10 +1,9 @@
-<div class = "container">
-  </br>
-  <div class = "text-center">
-    <h1>Attendance List</h1>
-  </div>
-  </br>
-  <table style="width:100%" aria-label="Attendance List">
+<div>
+  <h1>Attendance List</h1>
+  <h3>
+    <%= link_to "Export CSV", export_event_attendances_path(@event)%>
+  </h3>
+  <table aria-label="Attendance List">
     <thead>
       <tr>
         <th scope="col">First Name</th>

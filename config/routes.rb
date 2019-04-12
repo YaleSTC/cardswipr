@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboards#index', id: 'dashboard'
 
   resources :events, only: %i(new create show edit update destroy) do
-    resources :attendances, only: %i(new index)
+    resources :attendances, only: %i(new index) do
+      collection do
+        get 'export'
+      end
+    end
     resources :user_events, only: %i(create destroy)
   end
 end
