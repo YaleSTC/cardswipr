@@ -10,6 +10,27 @@ CardSwipr is meant to be deployed to Heroku with a PostgreSQL backend.
 
 ## Contributing
 ### Getting Started
+
+### Using Docker:
+This method requires Docker to be installed on your system. You can find information on that here: [TO DO]
+
+```
+# Clone the repo
+git clone https://gitlab.com/yale-sdmp/cardswipr.git
+cd cardswipr
+
+# Set up environment variables
+cp .env.example .env
+
+# Fill out required ENV variables
+Note: Make sure to uncomment the commented-out variables- these are needed exclusively for docker.
+
+# Create the containers
+docker-compose build
+docker-compose up -d --force-recreate
+```
+
+#### Local installation:
 Make sure to have the specified Ruby version installed on your machine. We suggest using either [rbenv](https://github.com/rbenv/rbenv) or [asdf](https://github.com/asdf-vm/asdf) if you need multiple concurrent versions of Ruby installed.
 
 You will also need PostgreSQL installed on your machine.
