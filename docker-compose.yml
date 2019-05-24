@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/config/
+
+
+  database:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
