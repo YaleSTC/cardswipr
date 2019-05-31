@@ -49,7 +49,7 @@ gem 'cancancan', '1.13.1'
 gem 'simple_form', '3.2.0'
 
 # Database Gems
-gem 'mysql2', '0.4.2'
+gem 'mysql2', '~> 0.4.10'
 #gem 'sqlite3'
 
 # Paginate
@@ -87,7 +87,6 @@ group :local, :test do
   # on the current Yale host.
   # 0.23.1 intruduced dependency on cmake 2.8 while the server has 2.6.
   # 0.23.0 still failed to compile with some other reason.
-  gem 'rugged', '0.22.2'
   gem 'pronto', '0.4.2'
   gem 'pronto-rubocop', '~> 0.4.6'
   gem 'pronto-flay', '~> 0.4.2'
