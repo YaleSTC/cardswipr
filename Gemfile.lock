@@ -415,6 +415,7 @@ DEPENDENCIES
   rest-client (= 1.8.0)
   rspec-rails (~> 3.4.0)
   rubycas-client!
+  rugged (= 0.22.2)
   sass-rails (= 5.0.4)
   sdoc (= 0.4.1)
   selenium-webdriver (~> 2.48.1)
@@ -425,6 +426,3 @@ DEPENDENCIES
   uglifier (= 2.7.2)
   webmock (~> 1.22.3)
   will_paginate (~> 3.0.7)
-
-BUNDLED WITH
-   1.17.2

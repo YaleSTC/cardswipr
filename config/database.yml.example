@@ -1,9 +1,9 @@
 default: &default
   adapter: mysql2
-  host: localhost
+  host: <%= ENV.fetch('DATABASE_HOST') %>
   socket: /tmp/mysql.sock
-  username: _MY_USERNAME_
-  password: _MY_PASSWORD_
+  username: <%= ENV.fetch('MYSQL_USER') %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') %>
   encoding: utf8
   reconnect: false
   pool: 5
