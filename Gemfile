@@ -67,16 +67,16 @@ group :local do
   gem 'pry', '~> 0.10.3'
   # gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
-  gem 'guard-rspec', '~> 4.6.4', require: false
+  gem 'guard-rspec', '~> 4.7.3', require: false
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.4.0'
+  gem 'rspec-rails', '~> 3.6.0'
   #gem 'rspec-mocks', '~> 3.4.0'
   gem 'capybara', '~> 2.5.0'
   gem 'launchy', '~> 2.4.3'
   gem 'database_cleaner', '~> 1.5.1'
-  gem 'fuubar', '~> 2.0.0'
+  gem 'fuubar', '~> 2.1.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'webmock', '~> 1.22.3'
   gem 'selenium-webdriver', '~> 2.48.1'
