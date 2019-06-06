@@ -10,7 +10,7 @@ class FakeCardSwiprApi
         "EmailAddress": "%{email}",
         "FirstName": "%{first_name}",
         "ProxNumber": "%{prox}",
-        "KnownAs": "%{known_as}",
+        "PreferredGivenName": "%{preferred_given_name}",
         "NetId": "%{netid}",
         "LastName": "%{last_name}",
         "MagStripeNumber": "%{mag}"
@@ -20,10 +20,10 @@ class FakeCardSwiprApi
 
   @data = [
     { upi: '1', netid: 'willy',
-      first_name: 'Willy', last_name: 'Wonka', known_as: '',
+      first_name: 'Willy', last_name: 'Wonka', preferred_given_name: '',
       email: 'willy@example.com', prox: '0000000001', mag: '1000000001' },
     { upi: '2', netid: 'frodo',
-      first_name: 'Frodo', last_name: 'Baggins', known_as: 'Froyo',
+      first_name: 'Frodo', last_name: 'Baggins', preferred_given_name: 'Froyo',
       email: 'frodo@example.com', prox: '0000000002', mag: '1000000002' }
   ]
 

@@ -24,9 +24,6 @@ RSpec.configure do |config|
     stub_external_requests
   end
   
-  Capybara.asset_host = 'http://localhost:3000'
-  Capybara.default_driver = :selenium
-  Capybara.default_wait_time = 5
   config.include Rails.application.routes.url_helpers
 end
 

@@ -1,4 +1,4 @@
-UsbDistribution::Application.routes.draw do
+Rails.application.routes.draw do
 
   # if routing the root path, update for your controller
   root to: 'pages#show', id: 'home'

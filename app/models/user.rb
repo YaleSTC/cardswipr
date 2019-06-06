@@ -1,6 +1,6 @@
 # A user is a user of our application. A user object is created and saved
 # to the database after someone logs in with CAS
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   validates :netid, presence: true, uniqueness: true
   has_and_belongs_to_many :events
 

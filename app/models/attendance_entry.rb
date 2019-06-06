@@ -1,6 +1,6 @@
 # attendance entries are created by an event. This is the permanent record of who has attended an event
 # a set of attendance entries for an event can be viewed in the browser or printed to csv
-class AttendanceEntry < ActiveRecord::Base
+class AttendanceEntry < ApplicationRecord
   belongs_to :event
   validates :event, presence: true
   validates :upi, :uniqueness => { :scope => :event, :message => "This person has already been checked into this event." }

@@ -61,7 +61,7 @@ gem 'font-awesome-sass', '~> 4.4.0'
 gem 'service_now', :git => 'https://github.com/YaleSTC/service_now.git', :tag => 'v0.1.0'
 
 # gem that makes static pages easier
-gem 'high_voltage', '~> 2.4.0'
+gem 'high_voltage', '~> 3.0.0'
 
 group :local do
   gem 'pry', '~> 0.10.3'
@@ -73,7 +73,7 @@ end
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
   #gem 'rspec-mocks', '~> 3.4.0'
-  gem 'capybara', '~> 2.5.0'
+  gem 'capybara', '~> 2.8.0'
   gem 'launchy', '~> 2.4.3'
   gem 'database_cleaner', '~> 1.5.1'
   gem 'fuubar', '~> 2.1.0'
