@@ -39,7 +39,7 @@ module ApplicationHelper
 
   def helper_paginate(model_collection)
     will_paginate(model_collection,
-      previous_label: icon('caret-left') + ' Previous',
-      next_label: 'Next ' + icon('caret-right'))
+      previous_label: icon('fas', 'caret-left') + ' Previous',
+      next_label: 'Next ' + icon('fas', 'caret-right'))
   end
 end

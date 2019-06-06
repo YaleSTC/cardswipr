@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 ### Rails Default Gems ###
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.7'
+gem 'rails', '5.1.7'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.4'
+gem 'sassc-rails', '~> 2.1.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -43,10 +43,10 @@ gem 'rubycas-client', git: 'git://github.com/rubycas/rubycas-client.git',
 gem 'rest-client', '~> 2.0.0'
 
 # Permissions
-gem 'cancancan', '~> 1.13.1'
+gem 'cancancan', '~> 1.17.0'
 
 # Simple Form
-gem 'simple_form', '~> 3.4.0'
+gem 'simple_form', '~> 4.1.0'
 
 # Database Gems
 gem 'mysql2', '~> 0.4.10'
@@ -55,7 +55,7 @@ gem 'mysql2', '~> 0.4.10'
 # Paginate
 gem 'will_paginate', '~> 3.0.7'
 
-gem 'font-awesome-sass', '~> 4.4.0'
+gem 'font-awesome-sass', '~> 5.8.1'
 
 # Service Now Gem
 gem 'service_now', :git => 'https://github.com/YaleSTC/service_now.git', :tag => 'v0.1.0'
