@@ -1,4 +1,4 @@
-FROM ruby:2.3.8
+FROM ruby:2.6.3
 
 # Allow apt to work with https-based sources
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \

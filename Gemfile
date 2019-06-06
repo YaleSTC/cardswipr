@@ -40,7 +40,7 @@ gem 'rubycas-client', git: 'git://github.com/rubycas/rubycas-client.git',
   ref: '195a4b70333029be474b0ac70efdc85bd4288861'
 
 # REST client
-gem 'rest-client', '~> 1.8.0'
+gem 'rest-client', '~> 2.0.0'
 
 # Permissions
 gem 'cancancan', '~> 1.13.1'
@@ -78,7 +78,7 @@ group :test do
   gem 'database_cleaner', '~> 1.5.1'
   gem 'fuubar', '~> 2.1.0'
   gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'webmock', '~> 1.22.3'
+  gem 'webmock', '~> 3.6.0'
   gem 'selenium-webdriver', '~> 2.48.1'
 end
 
