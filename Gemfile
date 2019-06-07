@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 ### Rails Default Gems ###
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.7'
+gem 'rails', '5.2.3'
+gem 'bootsnap', '1.4.4'
 
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1.1'
