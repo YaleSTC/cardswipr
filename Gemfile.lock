@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/rubycas/rubycas-client.git
-  revision: 195a4b70333029be474b0ac70efdc85bd4288861
-  ref: 195a4b70333029be474b0ac70efdc85bd4288861
-  specs:
-    rubycas-client (2.3.10.rc1)
-      activesupport
-
-GIT
   remote: https://github.com/YaleSTC/service_now.git
   revision: f68184a7c0cf9607acb589f970d730fd2ff942c4
   tag: v0.1.0
@@ -14,6 +6,14 @@ GIT
     service_now (0.0.3)
       json
       rest-client
+
+GIT
+  remote: https://github.com/rubycas/rubycas-client.git
+  revision: 195a4b70333029be474b0ac70efdc85bd4288861
+  ref: 195a4b70333029be474b0ac70efdc85bd4288861
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
 
 GEM
   remote: https://rubygems.org/

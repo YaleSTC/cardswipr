@@ -37,7 +37,7 @@ gem 'spring', '~> 1.5.0', group: :development
 ### Custom Gems ###
 
 # Authentication
-gem 'rubycas-client', git: 'git://github.com/rubycas/rubycas-client.git',
+gem 'rubycas-client', git: 'https://github.com/rubycas/rubycas-client.git',
   ref: '195a4b70333029be474b0ac70efdc85bd4288861'
 
 # REST client
