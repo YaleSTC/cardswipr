@@ -18,7 +18,11 @@ class EventsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @user_event = UserEvent.new
+    @user_events = @event.user_events
+                            .joins(:user).order(Arel.sql('lower(username)'))
+  end
 
   def form; end
 

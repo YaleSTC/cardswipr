@@ -11,6 +11,7 @@ class Event < ApplicationRecord
   # Associations
   has_many :attendances, dependent: :destroy
   has_many :user_events, dependent: :destroy
+  has_many :users, through: :user_events
 
   private
 

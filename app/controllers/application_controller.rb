@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
   def public_action?
     devise_controller? || self.class == HighVoltage::PagesController
   end
+
+  def flash_alerts(instance)
+    instance.errors.full_messages.each do |message|
+        flash[:alert] = message
+    end
+  end
 end
