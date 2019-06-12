@@ -1,3 +1,5 @@
+<%= button_to 'Back to Dashboard', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+
 <%= simple_form_for @event do |f| %>
   <%= f.input :title, placeholder: 'Event Name' %>
   <%= f.input :description, placeholder: 'Event Description' %>

@@ -2,7 +2,8 @@
 
 # Events Controller
 class EventsController < ApplicationController
-  before_action :set_event, only: %i(show edit index destroy)
+  before_action :set_event, only: %i(show edit update index destroy)
+  before_action :set_user_events, only: %i(edit update)
 
   def new
     @event = Event.new
@@ -18,10 +19,15 @@ class EventsController < ApplicationController
 
   def show; end
 
-  def edit
-    @user_event = UserEvent.new
-    @user_events = @event.user_events
-                            .joins(:user).order(Arel.sql('lower(username)'))
+  def edit; end
+
+  def update
+    if @event.update(event_params)
+      redirect_to edit_event_path(@event.id), notice: 'Event Updated'
+    else
+      flash_alerts(@event)
+      render 'edit', event: @event.id
+    end
   end
 
   def form; end
@@ -39,6 +45,12 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def set_user_events
+    @user_event = UserEvent.new
+    @user_events = @event.user_events
+                         .joins(:user).order(Arel.sql('lower(username)'))
   end
 
   def event_params

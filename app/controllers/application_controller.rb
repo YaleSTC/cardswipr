@@ -16,9 +16,10 @@ class ApplicationController < ActionController::Base
     devise_controller? || self.class == HighVoltage::PagesController
   end
 
+  # to be used when rendering, not redirecting
   def flash_alerts(instance)
     instance.errors.full_messages.each do |message|
-        flash[:alert] = message
+      flash.now[:alert] = message
     end
   end
 end

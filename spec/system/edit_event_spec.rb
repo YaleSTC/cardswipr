@@ -3,6 +3,28 @@
 require 'rails_helper'
 
 RSpec.describe 'Event editing', type: :system do
+  it 'displays updated title on dashboard' do
+    set_up
+    fill_in 'Title', with: 'Updated Title'
+    click_on 'Update Event'
+    click_on 'Back to Dashboard'
+    expect(page).to have_content('Updated Title')
+  end
+
+  it 'successfully updates event description' do
+    _user, _other_user, event = set_up
+    fill_in 'Description', with: 'Updated Description'
+    click_on 'Update Event'
+    expect(event.reload.description).to eq('Updated Description')
+  end
+
+  it 'displays message after success' do
+    set_up
+    fill_in 'Title', with: 'Updated Title'
+    click_on 'Update Event'
+    expect(page).to have_content('Event Updated')
+  end
+
   describe 'event organizers' do
     it 'can be added' do
       _user, other_user, event = set_up
