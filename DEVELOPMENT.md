@@ -2,52 +2,33 @@
 
 ## Set Up
 
-### Client side certificates
-You need a client-side SSL certificate to access the private API for
-look-up. Contact YaleSTC to get the development certificate and key. Store the files in a secure and private location.
+### Docker-compose
 
-### Secret token
+This app has been updated to use docker-compose. Make sure you have it installed.
+
+To run this app locally you must copy `.env.example` to `.env` and set the environment variables.
+
+After they have been set run `docker-compose build` followed by `docker-compose up -d` (possibly with the --force-recreate flag) to build the dockerfile and then run the application. It can be accessed through localhost:3000
+
+### CAS base URL
+The base CAS url used for authentication (probably https://secure.its.yale.edu/cas) 
+
+### Secret key base
 Use `rake secret` to generate your own secret key, and keep this private. It is probably not as important in the local development environment though.
 
-### Database
-Set up a local MySQL database to store events and entries information, and configure it in `config/database.yml`. See `config/database.yml.example` for a guideline.
+### Rails ENV
+Unique to this project is the "local" database configuration. Local testing requires the RAILS_ENV to be set to local (i.e. RAILS_ENV=local).
+
+This variable can be set to `local, development, test, or production`
 
 ### ServiceNow
-You need a username and a password to access the ServiceNow API.
-Again, contact YaleSTC to get them, and keep them private.
+You need a username and a password to access the ServiceNow API. The SN_INSTANCE variable is the base for the service-now instance used by yale (probably https://yale.service-now.com but it may have changed).
 
-### Standard Rails Application Setup
-```
-bundle install
-rake db:create
-rake db:schema:load
-rails server
-```
-
-Before running `rails server`, take a look at the following configuration files:
-* `config/secrets.yml`
-* `config/database.yml`
-* `config/environments/production.yml`
-* `config/environments/development.yml`
-* `config/environments/local.yml`
-
-You will see they are expecting several environment variables to be
-set. See `local_env.example`.
+### ID API
+This variable references the identity server used to get user information.
 
 ## Testing
-From the application root directory, do
+After running `docker-compose up -d` run
 ```
-bundle exec rspec
+docker-compose run --rm web rspec
 ```
-You could also run `guard` for continuous testing but since we switched to `selenium` as driver for Capybara in order for the server-side API calls to be waited on, it may it maybe cumbersome and slow.
-
-## Application Structure
-Each of the models have a comment above them explaining what the purpose of the model is.
-
-## Pre-Pull-Request Code Quality Checks
-Before submitting a pull request, please check on the following:
-
-1. Does the testing suite pass? Run `guard` (see _Testing_ above), and press enter once to run the whole testing suite. Guard automatically runs tests on files you've changed, see `Guardfile` for its rules. You need also set environment variables before running the tests: again see `local_env.example`.
-2. Have you added tests for any new features?
-3. Have you corrected as many of pronto's suggestions as make sense? Run pronto with `bundle exec pronto run`. Pronto runs many code analyzers such as rubocop, brakeman, flay, and rails_best_practices - only on the code you've modified.
-4. Does your pull request contain only relevant code changes?

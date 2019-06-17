@@ -1,7 +1,6 @@
 default: &default
   adapter: mysql2
   host: <%= ENV.fetch('DATABASE_HOST') %>
-  socket: /tmp/mysql.sock
   username: <%= ENV.fetch('MYSQL_USER') %>
   password: <%= ENV.fetch('MYSQL_PASSWORD') %>
   encoding: utf8

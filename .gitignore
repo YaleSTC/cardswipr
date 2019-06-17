@@ -18,17 +18,11 @@
 /log/*.log
 /tmp
 
-# Ignore the sensitive database.yml file
-/config/database.yml
-
 # rails_best_practices
 /rails_best_practices_output.html
 
 # ignore secret token
 /config/initializers/secret_token.rb
-
-# File defining required environment variables for the local development.
-/local_env.sh
 
 # Files created from asset pre-compilation
 /public/assets/**

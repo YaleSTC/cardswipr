@@ -5,7 +5,7 @@
 
             "_SECRET_KEY_BASE_": "<rails secret key base>",
 
-            "_RAILS_ENV_": "<production, test, or development>",
+            "_RAILS_ENV_": "<production, test, development, or local>",
 
             "_SN_INSTANCE_": "https://yale.service-now.com",
             "_SN_USERNAME_": "<service now service account>",
@@ -16,7 +16,7 @@
 
             "_DATABASE_HOST_": "<database host>",
             "_MYSQL_USER_": "<mysql username>",
-            "_MYSQL_PASSWORD_": "<mysql password>",
+            "_MYSQL_PASSWORD_": "<mysql password>"
         }
     }
 }

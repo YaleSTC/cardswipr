@@ -8,15 +8,12 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
-    env_file:
-      - .env
+      - ${PWD}/deco.json.template:/run/secrets/deco.json
 
   database:
     image: mariadb
     volumes:
       - db_data:/var/lib/mysql
-    env_file:
-      - .env
 
 volumes:
   db_data:
