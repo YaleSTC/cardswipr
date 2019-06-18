@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rubocop-rspec', require: false
   gem 'webmock'
   gem 'factory_bot_rails', '~> 4.10.0'
+  gem 'capybara_discoball', '~> 0.1.0'
 end
 
 group :development do
