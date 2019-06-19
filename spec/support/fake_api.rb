@@ -3,7 +3,7 @@ require 'capybara_discoball'
 
 module FakeApi
   class Application < Sinatra::Base
-    get "../fixtures/api/success.json" do
+    get "./spec/fixtures/api/success.json" do
       response
     end
   end
