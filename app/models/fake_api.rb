@@ -5,6 +5,6 @@ class FakeApi
   self.base_url = ENV.fetch("FAKE_API_BASE_URL")
 
   def successful_match_for(user:)
-    HTTParty.get(self.base_url + "/#{RSPEC_ROOT}/fixtures/api/success.json", 200)
+    HTTParty.get(self.base_url + "users/#{user.id}", format: json)
   end
 end

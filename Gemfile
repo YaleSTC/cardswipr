@@ -55,6 +55,7 @@ group :development, :test do
   gem 'webmock'
   gem 'factory_bot_rails', '~> 4.10.0'
   gem 'capybara_discoball', '~> 0.1.0'
+  gem 'sinatra', '~> 2.0.5'
 end
 
 group :development do
