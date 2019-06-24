@@ -58,12 +58,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  # Initialize the Service Now gem
-  ServiceNow::Configuration.configure(sn_url: ENV.fetch('SN_INSTANCE'),
-                                      sn_username: ENV.fetch('SN_USERNAME'),
-                                      sn_password: ENV.fetch('SN_PASSWORD'))
-
-  config.custom = ActiveSupport::OrderedOptions.new
-  #config.custom.cardSwiprApiURL = 'https://gw-dev.its.yale.edu/soa-gateway/cardswipr/people/data'
-  config.custom.cardSwiprApiURL = 'https://gw-dev.its.yale.edu/soa-gateway/v2/identity'
 end

@@ -94,13 +94,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  # Initialize the Service Now gem
-  ServiceNow::Configuration.configure(sn_url: ENV.fetch('SN_INSTANCE'),
-                                      sn_username: ENV.fetch('SN_USERNAME'),
-                                      sn_password: ENV.fetch('SN_PASSWORD'))
-
-  config.custom = ActiveSupport::OrderedOptions.new
-  #config.custom.cardSwiprApiURL = 'https://gw.its.yale.edu/soa-gateway/cardswipr/people/data'
-  config.custom.cardSwiprApiURL = 'https://gw.its.yale.edu/soa-gateway/v2/identity'
-
 end

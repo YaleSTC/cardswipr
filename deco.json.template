@@ -11,6 +11,7 @@
             "_SN_USERNAME_": "<service now service account>",
             "_SN_PASSWORD_": "<service now service account password>",
 
+            "_ID_API_URL_": "https://gw.its.yale.edu/soa-gateway/v2/identity",
             "_ID_API_USERNAME_": "<identity server service account>",
             "_ID_API_PASSWORD_": "<identity server service account password>",
 
