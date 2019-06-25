@@ -16,6 +16,7 @@
             "_ID_API_PASSWORD_": "<identity server service account password>",
 
             "_DATABASE_HOST_": "<database host>",
+            "_MYSQL_DATABASE_": "<database name>",
             "_MYSQL_USER_": "<mysql username>",
             "_MYSQL_PASSWORD_": "<mysql password>"
         }

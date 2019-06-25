@@ -12,6 +12,8 @@ services:
 
   database:
     image: mariadb
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - db_data:/var/lib/mysql
 

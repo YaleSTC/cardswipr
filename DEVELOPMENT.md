@@ -33,9 +33,16 @@ This variable represents the URL that the identity server points to.
 Production: https://gw.its.yale.edu/soa-gateway/v2/identity
 Local/Test/Development: https://gw-dev.its.yale.edu/soa-gateway/v2/identity
 
-### DATABASE_HOST
+### DATABASE & MYSQL Variables
 
-This variable references the host that runs your mysql instance. If using docker-compose set this to `database`. Additionally, you must give this database a username and password. Docker-compose will create a database for you if you give it any username and password.
+These variables define database environment variables. For local docker-compose development set this section to
+
+```
+DATABASE_HOST=database
+MYSQL_DATABASE=cardswipr_local
+MYSQL_USER=root
+MYSQL_PASSWORD=
+```
 
 ## Testing
 After running `docker-compose up -d` run
