@@ -6,7 +6,7 @@ ruby '2.6.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 1.1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -35,22 +35,22 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form', '~> 4.1'
-gem 'shoulda-matchers'
-gem 'devise'
-gem 'devise_cas_authenticatable'
-gem 'dotenv-rails'
+gem 'shoulda-matchers', '~> 3.1.3'
+gem 'devise', '~> 4.5.0'
+gem 'devise_cas_authenticatable', '~> 1.10.3'
+gem 'dotenv-rails', '~> 2.6.0'
 
-gem 'high_voltage'
+gem 'high_voltage', '~> 3.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry'
-  gem 'pry-byebug'
-  gem 'rspec-rails'
-  gem 'rubocop', require: false
-  gem 'rubocop-rspec', require: false
-  gem 'webmock'
+  gem 'byebug', '~> 10.0.2', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry', '~> 0.12.2'
+  gem 'pry-byebug', '~> 3.6.0'
+  gem 'rspec-rails', '~> 3.8.1'
+  gem 'rubocop', '~> 0.63.0', require: false
+  gem 'rubocop-rspec', '~> 1.31.0', require: false
+  gem 'webmock', '~> 3.5.1'
   gem 'factory_bot_rails', '~> 4.10.0'
 end
 
@@ -59,16 +59,16 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.141.0'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'chromedriver-helper', '~> 2.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

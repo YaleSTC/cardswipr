@@ -22,6 +22,7 @@ This file should be updated before a new release is deployed.
 * Added Attendance List View [#126](https://gitlab.com/yale-sdmp/cardswipr/issues/126)
 * Created page where Users can create an event [#111](https://gitlab.com/yale-sdmp/cardswipr/issues/111)
 * Added organizer update to Event Edit form [#153](https://gitlab.com/yale-sdmp/cardswipr/issues/153)
+* Updated Gemfile to refer to specific version numbers [#157](https://gitlab.com/yale-sdmp/cardswipr/issues/157)
 
 ### Fixed
 
