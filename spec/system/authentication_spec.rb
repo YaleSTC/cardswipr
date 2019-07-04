@@ -5,7 +5,10 @@ require 'rails_helper'
 RSpec.describe 'Authentication', type: :system do
   let(:user_with_events) { create(:user_with_events) }
 
-  before { stub_cas('NETID') }
+  before do
+    stub_people_hub
+    stub_cas('NETID')
+  end
 
   describe 'after user is authenticated' do
     before do

@@ -6,6 +6,7 @@ RSpec.describe 'Attendance', type: :system do
   let(:user_with_events) { create(:user_with_events) }
 
   before do
+    stub_people_hub
     stub_cas(user_with_events.username)
     sign_in user_with_events
     visit dashboard_path
@@ -14,15 +15,13 @@ RSpec.describe 'Attendance', type: :system do
 
   context 'when signed in as user' do
     it 'gives a list of all attendees' do
-      attendee1, attendee2 = generate_attendees
-      visit dashboard_path
-      click_on('Attendee List', match: :first)
+      attendee1, attendee2 = generate_attendances
+      visit current_path
       expect(page).to have_content(attendee1.first_name.titleize)
         .and have_content(attendee2.first_name.titleize)
     end
 
     it 'displays message for successful check-in' do
-      stub_check_in
       check_in('0000000000')
       expect(page).to have_content('Successfully checked in Luke Skywalker!')
     end
@@ -45,7 +44,7 @@ RSpec.describe 'Attendance', type: :system do
     end
 
     it 'downloads the csv' do
-      generate_attendees
+      generate_attendances
       click_on('Export CSV')
       rheader = page.response_headers['Content-Disposition']
       expect(rheader).to match('attachment')
@@ -53,7 +52,7 @@ RSpec.describe 'Attendance', type: :system do
 
     # Note: this test may fail if run at midnight because of the day change
     it 'downloads the csv with correct filename' do
-      generate_attendees
+      generate_attendances
       click_on('Export CSV')
       fname = user_with_events.events.first.title
       fname << ('_export_' + Time.zone.today.to_s(:number) + '.csv')
@@ -61,7 +60,7 @@ RSpec.describe 'Attendance', type: :system do
     end
 
     it 'has the right content' do
-      data = generate_attendees
+      data = generate_attendances
       click_on('Export CSV')
       export = 'first_name,last_name,email,net_id,upi,check_in'
       export += data.map { |n| export_row_for(n) }.join
@@ -69,7 +68,7 @@ RSpec.describe 'Attendance', type: :system do
     end
   end
 
-  def generate_attendees
+  def generate_attendances
     create_pair(:attendance, event: user_with_events.events.first)
   end
 
@@ -78,17 +77,6 @@ RSpec.describe 'Attendance', type: :system do
     click_on 'Event Check-in', match: :first
     fill_in 'search_param', with: search_param
     click_on 'Check In'
-  end
-
-  def stub_check_in
-    person = instance_double(PeopleHub::Person, person_attrs)
-    allow(PeopleHub::PersonRequest).to receive(:get).and_return(person)
-  end
-
-  def person_attrs
-    { first_name: 'Luke', last_name: 'Skywalker',
-      email: 'luke.skywalker@mail.com', net_id: 'ls222', upi: '12345678',
-      phone: '+1 (555) 555-5555' }
   end
 
   def stub_failed_check_in(search_param)

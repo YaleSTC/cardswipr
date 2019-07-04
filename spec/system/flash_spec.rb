@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Flashes', type: :system do
-  # tests application_controller#flash_alert
+  # tests application_controller#flash_alerts
   describe 'alert' do
     it 'when there is an error' do
       error = create_error
@@ -28,6 +28,7 @@ RSpec.describe 'Flashes', type: :system do
   end
 
   def log_in(user)
+    stub_people_hub
     stub_cas(user.username)
     sign_in user
     visit dashboard_path

@@ -8,7 +8,9 @@ This file should be updated before a new release is deployed.
 * Modified associations between Event and Attendance [#145](https://gitlab.com/yale-sdmp/cardswipr/issues/145)
 * Removed explicit namespacing of method calls to FactoryBot [#150](https://gitlab.com/yale-sdmp/cardswipr/issues/150)
 * Modified error messages to be more helpful [#162](https://gitlab.com/yale-sdmp/cardswipr/issues/162)
-* Modified Application Controller to correctly reroute unauth users [#128] (https://gitlab.com/yale-sdmp/cardswipr/issues/128)
+* Modified Application Controller to correctly reroute unauth users [#128](https://gitlab.com/yale-sdmp/cardswipr/issues/128)
+* Fixed style checker [#158](https://gitlab.com/yale-sdmp/cardswipr/issues/158)
+* User email address is persisted on first login [#149](https://gitlab.com/yale-sdmp/cardswipr/issues/149)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

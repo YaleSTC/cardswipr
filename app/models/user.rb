@@ -9,4 +9,9 @@ class User < ApplicationRecord
   # Associations
   has_many :user_events, dependent: :destroy
   has_many :events, through: :user_events
+
+  def cas_extra_attributes=(_extra_attributes)
+    person = PeopleHub::PersonRequest.get(netid: username)
+    self.email = person.email
+  end
 end
