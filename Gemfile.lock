@@ -100,6 +100,7 @@ GEM
     factory_bot_rails (4.10.0)
       factory_bot (~> 4.10.0)
       railties (>= 3.0.0)
+    ffaker (2.11.0)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -295,6 +296,7 @@ DEPENDENCIES
   devise_cas_authenticatable (~> 1.10.3)
   dotenv-rails (~> 2.6.0)
   factory_bot_rails (~> 4.10.0)
+  ffaker
   high_voltage (~> 3.1.0)
   httparty (~> 0.16.4)
   jbuilder (~> 2.5)

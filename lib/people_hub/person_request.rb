@@ -3,6 +3,9 @@
 require 'httparty'
 require 'uri'
 
+# TEMPORARY UNTIL PROPER MOCK API IS WORKING
+require 'ffaker'
+
 # Module that requests information on a person from the Identity API,
 # parses the data and stores the required data as an object.
 module PeopleHub
@@ -19,6 +22,8 @@ module PeopleHub
     #
     # @param params [Hash] a dictionary of params
     def self.get(params)
+      return fake_person if ENV['FAKE_PEOPLEHUB'].present?
+
       base = ENV['IDENTITY_SERVER_URL']
       url = base + '?outputformat=json&' + parse_params(params)
       auth = { username: ENV['IDENTITY_SERVER_USERNAME'],
@@ -62,6 +67,29 @@ module PeopleHub
       VALID_PARAMS.include?(param)
     end
 
-    private_class_method :param_valid?, :parse_params, :response_to_person
+    # TEMPORARY UNTIL PROPER MOCK API IS WORKING
+    def self.fake_person
+      PeopleHub::Person.new(
+        first_name: FFaker::Name.first_name,
+        last_name: FFaker::Name.last_name,
+        email: FFaker::Internet.safe_email,
+        net_id: fake_netid,
+        upi: Array.new(8) { rand(10) }.join,
+        phone: FFaker::PhoneNumber.short_phone_number
+      )
+    end
+
+    # TEMPORARY UNTIL PROPER MOCK API IS WORKING
+    # Generates a random string with 2 or three lowercase characters and a
+    # number between 1 and 9999
+    def self.fake_netid
+      n_chars = [2, 3].sample
+      all_chars = ('a'..'z').to_a
+      chars = Array.new(n_chars) { all_chars.sample }.join
+      "#{chars}#{rand(1..9_999)}"
+    end
+
+    private_class_method :param_valid?, :parse_params, :response_to_person,
+                         :fake_person, :fake_netid
   end
 end
