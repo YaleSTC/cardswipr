@@ -1,37 +1,64 @@
-<h1>Dashboard</h1>
+<div class="container">
+  <br/>
+  <h1>Events</h1>
+</div>
 
-<%= button_to 'Create New Event', new_event_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+<br/>
 
-<table style="width:100%" id="events">
-  <thead>
-    <tr>
-      <th>Event Name</th>
-      <th>Attendee Count</th>
-      <th>Last Use</th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-4">
 
-  <tbody>
-    <% @user_events.each do |user_event| %>
-      <tr>
-        <td class="dash-buttons">
-          <%= button_to 'Event Check-in', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
-          <%= button_to 'Attendee List', event_attendances_path(user_event.event_id), method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
-        </td>
-        <td>
-          <%= user_event.event.title %>
-        </td>
-        <td>
-          XXX
-        </td>
-        <td>
-          <%= user_event.event.updated_at %>
-        </td>
-        <td>
-          <%= button_to 'Edit Event', edit_event_path(user_event.event_id), method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
-          <%= button_to 'Delete Event', event_path(user_event.event_id), method: :delete, :class => 'btn btn-primary btn-lg btn-block' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </div>
+    <div class="col-2">
+      <%= button_to 'Create New Event', new_event_path, method: :get, :class => 'btn btn-lg btn-primary btn-blue-background btn-blue-outline' %>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+
+  <% if @user_events.any? %>
+    <table style="width:100%" id="events" class="table">
+      <tbody>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">Title</th>
+          <th scope="col">Attendee Count</th>
+          <th scope="col">Last Use</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+
+        <% @user_events.each do |user_event| %>
+          <tr id="event row">
+            <td class="dash-buttons">
+              <%= button_to 'Event Check-in', root_path, method: :get, :class => 'btn btn-primary btn-block btn-blue-background btn-blue-outline' %>
+            </td>
+            <td class="dash-buttons">
+              <%= button_to 'Attendee List', event_attendances_path(user_event.event_id), method: :get, :class => 'btn btn-secondary btn-block' %>
+            </td>
+            <td>
+              <%= user_event.event.title %>
+            </td>
+            <td>
+              XXX
+            </td>
+            <td>
+              <%= user_event.event.updated_at %>
+            </td>
+            <td>
+              <%= button_to 'Edit Event', edit_event_path(user_event.event_id), method: :get, :class => 'btn btn-secondary' %>
+            </td>
+            <td>
+              <%= button_to 'X', event_path(user_event.event_id), method: :delete, :class => 'btn btn-danger', aria: { label: 'Delete Event' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <center><h2>No events!</h2></center>
+  <% end %>
+</div>

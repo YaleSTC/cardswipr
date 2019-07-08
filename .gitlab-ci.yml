@@ -22,7 +22,7 @@ stages:
 
   before_script:
     - apt-get update -q
-    - apt-get install nodejs -yqq
+    - curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs
     - gem install bundler --no-document
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle
     - cp -f config/database.yml{.gitlab,}

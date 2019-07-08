@@ -6,12 +6,14 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= render 'nav' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'flashes' %>
     <%= yield %>
   </body>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </html>

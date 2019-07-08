@@ -1,37 +1,57 @@
-<div>
+<br/>
+<div class = "text-center">
   <h1>Edit Event: <%= @event.title %></h1>
 </div>
+<div class = "container">
+  <%= render 'events/form' %>
+  <br/>
+  <br/>
+  <div id='event-form'>
+    <div id='user-event-form'>
 
-<%= render 'events/form' %>
-
-<div id='event-form'>
-  <div id='user-event-form'>
-    <fieldset id='add-organizer'>
-      <%= form_for [@event, @user_event] do |f| %>
-        <h3>Add Organizer</h2> 
-        <div id='new-user-event'>
-          <%= f.label :user_id %>
-          <%= f.collection_select :user_id, User.all, :id, :username %>
-          <%= f.hidden_field :event_id, value: @event.id %>
+        <div class = "row">
+          <div class = "col-sm">
+            <fieldset id='remove-organinzer'>
+              <h3>Event Organizers</h3>
+              <% @user_events.each do |user_event| %>
+                <div id= "remove-<%= user_event.user.username %>">
+                  <div class = "row justify-content-between">
+                    <div class = "col-sm-4 other">
+                      <%= user_event.user.username %>
+                    </div>
+                    <div class = "col-sm-8 other2">
+                      <%= link_to 'X',
+                      event_user_event_path(user_event.event, user_event, user_event.id),
+                      method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger with-border", aria: { label: 'Remove Organizer' } %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </fieldset>
+          </div>
         </div>
-        <p>
-          <%= f.submit 'Add Organizer', class: 'btn btn-primary' %>
-        </p>
-      <% end %>
-    </fieldset>
 
-    <fieldset id='remove-organinzer'>
-      <h3>Remove Organizer</h3>
-      <% @user_events.each do |user_event| %>
-        <div id= "remove-<%= user_event.user.username %>">
-          <span>
-            <%= user_event.user.username %>
-            <%= link_to 'Remove Organizer',
-            event_user_event_path(user_event.event, user_event, user_event.id),
-            method: :delete, data: { confirm: 'Are you sure?' } %>
-          </span>
+        <br/>
+        <br/>
+
+        <div class = "row">
+          <div class = "col-sm">
+            <fieldset id='add-organizer'>
+              <%= form_for [@event, @user_event] do |f| %>
+                <h3>Add Organizer</h2>
+                <div class='col-sm-4' id='new-user-event'>
+                  <%= f.collection_select :user_id, User.all, :id, :username, {}, {class: "form-control"} %>
+                  <%= f.hidden_field :event_id, value: @event.id %>
+                </div>
+                <br/>
+                <p>
+                  <%= f.submit 'Add Organizer', class: 'btn btn-primary' %>
+                </p>
+              <% end %>
+            </fieldset>
+          </div>
         </div>
-      <% end %>
-    </fieldset>
+      </div>
+    </div>
   </div>
 </div>

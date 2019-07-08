@@ -72,7 +72,7 @@ RSpec.describe 'Event editing', type: :system do
       user2 = create(:user, username: 'B')
       create(:event, users: [user2, user1])
       log_in user1
-      expect(page).to have_content("a Remove Organizer\nB Remove Organizer")
+      expect(page).to have_content("Event Organizers\na\nX\nB\nX")
     end
   end
 
@@ -99,6 +99,6 @@ RSpec.describe 'Event editing', type: :system do
   end
 
   def remove_organizer(user)
-    find('div', id: 'remove-' + user.username).click_on('Remove Organizer')
+    find('div', id: 'remove-' + user.username).click_on('X')
   end
 end

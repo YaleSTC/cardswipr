@@ -7,7 +7,7 @@ RSpec.describe 'Flashes', type: :system do
   describe 'alert' do
     it 'when there is an error' do
       error = create_error
-      expect(page).to have_css('p.alert', text: error)
+      expect(page).to have_css('div.alert-warning', text: error)
     end
 
     it 'that disappears upon leaving page' do

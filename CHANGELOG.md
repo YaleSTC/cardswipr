@@ -26,6 +26,7 @@ This file should be updated before a new release is deployed.
 * Added basic Event edit page [#114](https://gitlab.com/yale-sdmp/cardswipr/issues/114)
 * Fixed style checker [#158](https://gitlab.com/yale-sdmp/cardswipr/issues/158)
 * Added API interface for Yale's Identity Server [#138](https://gitlab.com/yale-sdmp/cardswipr/issues/138)
+* Implemented Bootstrap [#154](https://gitlab.com/yale-sdmp/cardswipr/issues/154)
 
 ### Fixed
 

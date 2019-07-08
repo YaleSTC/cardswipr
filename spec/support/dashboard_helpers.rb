@@ -2,6 +2,5 @@
 
 # dashboard helper function
 def get_event_rows(page)
-  table = page.find(:css, 'table#events')
-  table.all(:css, 'tbody/tr')
+  page.all(:id, 'event row')
 end

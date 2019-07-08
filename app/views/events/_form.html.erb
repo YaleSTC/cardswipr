@@ -1,7 +1,18 @@
-<%= button_to 'Back to Dashboard', root_path, method: :get, :class => 'btn btn-primary btn-lg btn-block' %>
+<%= button_to 'Back to Dashboard', root_path, method: :get, :class => 'btn btn-secondary' %>
+<br>
 
-<%= simple_form_for @event do |f| %>
-  <%= f.input :title, placeholder: 'Event Name' %>
-  <%= f.input :description, placeholder: 'Event Description' %>
-  <%= f.submit %>
+<%= form_for @event, html: { class: "form-horizontal center" } do |f| %>
+  <div class = "form-group">
+    <%= f.label 'Title', class: 'col-md-4 control-label' %>
+    <div class = "col-md-8">
+      <%= f.text_field :title, placeholder: 'Title', error: '', size: 60 %>
+    </div>
+  </div>
+  <div class = "form-group">
+    <%= f.label 'Description', class: 'col-md-4 control-label' %>
+    <div class = "col-md-8">
+      <%= f.text_area :description, placeholder: 'Description', error: '', cols: 60, rows: 5 %>
+    </div>
+  </div>
+  <%= f.submit class: "btn btn-primary"%>
 <% end %>
