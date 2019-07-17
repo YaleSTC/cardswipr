@@ -27,6 +27,7 @@ This file should be updated before a new release is deployed.
 * Fixed style checker [#158](https://gitlab.com/yale-sdmp/cardswipr/issues/158)
 * Added API interface for Yale's Identity Server [#138](https://gitlab.com/yale-sdmp/cardswipr/issues/138)
 * Implemented Bootstrap [#154](https://gitlab.com/yale-sdmp/cardswipr/issues/154)
+* Added confirmation dialogue when deleting events [#160](https://gitlab.com/yale-sdmp/cardswipr/issues/160)
 
 ### Fixed
 

@@ -52,7 +52,7 @@
               <%= button_to 'Edit Event', edit_event_path(user_event.event_id), method: :get, :class => 'btn btn-secondary' %>
             </td>
             <td>
-              <%= button_to 'X', event_path(user_event.event_id), method: :delete, :class => 'btn btn-danger', aria: { label: 'Delete Event' } %>
+              <%= button_to 'X', event_path(user_event.event_id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger', aria: { label: 'Delete Event' } %>
             </td>
           </tr>
         <% end %>
