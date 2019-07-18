@@ -10,10 +10,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    if EventCreator.new(params: event_params, owner: current_user).call
+    obj = EventCreator.new(params: event_params, owner: current_user)
+    if obj.call
       redirect_to dashboard_path, notice: 'Successfully created event!'
     else
-      redirect_to new_event_path, alert: 'Unable to create event!'
+      @event = obj.event
+      flash_alerts(obj)
+      render 'new'
     end
   end
 

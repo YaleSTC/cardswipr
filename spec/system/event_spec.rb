@@ -17,9 +17,15 @@ RSpec.describe 'Event', type: :system do
       expect(page).to have_content('Successfully created event!')
     end
 
-    it 'user gets failure message when incorrectly creating an event' do
+    it 'user gets failure message when event title is blank' do
       click_on('Create Event')
-      expect(page).to have_content('Unable to create event!')
+      expect(page).to have_content('Title can\'t be blank')
+    end
+
+    it 'user gets failure message when event title is too long' do
+      fill_in 'event_title', with: 'a' * 51
+      click_on('Create Event')
+      expect(page).to have_content('Title is too long')
     end
   end
 
