@@ -12,24 +12,30 @@ module PeopleHub
   class PersonRequest
     VALID_PARAMS =
       %i(netid upi firstname lastname idcard proxnumber role).freeze
+    AUTH = { username: ENV['IDENTITY_SERVER_USERNAME'],
+             password: ENV['IDENTITY_SERVER_PASSWORD'] }.freeze
+    BASE = ENV['IDENTITY_SERVER_URL']
 
     # Takes a dictionary of params, and gets a response from the identity
     # server from the url in the env file. Calls response_to_person to return
     # a PeopleHub::Person object.
     #
     # @param params [Hash] a dictionary of params
+    # rubocop:disable Style/GuardClause
     def self.get(params)
-      base = ENV['IDENTITY_SERVER_URL']
-      url = base + '?outputformat=json&' + parse_params(params)
-      auth = { username: ENV['IDENTITY_SERVER_USERNAME'],
-               password: ENV['IDENTITY_SERVER_PASSWORD'] }
-      response = HTTParty.get(url, basic_auth: auth)
-      if response.code != 200
-        raise "Error code #{response.code} returned from #{base}"
-      end
+      url = BASE + '?outputformat=json&' + parse_params(params)
+      if Rails.configuration.fake_peoplehub
+        return PeopleHub::FakePerson.new
+      else
+        response = HTTParty.get(url, basic_auth: AUTH)
+        if response.code != 200
+          raise "Error code #{response.code} returned from #{BASE}"
+        end
 
-      response_to_person(response)
+        response_to_person(response)
+      end
     end
+    # rubocop:enable Style/GuardClause
 
     # Parse params to check if they are valid and to join them to the url
     #

@@ -67,4 +67,23 @@ RSpec.describe PeopleHub::PersonRequest do
         phone: '+1 (555) 555-5555' }
     end
   end
+
+  describe 'fake api functionality' do
+    before do
+      allow(Rails.configuration).to receive(:fake_peoplehub).and_return(true)
+    end
+
+    it 'does not allow queries with invalid params' do
+      expect { described_class.get(invalid_param: '00001') }
+        .to raise_error(RuntimeError)
+    end
+    it 'allows queries with netid' do
+      expect(described_class.get(netid: 'ls222'))
+        .to be_a PeopleHub::FakePerson
+    end
+    it 'allows queries with proxnumber' do
+      expect(described_class.get(proxnumber: '0123456789'))
+        .to be_a PeopleHub::FakePerson
+    end
+  end
 end

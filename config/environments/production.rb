@@ -95,4 +95,7 @@ Rails.application.configure do
   # Devise mailer
   config.action_mailer.default_url_options =
     { host: ENV.fetch('APPLICATION_HOST') }
+
+  # turn off fake PeopleHub
+  config.fake_peoplehub = false
 end

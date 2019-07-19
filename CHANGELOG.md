@@ -32,6 +32,7 @@ This file should be updated before a new release is deployed.
 * Added export button for exporting Event Attendances [#127](https://gitlab.com/yale-sdmp/cardswipr/issues/127)
 * Created Seed Script for Database [#148](https://gitlab.com/yale-sdmp/cardswipr/issues/148)
 * Created event check in page [#119](https://gitlab.com/yale-sdmp/cardswipr/issues/119)
+* Extended PeopleHub workaround [#159](https://gitlab.com/yale-sdmp/cardswipr/issues/159)
 
 ### Fixed
 
