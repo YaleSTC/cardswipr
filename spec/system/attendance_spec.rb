@@ -57,7 +57,8 @@ RSpec.describe 'Attendance', type: :system do
     it 'has the right content' do
       data = setup_attendances
       click_on('Export CSV')
-      export = 'first_name,email' + data.map { |n| export_row_for(n) }.join
+      export = 'first_name,last_name,email,net_id,upi,check_in'
+      export += data.map { |n| export_row_for(n) }.join
       expect(page.html).to have_content(export)
     end
   end
@@ -94,6 +95,7 @@ RSpec.describe 'Attendance', type: :system do
   end
 
   def export_row_for(attendance)
-    "\n" + [attendance.first_name, attendance.email].join(',')
+    "\n" + [attendance.first_name, attendance.last_name, attendance.email,
+            attendance.net_id, attendance.upi, attendance.check_in].join(',')
   end
 end
