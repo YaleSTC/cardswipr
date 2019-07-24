@@ -13,12 +13,4 @@ RSpec.describe 'application/_nav.html.erb', type: :view do
       expect(response).to have_content('Log Out')
     end
   end
-
-  context 'when user is not logged in' do
-    it 'has a link to log in' do
-      allow(view).to receive(:user_signed_in?).and_return(false)
-      render
-      expect(response).to have_link('Log In')
-    end
-  end
 end

@@ -87,6 +87,7 @@ RSpec.describe 'Event editing', type: :system do
 
   def log_in(user)
     stub_cas(user.username)
+    sign_in user
     visit dashboard_path
     click_on 'Edit Event'
   end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root to: 'dashboards#index', id: 'dashboard'
+    root to: 'pages#home', id: 'home'
   end
 
   # HighVoltage

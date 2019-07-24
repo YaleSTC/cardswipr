@@ -29,6 +29,7 @@ RSpec.describe 'Flashes', type: :system do
 
   def log_in(user)
     stub_cas(user.username)
+    sign_in user
     visit dashboard_path
   end
 end

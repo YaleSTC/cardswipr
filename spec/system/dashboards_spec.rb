@@ -19,8 +19,7 @@ RSpec.describe 'Dashboards', type: :system do
 
     it 'deletes event on click' do
       visit dashboard_path
-      rows = get_event_rows(page)
-      rows.first.click_on('X')
+      get_event_rows(page).first.click_on('X')
       row_count = get_event_rows(page).size
       expect(row_count).to eq(4)
     end

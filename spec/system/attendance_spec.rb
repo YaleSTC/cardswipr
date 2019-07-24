@@ -3,13 +3,20 @@
 require 'rails_helper'
 
 RSpec.describe 'Attendance', type: :system do
+  let(:user_with_events) { create(:user_with_events) }
+
+  before do
+    stub_cas(user_with_events.username)
+    sign_in user_with_events
+    visit dashboard_path
+    click_on('Attendee List', match: :first)
+  end
+
   context 'when signed in as user' do
-    let(:user_with_events) { create(:user_with_events) }
-
-    before { stub_cas(user_with_events.username) }
-
-    it 'can view a list of all attendees' do
-      attendee1, attendee2 = setup_attendances
+    it 'gives a list of all attendees' do
+      attendee1, attendee2 = generate_attendees
+      visit dashboard_path
+      click_on('Attendee List', match: :first)
       expect(page).to have_content(attendee1.first_name.titleize)
         .and have_content(attendee2.first_name.titleize)
     end
@@ -34,12 +41,11 @@ RSpec.describe 'Attendance', type: :system do
     end
 
     it 'has a button to export attendances to CSV' do
-      setup_attendances
       expect(page).to have_button('Export CSV')
     end
 
     it 'downloads the csv' do
-      setup_attendances
+      generate_attendees
       click_on('Export CSV')
       rheader = page.response_headers['Content-Disposition']
       expect(rheader).to match('attachment')
@@ -47,7 +53,7 @@ RSpec.describe 'Attendance', type: :system do
 
     # Note: this test may fail if run at midnight because of the day change
     it 'downloads the csv with correct filename' do
-      setup_attendances
+      generate_attendees
       click_on('Export CSV')
       fname = user_with_events.events.first.title
       fname << ('_export_' + Time.zone.today.to_s(:number) + '.csv')
@@ -55,7 +61,7 @@ RSpec.describe 'Attendance', type: :system do
     end
 
     it 'has the right content' do
-      data = setup_attendances
+      data = generate_attendees
       click_on('Export CSV')
       export = 'first_name,last_name,email,net_id,upi,check_in'
       export += data.map { |n| export_row_for(n) }.join
@@ -63,12 +69,8 @@ RSpec.describe 'Attendance', type: :system do
     end
   end
 
-  def setup_attendances
-    attendee1, attendee2 = create_pair(:attendance,
-                                       event: user_with_events.events.first)
-    visit dashboard_path
-    click_on('Attendee List', match: :first)
-    [attendee1, attendee2]
+  def generate_attendees
+    create_pair(:attendance, event: user_with_events.events.first)
   end
 
   def check_in(search_param)

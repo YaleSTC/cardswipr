@@ -1,6 +1,57 @@
-<div class="row justify-content-center">
-  <h1>Welcome to Cardswipr</h1>
-  <% unless user_signed_in?%>
-    <%= link_to 'sign in', new_user_session_path%>
-  <% end %>
-</div>
+
+  <br/>
+  <div class="row justify-content-center">
+    <h1 class="display-4">Welcome to CardSwipr</h1>
+  </div>
+  <br/>
+  <div class = "container">
+    <div class="row justify-content-center">
+      <p class="lead">
+        CardSwipr helps you take attendance at meetings and events.
+        Attendees swipe in with this easy interface, then the application looks them up
+         and collects their information in a list. When the event is over, you can
+         even download a spreadsheet (.csv) output of the attendees' information.
+      </p>
+    </div>
+
+      <% if user_signed_in? %>
+      <div class="row row-eq-height justify-content-center">
+        <div class="card-group">
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title"><strong>My Events</strong></h4>
+                <img src="https://dummyimage.com/275x125/0f4d92/fff" class="card-img-top" alt="..." style="padding-bottom:15px;">
+                <p class="card-text">Create events and manage check-ins.</p>
+                <%= link_to '', dashboard_path, :class => 'stretched-link' %>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title"><strong>Person Lookup</strong></h4>
+                <img src="https://dummyimage.com/275x125/0f4d92/fff" class="card-img-top" alt="..." style="padding-bottom:15px;">
+                <p class="card-text">CardSwipr can quickly tell you about a person after they swipe their card.</p>
+                <%= link_to '', '#', :class => 'stretched-link' %>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title"><strong>User Manual</strong></h4>
+                <img src="https://dummyimage.com/275x125/0f4d92/fff" class="card-img-top" alt="..." style="padding-bottom:15px;">
+                <p class="card-text">CardSwipr works with prox cards, magstripe, or NetID. Learn about devices and how to use the system.</p>
+                <%= link_to '', '#', :class => 'stretched-link' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="row row-eq-height justify-content-center">
+        <%= button_to 'Log in', new_user_session_path, :class => 'btn btn-lg btn-primary btn-blue-background btn-blue-outline'%>
+      </div>
+    <% end %>
+  </div>
