@@ -4,6 +4,8 @@
 class PagesController < ApplicationController
   include HighVoltage::StaticPage
 
+  def user_manual; end
+
   private
 
   def public_action?
