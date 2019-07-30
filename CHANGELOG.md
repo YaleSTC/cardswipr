@@ -48,6 +48,7 @@ This file should be updated before a new release is deployed.
 * Added user profile page [#167](https://gitlab.com/yale-sdmp/cardswipr/issues/167)
 * Added the User Manual page [#166](https://gitlab.com/yale-sdmp/cardswipr/issues/166)
 * Added number of attendees to check-in page [#178](https://gitlab.com/yale-sdmp/cardswipr/issues/178)
+* Added footer [#168](https://gitlab.com/yale-sdmp/cardswipr/issues/168)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
