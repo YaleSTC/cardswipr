@@ -12,7 +12,7 @@ RSpec.describe 'Event editing', type: :system do
   end
 
   it 'successfully updates event description' do
-    _user, _other_user, event = set_up
+    _user, event = set_up
     fill_in 'Description', with: 'Updated Description'
     click_on 'Update Event'
     expect(event.reload.description).to eq('Updated Description')
@@ -27,35 +27,35 @@ RSpec.describe 'Event editing', type: :system do
 
   describe 'event organizers' do
     it 'can be added' do
-      _user, other_user, event = set_up
+      _user, event, other_user = set_up
       add_organizer(other_user)
       expect(event.reload.user_events.length).to eq(3)
     end
 
     it 'message displayed after adding' do
-      _user, other_user, _event = set_up
+      _user, _event, other_user = set_up
       notice = "#{other_user.username} added to event organizers"
       add_organizer(other_user)
       expect(page).to have_content(notice)
     end
 
     it 'cannot be added multiple times' do
-      _user, other_user, event = set_up
+      _user, event, other_user = set_up
       add_organizer(other_user)
       add_organizer(other_user)
       expect(event.reload.user_events.length).to eq(3)
     end
 
     it 'can be removed' do
-      user, _other_user, event = set_up
+      user, event = set_up
       remove_organizer(user)
       expect(event.reload.user_events.length).to eq(1)
     end
 
     it 'message displayed after removing' do
-      user, _other_user, _event = set_up
-      notice = "#{user.username} removed from event organizers"
-      remove_organizer(user)
+      _user, _event, _other_user, organizer = set_up
+      notice = "#{organizer.username} removed from event organizers"
+      remove_organizer(organizer)
       expect(page).to have_content(notice)
     end
 
@@ -82,7 +82,7 @@ RSpec.describe 'Event editing', type: :system do
     user3 = create(:user)
     event = create(:event, users: [user1, user2])
     log_in user1
-    [user1, user3, event]
+    [user1, event, user3, user2]
   end
 
   def log_in(user)

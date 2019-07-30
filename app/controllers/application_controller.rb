@@ -2,7 +2,16 @@
 
 # Base controller class.
 class ApplicationController < ActionController::Base
+  include Pundit
+  protect_from_forgery
+
   before_action :redirect_to_home_page, unless: :public_action?
+  before_action :authorize!, unless: :public_action?
+
+  rescue_from Pundit::NotAuthorizedError do
+    flash[:alert] = 'Sorry, you don\'t have permission to do that.'
+    redirect_to(root_path)
+  end
 
   private
 

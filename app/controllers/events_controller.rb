@@ -2,7 +2,7 @@
 
 # Events Controller
 class EventsController < ApplicationController
-  before_action :set_event, only: %i(show edit update index destroy)
+  prepend_before_action :set_event, only: %i(show edit update index destroy)
   before_action :set_user_events, only: %i(edit update)
 
   def new
@@ -42,6 +42,14 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to dashboard_path
+  end
+
+  def authorize!
+    if @event
+      authorize(@event)
+    else
+      authorize Event.new
+    end
   end
 
   private

@@ -11,4 +11,6 @@ class DashboardsController < ApplicationController
   def set_user_events
     @user_events = current_user.user_events
   end
+
+  def authorize!; end
 end

@@ -12,6 +12,7 @@ This file should be updated before a new release is deployed.
 * Fixed style checker [#158](https://gitlab.com/yale-sdmp/cardswipr/issues/158)
 * User email address is persisted on first login [#149](https://gitlab.com/yale-sdmp/cardswipr/issues/149)
 * Changed check-in time display [#172](https://gitlab.com/yale-sdmp/cardswipr/issues/172)
+* Prevented users from accessing events for which they are not organizers [#163](https://gitlab.com/yale-sdmp/cardswipr/issues/163)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

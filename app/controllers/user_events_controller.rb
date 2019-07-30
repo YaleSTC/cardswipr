@@ -51,4 +51,6 @@ class UserEventsController < ApplicationController
   def user_event_params
     params.require(:user_event).permit(:user_id, :event_id)
   end
+
+  def authorize!; end
 end
