@@ -6,6 +6,7 @@
 
   <div class='container p-2'>
     <div class='row'>
+      <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-secondary with-border' %>
       <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
       <%= button_to 'Export CSV', export_event_attendances_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
       <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>

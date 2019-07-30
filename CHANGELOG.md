@@ -39,6 +39,7 @@ This file should be updated before a new release is deployed.
 * Added missing fields in CSV Export [#164](https://gitlab.com/yale-sdmp/cardswipr/issues/164)
 * Added the complete public home page [#165](https://gitlab.com/yale-sdmp/cardswipr/issues/165)
 * Added name to User model [#156](https://gitlab.com/yale-sdmp/cardswipr/issues/156)
+* Added missing 'Back to Dashboard' buttons [#169](https://gitlab.com/yale-sdmp/cardswipr/issues/169)
 
 ### Fixed
 

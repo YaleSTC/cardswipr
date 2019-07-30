@@ -1,7 +1,7 @@
 <br>
 <div class='container col-md-4 col-md-offset-4 p-2'>
     <div class='row'>
-    <%= button_to 'Back to Dashboard', root_path, method: :get, :class => 'btn btn-secondary with-border' %>
+    <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-secondary with-border' %>
     <%= button_to 'Attendee List', event_attendances_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
     <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
   </div>
