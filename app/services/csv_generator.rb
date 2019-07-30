@@ -36,7 +36,7 @@ class CSVGenerator
   private
 
   def generate_csv_file
-    attributes = %i(first_name last_name email net_id upi check_in)
+    attributes = %i(first_name last_name email net_id upi checked_in_at)
     @csv = CSV.generate do |c|
       c << attributes.map(&:to_s)
       data.each do |object|

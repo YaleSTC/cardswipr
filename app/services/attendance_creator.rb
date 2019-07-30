@@ -26,7 +26,7 @@ class AttendanceCreator
     @event.attendances.create!(
       first_name: person.first_name, last_name: person.last_name,
       email: person.email, net_id: person.net_id, upi: person.upi,
-      phone: person.phone, check_in: Time.zone.now
+      phone: person.phone, checked_in_at: Time.zone.now
     )
   end
 

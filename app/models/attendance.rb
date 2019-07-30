@@ -7,7 +7,7 @@
 # @attr Net_id [String] net id of the attendee
 # @attr Upi [String] upi of the attendee
 # @attr Phone [String] phone number of the attendee
-# @attr Check_in [DateTime] the date/time that the check in happens.
+# @attr Checked_in_at [DateTime] the date/time that the check in happens
 class Attendance < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -16,7 +16,7 @@ class Attendance < ApplicationRecord
     { case_sensitive: false }
   validates :net_id, presence: true
   validates :upi, presence: true
-  validates :check_in, presence: true
+  validates :checked_in_at, presence: true
 
   # Associations
   belongs_to :event

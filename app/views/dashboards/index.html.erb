@@ -45,7 +45,7 @@
               <%= user_event.event.attendances.size %>
             </td>
             <td>
-              <%= user_event.event.updated_at %>
+              <%= user_event.event.updated_at.strftime('%Y-%m-%d %I:%M %p') %>
             </td>
             <td>
               <%= button_to 'Edit Event', edit_event_path(user_event.event_id), method: :get, :class => 'btn btn-secondary' %>

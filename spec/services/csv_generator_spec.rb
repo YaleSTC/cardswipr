@@ -15,7 +15,7 @@ RSpec.describe CSVGenerator do
     it 'creates a csv successfully' do
       generator.generate
       result = generator.csv
-      export = "first_name,last_name,email,net_id,upi,check_in\n" +
+      export = "first_name,last_name,email,net_id,upi,checked_in_at\n" +
                data.map { |n| export_row_for(n) }.join
       expect(result).to eq(export)
     end
@@ -30,6 +30,7 @@ RSpec.describe CSVGenerator do
 
   def export_row_for(attendance)
     [attendance.first_name, attendance.last_name, attendance.email,
-     attendance.net_id, attendance.upi, attendance.check_in].join(',') + "\n"
+     attendance.net_id, attendance.upi, attendance.checked_in_at]
+      .join(',') + "\n"
   end
 end

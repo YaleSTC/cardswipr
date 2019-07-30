@@ -11,6 +11,7 @@ This file should be updated before a new release is deployed.
 * Modified Application Controller to correctly reroute unauth users [#128](https://gitlab.com/yale-sdmp/cardswipr/issues/128)
 * Fixed style checker [#158](https://gitlab.com/yale-sdmp/cardswipr/issues/158)
 * User email address is persisted on first login [#149](https://gitlab.com/yale-sdmp/cardswipr/issues/149)
+* Changed check-in time display [#172](https://gitlab.com/yale-sdmp/cardswipr/issues/172)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

@@ -8,7 +8,7 @@ FactoryBot.define do
     net_id { 'abc123' }
     upi { '01234567' }
     phone { '555-555-5555' }
-    check_in { Time.zone.now }
+    checked_in_at { Time.zone.now }
     event
   end
 end
