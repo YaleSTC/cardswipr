@@ -7,14 +7,15 @@ class UserEventsController < ApplicationController
   before_action :set_user_events, only: %(create)
 
   def create
-    @user_event = UserEvent.new(user_event_params)
-    username = @user_event.user.username
-    if @user_event.save
+    @creator = UserEventCreator.new(
+      search_param: user_event_params
+    )
+    if @creator.call
       redirect_to edit_event_path(@event.id),
-                  notice: "#{username} added to event organizers"
+                  notice: display_name(@creator.user)
     else
-      flash_alerts(@user_event)
-      render 'events/edit', event: @event.id
+      redirect_to edit_event_path(@event.id),
+                  alert: 'Adding organizer failed'
     end
   end
 
@@ -33,6 +34,31 @@ class UserEventsController < ApplicationController
 
   private
 
+  def display_name(user)
+    fn = user.first_name
+    ln = user.last_name
+    "#{fn} #{ln} added to event organizers"
+  end
+
+  def look_up(search_param)
+    key = determine_key(search_param)
+    PeopleHub::PersonRequest.get(key => search_param)
+  end
+
+  # Returns the type of the search param, either prox number or netid
+  #
+  # @param [String]
+  # @return [Symbol] the type of the search param
+  def determine_key(search_param)
+    if search_param.length == 10 && search_param.match?(/^[0-9]{10}$/)
+      :proxnumber
+    elsif search_param.match?(/^[a-z]{1,5}[0-9]{1,5}$/)
+      :netid
+    else
+      :invalid_param
+    end
+  end
+
   def set_event
     @event = Event.find(params[:event_id])
   end
@@ -49,6 +75,6 @@ class UserEventsController < ApplicationController
   end
 
   def user_event_params
-    params.require(:user_event).permit(:user_id, :event_id)
+    params.permit(:id, :user_id, :event_id, :organizer)
   end
 end

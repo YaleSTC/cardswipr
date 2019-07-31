@@ -34,7 +34,8 @@ RSpec.describe 'Event editing', type: :system do
 
     it 'message displayed after adding' do
       _user, other_user, _event = set_up
-      notice = "#{other_user.username} added to event organizers"
+      name = [other_user.first_name, other_user.last_name].join(' ')
+      notice = "#{name} added to event organizers"
       add_organizer(other_user)
       expect(page).to have_content(notice)
     end
@@ -94,9 +95,7 @@ RSpec.describe 'Event editing', type: :system do
   end
 
   def add_organizer(user)
-    find('div', id: 'user-event-form').find(:select)
-                                      .find(:option, user.username)
-                                      .select_option
+    fill_in 'organizer', with: user.username
     click_on 'Add Organizer'
   end
 
