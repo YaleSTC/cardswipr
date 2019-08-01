@@ -40,6 +40,7 @@ This file should be updated before a new release is deployed.
 * Added the complete public home page [#165](https://gitlab.com/yale-sdmp/cardswipr/issues/165)
 * Added name to User model [#156](https://gitlab.com/yale-sdmp/cardswipr/issues/156)
 * Added missing 'Back to Dashboard' buttons [#169](https://gitlab.com/yale-sdmp/cardswipr/issues/169)
+* Added ability for users to delete attendances [#173](https://gitlab.com/yale-sdmp/cardswipr/issues/173)
 
 ### Fixed
 

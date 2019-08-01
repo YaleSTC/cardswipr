@@ -35,6 +35,9 @@
           <td data-role="attendance.net"><%= attendance.net_id %></td>
           <td data-role="attendance.email"><%= attendance.email.downcase %></td>
           <td data-role="attendance.check-in"><%= attendance.check_in %></td>
+          <td data-role="delete attendance">
+            <%= button_to 'X', event_attendance_path(attendance.event.id, attendance.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger', aria: { label: 'Delete Attendance' } %>
+          </td>
         </tr>
       <% end %>
     </tbody>

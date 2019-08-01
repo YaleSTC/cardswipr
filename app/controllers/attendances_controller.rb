@@ -2,7 +2,7 @@
 
 # controller for Attendance
 class AttendancesController < ApplicationController
-  before_action :set_event, only: %i(create index export)
+  before_action :set_event, only: %i(create index destroy export)
 
   def create
     @creator = AttendanceCreator.new(
@@ -21,6 +21,17 @@ class AttendancesController < ApplicationController
 
   def index
     @attendances = @event.attendances
+  end
+
+  def destroy
+    @attendance = Attendance.find(params[:id])
+    if @attendance.destroy
+      redirect_to event_attendances_path(@event),
+                  notice: 'Successfully deleted attendance!'
+    else
+      redirect_to event_attendances_path(@event),
+                  alert: 'Failed to delete attendance'
+    end
   end
 
   def export

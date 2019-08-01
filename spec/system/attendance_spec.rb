@@ -66,6 +66,13 @@ RSpec.describe 'Attendance', type: :system do
       export += data.map { |n| export_row_for(n) }.join
       expect(page.html).to have_content(export)
     end
+
+    it 'can be deleted' do
+      generate_attendances
+      visit current_path
+      click_on('X', match: :first)
+      expect(page).to have_content('Successfully deleted attendance!')
+    end
   end
 
   def generate_attendances
