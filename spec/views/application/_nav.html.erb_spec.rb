@@ -9,13 +9,15 @@ RSpec.describe 'application/_nav.html.erb', type: :view do
     before { allow(view).to receive(:user_signed_in?).and_return(true) }
 
     it 'has a link to the user\'s profile' do
-      skip
+      fullname = "#{user.first_name} #{user.last_name}"
+      render partial: 'application/nav.html.erb',
+             locals: { current_user: user }
+      expect(response).to have_link(fullname, href: edit_user_path(user.id))
     end
     it 'has a link to log out' do
       render partial: 'application/nav.html.erb',
              locals: { current_user: user }
-
-      expect(response).to have_content('Log Out')
+      expect(response).to have_link('Log Out')
     end
   end
 end
