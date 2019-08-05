@@ -10,6 +10,7 @@ class UserEventsController < ApplicationController
     @user_event = UserEvent.new(user_event_params)
     username = @user_event.user.username
     if @user_event.save
+      UserMailer.new_organizer_invitation(user_event: @user_event).deliver
       redirect_to edit_event_path(@event.id),
                   notice: "#{username} added to event organizers"
     else

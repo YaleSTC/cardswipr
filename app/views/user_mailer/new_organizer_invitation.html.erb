@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Hi <%= @user.first_name %>,
+    </p>
+    <p>You have been granted access to the <%= link_to((@event.title), event_url(@event)) %> event on CardSwipr.</p>
+    <p>This will allow you to view the swipe-in page, view the list of attendees, and update the event settings.</p>
+    <p>You can log in to CardSwipr via the following link: <%= @url %>.</p>
+    <p>
+      Thanks!
+    </p>
+  </body>
+</html>

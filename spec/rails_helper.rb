@@ -75,4 +75,9 @@ RSpec.configure do |config|
   config.before(:each, type: :system, js: true) do
     driven_by :selenium_chrome_headless
   end
+
+  config.before(:suite) do
+    ENV['MANDRILL_FROM_NAME'] = 'CardSwipr'
+    ENV['MANDRILL_FROM_EMAIL'] = 'cardswipr@example.com'
+  end
 end
