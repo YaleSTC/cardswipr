@@ -8,6 +8,7 @@
 *~
 
 .env
+deco.json
 
 *.swp
 
@@ -36,3 +37,6 @@
 
 # Files created from asset pre-compilation
 /public/assets/**
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

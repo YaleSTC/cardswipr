@@ -12,22 +12,23 @@ CardSwipr is meant to be deployed to Heroku with a PostgreSQL backend.
 ### Getting Started
 
 ### Using Docker:
-This method requires Docker to be installed on your system. You can find information on that here: [TO DO]
+This method requires Docker-Compose to be installed on your system. You can find information on that here: [Docker-Compose](https://github.com/Yelp/docker-compose/blob/master/docs/install.md)
 
 ```
 # Clone the repo
 git clone https://gitlab.com/yale-sdmp/cardswipr.git
 cd cardswipr
 
-# Set up environment variables
-cp .env.example .env
+# Set up .env file
+cp .env.development .env
+# Uncomment the commented out section for docker and fill in required environment variables
+# Note: leave any unneeded variables blank after the equals sign
 
-# Fill out required ENV variables
-Note: Make sure to uncomment the commented-out variables- these are needed exclusively for docker.
-
-# Create the containers
+#  Create the containers
 docker-compose build
-docker-compose up -d --force-recreate
+docker-compose up -d
+
+# Note: `docker-compose build` will only need to be re-run if modifying anything in the `config/` folder.
 ```
 
 #### Local installation:
@@ -41,11 +42,11 @@ git clone https://gitlab.com/yale-sdmp/cardswipr.git
 cd cardswipr
 
 # Configure the database
-cp config/database.yml.example config/database.yml
+cp config/database.yml.local config/database.yml
 
 # Set up environment variables
-cp .env.example .env
-# Fill out required ENV variables
+cp .env.development .env
+# Fill out required environment variables, leaving any unneeded variables as blank after the equals sign
 
 ./bin/setup
 ```
