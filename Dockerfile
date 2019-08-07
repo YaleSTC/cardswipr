@@ -1,18 +1,31 @@
-FROM ruby:2.6.0
+FROM ruby:2.6.0-alpine
 
-# Fix issue with the wrong nodejs being installed - https://stackoverflow.com/questions/52708521/autoprefixer-doesn-t-support-node-v4-8-2-update-it
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+# Install packages
+RUN apk update && \
+  apk upgrade
 
-RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
-    nodejs
+RUN apk add --update --no-cache postgresql-dev nodejs tzdata
+RUN apk add --no-cache --virtual .build-deps \
+  build-base git
+
+# Install Deco
+ARG DECO_VERSION=0.3.1
+ARG DECO_OS=linux
+ARG DECO_ARCH=amd64
+ADD https://github.com/YaleUniversity/deco/releases/download/v${DECO_VERSION}/deco-v${DECO_VERSION}-${DECO_OS}-${DECO_ARCH} /usr/local/bin/deco
+RUN chmod 555 /usr/local/bin/deco && deco version
 
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
 RUN bundle install
 
+RUN apk del .build-deps
+
 COPY . /usr/src/app/
 
 COPY config/database.yml.docker config/database.yml
+
+COPY .env.production .env
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 

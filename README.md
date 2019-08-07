@@ -4,7 +4,7 @@
 CardSwipr helps event organizers take attendance at meetings and events. Users log in via CAS and create and manage events. The day of an event, Attendees can swipe in via an easy interface using their Yale ID. The application looks up attendees and collects their information in a list. When the event ends, organizers can download a spreadsheet (.csv) of the attendees' information.
 
 ## Architecture
-CardSwipr is meant to be deployed to Heroku with a PostgreSQL backend.
+CardSwipr is meant to be deployed to a server in a Docker container with a PostgreSQL backend.
 
 ![Data Architecture Model](READMEImages/CardSwipr_Data_Model.png)
 
@@ -12,22 +12,27 @@ CardSwipr is meant to be deployed to Heroku with a PostgreSQL backend.
 ### Getting Started
 
 ### Using Docker:
-This method requires Docker to be installed on your system. You can find information on that here: [TO DO]
+This method requires Docker-Compose to be installed on your system. You can find information on that here: [Docker-Compose](https://github.com/Yelp/docker-compose/blob/master/docs/install.md)
 
 ```
 # Clone the repo
 git clone https://gitlab.com/yale-sdmp/cardswipr.git
 cd cardswipr
 
-# Set up environment variables
-cp .env.example .env
+# Set up the database configuration for docker
+cp config/database.yml.docker config/database.yml
 
-# Fill out required ENV variables
-Note: Make sure to uncomment the commented-out variables- these are needed exclusively for docker.
+# Set up .env file
+cp .env.development .env
+# Uncomment the commented out section for docker and fill in required environment variables
+# Note: leave any unneeded variables blank after the equals sign
 
-# Create the containers
+#  Create the containers
 docker-compose build
-docker-compose up -d --force-recreate
+docker-compose up -d
+
+# Set up rails
+docker-compose exec web ./bin/setup
 ```
 
 #### Local installation:
@@ -41,14 +46,24 @@ git clone https://gitlab.com/yale-sdmp/cardswipr.git
 cd cardswipr
 
 # Configure the database
-cp config/database.yml.example config/database.yml
+cp config/database.yml.local config/database.yml
 
 # Set up environment variables
-cp .env.example .env
-# Fill out required ENV variables
+cp .env.development .env
+# Fill out required environment variables, leaving any unneeded variables as blank after the equals sign
 
+# Set up rails
 ./bin/setup
 ```
+
+### Running the test suite
+After setting up the development environment you will be able to run our test suite.
+
+#### Local Development
+`bin/rake`
+
+#### Docker Development
+`docker-compose run web bin/rake`
 
 # About
 ## Support or Contact
