@@ -17,6 +17,7 @@ This file should be updated before a new release is deployed.
 * Changed dashboard to display events from newest to oldest [#179](https://gitlab.com/yale-sdmp/cardswipr/issues/179)
 * Removed unused routes in config/routes.rb and in controllers [#181](https://gitlab.com/yale-sdmp/cardswipr/issues/181)
 * Moved determine_key from AttendanceCreator to PeopleHub module [#187](https://gitlab.com/yale-sdmp/cardswipr/issues/179)
+* Made PeopleHub requests fail silently when a new user logs in [#170](https://gitlab.com/yale-sdmp/cardswipr/issues/170)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

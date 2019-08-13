@@ -18,6 +18,13 @@ RSpec.describe 'User', type: :system do
     expect(user.email).to eq(email)
   end
 
+  it 'raises an error when people hub fails' do
+    visit root_path
+    allow(PeopleHub::PersonRequest).to receive(:get).and_raise(StandardError)
+    click_on 'Log in'
+    expect(page).to have_content('We were unable to create your account.')
+  end
+
   context 'when signed in' do
     let(:user) { create(:user) }
 
