@@ -44,8 +44,9 @@ This file should be updated before a new release is deployed.
 * Added name to User model [#156](https://gitlab.com/yale-sdmp/cardswipr/issues/156)
 * Added missing 'Back to Dashboard' buttons [#169](https://gitlab.com/yale-sdmp/cardswipr/issues/169)
 * Added ability for users to delete attendances [#173](https://gitlab.com/yale-sdmp/cardswipr/issues/173)
-* Added user profile page [#167]https://gitlab.com/yale-sdmp/cardswipr/issues/167)
+* Added user profile page [#167](https://gitlab.com/yale-sdmp/cardswipr/issues/167)
 * Added the User Manual page [#166](https://gitlab.com/yale-sdmp/cardswipr/issues/166)
+* Added number of attendees to check-in page [#178](https://gitlab.com/yale-sdmp/cardswipr/issues/178)
 
 ### Fixed
 

@@ -23,6 +23,8 @@
         <%= text_field_tag :search_param, '', autofocus: true, :class => 'p-2' %>
         <%= submit_tag 'Check In', :class => 'btn btn-secondary' %>
       <% end %>
+      <br>
+      <p><%= @event.attendances.size %> Recorded</p>
     </div>
   </div>
 </div>
