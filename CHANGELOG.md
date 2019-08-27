@@ -49,6 +49,7 @@ This file should be updated before a new release is deployed.
 * Added number of attendees to check-in page [#178](https://gitlab.com/yale-sdmp/cardswipr/issues/178)
 
 ### Fixed
+* Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
 
 ## 1.3.6
 <small>7/3/2017</small>

@@ -11,4 +11,6 @@ class PagesController < ApplicationController
   def public_action?
     %w(home).include?(params[:id])
   end
+
+  def authorize!; end
 end
