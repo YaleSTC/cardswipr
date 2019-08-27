@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
   private
 
   def set_user_events
-    @user_events = current_user.user_events
+    @user_events = current_user.user_events.order('created_at DESC')
   end
 
   def authorize!; end

@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Attendance', type: :system do
   let(:user_with_events) { create(:user_with_events) }
+  let(:event) { user_with_events.events.last }
 
   before do
     stub_people_hub
@@ -54,7 +55,7 @@ RSpec.describe 'Attendance', type: :system do
     it 'downloads the csv with correct filename' do
       generate_attendances
       click_on('Export CSV')
-      fname = user_with_events.events.first.title
+      fname = event.title
       fname << ('_export_' + Time.zone.today.to_s(:number) + '.csv')
       expect(page.response_headers['Content-Disposition']).to match(fname)
     end
@@ -76,7 +77,7 @@ RSpec.describe 'Attendance', type: :system do
   end
 
   def generate_attendances
-    create_pair(:attendance, event: user_with_events.events.first)
+    create_pair(:attendance, event: event)
   end
 
   def check_in(search_param)
