@@ -1,8 +1,5 @@
 FROM ruby:2.6.3
 
-# This sets the rails env to production- use this file for deployment only
-ENV RAILS_ENV=production
-
 # Allow apt to work with https-based sources
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
 apt-transport-https
@@ -19,7 +16,8 @@ tee /etc/apt/sources.list.d/yarn.list
 # Install packages
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
 nodejs \
-yarn
+yarn \
+cmake
 
 # Install Deco
 ARG DECO_VERSION=0.3.1
@@ -30,7 +28,7 @@ RUN chmod 555 /usr/local/bin/deco && deco version
 
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
-RUN bundle install --without development local test
+RUN bundle install
 
 COPY . /usr/src/app/
 
