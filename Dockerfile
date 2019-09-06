@@ -1,25 +1,12 @@
-FROM ruby:2.6.3
-
-# This sets the rails env to production- use this file for deployment only
-ENV RAILS_ENV=production
-
-# Allow apt to work with https-based sources
-RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
-apt-transport-https
-
-# Ensure we install an up-to-date version of Node
-# See https://github.com/yarnpkg/yarn/issues/2888
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-
-# Ensure latest packages for Yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
-tee /etc/apt/sources.list.d/yarn.list
+FROM ruby:2.6.3-alpine
 
 # Install packages
-RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
-nodejs \
-yarn
+RUN apk update && \
+  apk upgrade
+
+RUN apk add --update --no-cache nodejs
+RUN apk add --no-cache --virtual .build-deps \
+  autoconf automake build-base musl-dev git mariadb-dev cmake tzdata
 
 # Install Deco
 ARG DECO_VERSION=0.3.1
