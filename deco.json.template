@@ -5,7 +5,7 @@
 
             "_SECRET_KEY_BASE_": "<rails secret key base>",
 
-            "_RAILS_ENV_": "<production, test, development, or local>",
+            "_RAILS_ENV_": "<production, test, or development>",
 
             "_SN_INSTANCE_": "https://yale.service-now.com",
             "_SN_USERNAME_": "<service now service account>",

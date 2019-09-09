@@ -7,9 +7,9 @@ default: &default
   reconnect: false
   pool: 5
 
-local:
+development:
   <<: *default
-  database: cardswipr_local
+  database: cardswipr_development
 
 test:
   <<: *default

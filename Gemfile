@@ -64,7 +64,7 @@ gem 'service_now', :git => 'https://github.com/YaleSTC/service_now.git', :tag =>
 # gem that makes static pages easier
 gem 'high_voltage', '~> 3.0.0'
 
-group :local do
+group :development do
   gem 'pry', '~> 0.10.3'
   # gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
@@ -83,7 +83,7 @@ group :test do
   gem 'selenium-webdriver', '~> 2.48.1'
 end
 
-group :local, :test do
+group :development, :test do
   # Forcing rugged to 0.22.2 because any version above fails to complie
   # on the current Yale host.
   # 0.23.1 intruduced dependency on cmake 2.8 while the server has 2.6.

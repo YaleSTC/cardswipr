@@ -17,6 +17,6 @@ set -a
 . ./.env
 set +a
 
-rake db:create && rake db:migrate
+rake db:create && rake db:migrate && rake assets:precompile
 
 exec "$@"
