@@ -50,7 +50,7 @@ gem 'cancancan', '~> 1.17.0'
 gem 'simple_form', '~> 4.1.0'
 
 # Database Gems
-gem 'mysql2', '~> 0.4.10'
+gem 'mysql2', '~> 0.5.2'
 #gem 'sqlite3'
 
 # Paginate
