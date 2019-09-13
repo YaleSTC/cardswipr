@@ -4,9 +4,9 @@ FROM ruby:2.6.3-alpine
 RUN apk update && \
   apk upgrade
 
-RUN apk add --update --no-cache nodejs
+RUN apk add --update --no-cache mariadb-dev nodejs tzdata
 RUN apk add --no-cache --virtual .build-deps \
-  autoconf automake build-base musl-dev git mariadb-dev cmake tzdata
+  build-base git
 
 # Install Deco
 ARG DECO_VERSION=0.3.1
@@ -19,9 +19,11 @@ COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
 RUN bundle install --without development local test
 
+RUN apk del .build-deps
+
 COPY . /usr/src/app/
 
-COPY .env.example /usr/src/app/.env
+COPY .env.example .env
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 

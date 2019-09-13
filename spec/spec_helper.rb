@@ -35,10 +35,10 @@ def sign_in(netid)
 end
 
 def stub_external_requests
-  stub = stub_request(:any, /soa-gateway\/cardswipr\/people\/data/)
+  stub = stub_request(:any, /#{ENV.fetch('ID_API_URL')}/)
   stub.to_rack(FakeCardSwiprApi)
 
-  stub_request(:any, /yale.service-now.com/)
+  stub_request(:any, /#{ENV.fetch('SN_INSTANCE')}/)
     .to_return(:status => 200,
       :body => '{ "records": [{ "sys_id" : "made_up_sys_id" }] }')
 end

@@ -88,11 +88,10 @@ group :development, :test do
   # on the current Yale host.
   # 0.23.1 intruduced dependency on cmake 2.8 while the server has 2.6.
   # 0.23.0 still failed to compile with some other reason.
-  gem 'rugged', '~> 0.24.0'
-  gem 'pronto', '~> 0.9.0'
-  gem 'pronto-rubocop', '~> 0.9.0'
-  gem 'pronto-flay', '~> 0.9.0'
-  gem 'pronto-brakeman', '~> 0.9.0'
-  gem 'pronto-rails_best_practices', '~> 0.9.0'
-  gem 'pronto-reek', '~> 0.9.0'
+  gem 'pronto', '~> 0.10.0'
+  gem 'pronto-rubocop', '~> 0.10.0'
+  gem 'pronto-flay', '~> 0.10.0'
+  gem 'pronto-brakeman', '~> 0.10.0'
+  gem 'pronto-rails_best_practices', '~> 0.10.0'
+  gem 'pronto-reek', '~> 0.10.0'
 end
