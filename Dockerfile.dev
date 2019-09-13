@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine
+FROM ruby:2.6.4-alpine
 
 # Install packages
 RUN apk update && \
@@ -23,7 +23,7 @@ RUN apk del .build-deps
 
 COPY . /usr/src/app/
 
-COPY .env.example /usr/src/app/.env
+COPY .env.example .env
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
