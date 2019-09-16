@@ -29,7 +29,7 @@ RSpec.describe 'Attendance', type: :system do
 
     it 'displays message for failed check-in' do
       invalid_param = '1'
-      stub_failed_check_in(invalid_param)
+      stub_failed_people_hub(invalid_param: invalid_param)
       check_in(invalid_param)
       expect(page).to have_content('Check-in failed')
     end
@@ -85,11 +85,6 @@ RSpec.describe 'Attendance', type: :system do
     click_on 'Event Check-in', match: :first
     fill_in 'search_param', with: search_param
     click_on 'Check In'
-  end
-
-  def stub_failed_check_in(search_param)
-    allow(PeopleHub::PersonRequest).to \
-      receive(:get).with(invalid_param: search_param).and_raise(RuntimeError)
   end
 
   def export_row_for(attendance)

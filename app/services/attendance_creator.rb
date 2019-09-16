@@ -22,30 +22,13 @@ class AttendanceCreator
   end
 
   def create_attendance(search_param)
-    person = look_up(search_param)
+    person = PeopleHub::PersonRequest.get(
+      PeopleHub::ParamsParser.create_search_hash(search_param)
+    )
     @event.attendances.create!(
       first_name: person.first_name, last_name: person.last_name,
       email: person.email, net_id: person.net_id, upi: person.upi,
       phone: person.phone, checked_in_at: Time.zone.now
     )
-  end
-
-  def look_up(search_param)
-    key = determine_key(search_param)
-    PeopleHub::PersonRequest.get(key => search_param)
-  end
-
-  # Returns the type of the search param, either prox number or netid
-  #
-  # @param [String]
-  # @return [Symbol] the type of the search param
-  def determine_key(search_param)
-    if search_param.length == 10 && search_param.match?(/^[0-9]{10}$/)
-      :proxnumber
-    elsif search_param.match?(/^[a-z]{1,5}[0-9]{1,5}$/)
-      :netid
-    else
-      :invalid_param
-    end
   end
 end
