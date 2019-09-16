@@ -2,7 +2,7 @@
 
 # Events Controller
 class EventsController < ApplicationController
-  prepend_before_action :set_event, only: %i(show edit update index destroy)
+  prepend_before_action :set_event, only: %i(show edit update destroy)
   before_action :set_user_events, only: %i(edit update)
 
   def new
@@ -32,12 +32,6 @@ class EventsController < ApplicationController
       render 'edit', event: @event.id
     end
   end
-
-  def form; end
-
-  def index; end
-
-  def admin; end
 
   def destroy
     @event.destroy

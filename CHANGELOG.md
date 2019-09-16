@@ -15,6 +15,7 @@ This file should be updated before a new release is deployed.
 * Prevented users from accessing events for which they are not organizers [#163](https://gitlab.com/yale-sdmp/cardswipr/issues/163)
 * Replaced chromedriver-helper with webdrivers [#174](https://gitlab.com/yale-sdmp/cardswipr/issues/174)
 * Changed dashboard to display events from newest to oldest [#179](https://gitlab.com/yale-sdmp/cardswipr/issues/179)
+* Removed unused routes in config/routes.rb and in controllers [#181](https://gitlab.com/yale-sdmp/cardswipr/issues/181)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)
