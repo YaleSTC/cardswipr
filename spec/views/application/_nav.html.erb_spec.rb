@@ -14,6 +14,11 @@ RSpec.describe 'application/_nav.html.erb', type: :view do
              locals: { current_user: user }
       expect(response).to have_link(fullname, href: edit_user_path(user.id))
     end
+    it 'has a link to Person Lookup' do
+      render partial: 'application/nav.html.erb',
+             locals: { current_user: user }
+      expect(response).to have_link('Person Lookup', href: lookups_path)
+    end
     it 'has a link to log out' do
       render partial: 'application/nav.html.erb',
              locals: { current_user: user }
