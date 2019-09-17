@@ -54,7 +54,7 @@ gem 'mysql2', '~> 0.5.2'
 #gem 'sqlite3'
 
 # Paginate
-gem 'will_paginate', '~> 3.0.7'
+gem 'will_paginate', '~> 3.1.8'
 
 gem 'font-awesome-sass', '~> 5.8.1'
 
