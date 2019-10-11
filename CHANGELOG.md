@@ -63,6 +63,8 @@ This file should be updated before a new release is deployed.
 * Added icons to nav bar [#193](https://gitlab.com/yale-sdmp/cardswipr/issues/193)
 * Add a database import via exported table CSVs [#185](https://gitlab.com/yale-sdmp/cardswipr/issues/185)
 * Added Yale Boostrap styles [#176](https://gitlab.com/yale-sdmp/cardswipr/issues/176)
+* Added a database import via exported table CSVs [#185](https://gitlab.com/yale-sdmp/cardswipr/issues/185)
+* Added Roles to Users and added pundit policies to handle this new role [#183](https://gitlab.com/yale-sdmp/cardswipr/issues/183)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)

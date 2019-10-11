@@ -2,7 +2,7 @@
 
 # User Events Controller
 class UserEventsController < ApplicationController
-  before_action :set_event, only: %i(create destroy)
+  prepend_before_action :set_event, only: %i(create destroy)
   before_action :set_user_event, only: %i(destroy)
   before_action :set_user_events, only: %i(create)
 
@@ -52,5 +52,7 @@ class UserEventsController < ApplicationController
     params.permit(:organizer, :event_id)
   end
 
-  def authorize!; end
+  def authorize!
+    authorize(UserEvent.new(event: @event))
+  end
 end

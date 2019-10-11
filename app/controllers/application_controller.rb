@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery
-
   before_action :redirect_to_home_page, unless: :public_action?
   before_action :authorize!, unless: :public_action?
 

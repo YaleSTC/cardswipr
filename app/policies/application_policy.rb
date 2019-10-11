@@ -17,7 +17,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(id: record.id).exists?
+    false
   end
 
   def create?
@@ -57,5 +57,11 @@ class ApplicationPolicy
     def resolve
       scope
     end
+  end
+
+  private
+
+  def user_can_modify_event?(user, event)
+    user.superuser? || user.events.include?(event)
   end
 end

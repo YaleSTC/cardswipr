@@ -2,7 +2,7 @@
 
 # controller for Attendance
 class AttendancesController < ApplicationController
-  before_action :set_event, only: %i(create index destroy export)
+  prepend_before_action :set_event, only: %i(create index destroy export)
 
   def create
     @creator = AttendanceCreator.new(
@@ -61,5 +61,7 @@ class AttendancesController < ApplicationController
     params.require(:attendance).permit(:search_param)
   end
 
-  def authorize!; end
+  def authorize!
+    authorize(Attendance.new(event: @event))
+  end
 end

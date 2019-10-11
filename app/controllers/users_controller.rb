@@ -2,7 +2,7 @@
 
 # Users Controller
 class UsersController < ApplicationController
-  before_action :set_user, only: %i(edit update)
+  prepend_before_action :set_user, only: %i(edit update)
 
   def edit; end
 
@@ -25,5 +25,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email)
   end
 
-  def authorize!; end
+  def authorize!
+    if @user
+      authorize(@user)
+    else
+      authorize(User.new)
+    end
+  end
 end

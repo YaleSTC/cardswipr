@@ -29,6 +29,14 @@ RSpec.describe 'Event', type: :system do
     end
   end
 
+  it 'cannot be accessed by user without user_event' do
+    stub_and_sign_in(create(:user))
+    user2 = create(:user_with_events)
+    event = user2.events.last
+    visit event_path(event)
+    expect(page).to have_content("Sorry, you don't have permission to do that")
+  end
+
   def stub_and_sign_in(user)
     stub_cas(user.username)
     sign_in user

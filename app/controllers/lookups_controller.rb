@@ -15,5 +15,7 @@ class LookupsController < ApplicationController
     end
   end
 
+  private
+
   def authorize!; end
 end

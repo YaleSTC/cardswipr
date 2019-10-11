@@ -38,14 +38,6 @@ class EventsController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def authorize!
-    if @event
-      authorize(@event)
-    else
-      authorize Event.new
-    end
-  end
-
   private
 
   def set_event
@@ -60,5 +52,13 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description)
+  end
+
+  def authorize!
+    if @event
+      authorize(@event)
+    else
+      authorize Event.new
+    end
   end
 end

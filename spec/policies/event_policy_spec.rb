@@ -3,40 +3,42 @@
 require 'rails_helper'
 
 RSpec.describe EventPolicy do
-  let(:subject) { described_class.new(user, event) }
-
-  let(:event) { create(:event) }
+  subject { described_class }
 
   context 'when user is not logged in' do
-    let(:user) { nil }
-    let(:policy) { described_class.new(user, event) }
-
     it 'does not permit anything' do
-      expect { described_class.new(nil, event) }
+      user = nil
+      event = build(:event)
+      expect { described_class.new(user, event) }
         .to raise_error Pundit::NotAuthorizedError
     end
   end
 
-  context 'when user is logged in' do
-    let(:user) { create(:user) }
+  context 'with user role' do
+    let(:event) { build(:event) }
+    let(:user) { build(:user, role: 'user', events: [event]) }
+    let(:other_user) { build(:user, role: 'user', events: []) }
 
-    it { is_expected.to permit(:create) }
-    it { is_expected.to permit(:new) }
-
-    describe 'for organizer of event' do
-      let(:event) { create(:event, users: [user]) }
-
-      it { is_expected.to permit(:show) }
-      it { is_expected.to permit(:update) }
-      it { is_expected.to permit(:edit) }
-      it { is_expected.to permit(:destroy) }
+    permissions :create?, :new? do
+      it { is_expected.to permit(user, Event) }
     end
 
-    describe 'for non-organizer of event' do
-      it { is_expected.not_to permit(:show) }
-      it { is_expected.not_to permit(:update) }
-      it { is_expected.not_to permit(:edit) }
-      it { is_expected.not_to permit(:destroy) }
+    permissions :show?, :edit?, :update?, :destroy? do
+      it { is_expected.to permit(user, event) }
+      it { is_expected.not_to permit(other_user, event) }
+    end
+  end
+
+  context 'with superuser role' do
+    let(:superuser) { build(:user, role: 'superuser') }
+    let(:event) { build(:event) }
+
+    permissions :create?, :new? do
+      it { is_expected.to permit(superuser, Event) }
+    end
+
+    permissions :edit?, :update?, :destroy?, :show? do
+      it { is_expected.to permit(superuser, event) }
     end
   end
 end
