@@ -26,4 +26,8 @@ Rails.application.routes.draw do
     resources :user_events, only: %i(create destroy)
   end
   resources :lookups, only: %i(index create)
+
+  get '/heartbeat' => 'heartbeat#show'
+  get '/heartbeat/api' => 'heartbeat#api'
+
 end
