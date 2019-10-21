@@ -4,17 +4,16 @@
 class UserEventsController < ApplicationController
   before_action :set_event, only: %i(create destroy)
   before_action :set_user_event, only: %i(destroy)
-  before_action :set_user_events, only: %(create)
+  before_action :set_user_events, only: %i(create)
 
   def create
-    @user_event = UserEvent.new(user_event_params)
-    full_name = @user_event.user.full_name
-    if @user_event.save
-      UserMailer.new_organizer_invitation(user_event: @user_event).deliver
+    @creator = UserEventCreator.new(user_event_params)
+    if @creator.call
       redirect_to edit_event_path(@event.id),
-                  notice: "#{full_name} added to event organizers"
+                  notice: "#{@creator.user.full_name} added to event organizers"
     else
-      flash_alerts(@user_event)
+      flash['alert'] = @creator.errors
+      @user_event = @creator.user_event
       render 'events/edit', event: @event.id
     end
   end
@@ -50,7 +49,7 @@ class UserEventsController < ApplicationController
   end
 
   def user_event_params
-    params.require(:user_event).permit(:user_id, :event_id)
+    params.permit(:organizer, :event_id)
   end
 
   def authorize!; end

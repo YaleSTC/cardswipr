@@ -28,22 +28,30 @@ RSpec.describe 'Event editing', type: :system do
   describe 'event organizers' do
     it 'can be added' do
       _user, event, other_user = set_up
-      add_organizer(other_user)
+      add_organizer(other_user.username)
       expect(event.reload.user_events.length).to eq(3)
     end
 
     it 'message displayed after adding' do
       _user, _event, other_user = set_up
       notice = "#{other_user.full_name} added to event organizers"
-      add_organizer(other_user)
+      add_organizer(other_user.username)
       expect(page).to have_content(notice)
     end
 
+    it 'message displayed after failure to add' do
+      set_up
+      stub_failed_people_hub(netid: 'ni123')
+      add_organizer('ni123')
+      expect(page).to have_content('User not found')
+    end
+
     it 'cannot be added multiple times' do
-      _user, event, other_user = set_up
-      add_organizer(other_user)
-      add_organizer(other_user)
-      expect(event.reload.user_events.length).to eq(3)
+      _user, _event, other_user = set_up
+      add_organizer(other_user.username)
+      add_organizer(other_user.username)
+      expect(page)
+        .to have_content('User is already an organizer on this event')
     end
 
     it 'can be removed' do
@@ -86,17 +94,14 @@ RSpec.describe 'Event editing', type: :system do
   end
 
   def log_in(user)
-    stub_people_hub
     stub_cas(user.username)
     sign_in user
     visit dashboard_path
     click_on 'Edit Event'
   end
 
-  def add_organizer(user)
-    find('div', id: 'user-event-form').find(:select)
-                                      .find(:option, user.username)
-                                      .select_option
+  def add_organizer(username)
+    fill_in 'organizer', with: username
     click_on 'Add Organizer'
   end
 

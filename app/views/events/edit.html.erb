@@ -40,16 +40,11 @@
         <div class = "row">
           <div class = "col-sm">
             <fieldset id='add-organizer'>
-              <%= form_for [@event, @user_event] do |f| %>
-                <h3>Add Organizer</h2>
-                <div class='col-sm-4' id='new-user-event'>
-                  <%= f.collection_select :user_id, User.all, :id, :username, {}, {class: "form-control"} %>
-                  <%= f.hidden_field :event_id, value: @event.id %>
-                </div>
-                <br/>
-                <p>
-                  <%= f.submit 'Add Organizer', class: 'btn btn-primary' %>
-                </p>
+              <%= form_for [@event, @user_event] do %>
+                <%= form_tag event_user_events_path(@event, @user_event) do %>
+                  <%= text_field_tag :organizer, '', placeholder: 'NetID', :class => 'p-2' %>
+                  <%= submit_tag 'Add Organizer by NetID', :class => 'btn btn-primary' %>
+                <% end %>
               <% end %>
             </fieldset>
           </div>
