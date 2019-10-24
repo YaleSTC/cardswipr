@@ -1,0 +1,2 @@
+"id","first_name","last_name","netid","created_at","updated_at","nickname","email"
+"1","Test","User","tst123","2019-09-16 02:41:52","2019-09-27 03:27:34",NULL,"test.user@yale.edu"

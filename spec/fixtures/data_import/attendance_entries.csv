@@ -1,0 +1,4 @@
+"id","first_name","nickname","last_name","upi","netid","email","college_name","college_abbreviation","class_year","school","telephone","address","event_id","created_at","updated_at","organization","curriculum"
+"1","Test",NULL,"User","12345678","tst123","test.user@yale.edu",NULL,NULL,NULL,"Information Technology Services","123-456-7890","ITS Student Technology Collaborative
+PO BOX 208300
+New Haven, CT 06520-8300","1","2019-09-26 21:54:18","2019-09-26 21:54:18",NULL,NULL
