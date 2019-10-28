@@ -55,6 +55,7 @@ This file should be updated before a new release is deployed.
 * Setup email functionality with mandrill [#177](https://gitlab.com/yale-sdmp/cardswipr/issues/177)
 * Added Person Lookup ability [#140](https://gitlab.com/yale-sdmp/cardswipr/issues/140)
 * Added heartbeat route for the api [#184](https://gitlab.com/yale-sdmp/cardswipr/issues/184)
+* Added pictures to home page [#188](https://gitlab.com/yale-sdmp/cardswipr/issues/188)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
