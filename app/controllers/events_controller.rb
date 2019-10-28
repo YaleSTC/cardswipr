@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   def set_user_events
     @user_event = UserEvent.new
     @user_events = @event.user_events
-                         .joins(:user).order(Arel.sql('lower(username)'))
+                         .joins(:user).order(Arel.sql('lower(last_name)'))
   end
 
   def event_params

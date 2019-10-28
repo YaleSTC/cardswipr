@@ -34,7 +34,7 @@ RSpec.describe 'Event editing', type: :system do
 
     it 'message displayed after adding' do
       _user, _event, other_user = set_up
-      notice = "#{other_user.username} added to event organizers"
+      notice = "#{other_user.full_name} added to event organizers"
       add_organizer(other_user)
       expect(page).to have_content(notice)
     end
@@ -54,7 +54,7 @@ RSpec.describe 'Event editing', type: :system do
 
     it 'message displayed after removing' do
       _user, _event, _other_user, organizer = set_up
-      notice = "#{organizer.username} removed from event organizers"
+      notice = "#{organizer.full_name} removed from event organizers"
       remove_organizer(organizer)
       expect(page).to have_content(notice)
     end
@@ -67,12 +67,12 @@ RSpec.describe 'Event editing', type: :system do
       expect(event.reload.user_events.length).to eq(1)
     end
 
-    it 'are displayed in alphabetical order by username' do
-      user1 = create(:user, username: 'a')
-      user2 = create(:user, username: 'B')
+    it 'are displayed in alphabetical order by last name' do
+      user1 = create(:user, first_name: 'z', last_name: 'a', username: ' ')
+      user2 = create(:user, first_name: 'A', last_name: 'B')
       create(:event, users: [user2, user1])
       log_in user1
-      expect(page).to have_content("Event Organizers\na\nX\nB\nX")
+      expect(page).to have_content("Event Organizers\nz a\nX\nA B")
     end
   end
 

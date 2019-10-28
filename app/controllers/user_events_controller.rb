@@ -8,11 +8,11 @@ class UserEventsController < ApplicationController
 
   def create
     @user_event = UserEvent.new(user_event_params)
-    username = @user_event.user.username
+    full_name = @user_event.user.full_name
     if @user_event.save
       UserMailer.new_organizer_invitation(user_event: @user_event).deliver
       redirect_to edit_event_path(@event.id),
-                  notice: "#{username} added to event organizers"
+                  notice: "#{full_name} added to event organizers"
     else
       flash_alerts(@user_event)
       render 'events/edit', event: @event.id
@@ -25,10 +25,10 @@ class UserEventsController < ApplicationController
                   alert: 'There must be at least one organizer'
     elsif @user_event.destroy
       redirect_to edit_event_path(@event.id),
-                  notice: "#{@username} removed from event organizers"
+                  notice: "#{@full_name} removed from event organizers"
     else
       redirect_to edit_event_path(@event.id),
-                  alert: "Failed to remove #{@username} from event organizers"
+                  alert: "Failed to remove #{@full_name} from event organizers"
     end
   end
 
@@ -40,7 +40,7 @@ class UserEventsController < ApplicationController
 
   def set_user_event
     @user_event = UserEvent.find(params[:id])
-    @username = @user_event.user.username
+    @full_name = @user_event.user.full_name
   end
 
   # needed to render events/edit

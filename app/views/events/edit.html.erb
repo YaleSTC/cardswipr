@@ -10,16 +10,19 @@
     <div id='user-event-form'>
 
         <div class = "row">
-          <div class = "col-sm">
+          <div class = "col-sm-4">
             <fieldset id='remove-organinzer'>
               <h3>Event Organizers</h3>
               <% @user_events.each do |user_event| %>
                 <div id= "remove-<%= user_event.user.username %>">
                   <div class = "row justify-content-between">
-                    <div class = "col-sm-4 other">
+                    <div class = "col-sm-6">
+                      <%= user_event.user.full_name %>
+                    </div>
+                    <div class = "col-sm-3">
                       <%= user_event.user.username %>
                     </div>
-                    <div class = "col-sm-8 other2">
+                    <div class = "col-sm-2">
                       <%= link_to 'X',
                       event_user_event_path(user_event.event, user_event, user_event.id),
                       method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger with-border", aria: { label: 'Remove Organizer' } %>

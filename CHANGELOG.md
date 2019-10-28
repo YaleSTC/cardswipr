@@ -18,6 +18,7 @@ This file should be updated before a new release is deployed.
 * Removed unused routes in config/routes.rb and in controllers [#181](https://gitlab.com/yale-sdmp/cardswipr/issues/181)
 * Moved determine_key from AttendanceCreator to PeopleHub module [#187](https://gitlab.com/yale-sdmp/cardswipr/issues/179)
 * Made PeopleHub requests fail silently when a new user logs in [#170](https://gitlab.com/yale-sdmp/cardswipr/issues/170)
+* Changed edit event page to display organizer names [#189](https://gitlab.com/yale-sdmp/cardswipr/issues/189)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

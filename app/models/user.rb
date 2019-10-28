@@ -12,4 +12,9 @@ class User < ApplicationRecord
   # Associations
   has_many :user_events, dependent: :destroy
   has_many :events, through: :user_events
+
+  # @return [String] First name plus last name
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
