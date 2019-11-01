@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="utf-8" />
+<title>YaleMarks Icon Font</title>
+<style type="text/css" title="text/css">
+
+@font-face {
+	font-family: "YaleMarks";
+	src:url("yalemarks-webfont.eot");
+	src:url("yalemarks-webfont.eot?#iefix") format("embedded-opentype"),
+		url("yalemarks-webfont.ttf") format("truetype"),
+		url("yalemarks-webfont.woff") format("woff"),
+		url("yalemarks-webfont.svg#yalenewmarks") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+html {
+font-size: 100%;
+}
+
+body {
+font-size: 1.125em; /* base font size set to 18px */
+}
+
+body {
+margin: 25px 100px 50px 100px;
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale; /* Firefox property that lightens type appearance */
+}
+
+.icons-big { /* Yale font icons */
+font-family: "YaleMarks";
+font-size: 4em; /* 72px; */
+line-height: 1.2;
+font-style: normal;
+font-weight: normal;
+speak: none;
+display: inline-block;
+}
+
+.y-icons { /* Yale font icons */
+font-family: "YaleMarks";
+font-size: 1.333em; /* 24px */
+line-height: 1.2;
+font-style: normal;
+font-weight: normal;
+display: inline-block;
+speak: none;
+text-decoration: none;
+}
+
+/* http://en.wikipedia.org/wiki/Private_Use_Areas */
+#shield:after { content: '\f2a1'; }
+#yale:after { content: '\f2a2'; }
+#univ:after { content: '\f2a3'; }
+
+.y-yale:before { content: '\f2a2'; }
+.y-univ:after { content: '\f2a3'; }
+
+.y-icons {
+position: relative;
+}
+
+.y-icons span {
+position: absolute;
+left: -999em;
+z-index: 0;
+}
+
+.mark {
+font-size: 2em;
+}
+
+.mark-huge {
+font-size: 10em;
+line-height: 1;
+}
+
+a {
+color: #00356b;
+}
+
+a:hover {
+color: #286dc0;
+}
+
+.box { 
+padding: 10px;
+margin-bottom: 1em;
+outline: 1px solid #ccc;
+overflow: hidden;
+}
+
+p {
+font: 14px/1.5em verdana;
+color: #222;
+margin: 0;
+}
+
+.space {
+margin-bottom: 1em;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="box">
+<p>Yale Marks Icons extracted from new roman Yale font, assigned to Private Use Area Unicodes; U+F2A1, U+F2A2, U+F2A3</p>
+<span class="icons-big" id="shield"></span>
+<span class="icons-big" id="yale"></span>
+<span class="icons-big" id="univ"></span>
+</div>
+
+<div class="box">
+<span class="icons-big" id="yale"></span>
+<span class="icons-big" id="univ"></span>
+</div>
+
+<div class="box">
+<p>With two separate links</p>
+<a href="#" class="y-icons y-yale"></a><a href="#" class="y-icons y-univ"></a>
+</div>
+
+<p>Single wordmark, use for the footer logo</p>
+<!-- sets the "Yale" logo -->
+<div class="space">
+<a href="#" class="y-icons y-yale mark"><span>Yale University</span></a>
+</div>
+
+<p>Full name, use at top-left of webpages, single link</p>
+<!-- outputs both "Yale + University" within a single link,
+     text is accessible but hidden with the <span> tag -->
+<div class="space">
+<a href="#" class="y-icons y-yale y-univ"><span>Yale University</span></a>
+</div>
+
+<p>Scalable to any size</p>
+<!-- Wordmark scales to any large size -->
+<div class="space">
+<a href="#" class="y-icons y-yale mark-huge"><span>Yale University</span></a>
+</div>
+
+<div class="space">
+<span class="icons-big mark-huge" id="shield"></span>
+</div>
+
+
+</body>
+</html>

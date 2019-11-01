@@ -12,19 +12,22 @@
  *
  */
 
- @import "bootstrap";
- @import "footer";
- @import "font-awesome";
- 
-// Table
-.table th{
-  border-top: none
+@import "bootstrap-custom";
+@import "yale-ui";
+@import "font-awesome";
+
+@import "footer";
+
+body {
+  font-family: 'yale'
 }
 
-/* add white padding to buttons */
-.with-border {
-  border: true;
-  border-color: white;
-  border-width: medium;
-  border-radius: 5px;
+label {
+  font-family: "yale";
 }
+
+table th {
+  font-family: "yale";
+}
+
+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CardswiprNew</title>
+    <title>CardSwipr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +11,9 @@
   </head>
 
   <body>
-    <%= render 'flashes' %>
+    <div class="container p-1">
+      <%= render 'flashes' %>
+    </div>
     <%= yield %>
   </body>
 
