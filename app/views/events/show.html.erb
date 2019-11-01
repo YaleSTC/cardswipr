@@ -1,30 +1,32 @@
-<br>
-<div class='container col-md-4 col-md-offset-4 p-2'>
-    <div class='row'>
-    <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-secondary with-border' %>
-    <%= button_to 'Attendee List', event_attendances_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
-    <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
+
+<div class="container text-center p-3">
+  <div class='btn-group' role="group">
+    <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-secondary mr-1' %>
+    <%= button_to 'Attendee List', event_attendances_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
+    <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
   </div>
-</div>
+  <br><br>
 
-<div class="container center w-75 h-50 p-3">
-  <div class="shadow rounded text-center">
-    <div class="text-white bg-primary p-3">
-      <h1><b>Check in for <%=@event.title%></b></h1>
-    </div>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card shadow text-center">
+        <div class="card-header text-white bg-primary">
+          <h3><b>Check in for <%=@event.title%></b></h3>
+        </div>
+        <div class="card-body">
+          <p><%=@event.description%></p>
+          <div class='p-1'>
+            <p><b>Card Swipe</b> or <b>Card Tap</b> or <b>NetID</b></p>
 
-    <div class="p-3">
-      <p><%=@event.description%></p>
-    </div>
-    <div class='p-3'>
-      <p><b>Card Swipe</b> or <b>Card Tap</b> or <b>NetID</b></p>
-
-      <%= form_tag event_attendances_path(@event) do %>
-        <%= text_field_tag :search_param, '', autofocus: true, :class => 'p-2' %>
-        <%= submit_tag 'Check In', :class => 'btn btn-secondary' %>
-      <% end %>
-      <br>
-      <p><%= @event.attendances.size %> Recorded</p>
+            <%= form_tag event_attendances_path(@event) do %>
+              <%= text_field_tag :search_param, '', autofocus: true, :class => 'p-2' %>
+              <%= submit_tag 'Check In', :class => 'btn btn-secondary' %>
+            <% end %>
+            <br>
+            <p><%= @event.attendances.size %> Recorded</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

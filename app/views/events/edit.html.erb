@@ -6,50 +6,45 @@
   <%= render 'events/form' %>
   <br/>
   <br/>
-  <div id='event-form'>
-    <div id='user-event-form'>
+  <div id='user-event-form'>
+    <h3>Event Organizers</h3>
 
-        <div class = "row">
-          <div class = "col-sm-4">
-            <fieldset id='remove-organinzer'>
-              <h3>Event Organizers</h3>
-              <% @user_events.each do |user_event| %>
-                <div id= "remove-<%= user_event.user.username %>">
-                  <div class = "row justify-content-between">
-                    <div class = "col-sm-6">
-                      <%= user_event.user.full_name %>
-                    </div>
-                    <div class = "col-sm-3">
-                      <%= user_event.user.username %>
-                    </div>
-                    <div class = "col-sm-2">
-                      <%= link_to 'X',
-                      event_user_event_path(user_event.event, user_event, user_event.id),
-                      method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger with-border", aria: { label: 'Remove Organizer' } %>
-                    </div>
-                  </div>
+      <div class = "col-md-6">
+        <fieldset id='remove-organinzer'>
+          <% @user_events.each do |user_event| %>
+            <div id= "remove-<%= user_event.user.username %>">
+              <div class = "row">
+                <div class = "col">
+                  <%= user_event.user.full_name %>
                 </div>
-              <% end %>
-            </fieldset>
-          </div>
-        </div>
-
-        <br/>
-        <br/>
-
-        <div class = "row">
-          <div class = "col-sm">
-            <fieldset id='add-organizer'>
-              <%= form_for [@event, @user_event] do %>
-                <%= form_tag event_user_events_path(@event, @user_event) do %>
-                  <%= text_field_tag :organizer, '', placeholder: 'NetID', :class => 'p-2' %>
-                  <%= submit_tag 'Add Organizer by NetID', :class => 'btn btn-primary' %>
-                <% end %>
-              <% end %>
-            </fieldset>
-          </div>
-        </div>
+                <div class = "col">
+                  <%= user_event.user.username %>
+                </div>
+                <div>
+                  <%= link_to 'X',
+                  event_user_event_path(user_event.event, user_event, user_event.id),
+                  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger with-border", aria: { label: 'Remove Organizer' } %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </fieldset>
       </div>
     </div>
+
+    <br/>
+    <br/>
+
+    <div class="container row">
+      <fieldset id='add-organizer'>
+        <%= form_for [@event, @user_event] do %>
+          <%= form_tag event_user_events_path(@event, @user_event) do %>
+            <%= text_field_tag :organizer, '', placeholder: 'NetID', :class => 'p-2' %>
+            <%= submit_tag 'Add Organizer by NetID', :class => 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </fieldset>
+    </div>
+
   </div>
 </div>

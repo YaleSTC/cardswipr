@@ -1,45 +1,44 @@
-<div class = "container">
+<div class="container">
   </br>
-  <div class = "text-center">
+  <div class="text-center">
     <h1>Attendee List: <%= @event.title %></h1>
   </div>
 
-  <div class='container p-2'>
-    <div class='row'>
-      <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-secondary with-border' %>
-      <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
-      <%= button_to 'Export CSV', export_event_attendances_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
-      <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary with-border' %>
-    </div>
-  </div>
-  <div class='row float-right'>
-    <%= @event.attendances.size %> Recorded
+  <div class='btn-group' role='group'>
+    <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
+    <%= button_to 'Export CSV', export_event_attendances_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
+    <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
   </div>
 
-  </br>
-  <table style="width:100%" aria-label="Attendee List">
-    <thead>
-      <tr>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">NetID</th>
-        <th scope="col">Email</th>
-        <th scope="col">Check-in Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @event.attendances.each do |attendance| %>
+  <div class="container">
+    <table aria-label="Attendee List" class="table-borderless mb-3" tabindex="0">
+      <caption style="caption-side: top; text-align: right;">
+        <%= @event.attendances.size %> Recorded
+      </caption>
+      <thead>
         <tr>
-          <td data-role="attendance.first-name"><%= attendance.first_name.titleize %></td>
-          <td data-role="attendance.last-name"><%= attendance.last_name.titleize %></td>
-          <td data-role="attendance.net"><%= attendance.net_id %></td>
-          <td data-role="attendance.email"><%= attendance.email.downcase %></td>
-          <td data-role="attendance.check-in"><%= attendance.checked_in_at.strftime('%Y-%m-%d %I:%M %p') %></td>
-          <td data-role="delete attendance">
-            <%= button_to 'X', event_attendance_path(attendance.event.id, attendance.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger', aria: { label: 'Delete Attendance' } %>
-          </td>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">NetID</th>
+          <th scope="col">Email</th>
+          <th scope="col">Check-in Time</th>
+          <th scope="col"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @event.attendances.each do |attendance| %>
+          <tr>
+            <td data-role="attendance.first-name"><%= attendance.first_name.titleize %></td>
+            <td data-role="attendance.last-name"><%= attendance.last_name.titleize %></td>
+            <td data-role="attendance.net-id"><%= attendance.net_id %></td>
+            <td data-role="attendance.email"><%= attendance.email.downcase %></td>
+            <td data-role="attendance.check-in"><%= attendance.checked_in_at.strftime('%Y-%m-%d %I:%M %p') %></td>
+            <td data-role="delete attendance">
+              <%= button_to 'X', event_attendance_path(attendance.event.id, attendance.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger btn-sm', aria: { label: 'Delete Attendance' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

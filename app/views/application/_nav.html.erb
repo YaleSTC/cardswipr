@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "CardSwipr", root_path, method: :get, :class => 'navbar-brand' %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Main">
+  <%= link_to "CardSwipr", root_path, method: :get, :class => 'navbar-brand text-decoration-none' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,12 +8,17 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to dashboard_path, method: :get, :class => 'nav-link' do %>
+          <%= link_to dashboard_path, method: :get, :class => 'nav-link text-decoration-none' do %>
             <%= fa_icon 'calendar', text: 'My Events' %>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to lookups_path, method: :get, :class => 'nav-link' do %>
+          <%= link_to new_event_path, method: :get, :class => 'nav-link text-decoration-none' do %>
+            <%= fa_icon 'plus-square', text: 'Create New Event' %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to lookups_path, method: :get, :class => 'nav-link text-decoration-none' do %>
             <%= fa_icon 'id-card', text: 'Person Lookup' %>
           <% end %>
         </li>
@@ -22,10 +27,10 @@
     <ul class="navbar-nav">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_path(current_user), method: :get, :class => "nav-link" %>
+          <%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_path(current_user), method: :get, :class => "nav-link text-decoration-none" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "nav-link text-decoration-none" %>
         </li>
       <% end %>
     </ul>
