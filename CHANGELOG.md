@@ -2,6 +2,10 @@
 
 This file should be updated before a new release is deployed.
 
+## 1.3.7
+<small>11/6/2019</small>
+Add a flash to notify users of v2.0 cardswipr release.
+
 ## 1.3.6
 <small>7/3/2017</small>
 Bugfix: updated API URL for production. Had forgotten to update it in 1.3.5.
