@@ -15,6 +15,7 @@ class AttendanceCreator
   def call
     ActiveRecord::Base.transaction do
       @attendance = create_attendance(@search_param)
+      @event.update!(updated_at: Time.zone.now)
       true
     end
   rescue ActiveRecord::RecordInvalid, RuntimeError

@@ -2,14 +2,14 @@
 
 # Controller for dashboard
 class DashboardsController < ApplicationController
-  before_action :set_user_events, only: [:index]
+  before_action :set_events, only: [:index]
 
   def index; end
 
   private
 
-  def set_user_events
-    @user_events = current_user.user_events.order('created_at DESC')
+  def set_events
+    @events = current_user.events.order('created_at DESC')
   end
 
   def authorize!; end

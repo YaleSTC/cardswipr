@@ -11,7 +11,8 @@ RSpec.describe 'Dashboards', type: :system do
       sign_in user_with_events
     end
 
-    it 'lists user events' do
+    it 'lists only events belonging to user' do
+      create(:event, users: [create(:user)])
       visit dashboard_path
       row_count = get_event_rows(page).size
       expect(row_count).to eq(5)

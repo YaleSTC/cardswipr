@@ -17,7 +17,7 @@
   <br/>
   <br/>
 
-  <% if @user_events.any? %>
+  <% if @events.any? %>
     <table style="width:100%" id="events" class="table">
       <tbody>
         <tr>
@@ -30,28 +30,28 @@
           <th scope="col"></th>
         </tr>
 
-        <% @user_events.each do |user_event| %>
+        <% @events.each do |event| %>
           <tr id="event row">
             <td class="dash-buttons">
-              <%= button_to 'Event Check-in', event_path(user_event.event_id), method: :get, :class => 'btn btn-primary btn-block btn-blue-background btn-blue-outline' %>
+              <%= button_to 'Event Check-in', event_path(event.id), method: :get, :class => 'btn btn-primary btn-block btn-blue-background btn-blue-outline' %>
             </td>
             <td class="dash-buttons">
-              <%= button_to 'Attendee List', event_attendances_path(user_event.event_id), method: :get, :class => 'btn btn-secondary btn-block' %>
+              <%= button_to 'Attendee List', event_attendances_path(event.id), method: :get, :class => 'btn btn-secondary btn-block' %>
             </td>
             <td>
-              <%= user_event.event.title %>
+              <%= event.title %>
             </td>
             <td>
-              <%= user_event.event.attendances.size %>
+              <%= event.attendances.size %>
             </td>
             <td>
-              <%= user_event.event.updated_at.strftime('%Y-%m-%d %I:%M %p') %>
+              <%= event.updated_at.strftime('%Y-%m-%d %I:%M %p') %>
             </td>
             <td>
-              <%= button_to 'Edit Event', edit_event_path(user_event.event_id), method: :get, :class => 'btn btn-secondary' %>
+              <%= button_to 'Edit Event', edit_event_path(event.id), method: :get, :class => 'btn btn-secondary' %>
             </td>
             <td>
-              <%= button_to 'X', event_path(user_event.event_id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger', aria: { label: 'Delete Event' } %>
+              <%= button_to 'X', event_path(event.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger', aria: { label: 'Delete Event' } %>
             </td>
           </tr>
         <% end %>

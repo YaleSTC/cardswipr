@@ -28,4 +28,9 @@ RSpec.describe AttendanceCreator do
     prox_creator.call
     expect(prox_creator.attendance.net_id).to eq('ls222')
   end
+
+  it 'updates updated_at for the event' do
+    stub_people_hub_with(netid: net_id)
+    expect { creator.call }.to change(event, :updated_at)
+  end
 end
