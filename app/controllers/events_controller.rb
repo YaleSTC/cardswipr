@@ -4,6 +4,8 @@ class EventsController < ApplicationController
   # before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource param_method: :event_params
 
+  skip_before_action :add_v2_flash, only: %i[swipe lookup]
+
   # GET /events
   # GET /events.json
   def index

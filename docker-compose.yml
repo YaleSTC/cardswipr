@@ -10,7 +10,7 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
-      - ${PWD}/deco.json.template:/run/secrets/deco.json
+      - ${PWD}/deco.json:/run/secrets/deco.json
 
   database:
     image: mariadb

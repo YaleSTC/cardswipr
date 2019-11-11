@@ -1,17 +1,17 @@
 {
     "filters": {
         ".env": {
-            "_CAS_BASE_URL_": "https://secure.its.yale.edu/cas",
+            "_CAS_BASE_URL_": "<CAS URL>",
 
             "_SECRET_KEY_BASE_": "<rails secret key base>",
 
             "_RAILS_ENV_": "<production, test, or development>",
 
-            "_SN_INSTANCE_": "https://yale.service-now.com",
+            "_SN_INSTANCE_": "<service now URL>",
             "_SN_USERNAME_": "<service now service account>",
             "_SN_PASSWORD_": "<service now service account password>",
 
-            "_ID_API_URL_": "https://gw.its.yale.edu/soa-gateway/v2/identity",
+            "_ID_API_URL_": "<identity server URL>",
             "_ID_API_USERNAME_": "<identity server service account>",
             "_ID_API_PASSWORD_": "<identity server service account password>",
 

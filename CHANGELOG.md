@@ -2,6 +2,10 @@
 
 This file should be updated before a new release is deployed.
 
+## 1.3.8
+<small>11/11/2019</small>
+Migrate cardswipr to rails 5.2 and dockerize it.
+
 ## 1.3.7
 <small>11/6/2019</small>
 Add a flash to notify users of v2.0 cardswipr release.
