@@ -59,6 +59,7 @@ This file should be updated before a new release is deployed.
 * Added heartbeat route for the api [#184](https://gitlab.com/yale-sdmp/cardswipr/issues/184)
 * Added pictures to home page [#188](https://gitlab.com/yale-sdmp/cardswipr/issues/188)
 * Added email validations to user model [#192](https://gitlab.com/yale-sdmp/cardswipr/issues/192)
+* Added icons to nav bar [#193](https://gitlab.com/yale-sdmp/cardswipr/issues/193)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)

@@ -8,10 +8,14 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "My Events", dashboard_path, method: :get, :class => 'nav-link' %>
+          <%= link_to dashboard_path, method: :get, :class => 'nav-link' do %>
+            <%= fa_icon 'calendar', text: 'My Events' %>
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Person Lookup", lookups_path, method: :get, :class => 'nav-link' %>
+          <%= link_to lookups_path, method: :get, :class => 'nav-link' do %>
+            <%= fa_icon 'id-card', text: 'Person Lookup' %>
+          <% end %>
         </li>
       <% end %>
     </ul>
