@@ -1,0 +1,5 @@
+@import "bootstrap/jumbotron";
+
+.jumbotron {
+  color: find-accessible-color($jumbotron-color, $jumbotron-bg, 4.5);
+}

@@ -1,0 +1,5 @@
+@import 'bootstrap/images';
+
+.figure-caption {
+  color: find-accessible-color($figure-caption-color, $body-bg, 4.5);
+}

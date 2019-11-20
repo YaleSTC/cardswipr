@@ -1,0 +1,75 @@
+@import "./functions.scss";
+
+
+$foreground-1: #fff;
+$background-1: #fff;
+
+.test-1 {
+  color: find-accessible-color($foreground-1, $background-1);
+}
+
+// return #767676
+// contrast ratio: 4.54:1
+
+$foreground-2: #000;
+$background-2: #000;
+
+.test-2 {
+   color: find-accessible-color($foreground-2, $background-2);
+ }
+
+// return #757575
+// contrast ratio: 4.55:1
+
+$foreground-3: #757575;
+$background-3: #fff;
+
+.test-3 {
+  color: find-accessible-color($foreground-3, $background-3);
+}
+
+// return #757575
+// contrast ratio: 4.55:1
+
+$foreground-4: #ff0000;
+$background-4: #00ff00;
+
+.test-4 {
+  color: find-accessible-color($foreground-4, $background-4);
+}
+
+// return #c50000
+// contrast ratio: 4.53:1
+
+$foreground-5: #0000ff;
+$background-5: #00ff00;
+$target-contrast-ratio-5: 7;
+
+.test-5 {
+  color: find-accessible-color($foreground-5, $background-5, $target-contrast-ratio-5);
+}
+
+// return #000d9
+// contrast ratio: 7.03:1
+
+$foreground-6: #ffffff;
+$background-6: #ffffff;
+$target-contrast-ratio-6: 100;
+
+.test-6 {
+  color: find-accessible-color($foreground-6, $background-6, $target-contrast-ratio-6)
+}
+
+// return black
+// contrast ratio: 21
+// throw a debug error
+
+$foreground-7: #000;
+$background-7: null;
+
+.test-7 {
+  color: find-accessible-color($foreground-7, $background-7);
+}
+
+// return #000;
+// throws a debug error

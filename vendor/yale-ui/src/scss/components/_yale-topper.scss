@@ -1,0 +1,32 @@
+/* Yale Topper CSS */
+
+.yale-topper {
+  background: $yale-topper-background;
+  color: find-accessible-color($yale-topper-color, $yale-topper-background);
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  a {
+    color: inherit;
+  }
+}
+
+.topper-logo {
+  font-size: $yale-topper-logo-font-size;
+  line-height: $yale-topper-line-height;
+  a {
+    padding: $yale-topper-padding-y 0;
+    display: inline-block;
+  }
+}
+
+.topper-logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+.topper-logo span.ext {
+  display: none; // hide external link icon
+}
+*/

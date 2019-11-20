@@ -4,46 +4,9 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  *
- * We will be using most of the components from the Yale bootstrap file
- * and will be commenting out any unused modules.  The modules are being
- * commented out instead of deleted so that functionality can be added
- * quickly and easily later should the need arise.
+ * The Yale-UI components will be brought in here.  The bootstrap gem is still
+ * neccessary as the yale-ui imports the bootstrap files and then overwrites
+ * some of the pieces, and supplements with a few extra components.
  */
 
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-// @import "bootstrap/root";
-@import "bootstrap/reboot";
-@import "bootstrap/type";
-@import "bootstrap/images";
-@import "bootstrap/code";
-@import "bootstrap/grid";
-@import "bootstrap/tables";
-@import "bootstrap/forms";
-@import "bootstrap/buttons";
-@import "bootstrap/transitions";
-@import "bootstrap/dropdown";
-@import "bootstrap/button-group";
-@import "bootstrap/input-group";
-@import "bootstrap/custom-forms";
-@import "bootstrap/nav";
-@import "bootstrap/navbar";
-@import "bootstrap/card";
-@import "bootstrap/breadcrumb";
-@import "bootstrap/pagination";
-@import "bootstrap/badge";
-@import "bootstrap/jumbotron";
-@import "bootstrap/alert";
-@import "bootstrap/progress";
-@import "bootstrap/media";
-@import "bootstrap/list-group";
-@import "bootstrap/close";
-@import "bootstrap/toasts";
-@import "bootstrap/modal";
-@import "bootstrap/tooltip";
-@import "bootstrap/popover";
-@import "bootstrap/carousel";
-@import "bootstrap/spinners";
-@import "bootstrap/utilities";
-@import "bootstrap/print";
+@import 'yale-ui/src/scss/main';

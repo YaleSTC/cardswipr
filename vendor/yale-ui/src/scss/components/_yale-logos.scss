@@ -1,0 +1,20 @@
+/* Yale Header and Footer Logos */
+
+// YaleMarks icons font
+.y-icons {
+  font-family: "YaleMarks";
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  speak: none;
+}
+
+// "Yale" Icon
+.y-yale:before { content: '\f2a2';}
+
+// "University" Icon
+.y-univ:after { content: '\f2a3';}
+
+.y-mark {
+  font-size: $yale-mark-font-size;
+}

@@ -1,0 +1,33 @@
+@import 'bootstrap/nav';
+
+.nav {
+  .nav-link {
+    @include hover-focus {
+      text-decoration: underline;
+    }
+  }
+
+  &.disabled {
+    color: find-accessible-color($nav-link-disabled-color, $body-bg, 3);
+  }
+}
+
+.nav-tabs {
+  .nav-link {
+    &.disabled {
+      color: find-accessible-color($nav-link-disabled-color, $body-bg, 3);
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: find-accessible-color($nav-tabs-link-active-color, $nav-tabs-link-active-bg, 4.5);
+  }
+}
+
+.nav-pills {
+  .nav-link.active,
+  .show > .nav-link {
+    color: find-accessible-color($nav-pills-link-active-color, $nav-pills-link-active-bg, 4.5);
+  }
+}

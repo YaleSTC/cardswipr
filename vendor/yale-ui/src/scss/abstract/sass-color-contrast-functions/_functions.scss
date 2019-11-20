@@ -1,0 +1,53 @@
+@import "./sgomes_color_contrast";
+
+//
+// Incrementally darken or lighten a color to meet WCAG 2 color contrast requirements
+//
+
+@function find-accessible-color ($color, $base, $target-contrast-ratio: 4.5, $warnColor: true) {
+  // check whether parameters are colors
+
+  @if (type_of($color) != color) or (type_of($base) != color) {
+    @warn "One of your color inputs is not a valid color. Returning the original color parameter, #{$color}";
+    @return $color;
+  }
+
+  // check opacity
+
+  @if (alpha($color) != 1) or (alpha($base) != 1) {
+    @warn "This function cannot handle backgrounds with alpha. Returning the original color parameter, #{$color}";
+    @return $color;
+  }
+
+
+  $color-mix-increment: 1%;
+  $output-color: $color;
+  $color-mix: choose-contrast-color($base);
+  $contrast-ratio: contrast($output-color, $base);
+  $validColor: true;
+
+  @if ($contrast-ratio >= $target-contrast-ratio) {
+    $color-found: true;
+  }
+
+  @while $contrast-ratio < $target-contrast-ratio {
+    $validColor: false;
+     $output-color: mix($color-mix, $output-color, $color-mix-increment);
+     @if ($contrast-ratio == contrast($output-color, $base)) {
+       $color-mix-increment: $color-mix-increment + 1%;
+     }
+     $contrast-ratio: contrast($output-color, $base);
+
+
+    @if (($output-color == #ffffff or $output-color == #000000) and ($contrast-ratio < $target-contrast-ratio)) {
+      @warn "Warning, your target color contrast (#{target-contrast-ratio}) cannot be achieved. The highest possible color contrast is #{$output-color}, which hase a contrast ratio of #{$contrast-ratio}.";
+      $color-found: true;
+      }
+  }
+
+  @if ($validColor == false and $warnColor){
+     @warn "To meet the target contrast ratio, #{$color} was changed from #{$color} to #{$output-color}.";
+   }
+
+  @return $output-color;
+}
