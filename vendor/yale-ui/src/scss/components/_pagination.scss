@@ -1,0 +1,23 @@
+@import 'bootstrap/pagination';
+
+.page-link {
+    color: find-accessible-color($pagination-color, $pagination-bg, 4.5);
+    border: $pagination-border-width solid find-accessible-color($pagination-border-color, $pagination-bg, 3);
+
+    &:hover, &:focus {
+        color: find-accessible-color($pagination-hover-color, $pagination-hover-bg, 4.5);
+        background-color: $pagination-hover-bg;
+        border-color: $pagination-border-color;
+        outline: none;
+      }
+}
+
+.page-item {
+  &.active .page-link {
+    color: find-accessible-color($pagination-active-color, $pagination-active-bg, 4.5);
+  }
+
+  &.disabled .page-link {
+    color: find-accessible-color($pagination-disabled-color, $pagination-disabled-bg, 4.5);
+  }
+}

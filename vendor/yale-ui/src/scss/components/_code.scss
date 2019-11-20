@@ -1,0 +1,15 @@
+@import "bootstrap/code";
+
+code {
+  color: find-accessible-color($code-color, $body-bg, 4.5);
+}
+
+pre {
+  color: find-accessible-color($pre-color, $pre-bg, 4.5);
+  background-color: $pre-bg;
+  border: $border-width solid find-accessible-color($pre-border-color, $body-bg, 3);
+}
+
+kbd {
+  color: find-accessible-color($kbd-color, $kbd-bg, 4.5);
+}

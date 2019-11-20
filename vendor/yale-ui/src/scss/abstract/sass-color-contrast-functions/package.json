@@ -1,0 +1,7 @@
+{
+  "name": "sass-color-contrast-functions",
+  "version": "1.0.0",
+  "description": "Color contrast utility functions in SASS",
+  "main": "index.js",
+  "license": "MIT"
+}

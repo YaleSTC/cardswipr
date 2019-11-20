@@ -1,0 +1,169 @@
+// Base class
+//
+// Easily usable on <ul>, <ol>, or <div>.
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+
+  // No need to set list-style: none; since .list-group-item is block level
+  padding-left: 0; // reset padding because ul and ol
+  margin-bottom: 0;
+}
+
+
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive
+// list items. Includes an extra `.active` modifier class for selected items.
+
+.list-group-item-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  color: $list-group-action-color;
+  text-align: inherit; // For `<button>`s (anchors inherit)
+  text-decoration: $list-group-item-action-decoration;
+
+  // Hover state
+  @include hover-focus {
+    z-index: 1; // Place hover/focus items above their siblings for proper border styling
+    color: $list-group-action-hover-color;
+    text-decoration: none;
+    background-color: $list-group-hover-bg;
+  }
+
+  &:focus {
+    outline-color: $list-group-hover-bg;
+  }
+
+  &:active {
+    color: $list-group-action-active-color;
+    background-color: $list-group-action-active-bg;
+  }
+}
+
+
+// Individual list items
+//
+// Use on `li`s or `div`s within the `.list-group` parent.
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: $list-group-item-padding-y $list-group-item-padding-x;
+  // Place the border on the list items and negative margin up for better styling
+  margin-bottom: -$list-group-border-width;
+  color: $list-group-color;
+  background-color: $list-group-bg;
+  border: $list-group-border-width solid $list-group-border-color;
+  font-style: $list-group-disabled-font-style;
+
+  &:first-child {
+    @include border-top-radius($list-group-border-radius);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    @include border-bottom-radius($list-group-border-radius);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $list-group-disabled-color;
+    pointer-events: none;
+    background-color: $list-group-disabled-bg;
+    font-style: $list-group-disabled-font-style;;
+  }
+
+  // Include both here for `<a>`s and `<button>`s
+  &.active {
+    z-index: 2; // Place active items above their siblings for proper border styling
+    color: $list-group-active-color;
+    background-color: $list-group-active-bg;
+    border-color: $list-group-active-border-color;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6, a {
+    color: inherit;
+  }
+}
+
+
+// Flush list items
+//
+// Remove borders and border-radius to keep list group items edge-to-edge. Most
+// useful within other components (e.g., cards).
+
+.list-group-flush {
+  .list-group-item {
+    border-right: 0;
+    border-left: 0;
+    @include border-radius(0);
+
+    &:last-child {
+      margin-bottom: -$list-group-border-width;
+    }
+  }
+
+  &:first-child {
+    .list-group-item:first-child {
+      border-top: 0;
+    }
+  }
+
+  &:last-child {
+    .list-group-item:last-child {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+}
+
+.list-group-item-action {
+  color: find-accessible-color($list-group-action-color, $body-bg);
+
+  &:after {
+    font-family: $font-family-icon-font;
+    content: $list-group-active-icon;
+    padding-left: $list-group-active-icon-padding;
+    transition: padding-left .25s;
+  }
+
+@include hover-focus {
+  color: find-accessible-color($list-group-action-hover-color, find-accessible-color($list-group-hover-bg, $list-group-bg, 3), 4.5);
+  text-decoration: $list-group-item-action-decoration;
+}
+
+  &:active {
+    color: find-accessible-color($list-group-action-active-color, $list-group-action-active-bg, 4.5);
+  }
+}
+
+.list-group-item {
+  color: find-accessible-color($list-group-color, $list-group-bg);
+
+  &.disabled,
+  &:disabled {
+    color: find-accessible-color($list-group-disabled-color, $list-group-disabled-bg, 3);
+  }
+}
+
+.list-group-item-action {
+  color: find-accessible-color($list-group-action-color, $list-group-bg);
+
+  @include hover-focus {
+    color: find-accessible-color($list-group-action-hover-color, $list-group-hover-bg);
+  }
+
+  &:active {
+    color: find-accessible-color($list-group-action-active-color, $list-group-action-active-bg);
+  }
+}
+
+.list-group-item {
+  color: find-accessible-color($list-group-color, $list-group-bg);
+
+  &.active {
+    color: find-accessible-color($list-group-active-color, $list-group-active-bg);
+  }
+}
