@@ -22,6 +22,8 @@
             "_MANDRILL_PORT_": "587",
             "_MANDRILL_FROM_NAME_": "Cardswipr",
             "_MANDRILL_FROM_EMAIL_": "no-reply@yale.edu"
+
+            "_MALLORY_URL_": "http://get.the.correct.url"
         }
     }
 }

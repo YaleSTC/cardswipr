@@ -18,3 +18,5 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require ally.min.js
+//= require focus-visible.js
