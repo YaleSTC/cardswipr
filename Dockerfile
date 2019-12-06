@@ -25,7 +25,7 @@ COPY . /usr/src/app/
 
 COPY config/database.yml.docker config/database.yml
 
-COPY .env.production .env
+COPY .env.prod .env
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
