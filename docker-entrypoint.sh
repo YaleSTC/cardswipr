@@ -17,6 +17,6 @@ set -a
 . ./.env
 set +a
 
-rails db:migrate RAILS_ENV=$RAILS_ENV
+rails db:create && rails db:migrate RAILS_ENV=$RAILS_ENV
 
 exec "$@"
