@@ -2,6 +2,8 @@
     "filters": {
         "/usr/src/app/.env": {
             "_RAILS_ENV_": "development",
+            "_SECRET_KEY_BASE_": "abcdefghijklmopqrstuvwxyz1234567",
+            "_APPLICATION_HOST_": "localhost:3000",
 
             "_CAS_BASE_URL_": "cas-url",
 
