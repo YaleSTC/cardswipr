@@ -23,7 +23,7 @@ RUN apk del .build-deps
 
 COPY . /usr/src/app/
 
-COPY config/database.yml.docker config/database.yml
+COPY config/database.yml.prod config/database.yml
 
 COPY .env.prod .env
 
