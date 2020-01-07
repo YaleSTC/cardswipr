@@ -1,16 +1,16 @@
 
 <div class="container text-center p-3">
   <div class='btn-group' role="group">
-    <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-secondary mr-1' %>
-    <%= button_to 'Attendee List', event_attendances_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
-    <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
+    <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-primary mr-1' %>
+    <%= button_to 'Attendee List', event_attendances_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
+    <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
   </div>
   <br><br>
 
   <div class="row">
     <div class="col-md-8 mx-auto">
       <div class="card shadow text-center">
-        <div class="card-header text-white bg-primary">
+        <div class="card-header text-white bg-yale">
           <h3><b>Check in for <%=@event.title%></b></h3>
         </div>
         <div class="card-body">
@@ -20,7 +20,7 @@
 
             <%= form_tag event_attendances_path(@event) do %>
               <%= text_field_tag :search_param, '', autofocus: true, :class => 'p-2' %>
-              <%= submit_tag 'Check In', :class => 'btn btn-secondary' %>
+              <%= submit_tag 'Check In', :class => 'btn btn-primary' %>
             <% end %>
             <br>
             <p><%= @event.attendances.size %> Recorded</p>

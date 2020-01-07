@@ -4,7 +4,7 @@
 </div>
 
 <div class="container">
-  <%= button_to 'Create New Event', new_event_path, method: :get, :class => 'btn btn-lg btn-primary' %>
+  <%= button_to 'Create New Event', new_event_path, method: :get, :class => 'btn btn-lg btn-yale' %>
 
   <br/>
   <br/>
@@ -27,10 +27,10 @@
         <% @events.each do |event| %>
           <tr id="event row">
             <td>
-              <%= button_to 'Event Check-in', event_path(event.id), method: :get, :class => 'btn btn-primary' %>
+              <%= button_to 'Event Check-in', event_path(event.id), method: :get, :class => 'btn btn-yale' %>
             </td>
             <td>
-              <%= button_to 'Attendee List', event_attendances_path(event.id), method: :get, :class => 'btn btn-secondary' %>
+              <%= button_to 'Attendee List', event_attendances_path(event.id), method: :get, :class => 'btn btn-primary ' %>
             </td>
             <td>
               <%= event.title %>
@@ -42,10 +42,10 @@
               <%= event.updated_at.strftime('%Y-%m-%d %I:%M %p') %>
             </td>
             <td>
-              <%= button_to 'Edit Event', edit_event_path(event.id), method: :get, :class => 'btn btn-secondary' %>
+              <%= button_to 'Edit Event', edit_event_path(event.id), method: :get, :class => 'btn btn-primary' %>
             </td>
             <td>
-              <%= button_to 'X', event_path(event.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger', aria: { label: 'Delete Event' } %>
+              <%= button_to 'X', event_path(event.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger btn-sm', aria: { label: 'Delete Event' } %>
             </td>
           </tr>
         <% end %>

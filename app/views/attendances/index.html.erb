@@ -1,13 +1,15 @@
 <div class="container">
-  </br>
+  <br />
   <div class="text-center">
     <h1>Attendee List: <%= @event.title %></h1>
   </div>
 
-  <div class='btn-group' role='group'>
-    <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
-    <%= button_to 'Export CSV', export_event_attendances_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
-    <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-secondary mr-1' %>
+  <div class="container">
+    <div class='btn-group' role='group'>
+      <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-yale mr-1' %>
+      <%= button_to 'Export CSV', export_event_attendances_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
+      <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
+    </div>
   </div>
 
   <div class="container">

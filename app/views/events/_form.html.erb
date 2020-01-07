@@ -1,20 +1,20 @@
-<%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-secondary' %>
+<%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-primary' %>
 <br>
 
 <%= form_for @event do |f| %>
   <div class = "form-group">
     <%= f.label 'Title', class: 'col-md-4 control-label' %>
     <div class = "col-md-8">
-      <%= f.text_field :title, placeholder: 'Title', error: '', class: 'form-control' %>
-      <p class="text-muted"><small>This will be displayed on the swipe-in screen in large text.</small><p> 
+      <%= f.text_field :title, error: '', class: 'form-control' %>
+      <p><small>This will be displayed on the swipe-in screen in large text.</small><p> 
     </div>
   </div>
   <div class = "form-group">
     <%= f.label 'Description', class: 'col-md-4 control-label' %>
     <div class = "col-md-8">
-      <%= f.text_area :description, placeholder: 'Description', error: '', class: 'form-control' %>
-      <p class="text-muted"><small>This will be displayed on the swipe-in screen in smaller text. You might tell attendees how you will use their email/netid, or what they should do after swiping in.</small></p>
+      <%= f.text_area :description, error: '', class: 'form-control' %>
+      <p><small>This will be displayed on the swipe-in screen in smaller text. You might tell attendees how you will use their email/netid, or what they should do after swiping in.</small></p>
     </div>
   </div>
-  <%= f.submit class: "btn btn-primary"%>
+  <%= f.submit class: "btn btn-yale"%>
 <% end %>

@@ -3,17 +3,18 @@
   <div class='row p-3'>
     <div class="col-sm">
       <div class="shadow text-center" aria-label="Person Lookup">
-        <div class="text-white bg-primary p-3">
+        <div class="text-white bg-yale p-3">
           <h1><b>Person Lookup</b></h1>
         </div>
 
         <div class='p-3'>
-          <br>
+          <br />
           <p><b>Card Swipe</b> or <b>Card Tap</b> or <b>NetID</b></p>
           <%= form_tag lookups_path() do %>
             <%= text_field_tag :search_param, '', autofocus: true, :class => 'p-2' %>
-            <%= submit_tag 'Submit', :class => 'btn btn-secondary' %>
+            <%= submit_tag 'Submit', :class => 'btn btn-primary' %>
           <% end %>
+          <br />
           <p>When a client swipes their card, we'll figure out who they are. Then we'll create a link to their Yale Phonebook entry.</p>
         </div>
       </div>
@@ -22,12 +23,14 @@
     <div class='col-sm'>
       <% if local_assigns[:lookup] %>
         <div class="shadow text-center" aria-label="Lookup Result">
-          <div class="text-white bg-secondary p-2">
+          <div class="text-white bg-primary p-3">
             <h1><b>Lookup Result</b></h1>
           </div>
+          <br />
           <div class="container p-3">
-            <h3 class='text-left'><%= lookup.first_name + ' ' + lookup.last_name %></h3>
             <dl class="row text-left">
+              <dt class="col-sm-3">Name:</dt>
+              <dd class="col-sm-9"><%= lookup.first_name + ' ' + lookup.last_name %>
               <dt class="col-sm-3">Email:</dt>
               <dd class="col-sm-9"><%= lookup.email %></dd>
               <dt class="col-sm-3">Phone:</dt>
@@ -39,7 +42,7 @@
             </dl>
             <div class="container row">
               <%= link_to 'Yale Phonebook Entry',
-                  "http://directory.yale.edu/?queryType=field&upi=#{lookup.upi}", target: '_blank', id: 'yale-phonebook', :class => 'btn btn-secondary'
+                  "http://directory.yale.edu/?queryType=field&upi=#{lookup.upi}", target: '_blank', id: 'yale-phonebook', :class => 'btn btn-primary'
               %>
             </div>
           </div>
