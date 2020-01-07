@@ -432,8 +432,8 @@ $yale-table-td-border-color: $gray-lt !default;
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y:         1rem !default;
-$input-btn-padding-x:         1.25rem !default;
+$input-btn-padding-y:         .75rem !default;
+$input-btn-padding-x:         1rem !default;
 $input-btn-font-family:       $h5-font-family !default;
 $input-btn-font-size:         $h5-font-size !default;
 $input-btn-line-height:       $h5-line-height !default;

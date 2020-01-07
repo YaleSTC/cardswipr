@@ -1,6 +1,7 @@
 // tk tk table variants
 
 table {
+  font-family: $table-th-font-family;
   width: 100%;
   margin-bottom: $table-font-size;
   font-size: $table-font-size;
@@ -12,7 +13,7 @@ table {
   th,
   td {
     padding: $table-cell-padding-y $table-cell-padding;
-    vertical-align: top;
+    vertical-align: center;
     border: $table-border-width solid $table-border-color;
   }
 
@@ -32,7 +33,6 @@ table {
   }
 
   th {
-    font-family: $table-th-font-family;
     font-weight: $table-th-font-weight;
     color: $table-th-color;
   }
