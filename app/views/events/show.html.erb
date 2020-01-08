@@ -1,6 +1,6 @@
 
 <div class="container text-center p-3">
-  <div class='btn-group' role="group">
+  <div class='btn-group'>
     <%= button_to 'Back to Dashboard', dashboard_path, method: :get, :class => 'btn btn-primary mr-1' %>
     <%= button_to 'Attendee List', event_attendances_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
     <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>

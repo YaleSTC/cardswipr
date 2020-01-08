@@ -1,14 +1,8 @@
 <div class="container">
-  <br/>
   <h1>Events</h1>
 </div>
 
 <div class="container">
-  <%= button_to 'Create New Event', new_event_path, method: :get, :class => 'btn btn-lg btn-yale' %>
-
-  <br/>
-  <br/>
-
   <% if @events.any? %>
     <table  class="table-borderless mb-3" id="events" tabindex="0">
       <thead>

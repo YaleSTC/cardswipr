@@ -1,24 +1,12 @@
-<%= form_for @user, html: { class: "form-horizontal center" } do |f| %>
-  <div class = "form-group">
-    <%= f.label 'First Name', class: 'col-md-4 control-label' %>
-    <div class = "col-md-8">
-      <%= f.text_field :first_name, placeholder: 'First Name', error: '', class: 'form-control' %>
-    </div>
-  </div>
-  <div class = "form-group">
-    <%= f.label 'Last Name', class: 'col-md-4 control-label' %>
-    <div class = "col-md-8">
-      <%= f.text_field :last_name, placeholder: 'Last Name', error: '', class: 'form-control' %>
-    </div>
-  </div>
-  <div class = "form-group">
-    <%= f.label 'Email', class: 'col-md-4 control-label' %>
-    <div class = "col-md-8">
-      <%= f.text_field :email, placeholder: 'Email', error: '', class: 'form-control'%>
-    </div>
-  </div>
-  <br />
-  <div class="container">
+<div class = "col-md-8">
+  <%= simple_form_for @user do |f| %>
+    <%= f.label 'First Name'%>
+    <%= f.text_field :first_name, error: '', class: 'form-control' %>
+    <%= f.label 'Last Name'%>
+    <%= f.text_field :last_name, error: '', class: 'form-control' %>
+    <%= f.label 'Email' %>
+    <%= f.text_field :email, error: '', class: 'form-control'%>
+    <br />
     <%= f.submit class: "btn btn-primary"%>
-  </div>
-<% end %>
+  <% end %>
+</div>

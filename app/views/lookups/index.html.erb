@@ -10,7 +10,7 @@
         <div class='p-3'>
           <br />
           <p><b>Card Swipe</b> or <b>Card Tap</b> or <b>NetID</b></p>
-          <%= form_tag lookups_path() do %>
+          <%= form_tag lookups_path do %>
             <%= text_field_tag :search_param, '', autofocus: true, :class => 'p-2' %>
             <%= submit_tag 'Submit', :class => 'btn btn-primary' %>
           <% end %>
