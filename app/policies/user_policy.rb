@@ -21,4 +21,8 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     show?
   end
+
+  def superuser_dash?
+    user.superuser?
+  end
 end
