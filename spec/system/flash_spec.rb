@@ -12,7 +12,7 @@ RSpec.describe 'Flashes', type: :system do
 
     it 'that disappears upon leaving page' do
       error = create_error
-      click_on 'Back to Dashboard'
+      find('#my_events_link', visible: false).click
       expect(page).not_to have_content(error)
     end
   end
@@ -22,7 +22,7 @@ RSpec.describe 'Flashes', type: :system do
     create(:event, users: [user1])
     log_in(user1)
     click_on 'Edit Event'
-    fill_in 'Title', with: ' '
+    fill_in 'event_title', with: ' '
     click_on 'Update Event'
     'Title can\'t be blank'
   end

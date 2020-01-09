@@ -32,21 +32,21 @@ RSpec.describe 'User', type: :system do
 
     it 'can be updated' do
       visit edit_user_path(user.id)
-      fill_in 'First Name', with: 'NewFirstName'
+      fill_in 'user_first_name', with: 'NewFirstName'
       click_on 'Update User'
       expect(user.reload.first_name).to eq('NewFirstName')
     end
 
     it 'displays success message when update succeeds' do
       visit edit_user_path(user.id)
-      fill_in 'Email', with: 'email@email.com'
+      fill_in 'user_email', with: 'email@email.com'
       click_on 'Update User'
       expect(page).to have_content('User updated successfully!')
     end
 
     it 'displays error message when update fails' do
       visit edit_user_path(user.id)
-      fill_in 'Last Name', with: ''
+      fill_in 'user_last_name', with: ''
       click_on 'Update User'
       expect(page).to have_content('Last name can\'t be blank')
     end

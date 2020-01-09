@@ -5,22 +5,22 @@ require 'rails_helper'
 RSpec.describe 'Event editing', type: :system do
   it 'displays updated title on dashboard' do
     set_up
-    fill_in 'Title', with: 'Updated Title'
+    fill_in 'event_title', with: 'Updated Title'
     click_on 'Update Event'
-    click_on 'Back to Dashboard'
+    find('#my_events_link', visible: false).click
     expect(page).to have_content('Updated Title')
   end
 
   it 'successfully updates event description' do
     _user, event = set_up
-    fill_in 'Description', with: 'Updated Description'
+    fill_in 'event_description', with: 'Updated Description'
     click_on 'Update Event'
     expect(event.reload.description).to eq('Updated Description')
   end
 
   it 'displays message after success' do
     set_up
-    fill_in 'Title', with: 'Updated Title'
+    fill_in 'event_title', with: 'Updated Title'
     click_on 'Update Event'
     expect(page).to have_content('Event Updated')
   end
@@ -76,11 +76,12 @@ RSpec.describe 'Event editing', type: :system do
     end
 
     it 'are displayed in alphabetical order by last name' do
-      user1 = create(:user, first_name: 'z', last_name: 'a', username: ' ')
-      user2 = create(:user, first_name: 'A', last_name: 'B')
+      user1 = create(:user, first_name: 'zf', last_name: 'al', username: ' ')
+      user2 = create(:user, first_name: 'Afirst', last_name: 'Blast')
       create(:event, users: [user2, user1])
       log_in user1
-      expect(page).to have_content("Event Organizers\nz a\nX\nA B")
+      # The regex will check that person zf al is before person Afirst Blast
+      expect(page.text).to match(/zf al.*Afirst Blast/)
     end
   end
 
@@ -106,6 +107,6 @@ RSpec.describe 'Event editing', type: :system do
   end
 
   def remove_organizer(user)
-    find('div', id: 'remove-' + user.username).click_on('X')
+    find('tr', id: 'remove-' + user.username).click_on('X')
   end
 end

@@ -7,7 +7,7 @@ RSpec.describe 'Event', type: :system do
     before do
       stub_and_sign_in(create(:user))
       visit dashboard_path
-      click_on('Create New Event')
+      find('#new_event_link', visible: false).click
     end
 
     it 'user can create an event' do
