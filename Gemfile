@@ -50,6 +50,7 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'ffaker', '~> 2.2'
 gem 'pundit', '~> 1.1.0'
 gem 'font-awesome-rails', '~> 4.7.0'
+gem "will_paginate", "~> 3.2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
