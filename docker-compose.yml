@@ -9,7 +9,6 @@ services:
 
     volumes:
       - .:/usr/src/app
-      - ./deco.json.template:/run/secrets/deco.json
 
   database:
     image: postgres
