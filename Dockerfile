@@ -18,6 +18,8 @@ COPY . /usr/src/app/
 
 COPY config/database.yml.prod config/database.yml
 
+EXPOSE 80
+
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+CMD ["bin/rails", "s", "-b", "0.0.0.0", "-p", "80"]
