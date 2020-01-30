@@ -29,10 +29,10 @@ RSpec.describe PeopleHub::ParamsParser do
       expect(described_class
              .determine_key(search_param)).to eq(:netid)
     end
-    it 'returns :invalid_param if given param that is not alphanumeric' do
-      search_param = '*ls222'
+    it 'returns :netid if given a vanity net id' do
+      search_param = 'testid'
       expect(described_class
-             .determine_key(search_param)).to eq(:invalid_param)
+             .determine_key(search_param)).to eq(:netid)
     end
     it 'returns :invalid_param if given number with length > 10' do
       search_param = '01234567899'

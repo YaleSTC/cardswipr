@@ -21,7 +21,7 @@ module PeopleHub
     def self.determine_key(search_param)
       if search_param.length == 10 && search_param.match?(/^[0-9]{10}$/)
         :proxnumber
-      elsif search_param.match?(/^[a-z]{1,5}[0-9]{1,5}$/)
+      elsif search_param.match?(/[a-z]/)
         :netid
       else
         :invalid_param

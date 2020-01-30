@@ -72,6 +72,7 @@ This file should be updated before a new release is deployed.
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
 * Fixed last use column on dashboard [#190](https://gitlab.com/yale-sdmp/cardswipr/issues/190)
 * Fixed naming collision with .env files and dotenv gem [#199](https://gitlab.com/yale-sdmp/cardswipr/issues/199)
+* Fixed validations on the params parser to be more flexible with netids [#206](https://gitlab.com/yale-sdmp/cardswipr/issues/206)
 
 ## 1.3.6
 <small>7/3/2017</small>
