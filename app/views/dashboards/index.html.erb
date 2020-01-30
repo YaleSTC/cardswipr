@@ -45,8 +45,8 @@
         <% end %>
       </tbody>
     </table>
-    <%= will_paginate(@events, class: 'text-center', previous_label: fa_icon('caret-left') + ' Previous', next_label: 'Next ' + fa_icon('caret-right')) %>
+    <div class='d-flex justify-content-center'><%= paginate(@events) %></div>
   <% else %>
-    <center><h2>No events!</h2></center>
+    <div class='d-flex justify-content-center'><h2>No events!</h2></div>
   <% end %>
 </div>

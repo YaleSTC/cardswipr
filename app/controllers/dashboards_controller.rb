@@ -10,7 +10,8 @@ class DashboardsController < ApplicationController
 
   def set_events
     @events = current_user.events
-                          .paginate(page: params[:page], per_page: 5)
+                          .page(params[:page])
+                          .per(5)
                           .order(created_at: :desc)
   end
 
