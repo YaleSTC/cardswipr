@@ -67,6 +67,7 @@ This file should be updated before a new release is deployed.
 * Added Roles to Users and added pundit policies to handle this new role [#183](https://gitlab.com/yale-sdmp/cardswipr/issues/183)
 * Added Administrate [#182](https://gitlab.com/yale-sdmp/cardswipr/issues/182)
 * Added pagination [#204](https://gitlab.com/yale-sdmp/cardswipr/issues/204)
+* Added ability to use the magstripe swipe [#207](https://gitlab.com/yale-sdmp/cardswipr/issues/207)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)

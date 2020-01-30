@@ -14,7 +14,7 @@ RSpec.describe 'API', type: :request do
   end
 
   context 'when the API query fails' do
-    before { stub_failed_people_hub(netid: 'sl2393') }
+    before { stub_failed_people_hub('sl2393') }
 
     it 'displays failure message' do
       message = { response: 'API is down', status: :service_unavailable }.to_s

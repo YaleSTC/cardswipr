@@ -1,73 +1,56 @@
 # frozen_string_literal: true
 
-require 'httparty'
-require 'uri'
-
 # Module that requests information on a person from the Identity API,
 # parses the data and stores the required data as an object.
 module PeopleHub
-  # Class for sending and parsing a request to the Identity API.
-  # Provides the get method to interact with the identity api and
+  # Class for sending and parsing a request to the PeopleHub::Querier.
+  # Provides the get method to interact with the Querier and
   # return a PeopleHub::Person object with the required params.
   class PersonRequest
-    VALID_PARAMS =
-      %i(netid upi firstname lastname idcard proxnumber role).freeze
-    AUTH = { username: ENV['IDENTITY_SERVER_USERNAME'],
-             password: ENV['IDENTITY_SERVER_PASSWORD'] }.freeze
-    BASE = ENV['IDENTITY_SERVER_URL']
-
-    # Takes a dictionary of params, and gets a response from the identity
+    # Takes a single paramenter and gets a response from the identity
     # server from the url in the env file. Calls response_to_person to return
-    # a PeopleHub::Person object.
+    # a PeopleHub::Person object. If the fake_peoplehub env is set to true
+    # it will return a fake person.
     #
-    # @param params [Hash] a dictionary of params
-    # rubocop:disable Style/GuardClause
-    def self.get(params)
-      url = BASE + '?outputformat=json&' + parse_params(params)
-      if Rails.configuration.fake_peoplehub
-        return PeopleHub::FakePerson.new
-      else
-        response = HTTParty.get(url, basic_auth: AUTH)
-        if response.code != 200
-          raise "Error code #{response.code} returned from #{BASE}"
+    # @param params [String] a dictionary of params
+    def self.get(search_param)
+      response = query_peoplehub(search_param)
+      response_to_person(response)
+    end
+
+    # Determines which parameter type the string probably is and
+    # then sends it to the Querier. Returns a JSON PeopleHub response.
+    #
+    # @param search_param [String] the search param used to find the person
+    # rubocop:disable Metrics/MethodLength
+    def self.query_peoplehub(search_param)
+      if search_param.length == 10 && search_param.match?(/^[0-9]{10}$/)
+        begin
+          PeopleHub::Querier.get(proxnumber: search_param)
+        rescue RuntimeError
+          PeopleHub::Querier.get(idcard: search_param)
         end
-
-        response_to_person(response)
+      elsif search_param.match?(/[a-z]/)
+        PeopleHub::Querier.get(netid: search_param)
+      else
+        raise 'Invalid Input'
       end
     end
-    # rubocop:enable Style/GuardClause
+    # rubocop:enable Metrics/MethodLength
 
-    # Parse params to check if they are valid and to join them to the url
-    #
-    # @param params [Hash] a hash of params
-    def self.parse_params(params)
-      url_request = []
-      params.each do |param, value|
-        exception = "#{param} is not a valid parameter for searching for person"
-        raise exception unless param_valid?(param)
-
-        url_request.append "#{param}=#{value}"
-      end
-      url_request.join('&')
-    end
-
-    # Convert response from identity server to PeopleHub::Person object
+    # Convert response from identity server to PeopleHub::Person object.
+    # Will return a fake person if the fake_peoplehub env is set to true.
     #
     # @param response [#to_h] a JSON response to be turned into a hash
     def self.response_to_person(response)
-      person_hash = response.parsed_response['People']['Person']
+      return PeopleHub::FakePerson.new if Rails.configuration.fake_peoplehub
+
+      person_hash = response.parsed_response&.dig('People', 'Person')
       raise 'Person not found' if person_hash.nil?
 
       PeopleHub::Person.create_person(full_hash: person_hash)
     end
 
-    # Check if param is in the list of valid params to search the API with
-    #
-    # @param param [ActionController::Parameters] a param object
-    def self.param_valid?(param)
-      VALID_PARAMS.include?(param)
-    end
-
-    private_class_method :param_valid?, :parse_params, :response_to_person
+    private_class_method :response_to_person, :query_peoplehub
   end
 end

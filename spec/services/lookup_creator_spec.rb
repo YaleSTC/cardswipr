@@ -9,7 +9,7 @@ RSpec.describe LookupCreator do
   end
 
   it 'finds the correct person' do
-    stub_people_hub_with(netid: net_id)
+    stub_people_hub_with(net_id)
     creator.call
     expect(creator.lookup.first_name).to eq('Luke')
   end

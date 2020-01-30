@@ -26,7 +26,7 @@ RSpec.describe 'Lookup', type: :system do
   end
 
   it 'displays a message for failed look-up' do
-    stub_failed_people_hub(invalid_param: '1')
+    stub_failed_people_hub('1')
     look_up('1')
     expect(page).to have_content('Look-up failed')
   end

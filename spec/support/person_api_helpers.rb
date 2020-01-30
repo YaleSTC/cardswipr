@@ -25,19 +25,19 @@ end
 
 # helper for stubbing a PeopleHub::PersonRequest.get to receive a value
 #
-# @param search_hash [Hash] the search param that get() should expect
-def stub_people_hub_with(search_hash)
+# @param search_param [String] the search param that get() should expect
+def stub_people_hub_with(search_param)
   person = instance_double(PeopleHub::Person, person_attrs)
   allow(PeopleHub::PersonRequest).to \
-    receive(:get).with(search_hash).and_return(person)
+    receive(:get).with(search_param).and_return(person)
 end
 
 # helper for stubbing a failed PeopleHub::PersonRequest.get
 #
-# @param search_hash [Hash]
-def stub_failed_people_hub(search_hash)
+# @param search_param [String]
+def stub_failed_people_hub(search_param)
   allow(PeopleHub::PersonRequest).to \
-    receive(:get).with(search_hash).and_raise(RuntimeError)
+    receive(:get).with(search_param).and_raise(RuntimeError)
 end
 
 def person_attrs(email = attributes_for(:user)[:email])

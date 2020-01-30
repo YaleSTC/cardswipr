@@ -4,7 +4,7 @@
 class HeartbeatController < ActionController::API
   # Route for checking if PeopleHub endpoint is up or down
   def api
-    PeopleHub::PersonRequest.get(netid: 'sl2393')
+    PeopleHub::PersonRequest.get('sl2393')
     render plain: { response: 'API is up', status: :ok }
   rescue RuntimeError
     render plain: { response: 'API is down', status: :service_unavailable }

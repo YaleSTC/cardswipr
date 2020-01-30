@@ -11,9 +11,7 @@ class LookupCreator
   end
 
   def call
-    @lookup = PeopleHub::PersonRequest.get(
-      PeopleHub::ParamsParser.create_search_hash(@search_param)
-    )
+    @lookup = PeopleHub::PersonRequest.get(@search_param)
     true
   rescue RuntimeError
     false

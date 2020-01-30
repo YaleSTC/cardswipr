@@ -18,7 +18,7 @@ RSpec.describe UserEventCreator do
   end
 
   context 'when organizer is not already a user' do
-    before { stub_people_hub_with(netid: organizer) }
+    before { stub_people_hub_with(organizer) }
 
     it 'creates a user for that organizer' do
       expect { creator.call }.to change(User, :count).by(1)
@@ -34,7 +34,7 @@ RSpec.describe UserEventCreator do
       expect(mail['to'].to_s).to eq(user_email)
     end
     it 'returns false if peoplehub request fails' do
-      stub_failed_people_hub(netid: organizer)
+      stub_failed_people_hub(organizer)
       expect(creator.call).to eq(false)
     end
   end

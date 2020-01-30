@@ -29,7 +29,7 @@ RSpec.describe 'Attendance', type: :system do
 
     it 'displays message for failed check-in' do
       invalid_param = '1'
-      stub_failed_people_hub(invalid_param: invalid_param)
+      stub_failed_people_hub(invalid_param)
       check_in(invalid_param)
       expect(page).to have_content('Check-in failed')
     end

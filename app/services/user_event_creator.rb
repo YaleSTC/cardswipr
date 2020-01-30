@@ -43,9 +43,7 @@ class UserEventCreator
   end
 
   def create_user
-    person = PeopleHub::PersonRequest.get(
-      PeopleHub::ParamsParser.create_search_hash(@organizer)
-    )
+    person = PeopleHub::PersonRequest.get(@organizer)
     User.create!(first_name: person.first_name,
                  last_name: person.last_name,
                  email: person.email, username: person.net_id)

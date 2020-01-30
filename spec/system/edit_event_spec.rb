@@ -41,7 +41,7 @@ RSpec.describe 'Event editing', type: :system do
 
     it 'message displayed after failure to add' do
       set_up
-      stub_failed_people_hub(netid: 'ni123')
+      stub_failed_people_hub('ni123')
       add_organizer('ni123')
       expect(page).to have_content('User not found')
     end
