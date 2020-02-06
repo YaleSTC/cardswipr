@@ -38,3 +38,9 @@ rails_style:
 
   script:
     - rake check_style
+
+bundle_audit:
+  <<: *rails_template
+  script:
+    - bundle exec bundle audit update
+    - bundle exec bundle audit

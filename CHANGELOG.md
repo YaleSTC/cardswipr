@@ -68,6 +68,7 @@ This file should be updated before a new release is deployed.
 * Added Administrate [#182](https://gitlab.com/yale-sdmp/cardswipr/issues/182)
 * Added pagination [#204](https://gitlab.com/yale-sdmp/cardswipr/issues/204)
 * Added ability to use the magstripe swipe [#207](https://gitlab.com/yale-sdmp/cardswipr/issues/207)
+* Added bundler audit [#209](https://gitlab.com/yale-sdmp/cardswipr/issues/209)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
