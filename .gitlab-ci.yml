@@ -31,13 +31,13 @@ rails_test:
   <<: *rails_template
 
   script:
-    - rake
+    - bundle exec rake
 
 rails_style:
   <<: *rails_template
 
   script:
-    - rake check_style
+    - bundle exec rake check_style
 
 bundle_audit:
   <<: *rails_template
