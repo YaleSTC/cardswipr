@@ -76,6 +76,7 @@ This file should be updated before a new release is deployed.
 * Fixed naming collision with .env files and dotenv gem [#199](https://gitlab.com/yale-sdmp/cardswipr/issues/199)
 * Fixed validations on the params parser to be more flexible with netids [#206](https://gitlab.com/yale-sdmp/cardswipr/issues/206)
 * Fix pagination conflict with administrate gem [#205](https://gitlab.com/yale-sdmp/cardswipr/issues/205)
+* Fix double submission bug with magstripe swipes [#210](https://gitlab.com/yale-sdmp/cardswipr/issues/210)
 
 ## 1.3.6
 <small>7/3/2017</small>

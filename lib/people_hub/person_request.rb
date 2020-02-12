@@ -14,24 +14,26 @@ module PeopleHub
     #
     # @param params [String] a dictionary of params
     def self.get(search_param)
-      response = query_peoplehub(search_param)
-      response_to_person(response)
+      # take only the first part of the string until there is a non-word char
+      first_match = search_param.match(/\w+\W{0}/)[0]
+      query_peoplehub(first_match)
     end
 
     # Determines which parameter type the string probably is and
-    # then sends it to the Querier. Returns a JSON PeopleHub response.
+    # then sends it to the Querier. Returns a PeopleHub::Person.
+    # Will return a fake person if the fake_peoplehub env is set to true.
     #
     # @param search_param [String] the search param used to find the person
     # rubocop:disable Metrics/MethodLength
     def self.query_peoplehub(search_param)
       if search_param.length == 10 && search_param.match?(/^[0-9]{10}$/)
         begin
-          PeopleHub::Querier.get(proxnumber: search_param)
+          response_to_person(PeopleHub::Querier.get(proxnumber: search_param))
         rescue RuntimeError
-          PeopleHub::Querier.get(idcard: search_param)
+          response_to_person(PeopleHub::Querier.get(idcard: search_param))
         end
       elsif search_param.match?(/[a-z]/)
-        PeopleHub::Querier.get(netid: search_param)
+        response_to_person(PeopleHub::Querier.get(netid: search_param))
       else
         raise 'Invalid Input'
       end

@@ -14,7 +14,7 @@ RSpec.describe PeopleHub::PersonRequest do
 
     it 'queries for an idcard if the proxnum one fails' do
       search_param = '1234567890'
-      allow(PeopleHub::Querier).to receive(:get).and_raise('Error')
+      stub_no_match_response
       # rubocop:disable Style/RescueModifier
       described_class.get(search_param) rescue nil
       # rubocop:enable Style/RescueModifier
@@ -46,8 +46,7 @@ RSpec.describe PeopleHub::PersonRequest do
     end
 
     it 'raises error when HTTParty return is no_match.json' do
-      response = file_to_response('./spec/fixtures/api/no_match.json', 200)
-      allow(PeopleHub::Querier).to receive(:get) { response }
+      stub_no_match_response
       expect { described_class.get('ls222') }
         .to raise_error(RuntimeError)
     end
@@ -87,6 +86,11 @@ RSpec.describe PeopleHub::PersonRequest do
   def stub_valid_response
     response = file_to_response('./spec/fixtures/api/success.json', 200)
     allow(PeopleHub::Querier).to receive(:get).and_return(response)
+  end
+
+  def stub_no_match_response
+    response = file_to_response('./spec/fixtures/api/no_match.json', 200)
+    allow(PeopleHub::Querier).to receive(:get) { response }
   end
 
   def person_hash(person)

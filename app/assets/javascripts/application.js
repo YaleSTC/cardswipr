@@ -20,3 +20,4 @@
 //= require bootstrap-sprockets
 //= require ally.min.js
 //= require focus-visible.js
+//= require magstripe-code.js
