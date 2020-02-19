@@ -69,16 +69,21 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
 
-  # Configure mail delivery with SMTP through Mandrill
-      config.action_mailer.delivery_method = :smtp
-      config.action_mailer.smtp_settings = {
-        :address   => ENV.fetch('MANDRILL_ADDRESS'),
-        :port      => ENV.fetch('MANDRILL_PORT'), # ports 25, 587 and 2525 are supported with STARTTLS
-        :enable_starttls_auto => true, # detects and uses STARTTLS
-        :user_name => ENV.fetch('MANDRILL_USERNAME'),
-        :password  => ENV.fetch('MANDRILL_PASSWORD'), # SMTP password is any valid API key
-        :authentication => 'login', # Mandrill supports 'plain' or 'login'
-      }
+  # # Configure mail delivery with SMTP through Mandrill
+  #     config.action_mailer.delivery_method = :smtp
+  #     config.action_mailer.smtp_settings = {
+  #       :address   => ENV.fetch('MANDRILL_ADDRESS'),
+  #       :port      => ENV.fetch('MANDRILL_PORT'), # ports 25, 587 and 2525 are supported with STARTTLS
+  #       :enable_starttls_auto => true, # detects and uses STARTTLS
+  #       :user_name => ENV.fetch('MANDRILL_USERNAME'),
+  #       :password  => ENV.fetch('MANDRILL_PASSWORD'), # SMTP password is any valid API key
+  #       :authentication => 'login', # Mandrill supports 'plain' or 'login'
+  #     }
+
+    # Tell Action Mailer not to deliver emails to the real world.
+  # The :test delivery method accumulates sent emails in the
+  # ActionMailer::Base.deliveries array.
+  config.action_mailer.delivery_method = :test
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
