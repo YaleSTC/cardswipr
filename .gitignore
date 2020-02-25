@@ -12,6 +12,8 @@ deco.json
 
 *.swp
 
+node_modules
+
 # Ignore bundler config.
 /.bundle
 

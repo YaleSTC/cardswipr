@@ -8,6 +8,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= render 'nav' %>
+
+    <script charset='UTF-8'>
+      window['adrum-start-time'] = new Date().getTime();
+      (function(config){
+          config.appKey = 'AD-AAB-AAU-YZZ';
+          config.adrumExtUrlHttp = 'http://cdn.appdynamics.com';
+          config.adrumExtUrlHttps = 'https://cdn.appdynamics.com';
+          config.beaconUrlHttp = 'http://col.eum-appdynamics.com';
+          config.beaconUrlHttps = 'https://col.eum-appdynamics.com';
+          config.xd = {enable : false};
+      })(window['adrum-config'] || (window['adrum-config'] = {}));
+    </script>
+ 
   </head>
 
   <body>

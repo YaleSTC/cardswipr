@@ -21,9 +21,16 @@
             "_MANDRILL_ADDRESS_": "smtp.mandrillapp.com",
             "_MANDRILL_PORT_": "587",
             "_MANDRILL_FROM_NAME_": "Cardswipr",
-            "_MANDRILL_FROM_EMAIL_": "no-reply@yale.edu"
+            "_MANDRILL_FROM_EMAIL_": "no-reply@yale.edu",
 
-            "_MALLORY_URL_": "http://get.the.correct.url"
+            "_MALLORY_URL_": "http://get.the.correct.url",
+
+            "_APPD_APP_NAME_": "Cardswipr",
+            "_APPD_TIER_NAME_": "Rails",
+            "_APPD_NODE_NAME_": "Test",
+            "_APPD_CONTROLLER_HOST_": "domain.needed.here",
+            "_APPD_CONTROLLER_ACCOUNT_": "acctName",
+            "_APPD_CONTROLLER_ACCESS_KEY_": "key"
         }
     }
 }
