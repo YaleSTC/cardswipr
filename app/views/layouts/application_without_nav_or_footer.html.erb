@@ -5,13 +5,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
   </body>
 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'magstripe-code', 'data-turbolinks-track': 'reload' %>
 
+  <% if ENV['MALLORY_URL'].present? %>
+    <link href='<%= ENV['MALLORY_URL'] %>' rel='stylesheet'>
+  <% end %>
 </html>

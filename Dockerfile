@@ -1,10 +1,10 @@
-FROM ruby:2.6.0-alpine
+FROM ruby:2.6.5-alpine
 
 # Install packages
 RUN apk update && \
   apk upgrade
 
-RUN apk add --update --no-cache postgresql-dev nodejs tzdata
+RUN apk add --update --no-cache postgresql-dev yarn nodejs tzdata
 RUN apk add --no-cache --virtual .build-deps \
   build-base git
 
@@ -18,6 +18,7 @@ RUN chmod 555 /usr/local/bin/deco && deco version
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
 RUN bundle install
+RUN yarn install
 
 RUN apk del .build-deps
 

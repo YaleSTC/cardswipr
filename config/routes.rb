@@ -2,23 +2,16 @@
 
 Rails.application.routes.draw do
   namespace :admin do
-      resources :users
-      resources :attendances
-      resources :events
-      resources :user_events
+    resources :users
+    resources :attendances
+    resources :events
+    resources :user_events
 
-      root to: "users#index"
-    end
+    root to: 'users#index'
+  end
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  unauthenticated :user do
-    root to: 'pages#home', id: 'home'
-  end
-
-  authenticated :user do
-    root to: 'pages#home', id: 'home'
-  end
 
   # HighVoltage
   get '/dashboard' => 'dashboards#index', id: 'dashboard'
@@ -38,4 +31,5 @@ Rails.application.routes.draw do
   get '/heartbeat' => 'heartbeat#show'
   get '/heartbeat/api' => 'heartbeat#api'
 
+  root to: 'pages#home', id: 'home'
 end

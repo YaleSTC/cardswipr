@@ -4,7 +4,7 @@ stages:
   - deploy
 
 .rails_template: &rails_template
-  image: ruby:2.6.0
+  image: ruby:2.6.5
 
   services:
     - postgres:latest
@@ -22,9 +22,12 @@ stages:
 
   before_script:
     - apt-get update -q
-    - curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs
+    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    - curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs yarn
     - gem install bundler --no-document
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle
+    - yarn install
     - cp -f config/database.yml{.gitlab,}
 
 rails_test:

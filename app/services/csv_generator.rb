@@ -7,7 +7,7 @@ require 'csv'
 # it will return.
 #
 # Adapted from Vesta.
-class CSVGenerator
+class CsvGenerator
   include ActiveModel::Model
 
   validates :data,

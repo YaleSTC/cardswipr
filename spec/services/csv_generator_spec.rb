@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 # Adapted from Vesta
-RSpec.describe CSVGenerator do
+RSpec.describe CsvGenerator do
   let(:data) { build_list(:attendance, 5) }
   let(:generator) { described_class.new(data: data) }
 

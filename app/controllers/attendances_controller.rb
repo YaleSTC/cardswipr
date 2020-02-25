@@ -36,7 +36,7 @@ class AttendancesController < ApplicationController
 
   def export
     @attendances = @event.attendances
-    generator = CSVGenerator.new(data: @attendances)
+    generator = CsvGenerator.new(data: @attendances)
     if generator.generate
       send_data(generator.csv, filename: csv_filename, type: 'text/csv')
     else

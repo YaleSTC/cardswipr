@@ -42,3 +42,12 @@ deco.json
 /config/master.key
 # IDE files
 /.idea/**
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+.vscode

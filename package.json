@@ -1,5 +1,20 @@
 {
   "name": "cardswipr-new",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.2.2",
+    "bootstrap": "4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1",
+    "turbolinks": "^5.2.0",
+    "yale-ui-component-library": "1.1.5"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
 }

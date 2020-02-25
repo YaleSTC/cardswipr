@@ -17,6 +17,6 @@ set -a
 . ./.env
 set +a
 
-RAILS_ENV=$RAILS_ENV rails db:create && rails db:migrate  && rails assets:precompile
+RAILS_ENV=$RAILS_ENV rails db:create && rails db:migrate && rails assets:precompile && rails webpacker:compile
 
 exec "$@"
