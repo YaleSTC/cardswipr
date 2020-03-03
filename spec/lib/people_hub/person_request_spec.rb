@@ -35,6 +35,11 @@ RSpec.describe PeopleHub::PersonRequest do
       expect { described_class.get(search_param) }.to \
         raise_error('Invalid Input')
     end
+
+    it 'raises an error with no input' do
+      expect { described_class.get(nil) }.to \
+        raise_error('Invalid Input')
+    end
   end
 
   describe 'response_to_person functionality' do

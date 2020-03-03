@@ -4,6 +4,7 @@
 class EventsController < ApplicationController
   prepend_before_action :set_event, only: %i(show edit update destroy)
   before_action :set_user_events, only: %i(edit update)
+  layout 'application_without_nav_or_footer', only: %i(show)
 
   def new
     @event = Event.new
