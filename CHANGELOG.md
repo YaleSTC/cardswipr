@@ -21,6 +21,7 @@ This file should be updated before a new release is deployed.
 * Changed edit event page to display organizer names [#189](https://gitlab.com/yale-sdmp/cardswipr/issues/189)
 * Changed the adding organizers input to a text field that expects a netID [#171](https://gitlab.com/yale-sdmp/cardswipr/issues/171)
 * Changed from the compiled yale-ui to using the src .scss files [#196](https://gitlab.com/yale-sdmp/cardswipr/issues/196)
+* Modify check-in behavior to address user feedback [#212](https://gitlab.com/yale-sdmp/cardswipr/issues/212)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)
