@@ -8,8 +8,8 @@
     </script>
     <script>
       window.DD_RUM && window.DD_RUM.init({
-        clientToken: 'pub17211959b0672d5e8a58cd4423c011f6',
-        applicationId: 'e1f83e68-a397-40a8-b3d0-b1fd9972bf5a',
+        clientToken: ENV.fetch('DD_CLIENT_TOKEN') ,
+        applicationId: ENV.fetch('DD_APP_ID'),
       });
     </script>
 

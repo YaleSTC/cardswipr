@@ -23,7 +23,11 @@
             "_MANDRILL_FROM_NAME_": "Cardswipr",
             "_MANDRILL_FROM_EMAIL_": "no-reply@yale.edu",
 
-            "_MALLORY_URL_": "http://get.the.correct.url"
+            "_MALLORY_URL_": "http://get.the.correct.url",
+
+            "_DD_CLIENT_TOKEN_": "token",
+            "_DD_APP_ID_": "app-id",
+            "_DD_AGENT_HOST_": "spinup-host"
         }
     }
 }
