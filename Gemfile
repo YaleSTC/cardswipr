@@ -7,6 +7,7 @@ gem 'rails', '~> 6.0.2'
 
 gem 'administrate', '~> 0.12.0'
 gem 'bootsnap', '>= 1.4.5', require: false
+gem 'ddtrace', '~> 0.33.1'
 gem 'devise', '~> 4.7.0'
 gem 'devise_cas_authenticatable', '~> 1.10.3'
 gem 'dotenv-rails', '~> 2.7.5'
