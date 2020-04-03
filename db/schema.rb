@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_184555) do
+ActiveRecord::Schema.define(version: 2020_04_03_184940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 2020_04_03_184555) do
     t.datetime "updated_at", null: false
     t.integer "v1_id"
     t.boolean "preregistration", default: false
+  end
+
+  create_table "preregistrations", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "net_id"
+    t.string "upi"
+    t.string "phone"
+    t.boolean "checked_in", default: false
+    t.bigint "event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_preregistrations_on_event_id"
   end
 
   create_table "user_events", force: :cascade do |t|
@@ -67,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_184555) do
   end
 
   add_foreign_key "attendances", "events"
+  add_foreign_key "preregistrations", "events"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
 end

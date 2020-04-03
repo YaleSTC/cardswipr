@@ -74,6 +74,7 @@ This file should be updated before a new release is deployed.
 * Added bundler audit [#209](https://gitlab.com/yale-sdmp/cardswipr/issues/209)
 * Added host header attack protection [#215](https://gitlab.com/yale-sdmp/cardswipr/issues/215)
 * Added pregregistration bool to event model [#217](https://gitlab.com/yale-sdmp/cardswipr/issues/217)
+* Created preregistration model [#218](https://gitlab.com/yale-sdmp/cardswipr/-/issues/218)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
