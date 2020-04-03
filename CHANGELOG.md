@@ -23,6 +23,7 @@ This file should be updated before a new release is deployed.
 * Changed from the compiled yale-ui to using the src .scss files [#196](https://gitlab.com/yale-sdmp/cardswipr/issues/196)
 * Modify check-in behavior to address user feedback [#212](https://gitlab.com/yale-sdmp/cardswipr/issues/212)
 * Upgraded to rails 6.0 and ruby 2.6.5 [#214](https://gitlab.com/yale-sdmp/cardswipr/issues/214)
+* Update event creation to allow events with preregistation [#220](https://gitlab.com/yale-sdmp/cardswipr/-/issues/220)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

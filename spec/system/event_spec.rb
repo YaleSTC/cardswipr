@@ -11,10 +11,17 @@ RSpec.describe 'Event', type: :system do
     end
 
     it 'user can create an event' do
-      fill_in 'event_title', with: 'Unique Party Name 123!'
-      fill_in 'event_description', with: 'Bring your friends'
+      fill_event_details
       click_on('Create Event')
       expect(page).to have_content('Successfully created event!')
+    end
+
+    it 'user can create a preregistered event' do
+      fill_event_details
+      check 'event_preregistration'
+      click_on('Create Event')
+      event = Event.find_by(title: 'Party 123!')
+      expect(event.preregistration).to be true
     end
 
     it 'user gets failure message when event title is blank' do
@@ -40,5 +47,10 @@ RSpec.describe 'Event', type: :system do
   def stub_and_sign_in(user)
     stub_cas(user.username)
     sign_in user
+  end
+
+  def fill_event_details
+    fill_in 'event_title', with: 'Party 123!'
+    fill_in 'event_description', with: 'Bring your friends'
   end
 end
