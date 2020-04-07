@@ -9,7 +9,6 @@ RSpec.describe Preregistration, type: :model do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:net_id) }
     it { is_expected.to validate_presence_of(:upi) }
-    it { is_expected.to validate_presence_of(:checked_in) }
   end
 
   describe 'Associations' do

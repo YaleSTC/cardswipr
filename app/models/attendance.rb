@@ -18,7 +18,12 @@ class Attendance < ApplicationRecord
   validates :net_id, presence: true
   validates :upi, presence: true
   validates :checked_in_at, presence: true
+  validates :event, presence: true
 
   # Associations
   belongs_to :event
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

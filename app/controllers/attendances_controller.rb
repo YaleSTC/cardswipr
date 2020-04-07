@@ -5,17 +5,15 @@ class AttendancesController < ApplicationController
   prepend_before_action :set_event, only: %i(create index destroy export)
 
   def create
-    @creator = AttendanceCreator.new(
+    creator = AttendanceCreator.new(
       event: @event, search_param: params[:search_param]
     )
-    if @creator.call
+    if creator.call
       redirect_to event_path(@event),
                   notice: "Successfully checked in
-                  #{@creator.attendance.first_name}
-                  #{@creator.attendance.last_name}!"
+                  #{creator.attendance.full_name}!"
     else
-      redirect_to event_path(@event),
-                  alert: 'Check-in failed'
+      redirect_to event_path(@event), alert: creator.errors.full_messages.first
     end
   end
 
