@@ -17,7 +17,7 @@ class Preregistration < ApplicationRecord
             uniqueness: { case_sensitive: false, scope: :event }
   validates :net_id, presence: true
   validates :upi, presence: true
-  validates :checked_in, presence: true
+  validates :event, presence: true
 
   # Associations
   belongs_to :event
