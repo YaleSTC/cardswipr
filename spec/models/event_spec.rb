@@ -52,8 +52,9 @@ RSpec.describe Event, type: :model do
   end
 
   describe 'Associations' do
-    it { is_expected.to have_many(:attendances) }
+    it { is_expected.to have_many(:attendances).dependent(:destroy) }
     it { is_expected.to have_many(:user_events) }
     it { is_expected.to have_many(:users).through(:user_events) }
+    it { is_expected.to have_many(:preregistrations).dependent(:destroy) }
   end
 end
