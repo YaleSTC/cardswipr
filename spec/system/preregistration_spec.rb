@@ -5,12 +5,11 @@ require 'rails_helper'
 RSpec.describe 'Preregistration', type: :system do
   let(:user) { create(:user) }
   let(:event) { create(:event_with_preregistrations) }
+  let(:net_id) { 'ls222' }
 
   before do
     create(:user_event, user: user, event: event)
-    stub_people_hub
-    stub_cas(user.username)
-    sign_in user
+    log_in user
     visit dashboard_path
     click_on('Attendance Info', match: :first)
     click_on('Preregistrations')
@@ -37,5 +36,36 @@ RSpec.describe 'Preregistration', type: :system do
       click_on('X', match: :first)
       expect(page).to have_content('Successfully deleted preregistration!')
     end
+
+    it 'displays a message for successful preregistration' do
+      stub_people_hub_with(net_id)
+      add_preregistration(net_id)
+      expect(page).to have_content('Successfully preregistered')
+    end
+
+    it 'displays a message for failed preregistration' do
+      stub_failed_people_hub(net_id)
+      add_preregistration(net_id)
+      expect(page).to have_content('Preregistration failed')
+    end
+
+    it 'does not allow duplicate preregistrations' do
+      prereg = create(:preregistration, event: event, net_id: net_id)
+      stub_people_hub(prereg.email)
+      add_preregistration(net_id)
+      expect(page).to have_content('Preregistration failed')
+    end
+  end
+
+  def log_in(user)
+    stub_people_hub
+    stub_cas(user.username)
+    sign_in user
+  end
+
+  def add_preregistration(search_param)
+    click_on 'Add Preregistrations'
+    fill_in 'search_param', with: search_param
+    click_on 'Add Preregistration'
   end
 end
