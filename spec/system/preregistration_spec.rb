@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'csv'
 
 RSpec.describe 'Preregistration', type: :system do
   let(:user) { create(:user) }
@@ -15,57 +16,30 @@ RSpec.describe 'Preregistration', type: :system do
     click_on('Preregistrations')
   end
 
-  context 'when signed in as user' do
-    it 'gives a list of all preregistrations' do
-      preregistration1 = event.preregistrations.first
-      preregistration2 = event.preregistrations.last
-      visit current_path
-      expect(page).to have_content(preregistration1.first_name.titleize)
-        .and have_content(preregistration2.first_name.titleize)
-    end
+  it 'gives a list of all preregistrations' do
+    preregistration1 = event.preregistrations.first
+    preregistration2 = event.preregistrations.last
+    visit current_path
+    expect(page).to have_content(preregistration1.first_name.titleize)
+      .and have_content(preregistration2.first_name.titleize)
+  end
 
-    it 'highlights row if preregistered user checked in' do
-      preregistration1 = event.preregistrations.first
-      preregistration1.update(checked_in: true)
-      visit current_path
-      expect(page).to have_css('tr.alert-primary', count: 1)
-    end
+  it 'highlights row if preregistered user checked in' do
+    preregistration1 = event.preregistrations.first
+    preregistration1.update(checked_in: true)
+    visit current_path
+    expect(page).to have_css('tr.alert-primary', count: 1)
+  end
 
-    it 'can be deleted' do
-      visit current_path
-      click_on('X', match: :first)
-      expect(page).to have_content('Successfully deleted preregistration!')
-    end
-
-    it 'displays a message for successful preregistration' do
-      stub_people_hub_with(net_id)
-      add_preregistration(net_id)
-      expect(page).to have_content('Successfully preregistered')
-    end
-
-    it 'displays a message for failed preregistration' do
-      stub_failed_people_hub(net_id)
-      add_preregistration(net_id)
-      expect(page).to have_content('Preregistration failed')
-    end
-
-    it 'does not allow duplicate preregistrations' do
-      prereg = create(:preregistration, event: event, net_id: net_id)
-      stub_people_hub(prereg.email)
-      add_preregistration(net_id)
-      expect(page).to have_content('Preregistration failed')
-    end
+  it 'can be deleted' do
+    visit current_path
+    click_on('X', match: :first)
+    expect(page).to have_content('Successfully deleted preregistration!')
   end
 
   def log_in(user)
     stub_people_hub
     stub_cas(user.username)
     sign_in user
-  end
-
-  def add_preregistration(search_param)
-    click_on 'Add Preregistrations'
-    fill_in 'search_param', with: search_param
-    click_on 'Add Preregistration'
   end
 end
