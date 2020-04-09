@@ -13,4 +13,8 @@ class PreregistrationPolicy < ApplicationPolicy
   def destroy?
     index?
   end
+
+  def import?
+    create?
+  end
 end

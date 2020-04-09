@@ -25,7 +25,9 @@ Rails.application.routes.draw do
       end
     end
     resources :user_events, only: %i(create destroy)
-    resources :preregistrations, only: %i(index new create destroy)
+    resources :preregistrations, only: %i(index new create destroy) do
+      collection { post 'import' }
+    end
   end
   resources :lookups, only: %i(index create)
 

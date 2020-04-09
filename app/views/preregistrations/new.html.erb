@@ -1,11 +1,25 @@
+<div class=>
+  <div class='btn-group' role='group'>
+    <%= button_to 'Back to Preregistrations', event_preregistrations_path(@event.id), method: :get, :class => 'btn btn-secondary' %>
+  </div>
+</div>
+<br>
+
 <div class='text-center'>
   <h1>Add Preregistrations: <%= @event.title %></h1>
 </div>
 
 <div class="container" id="preregistration-form">
-  <div class='btn-group' role='group'>
-    <%= button_to 'Preregistrations', event_preregistrations_path(@event.id), method: :get, :class => 'btn btn-primary' %>
-  </div>
-  <br><br>
+  <h3> Create a Preregistration</h3>
   <%= render 'form' %>
+</div>
+
+<div class="container" id="preregistration-import">
+  <h3>Import Preregistrations</h3>
+  <small><p>Add many preregistrations at once by uploading a CSV file with the NetIDs or card information of the people you wish to preregister.</p></small>
+  <p><%= link_to 'Download template', root_path << 'preregistration_import_template.csv' %></p>
+  <%= form_tag import_event_preregistrations_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV", :class => 'btn btn-primary' %>
+  <% end %>
 </div>

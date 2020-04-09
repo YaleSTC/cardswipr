@@ -9,7 +9,7 @@ class PreregistrationCreator
   # @param search_param [String] used to query PeopleHub
   def initialize(event:, search_param:)
     @event = event
-    @search_param = search_param
+    @search_param = search_param.strip
   end
 
   def call
