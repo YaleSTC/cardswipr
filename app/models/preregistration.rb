@@ -21,4 +21,8 @@ class Preregistration < ApplicationRecord
 
   # Associations
   belongs_to :event
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

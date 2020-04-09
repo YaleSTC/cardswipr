@@ -1,0 +1,6 @@
+<%= form_tag event_preregistrations_path(@event, @preregistration) do %>
+  <%= label_tag 'search_param', 'Create a Preregistration'  %>
+  <%= text_field_tag :search_param, '', placeholder: 'NetID or Card Swipe or Card Tap', class: 'form-control m-1 col-lg-4', aria: { label: 'NetID or Card Swipe or Card Tap' }, autofocus: true %>
+  <small><p>Create a preregistration for one person using their NetID or their card information.</p></small>
+  <%= submit_tag 'Add Preregistration', class: 'btn btn-primary m-1' %>
+<% end %>

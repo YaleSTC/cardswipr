@@ -5,6 +5,14 @@
 <div class = "container">
   <%= render 'events/form' %>
   <br/>
+
+  <% if @event.preregistration %>
+    <h3>Preregistrations</h3>
+    <div class="container" id="add-preregistrations">
+      <%= button_to 'Add Preregistrations', new_event_preregistration_path(@event.id), method: :get, :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+
   <div id='user-event-form'>
     <h3>Event Organizers</h3>
       <div class="container">

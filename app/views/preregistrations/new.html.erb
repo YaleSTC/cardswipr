@@ -1,0 +1,11 @@
+<div class='text-center'>
+  <h1>Add Preregistrations: <%= @event.title %></h1>
+</div>
+
+<div class="container" id="preregistration-form">
+  <div class='btn-group' role='group'>
+    <%= button_to 'Preregistrations', event_preregistrations_path(@event.id), method: :get, :class => 'btn btn-primary' %>
+  </div>
+  <br><br>
+  <%= render 'form' %>
+</div>

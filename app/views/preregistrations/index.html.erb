@@ -6,6 +6,7 @@
 
   <div class="container">
     <div class='btn-group' role='group'>
+      <%= button_to 'Add Preregistrations', new_event_preregistration_path(@event.id), method: :get, :class => 'btn btn-primary mr-1' %>
       <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-yale mr-1' %>
       <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
       <%= button_to 'Attendees', event_attendances_path(@event.id), method: :get, :class => 'btn btn-primary mr-1' %>

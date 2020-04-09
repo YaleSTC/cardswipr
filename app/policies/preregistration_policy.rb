@@ -2,8 +2,12 @@
 
 # Policies for Preregistration resources/actions
 class PreregistrationPolicy < ApplicationPolicy
+  def create?
+    true
+  end
+
   def index?
-    user_can_modify_event?(user, record.event)
+    true
   end
 
   def destroy?
