@@ -23,6 +23,9 @@
         <% end %>
         <br />
         <p><%= @event.attendances.size %> Recorded</p>
+        <% if @event.preregistration %>
+          <p><%= @event.preregistrations.size %> Preregistered</p>
+        <% end %>
       </div>
     </div>
   </div>

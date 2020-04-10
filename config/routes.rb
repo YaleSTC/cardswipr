@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       end
     end
     resources :user_events, only: %i(create destroy)
+    resources :preregistrations, only: %i(index)
   end
   resources :lookups, only: %i(index create)
 

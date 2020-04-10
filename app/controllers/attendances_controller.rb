@@ -18,7 +18,7 @@ class AttendancesController < ApplicationController
   end
 
   def index
-    @attendances = @event.attendances
+    @attendances = @event.attendances.order(checked_in_at: :asc)
   end
 
   def destroy
