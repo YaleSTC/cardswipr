@@ -24,7 +24,7 @@
               <%= button_to 'Event Check-in', event_path(event.id), method: :get, :class => 'btn btn-yale' %>
             </td>
             <td>
-              <%= button_to 'Attendee List', event_attendances_path(event.id), method: :get, :class => 'btn btn-primary ' %>
+              <%= button_to 'Attendance Info', event_attendances_path(event.id), method: :get, :class => 'btn btn-primary ' %>
             </td>
             <td>
               <%= event.title %>

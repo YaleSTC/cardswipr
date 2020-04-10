@@ -11,7 +11,7 @@ RSpec.describe 'Attendance', type: :system do
     stub_cas(user_with_events.username)
     sign_in user_with_events
     visit dashboard_path
-    click_on('Attendee List', match: :first)
+    click_on('Attendance Info', match: :first)
   end
 
   context 'when signed in as user' do
@@ -73,6 +73,10 @@ RSpec.describe 'Attendance', type: :system do
       visit current_path
       click_on('X', match: :first)
       expect(page).to have_content('Successfully deleted attendance!')
+    end
+
+    it 'does not have a button to view preregistrations if not applicable' do
+      expect(page).to have_no_button('Preregistrations')
     end
   end
 
