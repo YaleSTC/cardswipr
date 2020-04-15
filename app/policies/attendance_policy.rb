@@ -3,7 +3,7 @@
 # Policies for Attendance resources/actions
 class AttendancePolicy < ApplicationPolicy
   def create?
-    true
+    index?
   end
 
   def index?
