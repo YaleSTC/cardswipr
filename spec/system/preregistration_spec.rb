@@ -13,7 +13,7 @@ RSpec.describe 'Preregistration', type: :system do
     sign_in user
     visit dashboard_path
     click_on('Attendance Info', match: :first)
-    click_on('Preregistrations', match: :first)
+    click_on('Preregistrations')
   end
 
   context 'when signed in as user' do
@@ -30,6 +30,12 @@ RSpec.describe 'Preregistration', type: :system do
       preregistration1.update(checked_in: true)
       visit current_path
       expect(page).to have_css('tr.alert-primary', count: 1)
+    end
+
+    it 'can be deleted' do
+      visit current_path
+      click_on('X', match: :first)
+      expect(page).to have_content('Successfully deleted preregistration!')
     end
   end
 end

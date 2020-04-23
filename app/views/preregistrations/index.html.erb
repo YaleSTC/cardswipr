@@ -44,7 +44,7 @@
               <td data-role="preregistration.checked-in">No</td>
             <% end %>
             <td data-role="delete preregistration">
-              <%= button_to 'X' %>
+              <%= button_to 'X', event_preregistration_path(preregistration.event.id, preregistration.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger btn-sm', aria: { label: 'Delete Preregistration' } %>
             </td>
           </tr>
         <% end %>

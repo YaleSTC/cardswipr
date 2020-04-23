@@ -22,8 +22,8 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
-    @attendance = Attendance.find(params[:id])
-    if @attendance.destroy
+    attendance = Attendance.find(params[:id])
+    if attendance.destroy
       redirect_to event_attendances_path(@event),
                   notice: 'Successfully deleted attendance!'
     else
