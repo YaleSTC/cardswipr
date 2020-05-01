@@ -1,55 +1,48 @@
+<%= render partial: 'application/attendance_toggle', locals: { event: @event, attendance_active: false } %>
+<br>
+<div class='container' role='group'>
+  <div style="float:right">
+    <%= button_to 'Add Preregistrations', new_event_preregistration_path(@event), method: :get, :class => 'btn btn-primary' %>
+  </div>
+  <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-yale' %>
+</div>
+
 <div class="container">
-  <br />
-  <div class="text-center">
-    <h1>Preregistration List: <%= @event.title %></h1>
-  </div>
-
-  <div class="container">
-    <div class='btn-group' role='group'>
-      <%= button_to 'Add Preregistrations', new_event_preregistration_path(@event.id), method: :get, :class => 'btn btn-primary mr-1' %>
-      <%= button_to 'Event Check-In', event_path(@event), method: :get, :class => 'btn btn-yale mr-1' %>
-      <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => 'btn btn-primary mr-1' %>
-      <%= button_to 'Attendees', event_attendances_path(@event.id), method: :get, :class => 'btn btn-primary mr-1' %>
-    </div>
-  </div>
-
-  <div class="container">
-    <table aria-label="Pregistration List" class="table-borderless mb-3" tabindex="0">
-      <caption style="caption-side: top; text-align: right;">
-        <%= @preregistrations.size %> Preregistered
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">NetID</th>
-          <th scope="col">Email</th>
-          <th scope="col">Checked In?</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @preregistrations.each do |preregistration| %>
-          <% if preregistration.checked_in %>
-            <tr style="background-color: #cce5ff;">
-          <% else %>
-            <tr>
-          <% end %>
-            <td data-role="preregistration.first-name"><%= preregistration.first_name.titleize %></td>
-            <td data-role="preregistration.last-name"><%= preregistration.last_name.titleize %></td>
-            <td data-role="preregistration.net-id"><%= preregistration.net_id %></td>
-            <td data-role="preregistration.email"><%= preregistration.email.downcase %></td>
-            <% if preregistration.checked_in %>
-              <td data-role="preregistration.checked-in">Yes</td>
-            <% else %>
-              <td data-role="preregistration.checked-in">No</td>
-            <% end %>
-            <td data-role="delete preregistration">
-              <%= button_to 'X', event_preregistration_path(preregistration.event.id, preregistration.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger btn-sm', aria: { label: 'Delete Preregistration' } %>
-            </td>
-          </tr>
+  <table aria-label="Pregistration List" class="table-borderless mb-3" tabindex="0">
+    <caption style="caption-side: top; text-align: right;">
+      <%= @preregistrations.size %> Preregistrations
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">NetID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Checked In?</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @preregistrations.each do |preregistration| %>
+        <% if preregistration.checked_in %>
+          <tr style="background-color: #cce5ff;">
+        <% else %>
+          <tr>
         <% end %>
-      </tbody>
-    </table>
-  </div>
+          <td data-role="preregistration.first-name"><%= preregistration.first_name.titleize %></td>
+          <td data-role="preregistration.last-name"><%= preregistration.last_name.titleize %></td>
+          <td data-role="preregistration.net-id"><%= preregistration.net_id %></td>
+          <td data-role="preregistration.email"><%= preregistration.email.downcase %></td>
+          <% if preregistration.checked_in %>
+            <td data-role="preregistration.checked-in">Yes</td>
+          <% else %>
+            <td data-role="preregistration.checked-in">No</td>
+          <% end %>
+          <td data-role="delete preregistration">
+            <%= button_to 'X', event_preregistration_path(preregistration.event.id, preregistration.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger btn-sm', aria: { label: 'Delete Preregistration' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

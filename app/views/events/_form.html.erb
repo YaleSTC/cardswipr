@@ -5,10 +5,10 @@
     <p><small id='titleHelp'>This will be displayed on the swipe-in screen in large text.</small></p>
     <%= f.label 'Description' %>
     <%= f.input :description, label: false, error: '', input_html: { class: 'form-control', 'aria-describedby' => 'descriptHelp' } %>
-    <p><small id='descriptHelp'>This will be displayed on the swipe-in screen in smaller text. You might tell attendees how you will use their email or netid, or what they should do after swiping in.</small></p>
-    <%= f.label 'Preregistration' %>
+    <p><small id='descriptHelp'>This will be displayed on the swipe-in screen in smaller text. You might tell attendees how you will use their email or NetID, or what they should do after swiping in.</small></p>
+    <%= f.label 'Require Preregistrations' %>
     <%= f.input :preregistration, type: 'checkbox', error: '', label: false, input_html: { 'aria-describedby' => 'preregHelp' } %>
-    <p><small id='preregHelp'>Allow event managers to upload a list of preregistered attendees. Only preregistered attendees will be able to attend this event.</small></p>
+    <p><small id='preregHelp'>Allow event managers to upload a list of preregistered attendees. Only preregistered attendees will be able to check in to this event.</small></p>
     <%= f.submit class: "btn btn-yale" %>
   <% end %>
 </div>

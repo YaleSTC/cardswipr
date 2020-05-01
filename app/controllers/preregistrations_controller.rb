@@ -5,7 +5,8 @@ class PreregistrationsController < ApplicationController
   prepend_before_action :set_event, only: %i(index new create destroy import)
 
   def index
-    @preregistrations = @event.preregistrations.order(last_name: :asc)
+    @preregistrations = @event.preregistrations.order(checked_in: :asc,
+                                                      last_name: :asc)
   end
 
   def destroy

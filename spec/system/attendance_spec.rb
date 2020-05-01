@@ -74,10 +74,6 @@ RSpec.describe 'Attendance', type: :system do
       click_on('X', match: :first)
       expect(page).to have_content('Successfully deleted attendance!')
     end
-
-    it 'does not have a button to view preregistrations if not applicable' do
-      expect(page).to have_no_button('Preregistrations')
-    end
   end
 
   def generate_attendances

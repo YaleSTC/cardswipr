@@ -23,4 +23,9 @@ RSpec.describe 'preregistrations/index', type: :view do
     expect(rendered).to have_css('tr', style: 'background-color: #cce5ff;',
                                        count: 2)
   end
+
+  it 'shows Preregistrations toggle as active' do
+    render
+    expect(rendered).to have_css('.toggle-right', class: 'btn-dark')
+  end
 end
