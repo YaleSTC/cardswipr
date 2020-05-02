@@ -28,6 +28,7 @@ This file should be updated before a new release is deployed.
 * Updated attendance creator to handle events with preregistration [#221](https://gitlab.com/yale-sdmp/cardswipr/issues/221)
 * Changed Fake Person to return a person with the same netid that was passed to it [#232](https://gitlab.com/yale-sdmp/cardswipr/issues/232)
 * Redirected to Attendance Info page upon creation of an event [#229](https://gitlab.com/yale-sdmp/cardswipr/issues/229)
+* Updated event creation form to be more accessible [#226] (https://gitlab.com/yale-sdmp/cardswipr/-/issues/226)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)
