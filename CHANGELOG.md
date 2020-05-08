@@ -84,6 +84,7 @@ This file should be updated before a new release is deployed.
 * Allowed event organizers to add preregistrations [#223](https://gitlab.com/yale-sdmp/cardswipr/-/issues/223)
 * Allowed event organizers to add preregistrations via csv upload [#222](https://gitlab.com/yale-sdmp/cardswipr/-/issues/222)
 * Added preregistration policy and policy spec [#227](https://gitlab.com/yale-sdmp/cardswipr/-/issues/227)
+* Added testing for table rows in preregistration index [#234](https://gitlab.com/yale-sdmp/cardswipr/-/issues/234)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
