@@ -13,7 +13,8 @@ class AttendancesController < ApplicationController
                   notice: "Successfully checked in
                   #{creator.attendance.full_name}!"
     else
-      redirect_to event_path(@event), alert: creator.errors.full_messages.first
+      redirect_to event_path(@event),
+                  alert: creator.errors.full_messages.join(', ')
     end
   end
 
