@@ -24,13 +24,6 @@ RSpec.describe 'Preregistration', type: :system do
       .and have_content(preregistration2.first_name.titleize)
   end
 
-  it 'highlights row if preregistered user checked in' do
-    preregistration1 = event.preregistrations.first
-    preregistration1.update(checked_in: true)
-    visit current_path
-    expect(page).to have_css('tr.alert-primary', count: 1)
-  end
-
   it 'can be deleted' do
     visit current_path
     click_on('X', match: :first)
