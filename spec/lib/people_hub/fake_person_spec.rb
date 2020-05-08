@@ -10,6 +10,11 @@ RSpec.describe PeopleHub::FakePerson do
       expect(fake_person.instance_variable_get(attr)).not_to eq(nil)
     end
   end
+  it 'when given a netid, returns a person with that netid' do
+    netid = 'netid1'
+    fake_person = described_class.new(netid)
+    expect(fake_person.net_id).to eq(netid)
+  end
 
   def person_params
     { first_name: 'Luke', last_name: 'Skywalker',

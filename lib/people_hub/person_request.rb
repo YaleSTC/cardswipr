@@ -47,7 +47,9 @@ module PeopleHub
     #
     # @param response [#to_h] a JSON response to be turned into a hash
     def self.response_to_person(response)
-      return PeopleHub::FakePerson.new if Rails.configuration.fake_peoplehub
+      if Rails.configuration.fake_peoplehub
+        return PeopleHub::FakePerson.new(response)
+      end
 
       person_hash = response.parsed_response&.dig('People', 'Person')
       raise 'Person not found' if person_hash.nil?

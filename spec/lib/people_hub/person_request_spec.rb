@@ -86,6 +86,15 @@ RSpec.describe PeopleHub::PersonRequest do
       expect(described_class.get('0123456789'))
         .to be_a PeopleHub::FakePerson
     end
+    it 'when given a netid, returns a person with that netid' do
+      netid = 'netid1'
+      response = described_class.get(netid)
+      expect(response.net_id).to eq(netid)
+    end
+    it 'when not given a netid, returns a person with a random netid' do
+      response = described_class.get('0123456789')
+      expect(response.net_id).not_to eq(nil)
+    end
   end
 
   def stub_valid_response

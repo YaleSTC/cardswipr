@@ -18,11 +18,12 @@ module PeopleHub
 
     # Method to take a hash of params and directly query PeopleHub.
     # Returns a JSON PeopleHub response. Will not send a query if
-    # the fake_peoplehub env is set to true
+    # the fake_peoplehub env is set to true. Instead, it returns the netid
+    # that was passed to it, if there is one.
     #
     # @param params [Hash] a hash of params
     def self.get(params)
-      return nil if Rails.configuration.fake_peoplehub
+      return params[:netid] if Rails.configuration.fake_peoplehub
 
       url = BASE + '?outputformat=json&' + parse_params(params)
       response = HTTParty.get(url, basic_auth: AUTH)
