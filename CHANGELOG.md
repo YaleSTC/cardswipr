@@ -27,7 +27,7 @@ This file should be updated before a new release is deployed.
 * Updated attendance creator to handle events with preregistration [#221](https://gitlab.com/yale-sdmp/cardswipr/issues/221)
 * Changed Fake Person to return a person with the same netid that was passed to it [#232](https://gitlab.com/yale-sdmp/cardswipr/issues/232)
 * Redirected to Attendance Info page upon creation of an event [#229](https://gitlab.com/yale-sdmp/cardswipr/issues/229)
-* Updated event creation form to be more accessible [#226] (https://gitlab.com/yale-sdmp/cardswipr/-/issues/226)
+* Updated event creation form to be more accessible [#226](https://gitlab.com/yale-sdmp/cardswipr/-/issues/226)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)
@@ -85,6 +85,7 @@ This file should be updated before a new release is deployed.
 * Allowed event organizers to add preregistrations via csv upload [#222](https://gitlab.com/yale-sdmp/cardswipr/-/issues/222)
 * Added preregistration policy and policy spec [#227](https://gitlab.com/yale-sdmp/cardswipr/-/issues/227)
 * Added testing for table rows in preregistration index [#234](https://gitlab.com/yale-sdmp/cardswipr/-/issues/234)
+* Added Administrate for Preregistration model [#233](https://gitlab.com/yale-sdmp/cardswipr/-/issues/233)
 
 ### Fixed
 * Fixed NoMethodError caused when you click on User Manual [#180](https://gitlab.com/yale-sdmp/cardswipr/issues/180)
