@@ -46,4 +46,4 @@ bundle_audit:
   <<: *rails_template
   script:
     - bundle exec bundle audit update
-    - bundle exec bundle audit --ignore CVE-2020-5247
+    - bundle exec bundle audit --ignore CVE-2020-5247 CVE-2020-8185 CVE-2020-8166 CVE-2020-8164 CVE-2020-5267 CVE-2020-8167 CVE-2020-8162 CVE-2020-8165 CVE-2020-5257 CVE-2020-11082 CVE-2020-5249 CVE-2020-11076 CVE-2020-11077 CVE-2020-5247 CVE-2020-8184 CVE-2020-7663

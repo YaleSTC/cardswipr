@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
 
   # retrieve and assign associated attributes from peoplehub to user
   def person_attrs_to_user(user)
-    person = PeopleHub::PersonRequest.get(netid: user.username)
+    person = PeopleHub::PersonRequest.get(user.username)
     user.email = person.email
     user.first_name = person.first_name
     user.last_name = person.last_name
