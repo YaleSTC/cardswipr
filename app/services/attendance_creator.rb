@@ -44,6 +44,7 @@ class AttendanceCreator
       errors.add(:base, 'This person has not preregistered')
       raise StandardError, 'No preregistration found'
     end
-    prereg.update(checked_in: true)
+    #TODO
+    prereg.update(checked_in_at: Time.zone.now)
   end
 end

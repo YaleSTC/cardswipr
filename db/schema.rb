@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_184940) do
+ActiveRecord::Schema.define(version: 2020_08_25_034227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 2020_04_03_184940) do
     t.index ["event_id"], name: "index_attendances_on_event_id"
   end
 
+  create_table "check_ins", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "net_id"
+    t.string "upi"
+    t.string "phone"
+    t.datetime "checked_in_at"
+    t.bigint "event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_check_ins_on_event_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "description"
     t.string "title"
@@ -36,20 +50,6 @@ ActiveRecord::Schema.define(version: 2020_04_03_184940) do
     t.datetime "updated_at", null: false
     t.integer "v1_id"
     t.boolean "preregistration", default: false
-  end
-
-  create_table "preregistrations", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "net_id"
-    t.string "upi"
-    t.string "phone"
-    t.boolean "checked_in", default: false
-    t.bigint "event_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_preregistrations_on_event_id"
   end
 
   create_table "user_events", force: :cascade do |t|
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_184940) do
   end
 
   add_foreign_key "attendances", "events"
-  add_foreign_key "preregistrations", "events"
+  add_foreign_key "check_ins", "events"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
 end

@@ -26,7 +26,7 @@ class PreregistrationCreator
     @event.preregistrations.create!(
       first_name: person.first_name, last_name: person.last_name,
       email: person.email, net_id: person.net_id, upi: person.upi,
-      phone: person.phone, checked_in: false
+      phone: person.phone, checked_in_at: nil
     )
   end
 end
