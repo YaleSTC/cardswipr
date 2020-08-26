@@ -8,8 +8,9 @@ RSpec.describe 'preregistrations/index', type: :view do
   before do
     assign(:event, event)
     assign(:preregistrations, event.preregistrations)
-    event.preregistrations.first.update(checked_in: true)
-    event.preregistrations.last.update(checked_in: true)
+    time = 'Tue, 25 Aug 2020 23:14:01 EDT -04:00'
+    event.preregistrations.first.update(checked_in_at: time)
+    event.preregistrations.last.update(checked_in_at: time)
   end
 
   # There should be a table header and 5 default preregistrations

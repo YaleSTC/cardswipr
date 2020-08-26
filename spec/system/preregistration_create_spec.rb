@@ -5,7 +5,7 @@ require 'csv'
 
 RSpec.describe 'Preregistration creation', type: :system do
   let(:user) { create(:user) }
-  let(:event) { create(:event_with_preregistrations) }
+  let(:event) { create(:event, preregistration: true) }
   let(:net_id) { 'ls222' }
 
   before do

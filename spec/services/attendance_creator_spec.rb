@@ -63,8 +63,8 @@ RSpec.describe AttendanceCreator do
 
     # rubocop:disable RSpec/ExampleLength
     it 'fails to create attendance for person who has already checked in' do
-      create(:preregistration, event: prereg_event, net_id: net_id,
-                               email: email, checked_in: true)
+      create(:preregistration, event: prereg_event, net_id: net_id, email: email, 
+                               checked_in_at: 'Tue, 25 Aug 2020 23:14:01 EDT -04:00')
       create(:attendance, event: prereg_event, email: email)
       creator2 = described_class.new(event: prereg_event, search_param: net_id)
       stub_people_hub(email)

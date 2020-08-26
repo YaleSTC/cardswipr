@@ -30,6 +30,7 @@ This file should be updated before a new release is deployed.
 * Redirected to Attendance Info page upon creation of an event [#229](https://gitlab.com/yale-sdmp/cardswipr/issues/229)
 * Updated event creation form to be more accessible [#226](https://gitlab.com/yale-sdmp/cardswipr/-/issues/226)
 * Updated UX [#230](https://gitlab.com/yale-sdmp/cardswipr/issues/230)
+* Changed preregistrations to Single Table Inheritance with attendances [#237](https://gitlab.com/yale-sdmp/cardswipr/issues/230)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)
