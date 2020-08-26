@@ -8,6 +8,7 @@ class CreateCheckIns < ActiveRecord::Migration[6.0]
       t.string :upi
       t.string :phone
       t.datetime :checked_in_at
+      t.string :type
       t.references :event, foreign_key: true
       t.timestamps
     end
