@@ -13,6 +13,7 @@ class Event < ApplicationRecord
   has_many :user_events, dependent: :destroy
   has_many :users, through: :user_events
   has_many :preregistrations, dependent: :destroy
+  has_many :check_ins, dependent: :destroy
 
   private
 

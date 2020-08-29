@@ -28,7 +28,7 @@ class AttendanceCreator
 
   def create_attendance(search_param)
     person = PeopleHub::PersonRequest.get(search_param)
-    check_preregistrations(person) if @event.preregistration
+    @event.preregistration ? check_preregistrations(person) :
     @event.attendances.create!(
       first_name: person.first_name, last_name: person.last_name,
       email: person.email, net_id: person.net_id, upi: person.upi,
@@ -44,7 +44,7 @@ class AttendanceCreator
       errors.add(:base, 'This person has not preregistered')
       raise StandardError, 'No preregistration found'
     end
-    #TODO
-    prereg.update(checked_in_at: Time.zone.now)
+    prereg.update(type: 'Attendance', checked_in_at: Time.zone.now)
+    return prereg
   end
 end

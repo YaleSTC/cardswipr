@@ -47,11 +47,21 @@ RSpec.describe AttendanceCreator do
     end
 
     it 'sets checked_in to true on corresponding preregistration' do
+      skip #change to sets type to Attendance
       prereg = create(:preregistration, event: prereg_event, net_id: net_id)
       creator2 = described_class.new(event: prereg_event, search_param: net_id)
       stub_people_hub_with(net_id)
       creator2.call
       expect(prereg.reload.checked_in).to eq(true)
+    end
+
+    it 'sets checked_in_at on corresponding preregistration to same as attendance' do
+      skip
+      prereg = create(:preregistration, event: prereg_event, net_id: net_id)
+      creator2 = described_class.new(event: prereg_event, search_param: net_id)
+      stub_people_hub_with(net_id)
+      creator2.call
+      expect(prereg.reload.checked_in_at).to eq(creator2.attendance.checked_in_at)
     end
 
     it 'fails to create attendance for non-preregistered person' do
