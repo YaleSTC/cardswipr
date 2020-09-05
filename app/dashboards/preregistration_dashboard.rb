@@ -78,10 +78,10 @@ class PreregistrationDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how attendances are displayed
+  # Overwrite this method to customize how preregistrations are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(attendance)
-  #   "Attendance ##{attendance.id}"
+  # def display_resource(preregistration)
+  #   "preregistration ##{preregistration.id}"
   # end
 end

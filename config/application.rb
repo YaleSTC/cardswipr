@@ -19,17 +19,6 @@ module CardswiprNew
     config.autoload_paths += ["#{config.root}/lib"]
 
     # Set time zone
-    config.time_zone = 'Eastern Time (US & Canada)'
-
-    #TODO
-    # ActionDispatch::Callbacks.after do      
-    #   # Reload the factories
-    #   return unless (Rails.env.development? || Rails.env.test?)
-
-    #   unless FactoryBot.factories.blank?
-    #     FactoryBot.factories.clear
-    #     FactoryBot.find_definitions
-    #   end
-    # end  
+    config.time_zone = 'Eastern Time (US & Canada)' 
   end
 end
