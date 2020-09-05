@@ -20,4 +20,11 @@ RSpec.describe PreregistrationCreator do
     creator.call
     expect(creator.preregistration.net_id).to eq(net_id)
   end
+
+  it 'fails to create preregistration for person who has already checked in' do
+    email = 'checkedin@email.com'
+    create(:attendance, event: event, email: email)
+    stub_people_hub(email)
+    expect(creator.call).to eq(false)
+  end
 end

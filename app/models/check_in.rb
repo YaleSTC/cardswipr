@@ -14,8 +14,7 @@ class CheckIn < ApplicationRecord
   validates :email,
             presence: true,
             format: { with: /\A[\w+\-.]+@[a-z\d\-\.]+[^.]\.[a-z]+\z/i },
-            uniqueness: { case_sensitive: false, 
-                          scope: [:event, :type] }
+            uniqueness: { case_sensitive: false, scope: [:event] }
   validates :net_id, presence: true
   validates :upi, presence: true
   validates :event, presence: true

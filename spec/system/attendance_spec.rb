@@ -64,7 +64,7 @@ RSpec.describe 'Attendance', type: :system do
       data = generate_attendances
       click_on('Export CSV')
       export = 'first_name,last_name,email,net_id,upi,checked_in_at'
-      export += data.map { |n| export_row_for(n) }.join
+      export += data.reverse.map { |n| export_row_for(n) }.join
       expect(page.html).to have_content(export)
     end
 
