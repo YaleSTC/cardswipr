@@ -34,7 +34,7 @@ class AttendancesController < ApplicationController
   end
 
   def export
-    @attendances = @event.attendances
+    @attendances = @event.attendances.order(last_name: :asc)
     generator = CsvGenerator.new(data: @attendances)
     if generator.generate
       send_data(generator.csv, filename: csv_filename, type: 'text/csv')

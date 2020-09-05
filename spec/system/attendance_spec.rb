@@ -61,10 +61,10 @@ RSpec.describe 'Attendance', type: :system do
     end
 
     it 'has the right content' do
-      data = generate_attendances
+      data = generate_attendances.sort_by(&:last_name)
       click_on('Export CSV')
       export = 'first_name,last_name,email,net_id,upi,checked_in_at'
-      export += data.reverse.map { |n| export_row_for(n) }.join
+      export += data.map { |n| export_row_for(n) }.join
       expect(page.html).to have_content(export)
     end
 
