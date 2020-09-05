@@ -19,9 +19,9 @@ class PreregistrationDashboard < Administrate::BaseDashboard
     net_id: Field::String,
     upi: Field::String,
     phone: Field::String,
-    checked_in: Field::Boolean,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
+    checked_in_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -39,15 +39,15 @@ class PreregistrationDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i(
-    event
     id
+    event
     first_name
     last_name
     email
     net_id
     upi
     phone
-    checked_in
+    checked_in_at
     created_at
     updated_at
   ).freeze
@@ -63,7 +63,7 @@ class PreregistrationDashboard < Administrate::BaseDashboard
     net_id
     upi
     phone
-    checked_in
+    checked_in_at
   ).freeze
 
   # COLLECTION_FILTERS
@@ -78,10 +78,10 @@ class PreregistrationDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how preregistrations are displayed
+  # Overwrite this method to customize how attendances are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(preregistration)
-  #   "Preregistration ##{preregistration.id}"
+  # def display_resource(attendance)
+  #   "Attendance ##{attendance.id}"
   # end
 end

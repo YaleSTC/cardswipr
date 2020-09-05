@@ -21,14 +21,15 @@ module CardswiprNew
     # Set time zone
     config.time_zone = 'Eastern Time (US & Canada)'
 
-    ActionDispatch::Callbacks.after do      
-      # Reload the factories
-      return unless (Rails.env.development? || Rails.env.test?)
+    #TODO
+    # ActionDispatch::Callbacks.after do      
+    #   # Reload the factories
+    #   return unless (Rails.env.development? || Rails.env.test?)
 
-      unless FactoryBot.factories.blank?
-        FactoryBot.factories.clear
-        FactoryBot.find_definitions
-      end
-    end  
+    #   unless FactoryBot.factories.blank?
+    #     FactoryBot.factories.clear
+    #     FactoryBot.find_definitions
+    #   end
+    # end  
   end
 end
