@@ -82,6 +82,6 @@ class PreregistrationDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   # def display_resource(preregistration)
-  #   "preregistration ##{preregistration.id}"
+  #   "Preregistration ##{preregistration.id}"
   # end
 end

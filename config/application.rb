@@ -19,6 +19,6 @@ module CardswiprNew
     config.autoload_paths += ["#{config.root}/lib"]
 
     # Set time zone
-    config.time_zone = 'Eastern Time (US & Canada)' 
+    config.time_zone = 'Eastern Time (US & Canada)'
   end
 end
