@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-gem 'rails', '~> 6.0.3.4'
+gem 'rails', '~> 6.0.3.5'
 
 gem 'administrate', '~> 0.14.0'
 gem 'bootsnap', '>= 1.4.5', require: false
@@ -15,7 +15,7 @@ gem 'font-awesome-rails', '~> 4.7.0'
 gem 'high_voltage', '~> 3.1.0'
 gem 'httparty', '~> 0.16.4'
 gem 'jbuilder', '~> 2.5'
-gem 'paper_trail', '~> 11.0'
+gem 'kaminari', '~> 1.1'
 gem 'pg', '~> 1.1.4'
 gem 'puma', '~> 4.3'
 gem 'pundit', '~> 1.1.0'

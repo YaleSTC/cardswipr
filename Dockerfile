@@ -19,6 +19,8 @@ RUN apk del .build-deps
 
 COPY . /usr/src/app/
 
+RUN RAILS_ENV=production rails assets:precompile
+
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
 CMD ["bin/rails", "s", "-b", "0.0.0.0"]

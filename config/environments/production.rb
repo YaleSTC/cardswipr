@@ -69,11 +69,11 @@ Rails.application.configure do
   # Configure mail delivery with SMTP through Mandrill
       config.action_mailer.delivery_method = :smtp
       config.action_mailer.smtp_settings = {
-        :address   => ENV.fetch('MANDRILL_ADDRESS'),
-        :port      => ENV.fetch('MANDRILL_PORT'), # ports 25, 587 and 2525 are supported with STARTTLS
+        :address   => ENV['MANDRILL_ADDRESS'],
+        :port      => ENV['MANDRILL_PORT'], # ports 25, 587 and 2525 are supported with STARTTLS
         :enable_starttls_auto => true, # detects and uses STARTTLS
-        :user_name => ENV.fetch('MANDRILL_USERNAME'),
-        :password  => ENV.fetch('MANDRILL_PASSWORD'), # SMTP password is any valid API key
+        :user_name => ENV['MANDRILL_USERNAME'],
+        :password  => ENV['MANDRILL_PASSWORD'], # SMTP password is any valid API key
         :authentication => 'login', # Mandrill supports 'plain' or 'login'
       }
 
@@ -91,7 +91,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
@@ -100,11 +100,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.secret_key_base = ENV.fetch('SECRET_KEY_BASE')
+  config.secret_key_base = ENV.fetch('SECRET_KEY_BASE', 'fake_base')
 
   # Devise mailer
   config.action_mailer.default_url_options =
-    { host: ENV.fetch('APPLICATION_HOST') }
+    { host: ENV['APPLICATION_HOST'] }
 
   # turn off fake PeopleHub
   config.fake_peoplehub = false
@@ -131,5 +131,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Defend against host header attacks
-  config.hosts = ENV.fetch('APPLICATION_HOST')
+  config.hosts = ENV['APPLICATION_HOST']
 end
