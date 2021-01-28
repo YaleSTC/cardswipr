@@ -24,6 +24,7 @@ This file should be updated before a new release is deployed.
 * Modify check-in behavior to address user feedback [#212](https://gitlab.com/yale-sdmp/cardswipr/issues/212)
 * Upgraded to rails 6.0 and ruby 2.6.5 [#214](https://gitlab.com/yale-sdmp/cardswipr/issues/214)
 * Updated attendance policy [#228](https://gitlab.com/yale-sdmp/cardswipr/issues/228)
+* Prepared for fargate migration [#241](https://gitlab.com/yale-sdmp/cardswipr/issues/241)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

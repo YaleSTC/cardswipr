@@ -19,11 +19,8 @@ This method requires Docker-Compose to be installed on your system. You can find
 git clone https://gitlab.com/yale-sdmp/cardswipr.git
 cd cardswipr
 
-# Set up the database configuration for docker
-cp config/database.yml.docker config/database.yml
-
 # Set up .env file
-cp .env.development .env
+cp .env.example .env
 # Uncomment the commented out section for docker and fill in required environment variables
 # Note: leave any unneeded variables blank after the equals sign
 
@@ -45,11 +42,8 @@ You will also need PostgreSQL installed on your machine.
 git clone https://gitlab.com/yale-sdmp/cardswipr.git
 cd cardswipr
 
-# Configure the database
-cp config/database.yml.local config/database.yml
-
 # Set up environment variables
-cp .env.development .env
+cp .env.example .env
 # Fill out required environment variables, leaving any unneeded variables as blank after the equals sign
 
 # Set up rails
