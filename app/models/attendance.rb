@@ -11,14 +11,12 @@
 class Attendance < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email,
-            presence: true,
-            format: { with: /\A[\w+\-.]+@[a-z\d\-\.]+[^.]\.[a-z]+\z/i },
-            uniqueness: { case_sensitive: false, scope: :event }
   validates :net_id, presence: true
   validates :upi, presence: true
   validates :checked_in_at, presence: true
 
   # Associations
   belongs_to :event
+  belongs_to :user, primary_key: :username, foreign_key: :net_id,
+                    inverse_of: :attendances, optional: true
 end

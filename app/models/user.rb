@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, presence: true
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   # Associations
   has_many :user_events, dependent: :destroy
