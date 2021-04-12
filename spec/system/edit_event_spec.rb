@@ -76,7 +76,7 @@ RSpec.describe 'Event editing', type: :system do
     end
 
     it 'are displayed in alphabetical order by last name' do
-      user1 = create(:user, first_name: 'zf', last_name: 'al', username: ' ')
+      user1 = create(:user, first_name: 'zf', last_name: 'al', username: 'zz')
       user2 = create(:user, first_name: 'Afirst', last_name: 'Blast')
       create(:event, users: [user2, user1])
       log_in user1

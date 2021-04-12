@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-gem 'rails', '~> 6.0.3.5'
+gem 'rails', '~> 6.0.3'
 
 gem 'administrate', '~> 0.14.0'
 gem 'bootsnap', '>= 1.4.5', require: false
@@ -21,6 +21,7 @@ gem 'puma', '~> 4.3'
 gem 'pundit', '~> 1.1.0'
 gem 'shoulda-matchers', '~> 3.1.3'
 gem 'simple_form', '~> 5.0.0'
+gem 'sprockets', '~> 3.7.2'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.2'
 
