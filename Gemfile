@@ -5,7 +5,7 @@ ruby '2.6.5'
 
 gem 'rails', '~> 6.0.3.6'
 
-gem 'administrate', '~> 0.12.0'
+gem 'administrate', '~> 0.13.0'
 gem 'bootsnap', '>= 1.4.5', require: false
 gem 'devise', '~> 4.7.0'
 gem 'devise_cas_authenticatable', '~> 1.10.3'
