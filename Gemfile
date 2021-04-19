@@ -5,7 +5,7 @@ ruby '2.6.5'
 
 gem 'rails', '~> 6.0.3.6'
 
-gem 'administrate', '~> 0.12.0'
+gem 'administrate', '~> 0.14.0'
 gem 'bootsnap', '>= 1.4.5', require: false
 gem 'devise', '~> 4.7.0'
 gem 'devise_cas_authenticatable', '~> 1.10.3'
@@ -17,10 +17,11 @@ gem 'httparty', '~> 0.16.4'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari', '~> 1.1'
 gem 'pg', '~> 1.1.4'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'pundit', '~> 1.1.0'
 gem 'shoulda-matchers', '~> 3.1.3'
 gem 'simple_form', '~> 5.0.0'
+gem 'sprockets', '~> 3.7.2'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.2'
 

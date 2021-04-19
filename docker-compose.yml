@@ -3,16 +3,40 @@ version: '3.3'
 services:
 
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    stdin_open: true
+    tty: true
     ports:
       - "3000:3000"
 
     volumes:
       - .:/usr/src/app
-      - ./deco.json.template:/run/secrets/deco.json
+
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      APPLICATION_HOST: ${APPLICATION_HOST}
+      CAS_BASE_URL: ${CAS_BASE_URL}
+      IDENTITY_SERVER_URL: ${IDENTITY_SERVER_URL}
+      IDENTITY_SERVER_USERNAME: ${IDENTITY_SERVER_USERNAME}
+      IDENTITY_SERVER_PASSWORD: ${IDENTITY_SERVER_PASSWORD}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      MANDRILL_USERNAME: ${MANDRILL_USERNAME}
+      MANDRILL_PASSWORD: ${MANDRILL_PASSWORD}
+      MANDRILL_ADDRESS: ${MANDRILL_ADDRESS}
+      MANDRILL_PORT: ${MANDRILL_PORT}
+      MANDRILL_FROM_NAME: ${MANDRILL_FROM_NAME}
+      MANDRILL_FROM_EMAIL: ${MANDRILL_FROM_EMAIL}
 
   database:
-    image: postgres
+    image: postgres:12.2
+    environment:
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql/data
 

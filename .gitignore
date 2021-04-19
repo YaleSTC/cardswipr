@@ -23,9 +23,6 @@ deco.json
 /log/*.log
 /tmp
 
-# Ignore the sensitive database.yml file
-/config/database.yml
-
 # rails_best_practices
 /rails_best_practices_output.html
 

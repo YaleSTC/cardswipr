@@ -7,14 +7,18 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
+    "@rails/webpacker": "^4.2.2",
     "bootstrap": "4.3.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0",
     "yale-ui-component-library": "1.1.5"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.10.3"
+    "improved-yarn-audit": "^2.2.1",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "resolutions": {
+    "elliptic": "^6.5.3"
   }
 }

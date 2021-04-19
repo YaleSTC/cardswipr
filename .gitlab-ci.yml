@@ -1,7 +1,7 @@
 stages:
   - test
   - build
-  - deploy
+  - scan
 
 .rails_template: &rails_template
   image: ruby:2.6.5
@@ -17,11 +17,25 @@ stages:
   stage: test
 
   cache:
+    key:
+      files:
+        - Gemfile.lock
+        - package.json
     paths:
       - vendor/bundle
+      - node_modules
 
   before_script:
-    - apt-get update -q
+    - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+    - apt-get -y update && apt-get -y install google-chrome-stable
+    # For ChromeDriver
+    - CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
+    - wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P /usr/local/bin/
+    - unzip /usr/local/bin/chromedriver_linux64.zip -d /usr/local/bin/
+    - chown root:root /usr/local/bin/chromedriver
+    - chmod 0755 /usr/local/bin/chromedriver
+    # Yarn
     - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
     - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     - curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs yarn
@@ -29,6 +43,7 @@ stages:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle
     - yarn install
     - cp -f config/database.yml{.gitlab,}
+    - cp .env.example .env
 
 rails_test:
   <<: *rails_template
@@ -46,4 +61,65 @@ bundle_audit:
   <<: *rails_template
   script:
     - bundle exec bundle audit update
-    - bundle exec bundle audit --ignore CVE-2020-5247 CVE-2020-8185 CVE-2020-8166 CVE-2020-8164 CVE-2020-5267 CVE-2020-8167 CVE-2020-8162 CVE-2020-8165 CVE-2020-5257 CVE-2020-11082 CVE-2020-5249 CVE-2020-11076 CVE-2020-11077 CVE-2020-5247 CVE-2020-8184 CVE-2020-7663
+    - bundle exec bundle audit
+
+yarn_audit:
+  <<: *rails_template
+
+  script:
+    - yarn run improved-yarn-audit --exclude 565
+
+.build_template: &build_template
+  image: docker:latest
+
+  stage: build
+
+  services:
+    - docker:dind
+
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+
+  before_script:
+    - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" $CI_REGISTRY
+
+  rules:
+    # Run when a new tag is cut
+    - if: $CI_COMMIT_TAG
+
+build_rails:
+  <<: *build_template
+
+  script:
+    - docker build -f Dockerfile --pull -t "$CI_REGISTRY_IMAGE/rails:$CI_COMMIT_TAG" .
+    - docker push "$CI_REGISTRY_IMAGE/rails:$CI_COMMIT_TAG"
+
+include:
+  - template: Container-Scanning.gitlab-ci.yml
+
+# Override the defaults in the container_scanning template job
+container_scanning:
+  # Only run after the build stage has passed
+  stage: scan
+  # The container scanner will pull from $CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG
+  variables:
+    CI_APPLICATION_REPOSITORY: $CI_REGISTRY_IMAGE/rails
+    CI_APPLICATION_TAG: $CI_COMMIT_TAG
+    DOCKERFILE_PATH: Dockerfile
+  before_script:
+    # Scheduled pipelines won't have a commit tag so we set the $CI_APPLICATION_TAG manually
+    # This will set $CI_APPLICATION_TAG to the most recent commit
+    - >
+      if [[ "$CI_PIPELINE_SOURCE" == "schedule" ]]; then
+        apk add --update --no-cache git
+        git fetch --tags --force
+        export CI_APPLICATION_TAG=$(git tag --list --sort=committerdate | tail -n 1)
+        echo "Checking $CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG"
+      fi
+  # The pipeline will run only if a rule matches
+  rules:
+    # Run on scheduled pipelines
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: always
+    # Run when a new tag is cut
+    - if: $CI_COMMIT_TAG
