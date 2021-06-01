@@ -4,7 +4,7 @@ stages:
   - scan
 
 .rails_template: &rails_template
-  image: ruby:2.6.5
+  image: ruby:2.6.5-alpine
 
   services:
     - postgres:latest
@@ -26,23 +26,11 @@ stages:
       - node_modules
 
   before_script:
-    - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
-    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
-    - apt-get -y update && apt-get -y install google-chrome-stable
-    # For ChromeDriver
-    - CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
-    - wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P /usr/local/bin/
-    - unzip /usr/local/bin/chromedriver_linux64.zip -d /usr/local/bin/
-    - chown root:root /usr/local/bin/chromedriver
-    - chmod 0755 /usr/local/bin/chromedriver
-    # Yarn
-    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-    - curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs yarn
+    - apk add alpine-sdk chromium-chromedriver nodejs postgresql-dev tzdata yarn
     - gem install bundler --no-document
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle
     - yarn install
-    - cp -f config/database.yml{.gitlab,}
+    - cp config/database.yml.gitlab config/database.yml
     - cp .env.example .env
 
 rails_test:

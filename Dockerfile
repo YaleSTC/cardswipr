@@ -1,26 +1,41 @@
-FROM ruby:2.6.5-alpine
+FROM ruby:2.6.5-alpine AS build
 
-# Install packages
-RUN apk update && \
-  apk upgrade
+RUN apk update \
+   && apk upgrade \
+   && apk add --update --no-cache alpine-sdk nodejs postgresql-dev tzdata yarn
 
-RUN apk add --update --no-cache postgresql-dev yarn nodejs tzdata bash
-RUN apk add --no-cache --virtual .build-deps \
-  build-base git
+WORKDIR /app
 
-COPY Gemfile* /usr/src/app/
-COPY package.json /usr/src/app/
-COPY yarn.lock /usr/src/app/
-WORKDIR /usr/src/app
-RUN bundle install --without development test
-RUN yarn install --production
+COPY Gemfile* ./
+RUN bundle install --path vendor/bundle --without development test --jobs $(nproc)
 
-RUN apk del .build-deps
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install --production --check-files
 
-COPY . /usr/src/app/
+COPY . ./
+RUN RAILS_ENV=production bundle exec rails assets:precompile
 
-RUN RAILS_ENV=production rails assets:precompile
+
+FROM ruby:2.6.5-alpine AS app
+
+RUN apk update \
+  && apk upgrade \
+  && apk add --update --no-cache postgresql-dev tzdata
+
+WORKDIR /app
+
+COPY --from=build /app .
+
+# Tell bundle where we installed the gems and not to look for dev or test gems
+RUN bundle config --local path vendor/bundle
+RUN bundle config --local without development:test
+
+COPY . ./
+
+RUN adduser ruby --disabled-password
+USER ruby
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "s"]
