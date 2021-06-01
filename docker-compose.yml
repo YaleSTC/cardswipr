@@ -12,7 +12,10 @@ services:
       - "3000:3000"
 
     volumes:
-      - .:/usr/src/app
+      - .:/app
+      - /app/vendor
+      - /app/public
+      - /app/node_modules
 
     environment:
       RAILS_ENV: ${RAILS_ENV}
@@ -37,6 +40,7 @@ services:
     environment:
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - db_data:/var/lib/postgresql/data
 
