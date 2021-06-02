@@ -26,6 +26,13 @@ This file should be updated before a new release is deployed.
 * Updated attendance policy [#228](https://gitlab.com/yale-sdmp/cardswipr/issues/228)
 * Updated to rails 6.0.3.6 [#243](https://gitlab.com/yale-sdmp/cardswipr/-/issues/243)
 * Prepared for fargate migration [#241](https://gitlab.com/yale-sdmp/cardswipr/issues/241)
+* DO NOT MERGE THIS BRANCH
+  - base info
+    - bundle audit: 1:15
+    - rails_style: 1:20
+    - rails_test: 1:40
+    - yarn_audit: 1:13
+
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

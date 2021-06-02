@@ -25,16 +25,16 @@ stages:
       - vendor/bundle
       - node_modules
 
-  before_script:
-    - apk add alpine-sdk chromium-chromedriver nodejs postgresql-dev tzdata yarn
-    - gem install bundler --no-document
-    - bundle check --path vendor/bundle || bundle install --path vendor/bundle
-    - yarn install
-    - cp config/database.yml.gitlab config/database.yml
-    - cp .env.example .env
-
 rails_test:
   <<: *rails_template
+
+  before_script:
+  - apk add alpine-sdk chromium-chromedriver nodejs postgresql-dev tzdata yarn
+  - gem install bundler --no-document
+  - bundle check --path vendor/bundle || bundle install --path vendor/bundle
+  - yarn install
+  - cp config/database.yml.gitlab config/database.yml
+  - cp .env.example .env
 
   script:
     - bundle exec rake
@@ -42,17 +42,37 @@ rails_test:
 rails_style:
   <<: *rails_template
 
+  before_script:
+  - apk add alpine-sdk tzdata
+  - gem install bundler --no-document
+  - bundle check --path vendor/bundle || bundle install --path vendor/bundle
+  - cp config/database.yml.gitlab config/database.yml
+  - cp .env.example .env
+
   script:
     - bundle exec rake check_style
 
 bundle_audit:
   <<: *rails_template
+
+  before_script:
+    - apk add alpine-sdk tzdata
+    - gem install bundler --no-document
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle
+    - cp .env.example .env
+
   script:
     - bundle exec bundle audit update
     - bundle exec bundle audit
 
 yarn_audit:
   <<: *rails_template
+
+  before_script:
+    - apk add alpine-sdk nodejs tzdata yarn
+    - yarn install
+    - cp config/database.yml.gitlab config/database.yml
+    - cp .env.example .env
 
   script:
     - yarn run improved-yarn-audit --exclude 1500,1693,1748
