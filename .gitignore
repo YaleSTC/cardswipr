@@ -21,7 +21,8 @@ deco.json
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
+/tmp/*
+!/tmp/.keep
 
 # rails_best_practices
 /rails_best_practices_output.html

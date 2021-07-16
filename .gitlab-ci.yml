@@ -48,7 +48,7 @@ bundle_audit:
   <<: *rails_template
   script:
     - bundle exec bundle audit update
-    - bundle exec bundle audit
+    - bundle exec bundle audit --ignore CVE-2021-32740
 
 yarn_audit:
   <<: *rails_template
