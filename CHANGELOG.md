@@ -26,6 +26,7 @@ This file should be updated before a new release is deployed.
 * Updated attendance policy [#228](https://gitlab.com/yale-sdmp/cardswipr/issues/228)
 * Updated to rails 6.0.3.6 [#243](https://gitlab.com/yale-sdmp/cardswipr/-/issues/243)
 * Prepared for fargate migration [#241](https://gitlab.com/yale-sdmp/cardswipr/issues/241)
+* Update querier to use .dig [#247](https://gitlab.com/yale-sdmp/cardswipr/issues/247)
 
 ### Added
 * Added User model [#107](https://gitlab.com/yale-sdmp/cardswipr/issues/107)

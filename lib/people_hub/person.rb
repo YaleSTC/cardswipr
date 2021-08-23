@@ -44,27 +44,27 @@ module PeopleHub
     end
 
     def self.parse_first_name(full_hash)
-      full_hash['Names']['ReportingNm']['First']
+      full_hash.dig('Names', 'ReportingNm', 'First')
     end
 
     def self.parse_last_name(full_hash)
-      full_hash['Names']['ReportingNm']['Last']
+      full_hash.dig('Names', 'ReportingNm', 'Last')
     end
 
     def self.parse_email(full_hash)
-      full_hash['Contacts']['Email']
+      full_hash.dig('Contacts', 'Email')
     end
 
     def self.parse_net_id(full_hash)
-      full_hash['Identifiers']['NETID']
+      full_hash.dig('Identifiers', 'NETID')
     end
 
     def self.parse_upi(full_hash)
-      full_hash['Identifiers']['UPI']
+      full_hash.dig('Identifiers', 'UPI')
     end
 
     def self.parse_phone(full_hash)
-      full_hash['Contacts']['WPhone']
+      full_hash.dig('Contacts', 'WPhone')
     end
     private_class_method :parse_all_params, :parse_first_name, :parse_last_name,
                          :parse_email, :parse_net_id, :parse_upi, :parse_phone
