@@ -3,9 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-gem 'rails', '~> 6.0.3.7'
+gem 'rails', '~> 6.0.4.1'
 
-gem 'administrate', '~> 0.14.0'
+gem 'administrate', '~> 0.16.0'
 gem 'bootsnap', '>= 1.4.5', require: false
 gem 'devise', '~> 4.7.0'
 gem 'devise_cas_authenticatable', '~> 1.10.3'
