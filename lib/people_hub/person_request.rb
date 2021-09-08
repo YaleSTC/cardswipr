@@ -16,6 +16,8 @@ module PeopleHub
     def self.get(search_param)
       raise 'Invalid Input' if search_param.blank?
 
+      search_param = search_param.downcase
+
       # take only the first part of the string until there is a non-word char
       first_match = search_param.match(/\w+\W{0}/)[0]
       query_peoplehub(first_match)

@@ -30,6 +30,14 @@ RSpec.describe PeopleHub::PersonRequest do
         .with(netid: search_param)
     end
 
+    it 'downcases any search params' do
+      search_param = 'aBcD123'
+      stub_valid_response
+      described_class.get(search_param)
+      expect(PeopleHub::Querier).to have_received(:get)
+        .with(netid: 'abcd123')
+    end
+
     it 'raises an error when nothing matches' do
       search_param = '1'
       expect { described_class.get(search_param) }.to \
