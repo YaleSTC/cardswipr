@@ -30,10 +30,10 @@
       <tbody>
         <% @event.attendances.each do |attendance| %>
           <tr>
-            <td data-role="attendance.first-name"><%= attendance.first_name.titleize %></td>
-            <td data-role="attendance.last-name"><%= attendance.last_name.titleize %></td>
+            <td data-role="attendance.first-name"><%= attendance.first_name&.titleize %></td>
+            <td data-role="attendance.last-name"><%= attendance.last_name&.titleize %></td>
             <td data-role="attendance.net-id"><%= attendance.net_id %></td>
-            <td data-role="attendance.email"><%= attendance.email.downcase %></td>
+            <td data-role="attendance.email"><%= attendance.email&.downcase %></td>
             <td data-role="attendance.check-in"><%= attendance.checked_in_at.strftime('%Y-%m-%d %I:%M %p') %></td>
             <td data-role="delete attendance">
               <%= button_to 'X', event_attendance_path(attendance.event.id, attendance.id), method: :delete, data: { confirm: 'Are you sure? This action cannot be undone.'}, :class => 'btn btn-danger btn-sm', aria: { label: 'Delete Attendance' } %>

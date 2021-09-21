@@ -54,7 +54,7 @@ yarn_audit:
   <<: *rails_template
 
   script:
-    - yarn run improved-yarn-audit --exclude 565,1673,1678,1693,1745,1747,1748,1751,1753,1770,1771,1773,1776
+    - yarn run improved-yarn-audit --exclude 565,1673,1678,1693,1745,1747,1748,1751,1753,1770,1771,1773,1776,1779,1780,1781
 
 .build_template: &build_template
   image: docker:latest

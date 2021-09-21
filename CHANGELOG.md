@@ -86,6 +86,7 @@ This file should be updated before a new release is deployed.
 * Fix pagination conflict with administrate gem [#205](https://gitlab.com/yale-sdmp/cardswipr/issues/205)
 * Fix double submission bug with magstripe swipes [#210](https://gitlab.com/yale-sdmp/cardswipr/issues/210)
 * Fix broken user allocation on login [#236](https://gitlab.com/yale-sdmp/cardswipr/issues/236)
+* Fixed broken attendance index when attendance has no email address [#249](https://gitlab.com/yale-sdmp/cardswipr/issues/249)
 
 ## 1.3.6
 <small>7/3/2017</small>
